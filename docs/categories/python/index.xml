@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/python/</link>
+    <description>Recent content in python on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 29 Mar 2013 11:38:45 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>wxPythonで作ったUIをpy2exeで変換すると見た目が変わる問題</title>
+      <link>http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/</link>
+      <pubDate>Fri, 29 Mar 2013 11:38:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/</guid>
+      <description>wxPythonを使って頑張って作ったGUIをPythonが入ってないPCの人も使えるようにするのにpy2exeで変換したら見た目が変わってしまった(古い？TK?)のでその対処法。
+必要なファイル Microsoft.VC90.CRT.manifest
+msvcm90.dll
+msvcp90.dll
+msvcr90.dll
+の4つのファイルが必要。自分の環境だとPython 2.7 Portableを入れたフォルダに全部入っていたので、Py27MSdllsというフォルダをsetup.pyと同じ階層に作って全部入れました。
+Microsoft.VC90.CRT.manifest の中で示されてるdllのバージョンが合ってるかどうか確認する。
+違ってたら適宜修正する。
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;yes&amp;quot;?&amp;gt;&amp;lt;br&amp;gt; &amp;lt;!-- Copyright (c) Microsoft Corporation. All rights reserved. --&amp;gt;&amp;lt;br&amp;gt; &amp;lt;assembly xmlns=&amp;quot;urn:schemas-microsoft-com:asm.v1&amp;quot; manifestVersion=&amp;quot;1.0&amp;quot;&amp;gt;&amp;lt;br&amp;gt; &amp;lt;noInheritable/&amp;gt;&amp;lt;br&amp;gt; &amp;lt;assemblyIdentity&amp;lt;br&amp;gt; type=&amp;quot;win32&amp;quot;&amp;lt;br&amp;gt; name=&amp;quot;Microsoft.VC90.CRT&amp;quot;&amp;lt;br&amp;gt; &amp;lt;s&amp;gt;version=&amp;quot;9.0.21022.8&amp;quot;&amp;lt;/s&amp;gt; &amp;lt;span style=color:red;&amp;gt;version=&amp;quot;9.0.30729.6161&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt; processorArchitecture=&amp;quot;x86&amp;quot;&amp;lt;br&amp;gt; publicKeyToken=&amp;quot;1fc8b3b9a1e18e3b&amp;quot;&amp;lt;br&amp;gt; /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;file name=&amp;quot;msvcr90.dll&amp;quot; /&amp;gt; &amp;lt;file name=&amp;quot;msvcp90.dll&amp;quot; /&amp;gt; &amp;lt;file name=&amp;quot;msvcm90.dll&amp;quot; /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/assembly&amp;gt;&amp;lt;br&amp;gt;  setup.py setup.pyを書き換えて用意したこれらのファイルを読み込むように変更する。
+# -*- coding: utf-8 -*-&amp;lt;br&amp;gt; #&amp;lt;br&amp;gt; # setup.py&amp;lt;br&amp;gt; &amp;lt;br&amp;gt; from distutils.core import setup&amp;lt;br&amp;gt; import py2exe&amp;lt;br&amp;gt; import glob&amp;lt;br&amp;gt; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt; class Target(object):&amp;lt;br&amp;gt; &amp;quot;&amp;quot;&amp;quot; A simple class that holds information on our executable file.</description>
+    </item>
+    
+    <item>
+      <title>Pythonのapplyを使う時の注意点、…というか使っちゃダメ。</title>
+      <link>http://programming.ironsand.net/2013/do-not-use-apply-in-python/</link>
+      <pubDate>Tue, 15 Jan 2013 18:02:10 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/do-not-use-apply-in-python/</guid>
+      <description>Lispを書いてると、他の言語でもapplyを使いたくなる。
+そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。
+基本的なapplyの使い方 `
+def hoge(word): print word
+apply(hoge,&amp;ldquo;A&amp;rdquo;) `
+とまあこんな感じ使うわけです。
+文字列を引数にできない。 ところがこの引数の&amp;#8221;A&amp;#8221;を&amp;#8221;ABC&amp;#8221;に変えるだけでエラーになる。
+&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 9, in &amp;lt;module&amp;gt; TypeError: hoge() takes exactly 1 argument (3 given)&amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;
+どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。
+解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。
+ 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような &amp;#8220;拡張された関数呼び出し構文&amp;#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。</description>
+    </item>
+    
+    <item>
+      <title>話題のオンライン無料大学CourseraでPythonの授業をとってみた。</title>
+      <link>http://programming.ironsand.net/2012/start-coursera-python-course/</link>
+      <pubDate>Tue, 30 Oct 2012 14:45:05 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/start-coursera-python-course/</guid>
+      <description>無料のオンライン大学Courseraについてはこちらを見てください。
+【TED】 Coursera創業者による「オンライン教育が教えてくれること」 | IDEA*IDEA
+http://www.ideaxidea.com/archives/2012/09/ted_coursera.html
+このCourseraで&amp;#8221;An Introduction to Interactive Programming in Python&amp;#8221;という面白そうな授業があったので登録してみました。プログラミング経験がほとんどない人向けの講座だそうなのですが、英語のハンデもあるのでちょうどいいかと思って初めて見ました。まだ受講は受け付けていますが、10月15日からの講座なのでPythonの勉強を始めてみたい方はお早めに。
+受講方法 まず[コース一覧][1]から受講したいコースを選びます。
+受講したいコースがあったら&amp;#8221;sign up&amp;#8221;から登録します。
+で名前とメールアドレス、それにパスワードを入力。
+ここで入力する名前が証明書などに残るので本名を入力しましょう。
+ポップアップでメッセージと&amp;#8221;Go to class&amp;#8221;という表示が出てくるのでクリックして次へ。
+ここでHonor Code[敬意を持って守る規定]への同意を求められるのでよく読んで同意しましょう。
+ 一つのアカウントのみ登録します。
+ 宿題、クイズそれに試験を独力で行います。
+ 宿題、クイズそれに試験の答えを誰にも教えません。
+ 不誠実に成績を改鼠しません。
+  コースのホーム画面に飛びます。既に開始されてるコースなのでまずは溜まってるAnnouncementsから見ていきましょう。上に行くほど新しいお知らせなので一番下から読んでいきます。
+どういう風に進んでいくか。 ここからは何を受講するかによっても変わってくると思うので参考程度に読んでください。
+・毎週2セクションごと進む。
+・週の開始は土曜日の朝。(アメリカ時間？)
+・土曜日の朝に50～150行程度で作れるミニプロジェクトが割り当てられるので、それを次の土曜日の午後までに提出する。
+・そして次の日曜日から水曜日の間に生徒間で相互添削を行う。
+・相互添削で自分の評価をもらうためには最低5つを行わなければならない。
+・毎週6～10個程度の短いレクチャーの動画を見る。
+・クイズが週2回、でミニプロジェクトが1回。
+・プログラミング環境は http://www.codeskulptor.org/ を使う。
+レクチャーのビデオを見る 左上の[Video Lectures]からレクチャーが見れます。この講座をどのように進めていくかと、この講座でどのようなものが作れるかの説明があります。基本的な動作をするゲームが作れるので面白そう。
+英語は自分にはまだちょっと難しいですが、字幕を[CC]でつけて見ることもできるし、テキストやSRTファイルでダウンロードして読むこともできます。
+動画プレイヤーのVLCなら0.8倍速などのように音の高低を変化させずに再生速度を変えれますし、SRTファイルをそのまま再生中の動画にDrag &amp;amp; Dropするだけで字幕を表示できるのでオススメです。
+他にも面白そうな講座はたくさんありますので、どんな講座があるかだけでも眺めてみると良いんじゃないでしょうか。
+Course Catalog | Coursera
+https://www.coursera.org/courses</description>
+    </item>
+    
+    <item>
+      <title>さくらのVPSでpythonのインタプリタを終了させる</title>
+      <link>http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/</link>
+      <pubDate>Thu, 05 Jan 2012 11:51:15 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/</guid>
+      <description>さくらのVPSにputtyを使ってSSHでログインしてる時に間違えて /usr/bin/python を叩いてしまい(コピーしようとしたら貼りつけてしまった。)インタプリタを終了できなくてちょっと焦ったので終了方法のメモ。
+&amp;#8216;Use Ctrl-D (i.e. EOF) to exit.&amp;#8217;
+とか言ってるくるけど Ctrl-D をおしてもサーバーまで届かない。
+正しい終了方法は
+import sys sys.exit() だそうです。 ああ、そうか sys をインポートしなきゃならんのか。プログラムを書いてる時だと気づくのにインタプリタ普段使わないから何かちがうものだと勝手に思い込んじゃってたよ…。
+参考 pythonインタプリタを終了する
+http://blog.justoneplanet.info/2010/08/07/python%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%82%92%E7%B5%82%E4%BA%86%E3%81%99%E3%82%8B/</description>
+    </item>
+    
+    <item>
+      <title>xamppでpythonを使う</title>
+      <link>http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/</link>
+      <pubDate>Wed, 16 Nov 2011 16:00:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/</guid>
+      <description>xamppには標準でpythonが入っているけど残念ながらpythonが入ってないので使いたかったら自分で入れる必要があるらしい。なので入れてみた。
+環境 Windows 7 32bit
+Xampp 1.7.7
+Python 2.6.1 (Portable)
+必要なもの &amp;#8220;Xampp python&amp;#8221;で検索するとmod_pythonの情報が出てきてインストール方法も色々と出てくるんだけれどもmod_pythonのwindows版はpythonのバージョンが2.5までにしか対応してないようで非常にめんどくさそう。
+色々探してたら簡単な方法を載せてるサイトが見つかったのでその方法を紹介します。
+インストールが必要な物は何もなし。ヽ(´▽｀)ノ
+設定方法 まず
+[xamppをインストールしたディレクトリ]\apache\conf\httpd.conf
+を開いて
+# # For Python # AddHandler cgi-script .py ScriptInterpreterSource Registry-Strict と追記します。
+場所は多分どこでもいいけど、既に
+&amp;#8220;AddHandler cgi-script .cgi .pl .asp&amp;#8221;って書いてる所があるのでその下にでも。
+んで、動かしたいpythonスクリプトの行頭に
+#!P:\Dropbox\bin\Python26\App\python.exe とpython.exeがある場所を書いておきます。
+以上で終わり。
+確認 #![python.exeの置いてる場所]\python.exe print &#34;Content-Type: text/plain&#34; print print &#34;hello world.&#34; と書いて[xamppのフォルダ]\htdocs\pythontest.py に保存して
+xampp_start.exe でサーバーを起動させて
+http://localhost/pythontext.py
+を開いて &amp;#8220;hello world.&amp;#8221;が表示されたらOK。
+サーバーが起動してる状態で設定したらxamppを一回終了させて再起動させないと動きません。
+やっとくと便利なこと http://localhost/index.html が
+http://localhost/ でも開けるように
+http://localhost/index.py が
+http://localhost/ でも開けるように設定しときましょう。
+# # DirectoryIndex: sets the file that Apache will serve if a directory # is requested.</description>
+    </item>
+    
+    <item>
+      <title>さくらのレンタルサーバーでPythonのTwitterライブラリを使う</title>
+      <link>http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/</link>
+      <pubDate>Sat, 14 May 2011 01:04:54 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/</guid>
+      <description>はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。
+～～～～～～～～前置きここまで～～～～～～～～
+Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejson
+やらImportError: No module named twitter
+なんかのエラーが出てしまう。
+インストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。
+ 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet/SSH クライアント  外部モジュールのファイル本体
+使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。
+今回は python-twitter とその依存関係のファイル。
+さくらのレンタルサーバーのスタンダード以上のプラン
+スタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラ
+FTPクライアント
+なくてもできるんですが、あったほうが便利なので。
+現在使ってるのがなければFFFTPを使っておいてください。
+telnet/SSH クライアント
+次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。
+必要なモジュールファイルのダウンロード &amp;#8220;python-twitter-0.8.1.tar.gz&amp;#8221;
+http://code.google.com/p/python-twitter/
+だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された
+&amp;#8220;httplib2-0.6.0.tar.gz&amp;#8221; と
+http://code.google.com/p/httplib2/
+&amp;#8220;simplejson-2.1.5.tar.gz&amp;#8221; と
+http://pypi.python.org/pypi/simplejson
+&amp;#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&amp;#8221; を
+http://github.com/simplegeo/python-oauth2
+ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。</description>
+    </item>
+    
+    <item>
+      <title>PythonのGUI,Tkinterのエラー対処</title>
+      <link>http://programming.ironsand.net/2011/tkinter-importerror/</link>
+      <pubDate>Sat, 26 Feb 2011 06:38:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/tkinter-importerror/</guid>
+      <description>PythonのGUI,Tkinterを使おうとこのページの一番上のサンプルを動かそうとすると動かず第一歩をくじかれる。
+http://www.pythonware.com/library/tkinter/introduction/hello-tkinter.htm
+エラーメッセージはこんなの。
+ImportError: No module named Tkinter
+環境はWindows7でPython3.0.1 Portable。
+エラーメッセージで検索しても「yumを使ってモジュールインストールしろ。」とかLinux向けの情報しか出てこない。 適当にあさってやっと見つけた解決策はこれ。
+from Tkinter import *
+を
+from tkinter import *
+に変える。 どうも Python3からmodule名の大文字小文字が変更されたのが原因だったようだ。</description>
+    </item>
+    
+  </channel>
+</rss>

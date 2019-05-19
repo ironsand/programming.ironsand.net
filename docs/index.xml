@@ -1,0 +1,2118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>答えを知りたい</title>
+    <link>http://programming.ironsand.net/</link>
+    <description>Recent content on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sat, 18 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WordpressからHugoに移行した記録</title>
+      <link>http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/</link>
+      <pubDate>Sat, 18 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/</guid>
+      <description>インストール方法 Macなら特に何も面倒くさいことをせずに
+brew update brew install hugo  でOKです。
+無事インストールできたか確認ついでにバージョンも表示。
+% hugo version Hugo Static Site Generator v0.55.5/extended darwin/amd64 BuildDate: unknown  始め方 まずこのサイトの置き場所のためにディレクトリを~/www/programming.ironsand.netを作って、そこにcdで移動。
+% hugo new site . Congratulations! Your new Hugo site is created in /Users/ironsand/www/programming.ironsand.net. Just a few more steps and you&#39;re ready to go: 1. Download a theme into the same-named folder. Choose a theme from https://themes.gohugo.io/, or create your own with the &amp;quot;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;quot; command.</description>
+    </item>
+    
+    <item>
+      <title>なろうリーダーでフォント入れ替える方法</title>
+      <link>http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sat, 01 Sep 2018 08:09:53 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/</guid>
+      <description>こんな感じになります 設定方法など なろうリーダーで縦書きができるようになったのですが、Kindleなどど違ってIPAフォントをアプリの機能でダウンロードしてインストールすることはできないようです。
+設定のキャッシュ設定→保存先に
+/storage/emulated/0/Android/data/com.tscsoft.naroureader/files  のようにキャッシュ用のフォルダが示されてるので、以下のサイトからフォントを落としてきてこのフォルダにコピーすれば設定からIPAフォントが選べるようになります。
+https://ipafont.ipa.go.jp/old/ipafont/download.html
+ファイルの移動にはAirmoreを使うと便利です。
+Airmoreで転送する際には頭の/storage/emulated/0/を無視してAndroidディレクトリから選んでいけばOKです。files/fontsとなっていますのでその中に入れましょう。</description>
+    </item>
+    
+    <item>
+      <title>VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</title>
+      <link>http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/</link>
+      <pubDate>Mon, 02 Apr 2018 23:37:46 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/</guid>
+      <description>Virtualboxの共有フォルダ機能は便利なんですが、/etc/fstabに追加しようとするとvboxsfがマウント時にまだ読み込まれてないとかでディストリビューションによっては使えません。
+あまり行儀はよくないのですが/etc/rc.localでマウントしてしまえば解決です。
+mount -t vboxsf share /home/ironsand/share || /bin/true exit 0  exit 0より前に書くことだけ気をつけましょう。
+参考 How to mount a VirtualBox shared folder at startup?</description>
+    </item>
+    
+    <item>
+      <title>Faviconを取得する簡単な方法</title>
+      <link>http://programming.ironsand.net/2018/how-to-get-favicon-easily/</link>
+      <pubDate>Mon, 29 Jan 2018 20:00:47 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2018/how-to-get-favicon-easily/</guid>
+      <description>faviconを取得したければ&amp;lt;link rel=&amp;quot;icon&amp;quot; href=&amp;quot;favicon.ico&amp;quot;&amp;gt;を探すなどの正攻法がありますが、
+色々と例外があるようなのでめんどくさい時はGoogleさんに任せてしまいましょう。
+URI(&#39;https://www.google.com/s2/favicons?domain_url=stackoverflow.com&#39;).read  でとれます。
+参考 https://stackoverflow.com/questions/5119041/how-can-i-get-a-web-sites-favicon</description>
+    </item>
+    
+    <item>
+      <title>invalid value for BigDecimal が Ruby 2.4から出るようになった</title>
+      <link>http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/</link>
+      <pubDate>Tue, 26 Dec 2017 03:32:49 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/</guid>
+      <description>Ruby 2.3 まではBigdecimalへの変換を行う String#to_dが数字ではない文字列だった場合にString#to_iと同じ0.0を返す仕様だったのに2.4からは例外を吐くようになったようです。
+Ruby 2.3 require &#39;bigdecimal&#39; require &#39;bigdecimal/util&#39; &#39;abc&#39;.to_d #=&amp;gt; 0.0 Ruby 2.4 require &#39;bigdecimal&#39; require &#39;bigdecimal/util&#39; &#39;abc&#39;.to_d ArgumentError: invalid value for BigDecimal(): &#34;abc&#34; 対策 バグでした。gem update bigdecimal して、Gemfileを設定しましょう。
+https://github.com/ruby/bigdecimal/issues/51
+gem &#39;bigdecimal&#39;, &#39;1.3.4&#39;    
+Tweet 
+/fb:like</description>
+    </item>
+    
+    <item>
+      <title>simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</title>
+      <link>http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/</link>
+      <pubDate>Wed, 01 Nov 2017 14:07:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/</guid>
+      <description>状態 こういうふうに書いたらtarget: &#39;_blank&#39;が効かなくて困った。
+simple_format(auto_link(text, :target =&amp;gt; &amp;quot;_blank&amp;quot; ))  対策 simple_formatはaタグのtarget属性を取り除いてしまうので順番を入れ替えて、こう書くとOK。
+auto_link(simple_format(text), :target =&amp;gt; &amp;quot;_blank&amp;quot; )  参考 https://github.com/tenderlove/rails_autolink/issues/20#issuecomment-24818734
+   
+Tweet 
+/fb:like</description>
+    </item>
+    
+    <item>
+      <title>NodeJSのREPLでctrl&#43;r で過去の履歴を検索</title>
+      <link>http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/</link>
+      <pubDate>Wed, 01 Nov 2017 06:28:12 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/</guid>
+      <description>bashやRubyのpryでctrl+rで使える reverse interactive search をnodeのシェルでも使う方法の紹介です。
+rlwrap のインストール rlwrapが必要なのでbrew install rlwrapでインストールしましょう。他の環境の場合は環境にあったパッケージマネージャでインストールしてください。
+rlwrapはGNUのreadline的な振る舞いをするためのパッケージだそうです。
+node側の設定 alias node=&#34;NODE_NO_READLINE=1 rlwrap node&#34; を追加してnodeでreadlineを使うように設定しておきましょう。
+参考 https://stackoverflow.com/questions/46714331/how-to-use-reverse-interactive-search-in-nodejs-repl</description>
+    </item>
+    
+    <item>
+      <title>zshでhistoryに実行時間も残す方法</title>
+      <link>http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 18 Oct 2017 22:47:37 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/</guid>
+      <description>bashだとHISTTIMEFORMAT=&amp;quot;[%F %T] &amp;quot;とか~/.bashrcに書いておけばログに実行した日時も残しておけるんだけどzshだとHISTTIMEFORMATがないらしいので方法を調べてみた。
+設定しなくてOK デフォルトで使えるようになってるらしい
+$ history -E 1 2.12.2013 14:19 history -E $ history -i 1 2013-12-02 14:19 history -E $ history -D 1 0:00 history -E 2 0:00 history -i  だけでOK。
+参考 https://unix.stackexchange.com/questions/103398/datetime-stamp-when-running-history-command-in-zsh-shell
+   
+Tweet 
+/fb:like</description>
+    </item>
+    
+    <item>
+      <title>HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</title>
+      <link>http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/</link>
+      <pubDate>Sat, 05 Aug 2017 16:25:25 +0900</pubDate>
+      
+      <guid>http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/</guid>
+      <description>WordpressからHUGOに移行する時にTwitterやFacebookなどのソーシャルボタンが本文にハードコーディングされてたので強引に削除しました。 特定の行以降を全て削除するという力技なので間違って想定外のものが消えないか気をつけましょう。
+# pry &amp;gt; require &#39;nokogiri&#39; Pathname.glob(&#39;posts/*.md&#39;).each{|f| text = f.read.gsub(/&amp;lt;div class=&#39;wp_social_bookmarking_light&#39;&amp;gt;.*/m,&#39;&#39;); f.write(text)}  </description>
+    </item>
+    
+    <item>
+      <title>Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</title>
+      <link>http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/</link>
+      <pubDate>Mon, 08 May 2017 07:17:27 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/</guid>
+      <description>更新されてる時だけファイルをダウンロードしたいときなどに使う目的で。
+uri = URI(&#39;http://example.com/foo.xls&#39;) Net::HTTP.get_response(uri)[&#39;last-modified&#39;] &amp;quot;Mon, 08 May 2017 01:34:46 GMT&amp;quot;  </description>
+    </item>
+    
+    <item>
+      <title>Rubyの配列から添字を使って複数の値をピックアップする</title>
+      <link>http://programming.ironsand.net/2016/ruby%E3%81%AE%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%B7%BB%E5%AD%97%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E3%83%94%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83/</link>
+      <pubDate>Mon, 02 May 2016 18:07:17 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/ruby%E3%81%AE%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%B7%BB%E5%AD%97%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E3%83%94%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83/</guid>
+      <description>foo = [1,2,3,4,5] foo.values_at(2,4) # =&amp;gt; 3, 5 いつも忘れるので自分が忘れた時に検索ですぐ引っかかるようなタイトルにしてます。</description>
+    </item>
+    
+    <item>
+      <title>OpenVPNの設定ファイルの文法チェック</title>
+      <link>http://programming.ironsand.net/2016/openvpn%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%96%87%E6%B3%95%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF/</link>
+      <pubDate>Mon, 25 Apr 2016 09:05:56 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/openvpn%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%96%87%E6%B3%95%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF/</guid>
+      <description>sudo service openvpn startがコケる時に設定ファイルのどこが間違ってるのか確認する方法。
+openvpn --config /etc/openvpn/server.conf  で文法チェックができます。こういうの各サービスで個別にあるんじゃなくて統一の方法欲しいなあ。</description>
+    </item>
+    
+    <item>
+      <title>iptables覚書</title>
+      <link>http://programming.ironsand.net/2016/iptables%E8%A6%9A%E6%9B%B8/</link>
+      <pubDate>Wed, 20 Apr 2016 00:53:32 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/iptables%E8%A6%9A%E6%9B%B8/</guid>
+      <description>よく忘れるので
+*filter :INPUT DROP [0:0] :FORWARD DROP [0:0] :OUTPUT ACCEPT [0:0] ## 確立済みの通信はOK -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT ## Ping を通す -A INPUT -p icmp -j ACCEPT ## 自ホストからの通信はOK -A INPUT -i lo -j ACCEPT ## SSH -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT ## HTTP, HTTPS -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT -A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT COMMIT </description>
+    </item>
+    
+    <item>
+      <title>複数のカラムの値が重複するオブジェクトのIDを取得する</title>
+      <link>http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/</link>
+      <pubDate>Wed, 30 Mar 2016 02:32:30 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/</guid>
+      <description> 複数カラムの値が重複してるオブジェクトの情報を取るために
+posts = Post.select(:title, :user_id, :date).group(:title, :user_id, :date).having(&#34;count(*) &amp;gt; 1&#34;).all とするとこんな感じのidがnilの配列が返ってくるので
+:id =&amp;gt; nil, :user_id =&amp;gt; 1345, :title =&amp;gt; &#39;foo&#39;, :date =&amp;gt; Tue, 01 Sep 2015 posts.each do |post| duplicated_posts = Post.where(user_id: post.user_id, title: post.title, date: post.date) # なんか処理する end な感じで適当に処理しましょう。
+追記 こちらのほうがスッキリ書けますね。
+posts.each do |post| duplicated_posts = Post.where(post.attributes.except(&#39;id&#39;)) # なんか処理する end </description>
+    </item>
+    
+    <item>
+      <title>File.write みたいに File.append も使いたい</title>
+      <link>http://programming.ironsand.net/2016/file-write-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-file-append-%E3%82%82%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/</link>
+      <pubDate>Mon, 28 Mar 2016 01:35:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/file-write-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-file-append-%E3%82%82%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/</guid>
+      <description>File.write(filename, text)でファイルに書き込みできるの便利ですよね。
+でも、File.appendは用意されてないのでFile.open(filename, &#39;a&#39;){|f| f.write(text)}のように書かなきゃいけません。めんどくさい。
+なのでめんどくさくないように定義しましょう。やっぱり既存クラスのメソッド拡張ができるRubyはいいですね。
+class File def self.append(filename, text) File.open(filename, &#39;a&#39;){|f| f.write(text)} end end </description>
+    </item>
+    
+    <item>
+      <title>Hashのキーをリネームする</title>
+      <link>http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/</link>
+      <pubDate>Mon, 15 Feb 2016 06:08:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/</guid>
+      <description>Hashのキーをリネームしたかったけどデフォルトのメソッドはないようなので書いた
+class Hash def rename_key(old:, new:) return unless has_key?(old) return if has_key?(new) self[new] = self.delete(old) self end end 使い方 h = {a: 1, b: 2} { :a =&amp;gt; 1, :b =&amp;gt; 2 } [92] pry(main)&amp;gt; h.rename_key(old: :a, new: :c) { :b =&amp;gt; 2, :c =&amp;gt; 1 } 変更前のキーが存在しない時と、変更後のキーが存在する時は何もしない。
+実際の入れ替え処理はself[new] = self.delete(old)だけで終わってます。
+参考 http://kmckelvin.com/blog/2014/06/renaming-items-in-a-ruby-hash</description>
+    </item>
+    
+    <item>
+      <title>sox を 無音部分のある音声を分断</title>
+      <link>http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/</link>
+      <pubDate>Tue, 24 Nov 2015 02:01:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/</guid>
+      <description>音声つき単語帳の単語と例文とかを切り出してランダム出題する形にしたかったのでまずsoxを使って無音部分で音声を分割しました。
+$ sox in.wav out.wav silence 1 0.3 0.1% 1 0.3 0.1% : newfile : restart これでout001.wavなどのように連番でファイルが保存されます。初めの0.3が音声の前の部分の無音の長さで、後ろの0.3が音声の後に続く無音部分の長さです。
+参考 [sox fails to split files &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Chefで特定のレシピを一つだけ走らせる方法</title>
+      <link>http://programming.ironsand.net/2015/chef%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%AC%E3%82%B7%E3%83%94%E3%82%92%E4%B8%80%E3%81%A4%E3%81%A0%E3%81%91%E8%B5%B0%E3%82%89%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sat, 21 Nov 2015 05:41:37 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/chef%E3%81%A7%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%AC%E3%82%B7%E3%83%94%E3%82%92%E4%B8%80%E3%81%A4%E3%81%A0%E3%81%91%E8%B5%B0%E3%82%89%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95/</guid>
+      <description>Chefの動きを確認する時に毎回全部のレシピを当ててると時間がかかってめんどくさいことこの上ないので単体で走らせる方法を探してみました。
+試してみてダメだったこと chef-applyとかsandwichとか色々あるようなんですが、依存関係などの読み込み周りを同一にするのが出来ないようでよくわからなかったので使わないことにしました。
+やりたいのはrun_listで走らせる対象を一つだけにしたかったので、nodes/postgresql.jsonなど試したいレシピだけを指定したノードファイルを作ってみたんですが、これはファイル名がhostと一致しないため完全に間違った試行だったようです。
+成功した方法 run_listを特定のレシピだけ対象にすればいいので--override-runlistオプションを使えばやりたいことができました。
+$ knife solo cook my_host --override-runlist &#34;recipe[user]&#34;  run_listのデフォルトでrecipeは省略可能なので
+$ knife solo cook my_host --override-runlist &#34;user&#34; でOKです。
+参考 [Specifying which cookbooks to run with Chef Solo &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>ffmpegで動画を再エンコードせずにアスペクト比のみ変更する</title>
+      <link>http://programming.ironsand.net/2015/ffmpeg%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E5%86%8D%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%9B%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E6%AF%94%E3%81%AE%E3%81%BF/</link>
+      <pubDate>Fri, 13 Nov 2015 17:19:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/ffmpeg%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E5%86%8D%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%9B%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E6%AF%94%E3%81%AE%E3%81%BF/</guid>
+      <description>昔録った動画のアスペクト比を間違えて設定してしまってたので一括で16:9にしたかったのでやり方を調べました。
+方法 $ ffmpeg -i movie.mp4 -c copy -aspect 16:9 movie_out.mp4  とこんな感じで出来ます。ちなみにある程度新しいffmpegじゃないとちゃんと動かないので新しいのを入れましょう。あとコンテナがアスペクト比の設定に対応してないともちろんダメです。
+ちなみに私はWindowsで動かしました。</description>
+    </item>
+    
+    <item>
+      <title>FFmpeg使って複数の音声と字幕から一つの動画を作成する</title>
+      <link>http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/</link>
+      <pubDate>Sun, 27 Sep 2015 02:49:40 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/</guid>
+      <description>ffmpegを使って複数の音声と字幕から一つの動画を作成する方法。
+ffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4  コマンドの解説 まず入力ソースに使う動画は一つ一つに-iオプションを付けて呼び出します。
+そして-map の横についてる数字は何個目の引数として呼び込まれたか:その動画や音声のどのストリームかを表しています。そして-metadataを使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。
+ちなみに-acodec copy -vcodec copyという使い方をされてる人が多いですが-c copyで一括指定できます。
+知っとくと便利なこと -t 数値で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は-t 180などして簡単に動画の確認だけすると良いでしょう。</description>
+    </item>
+    
+    <item>
+      <title>rake task の多重起動を禁止する排他処理を行う</title>
+      <link>http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/</link>
+      <pubDate>Thu, 13 Aug 2015 08:13:13 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/</guid>
+      <description>rake task で長時間起動するため排他処理をしておかないと複数起動してしまう物があったので多重起動を禁止にしました。
+namespace :foo do task :update_all =&amp;gt; :environment do |task| process_count = `ps -ef | grep #{task.name} | grep -v grep | wc -l`.to_i next if process_count &amp;gt; 1 end end でOK。呼び出し部分をメソッド化とかしたかったけど、上手くいかなかったのでとりあえずこれで。タスクのブロック引数としてtaskをちゃんと書いておかないとtask.nameが使えないので注意しましょう。
+参考 [ShellScript &amp;#8211; Rakeタスク実行時、プロセス起動数を確認して排他制御する &amp;#8211; Qiita][1]</description>
+    </item>
+    
+    <item>
+      <title>rake task を途中で抜けるときはreturnじゃなくてnext</title>
+      <link>http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/</link>
+      <pubDate>Thu, 13 Aug 2015 07:37:22 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/</guid>
+      <description>task :do_something do return if some_condition? do_job end  というように条件に合致しない時に returnを使って処理を抜けようとするとこんなエラーになります。
+LocalJumpError: unexpected return これは rake task がメソッドではなくブロックだから起きるので next を使ってやりましょう。それで抜けれます。
+task :do_something do next if some_condition? do_job end  ちなみにnextは気持ち悪いんのでせめてbreakを使いたいと思ったんですが、それだと
+LocalJumpError: break from proc-closure  になってしまいます。
+参考 [ruby &amp;#8211; How do I return early from a rake task? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>特定のテキストを含むファイルを持っているディレクトリを削除する</title>
+      <link>http://programming.ironsand.net/2015/%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%92%E5%90%AB%E3%82%80%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%83%87%E3%82%A3/</link>
+      <pubDate>Wed, 01 Apr 2015 09:56:08 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%92%E5%90%AB%E3%82%80%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%83%87%E3%82%A3/</guid>
+      <description>ackで検索してdirnameでディレクトリ名を取得して、rm -rfでまとめて消してます。
+ack-grep -l foo | xargs dirname | xargs rm -rf </description>
+    </item>
+    
+    <item>
+      <title>Arrayから重複する要素の配列を抜き出す</title>
+      <link>http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/</link>
+      <pubDate>Wed, 18 Mar 2015 00:08:08 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/</guid>
+      <description>やり過ぎはダメだと言われても、やっぱり基底クラスの拡張は楽しい！
+class Array def duplicated select{ |v| count(v) &amp;gt; 1}.uniq end end 使い方 a = [3, 5, 3, 4] =&amp;gt; [3, 5, 3, 4] [15] pry(main)&amp;gt; a.duplicated =&amp;gt; [3] [16] pry(main)&amp;gt; a = [3, 5, 3, 4, 5] =&amp;gt; [3, 5, 3, 4, 5] [17] pry(main)&amp;gt; a.duplicated =&amp;gt; [3, 5] 参考 [Ruby: How to find and return a duplicate value in array? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>RubyとRasberry Pi でLEDをチカチカさせる</title>
+      <link>http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/</link>
+      <pubDate>Sun, 22 Feb 2015 12:14:42 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/</guid>
+      <description>Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。
+
+基礎知識 LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。
+GPIO(General-purpose input/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。
+つまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。
+[][1]
+B+のモデルにはもっとピンがあるんですが、1から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが1だそうです。……なにそのわかりにくい基準。
+[][2]
+抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。
+ブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。
+http://jsdiy.web.fc2.com/avr_7segclockbb/
+LEDをチカチカさせる 最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。
+配線方法 ブレッドボードの配線がこんなんで、
+[][4]
+ラズパイの配線がこんなんで
+[][5]
+コードがこうです。解説サイトのRubyを修正しています。
+port = 24 File.write(&#34;/sys/class/gpio/export&#34;, port) sleep 0.2 # 書き込みエラー回避 File.write(&#34;/sys/class/gpio/gpio#{port}/direction&#34;, &#34;out&#34;) (1..10).each do |i| File.write(&#34;/sys/class/gpio/gpio#{port}/value&#34;, i % 2) sleep 0.2 end File.write(&#34;/sys/class/gpio/unexport&#34;, port) Lチカさせる 以上が上手くいっていたら ruby ~/led_blink.rbでスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！
+できなかった人は一つ一つ手順を確認していきましょう〜。
+それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ</description>
+    </item>
+    
+    <item>
+      <title>Helperメソッド内で form_tag を使うときの注意点</title>
+      <link>http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/</link>
+      <pubDate>Fri, 20 Feb 2015 02:30:59 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/</guid>
+      <description>form_tagを使えばブロック内の全体を返してくれるかと思ったのですが、そうではないらしく最終行だけ返ってきてしまいます。
+具体例 つまり
+def generate_form(path) form_tag(path) do input_tag submit_tag end end だとフォームそのものと最終行のsubmit_tagだけが表示されてその他の入力フィールドが一切表示されません。
+対策 なので以下のように毎行Stringを保存しておきましょう。何でこんな仕様になってるんだろう…？
+def generate_form(path) form_tag(path) do str = input_tag str += submit_tag str end end 参考 [ruby on rails &amp;#8211; How do I use form_tag from within a helper? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi に Avahi を入れてSSH接続を簡単に</title>
+      <link>http://programming.ironsand.net/2015/raspberry-pi-%E3%81%AB-avahi-%E3%82%92%E5%85%A5%E3%82%8C%E3%81%A6ssh%E6%8E%A5%E7%B6%9A%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB/</link>
+      <pubDate>Mon, 16 Feb 2015 12:30:39 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/raspberry-pi-%E3%81%AB-avahi-%E3%82%92%E5%85%A5%E3%82%8C%E3%81%A6ssh%E6%8E%A5%E7%B6%9A%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB/</guid>
+      <description>[初めてのラズベリーパイ 【購入からSSH接続まで】][1] で SSH を使ってラズベリーパイに接続ができたのですが、DHCPでローカルのIPアドレスを振り分けてる時は振り当てられてるIPアドレスを調べるためだけにラズパイにキーボードとディスプレイをさして作業する必要がでてくるので非常にめんどくさいことになります。
+Avahi そこでAvahiというソフトを使えば hosts ファイルがなくてもローカルネットワーク内の他のPCからIPアドレスではなく名前で参照できるようになります。。Macの共有機能などで使われている Bonjour と同等のものなんだとか。
+インストール /etc/hostname に保存されてる名前で接続できるようになるので初期設定のraspberrypiという名前を別のものに変更しておきましょう。
+sudo vi /etc/hostname  Avihaのインストールはいつもどおりapt-getでインストールできます。
+sudo apt-get -y install avahi-daemon  スタートアップに登録 このままでは起動時に自動的にAvahiが立ち上がってくれませんので
+sudo update-rc.d avahi-daemon defaults でスタートアップにも登録しておきましょう。
+※ 追記 次回使おうとしたら動かなくなってしまってました。 /etc/hostsを編集しないといけなかったようです。
+127.0.0.1 localhost ::1 localhost ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters 127.0.1.1 raspberrypi  となっていますのでraspberrypiの部分を変更した名前に変えておきます。
+使い方 インストールが終わったらクライアントからssh pi@raspberry.localのような形で pi@自分で決めた名前.localで接続できるようになります。
+それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ
+参考 [RaspberryPi &amp;#8211; Raspberry Pi を無線 LAN 経由で SSH 接続できるようにする &amp;#8211; Qiita][2]</description>
+    </item>
+    
+    <item>
+      <title>日付の配列の中から直近の日付を選択する</title>
+      <link>http://programming.ironsand.net/2015/%E6%97%A5%E4%BB%98%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%AD%E3%81%8B%E3%82%89%E7%9B%B4%E8%BF%91%E3%81%AE%E6%97%A5%E4%BB%98%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B/</link>
+      <pubDate>Fri, 13 Feb 2015 10:20:29 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/%E6%97%A5%E4%BB%98%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%AD%E3%81%8B%E3%82%89%E7%9B%B4%E8%BF%91%E3%81%AE%E6%97%A5%E4%BB%98%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B/</guid>
+      <description>日付の配列がある時に
+pry(main)&amp;gt; dates = (1..10).map{|i| Date.new(2015,i) } =&amp;gt; [Thu, 01 Jan 2015, Sun, 01 Feb 2015, Sun, 01 Mar 2015, Wed, 01 Apr 2015, Fri, 01 May 2015, Mon, 01 Jun 2015, Wed, 01 Jul 2015, Sat, 01 Aug 2015, Tue, 01 Sep 2015, Thu, 01 Oct 2015] 現在の日付よりも新しく、かつ一番近い日付を選択したい時の処理
+pry(main)&amp;gt; Date.today =&amp;gt; Fri, 13 Feb 2015 pry(main)&amp;gt; dates.find{|date| date &amp;gt; Date.today} =&amp;gt; Sun, 01 Mar 2015  findメソッドはやっぱり便利！</description>
+    </item>
+    
+    <item>
+      <title>既にインデックスをつけているカラムにUnique制限をつける</title>
+      <link>http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/</link>
+      <pubDate>Mon, 02 Feb 2015 08:18:21 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/</guid>
+      <description>Railsで既にindexをつけているカラムにunique制限をもうけるには、ユニーク制限だけを付加することができないので一旦インデックス自体を削除してから新規に unique な index を追加します。
+def change remove_index :editabilities, [:user_id, :list_id] add_index :editabilities, [:user_id, :list_id], unique: true end  参考 [ruby on rails &amp;#8211; How to add unique constraint to already existing index by migration &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法</title>
+      <link>http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/</link>
+      <pubDate>Mon, 02 Feb 2015 07:23:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/</guid>
+      <description> Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。
+Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。
+ActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym &#39;GNU&#39; end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。
+ LoadError: Unable to autoload constant Gnu, expected
+/Users/ironsand/dev/myproject/app/models/gnu.rb to define it
+ 対策 クラス名を明示的に指定するとOKです。
+has_many :gnus, class_name = &#34;GNU&#34; </description>
+    </item>
+    
+    <item>
+      <title>ラズベリーパイへVNCでリモートデスクトップ接続する</title>
+      <link>http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/</link>
+      <pubDate>Sat, 17 Jan 2015 06:07:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/</guid>
+      <description>[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。
+ VNCでデスクトップ共有すると便利  Raspberry側でする設定 まずはssh pi@192.168.xxx.xxxで接続します。そして必要なパッケージをインストール。
+pi@raspberrypi ~ $ sudo apt-get -y install tightvncserver  次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。
+また閲覧専用のためのパスワードを設定するかどうか聞かれますのでnで無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。
+pi@raspberrypi ~ $ tightvncserver You will require a password to access your desktops. Password: Verify: Would you like to enter a view-only password (y/n)? n  サーバーが立ち上がったらVNC用のWindowを一つ用意します。
+$ vncserver :0 -geometry 1024x768 -depth 24  これでラズベリーパイ側の設定は完了です。
+PC側からの設定 PC側にVNCのクライアントをインストールします。Mac の場合は特に何もインストールする必要はありません。
+Linuxでのインストール aptでインストールします。
+sudo apt-get install xtightvncviewer  Windowsでのインストール [Download TightVNC][2] から &amp;#8220;Installer for Windows&amp;#8221; をダウンロードしてインストールします。</description>
+    </item>
+    
+    <item>
+      <title>初めてのラズベリーパイ 【購入からSSH接続まで】</title>
+      <link>http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/</link>
+      <pubDate>Sat, 17 Jan 2015 03:44:29 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/</guid>
+      <description>[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]
+を思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。
+私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。
+ ICOCAと比べてみた。思ってたよりもずっと小さい。  目的 ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。
+必要なもの  [ラズベリーパイ B+][2] [USBキーボード][3] [MicroUSB 電源ケーブル][4](Android携帯とかについてるの) [USB電源アダプター][5] [Micro SDカード][6](一つ前の ラズベリーパイBを使う場合はSDカード) [USB無線LAN 子機][7] [HDMI接続できるディスプレイ][8]  どのラズベリーパイを買うべきか ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。
+ Raspberry Model A Raspberry Model B Raspberry Model A+ Raspberry Model B+  の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。A+はB+の廉価版になります。何をするか具体的に決まっている場合はA+を選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間にはB+の方が良さそうなのでそっちにしました。
+なおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。
+ディスプレイ ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。
+その他のパーツの注意点とか USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。
+その代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。
+あとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。
+OSインストール まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。
+必要なファイルの準備 ラズベリーパイは専用のLinuxディストリのRASPBIANというOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！
+さて、そのRASPBIANのインストールにはNOOBS(New Out Of the Box Software)というものを使います。
+[Donwloadsのページ][11]からNOOBSをダウンロードして展開します。NOOBS LITEもありますが、無印のほうを選択してください。
+そして[SD Card Formatter][12]をダウンロード&amp;amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。</description>
+    </item>
+    
+    <item>
+      <title>NokogiriとSelenium-WebDriverのxpathの違い</title>
+      <link>http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/</link>
+      <pubDate>Sun, 04 May 2014 01:39:37 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/</guid>
+      <description>Selenium-WebDriverとNokogiriで同じファイルを開いても違うxpathを書かないといけないとダメで少しハマったのでメモ。
+違いの原因 同じHTMLを解析してもSelenium-WebDriverでChromeやFirefoxで開いた時は任意の要素であるtbodyが挿入されるために違いが発生します。
+実際の例 例えば
+&amp;lt;table&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/table&amp;gt; とある時に
+Nokogiri の場合 require &#39;nokogiri&#39; doc = Nokogiri::HTML(File.read(&#34;test.html&#34;)) doc.xpath(&#34;//table/tr&#34;) Selenium WebDriver の場合 require &#39;selenium-webdriver&#39; driver = Selenium::WebDriver.for :chrome driver.get(&#34;file:///C:/Users/ironsand/test.html&#34;) driver.find_element(:xpath, &#34;//table/tbody/tr&#34;) 基本的な対策 大体の場合は//table//trとどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに
+//tr/td/font[contains(text(), &#39;Keyword&#39;)]/../../following-sibling::tr[3]/td
+な感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。
+参考 [ruby &amp;#8211; How to get element that have same parent and n th different position by xpath &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>screenを使ってssh経由のコマンドを便利に</title>
+      <link>http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/</link>
+      <pubDate>Wed, 30 Apr 2014 21:23:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/</guid>
+      <description>sshでログインして処理の重たいコマンドを実行した後にセッションが途切れてしまうとそのコマンドをもう一度fbなどでフォアグラウンドに持ってこようと思っても残念ながらできません。違うシェルのインスタンスから立ち上げたらプロセスは別のインスタンスのシェルには持ってこれないかららしいです。
+Screenの使い方 まず初めからコマンドをscreenを使って立ち上げておきましょう。
+$ screen ruby it_takes_very_long.rb
+そして、一旦sshの接続を切って繋ぎ直します。
+$ screen -listをするとこんな感じで表示されるので
+There is a screen on: 31744.pts-0.Sakura (Detached) 1 Socket in /var/run/screen/S-ironsand.  $ screen -r 31744.pts-0.Sakuraでスクリーンに繋ぎ直せば画面への出力をもう一度見ることが出来ます。
+参考 [Linux Screen Tutorial &amp;#8211; YouTube][1]</description>
+    </item>
+    
+    <item>
+      <title>Berkshelf::LockfileParserError への対処</title>
+      <link>http://programming.ironsand.net/2014/berkshelf_lockfileparsererror/</link>
+      <pubDate>Wed, 30 Apr 2014 19:13:31 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/berkshelf_lockfileparsererror/</guid>
+      <description>knife solo cook foo とするとBerkshelf::LockfileParserErrorってエラーが出てビビる。
+対策 rm Berkshelf.lock で ロックファイルをを消したら治った。.gitignoreに加えてたほうが良いのかな？ Gemfile.lockと同じく加えるかどうかに賛否両論ありそう。</description>
+    </item>
+    
+    <item>
+      <title>irbで`require “foobar”`するのがめんどくさいので楽にする</title>
+      <link>http://programming.ironsand.net/2014/require-library-easily-in-irb/</link>
+      <pubDate>Wed, 30 Apr 2014 15:37:39 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/require-library-easily-in-irb/</guid>
+      <description>例えば nokogiri でちゃんとデータの取得ができてるか確認するために
+irbを使うために
+$ irb してから
+require &amp;quot;nokogiri&amp;quot;と
+自分はいつもしてたんですが、めんどくさい。
+解決策 $ irb -r nokogiriな感じでライブラリが読み込めます。ステキ！</description>
+    </item>
+    
+    <item>
+      <title>ConEmuのタスクバーのアイコンをクリックしたらすぐにactiveにする</title>
+      <link>http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/</link>
+      <pubDate>Mon, 28 Apr 2014 13:11:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/</guid>
+      <description>デフォルトではConEmuで複数のタブを開いた状態でタスクバーのアイコンをクリックすると、どのタブを選択するかを選ばないとアクティブにすることができません。
+自分はとりあえずクリックしたらアクティブになって欲しいので設定を変えてしまいます。
+変え方 ConEmuのタイトルバーを右クリックしてSettingsを開いて
+左上のFind:のところでActive console onlyと検索します。
+するとMain-&amp;gt;Task bar-&amp;gt;Taskbar buttonsの項目のShow all consolesがデフォルトで選ばれてると思うので、それをActive console only (ConEmu window)に変えてSave settingsすればOKです。ステキ！</description>
+    </item>
+    
+    <item>
+      <title>rubyの`FileIO.readline`に改行を含ませないようにする</title>
+      <link>http://programming.ironsand.net/2014/without-line-break-with-fileio-readline-in-ruby/</link>
+      <pubDate>Sat, 26 Apr 2014 18:17:15 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/without-line-break-with-fileio-readline-in-ruby/</guid>
+      <description> こんなふうにファイルを読み込むと標準では改行が入ってしまいます。
+File.open(filename,&#34;r&#34;) do |f| f.readlines end 解決策 改行はいらないので消しちゃいましょう。
+File.open(filename,&#34;r&#34;) do |f| f.readlines.map &amp;:chomp end </description>
+    </item>
+    
+    <item>
+      <title>`wc -l`の結果が実際の行数よりも一行少ない理由</title>
+      <link>http://programming.ironsand.net/2014/why-wc-l-shows-a-line-less/</link>
+      <pubDate>Sat, 26 Apr 2014 18:10:34 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/why-wc-l-shows-a-line-less/</guid>
+      <description>wc -lは改行を数えるので最終行に改行がなかったら実際の行数よりも1行少なく数えられるそうだ。へえ。</description>
+    </item>
+    
+    <item>
+      <title>rubyで配列のMerge `(array1 &#43; array2).uniq` を更に簡単に</title>
+      <link>http://programming.ironsand.net/2014/merge-arrays-in-ruby/</link>
+      <pubDate>Sat, 26 Apr 2014 17:59:26 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/merge-arrays-in-ruby/</guid>
+      <description>array1 | array2 で (array1 + array2).uniq と同じように配列を重複なしで結合してくれます。ステキ！</description>
+    </item>
+    
+    <item>
+      <title>irb上でrubyスクリプトの実行速度を測る</title>
+      <link>http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/</link>
+      <pubDate>Sat, 26 Apr 2014 16:59:23 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/</guid>
+      <description>例えば foo.rbというRubyスクリプトの実行時間をシェル上で知りたかったらtime foo.rbとすればいいわけですが、残念ながらirb上ではtimeコマンドをそのまま使うことができません。
+解決策 標準で用意されているBenchmarkライブラリを使えばOK.
+irb(main)&amp;gt; require &#39;benchmark&#39; irb(main)&amp;gt; puts Benchmark.measure { &#34;a&#34;*1_000_000_000 } 0.350000 0.400000 0.750000 ( 0.835234) こんな感じで表示されます。
+0.750000がCPUを使った時間で0.835234が実際にかかった時間。
+気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。
+ちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。
+参考 [Module: Benchmark (Ruby 2.1.1)][1]
+[When benchmarking, what causes a lag between CPU time and &amp;ldquo;elapsed real time&amp;rdquo;? &amp;#8211; Stack Overflow][2]</description>
+    </item>
+    
+    <item>
+      <title>Windowsの標準のコンソールが糞なのでより良い物をだれか教えてください</title>
+      <link>http://programming.ironsand.net/2014/please-tell-me-better-console-in-windows/</link>
+      <pubDate>Sat, 26 Apr 2014 15:00:36 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/please-tell-me-better-console-in-windows/</guid>
+      <description>基礎知識 コンソールとシェルは別物です
+bashとかnyaosとかコンソールウィンドウの中で動くものがシェルです。この用語の違いをわかってないとそもそもコンソールというものを探すことができないので必須の知識になります。
+シェルは nyaos がオススメ Windows上で使うシェルはcygwinのbashとかGit付属のbashとかMSYSあたりのbashとか試してみましたが、結局はちゃんとWindows用に作られてるnyaos が一番便利だという結論にたどり着きました。
+コンソールを変えよう 標準のcmd.exeで起動するコンソールウィンドウは文字幅が固定でコピペもまともに出来ない何かの罰ゲームではないかという出来なので別のものを探します。
+候補はこんな感じ
+ ConEmu Console 2 ckw-mod ColorConsole PowerCmd  ConEmu 現在一番よさそうなコンソールです。タブが使えて、新しいタブを開くときに現在のディレクトリを残したまま開けるのもポイントが高い。
+Ctrl-aで行頭に移動とかそういうのも実装されてるし日本語も使えるし開発もさかんでStackoverflowに質問すると製作者が該当タグをウォッチしてるらしく直接回答をもらえる率が高いです。
+ただ、何故か自分の環境だと時折動きがカクカクしだしビープ音が連続で鳴り響く時があります。間違えて大量にイベントが飛んでるくさいんですが、これが発生するとイライラするので使うのを控え中。
+Console 2 動作も安定してるしタブも使える海外では定番のコンソールのようですが日本語が使えません。はい詰んだ。
+ColorConsole, PowerCmd この2つはそもそもシェルの変更ができませんでした。
+ckw-mod 日本人が作られてるらしいので日本語周りのバグはなさそうなのですが、いかんせんタブがない。古くからのタブ信者である自分には使いづらい。
+結論 誰かよいWindows上で使えるコンソールを教えてください。</description>
+    </item>
+    
+    <item>
+      <title>git の `error: src refspec master does not match any.`への対処</title>
+      <link>http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/</link>
+      <pubDate>Fri, 25 Apr 2014 11:43:19 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/</guid>
+      <description>$ git push -u origin master error: src refspec master does not match any. という見たことないエラーが出てビビる。
+原因と対策 原因：コミットしてない
+対策：コミットする
+以上！
+参考 [src refspec master does not match any when pushing commits in git &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Railsで使うpostgresqlのスーパーユーザーを作成する</title>
+      <link>http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/</link>
+      <pubDate>Fri, 25 Apr 2014 11:28:56 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/</guid>
+      <description>RailsでPostgresqlを使うときに毎回そのためのユーザーの作成方法を忘れてしまうのでメモ。
+まずユーザーを作成 WindowsでChocolateyを使ってpostgresqlをインストールしてると初期パスワードはPostgres1234になってるので、
+$ psql.exe -U postgres ユーザ postgres のパスワード: ←ここでパスワードを入力 psql (9.2.1) &#34;help&#34; でヘルプを表示します. postgres=# create user deployer; CREATE ROLE postgres=# alter user deployer with superuser; ALTER ROLE これでパスワード無しのdeployerユーザーが必要な権限付きで作成される。
+※ Linux系のOSならsudo -u postgres psqlでpsqlコマンドを使いましょう。
+パスワード無しユーザーでもOKにする これだけだとfe_sendauth: no password suppliedというエラーが出てしまうので
+C:\PostgreSQL\data\pg_hba.confを開いて
+# IPv4 local connections: host all all 127.0.0.1/32 md5 # IPv6 local connections: host all all ::1/128 md5 を
+# IPv4 local connections: host all all 127.0.0.1/32 trust # IPv6 local connections: host all all ::1/128 trust に書き換える。</description>
+    </item>
+    
+    <item>
+      <title>cygwinのgitを使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/tips-git-in-cygwin/</link>
+      <pubDate>Sun, 20 Apr 2014 23:02:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/tips-git-in-cygwin/</guid>
+      <description>cygwinはWindows上で作成されたファイルを全て755の実行可能ファイルとして扱ってしまうので、そのままgitで扱うとすべてのファイルが実行可能権限を持ったなんとも危なっかしい構成になってしまいます。
+対策 $ git config core.filemode false でfilemodeの変更を無視するように設定しておきましょう。
+参考 [Windows Git users: Please check your core.fileMode setting &amp;#8211; Google グループ][1]</description>
+    </item>
+    
+    <item>
+      <title>WindowsのRailsでtwitter-bootstrap-railsを使う方法</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-twitter-bootstrap-rails-in-windows/</link>
+      <pubDate>Sun, 20 Apr 2014 09:13:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-twitter-bootstrap-rails-in-windows/</guid>
+      <description>twitter-bootstrap-railsを普通にWindowsで使おうとするとlibv8がないからアカンで～的なエラーが出てきてインストールに失敗します。
+対策 特定のバージョンはインストールできるのでそれをインストールしましょう。
+gem install libv8 --version 3.11.8.0
+あとはGemfileにgem &#39;therubyracer&#39;, platforms: :rubyのコメントアウトを外してgem twitter-bottstrap-railsを追加すれば万事OK！
+追記、より良い解決策 そもそもbootstrap-sassを使えばよいのでは？</description>
+    </item>
+    
+    <item>
+      <title>Rails&#43;Angular.js で InvalidAuthenticityTokenエラーが出るときの対処法</title>
+      <link>http://programming.ironsand.net/2014/how-to-handle-invalidauthenticitytoken-error-in-rails-and-angular/</link>
+      <pubDate>Thu, 17 Apr 2014 18:37:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-handle-invalidauthenticitytoken-error-in-rails-and-angular/</guid>
+      <description>RailsのDBからGETでデータの呼び出しはできるけど、PUTで値の追加ができなくてこんなエラーに成った時の対処法
+Completed 422 Unprocessable Entity in 126ms ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken: 原因 CSRF対策です。
+ダメな対策 モデルにこれを追加
+skip_before_filter :verify_authenticity_token サイバーノーガード戦法です。おすすめしません。
+良さそうな対策 gem の&amp;lt;a href=&amp;quot;https://github.com/xrd/ng-rails-csrf&amp;quot;&amp;gt;ns-csrf-rails&amp;lt;/a&amp;gt;を使う。わからないことは全部gemにまかせてしまいましょう。</description>
+    </item>
+    
+    <item>
+      <title>ffmpeg と sox でドラマから音声を無音部分を除いて抜き出す</title>
+      <link>http://programming.ironsand.net/2014/how-to-extract-audios-without-silence-with-ffmpeg-and-sox/</link>
+      <pubDate>Tue, 15 Apr 2014 16:56:13 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-extract-audios-without-silence-with-ffmpeg-and-sox/</guid>
+      <description>英語の勉強にアメリカドラマから音声を抜き出して、その中のサイレンス部分を削除したかったのでやり方を調べたらffmpegとsoxで簡単にできることがわかったので、その方法を紹介します。
+動画から音声を抜き出す 一つの動画から音声を抜き出すときは
+ffmpeg -i input.mp4 -vn output.wav  で抜き出せるので
+フォルダごとまとめて処理するには
+find . -name &#39;*.mp4&#39; -exec ffmpeg -i &#39;{}&#39; -vn &#39;{}&#39;.wav &#39;;&#39;  でフォルダ内の全ての.mp4の動画ファイルから.wavファイルが抜き出されます。-vnが no videoのオプションです。
+他にも-acodec copy として音声ファイルを変換せずに抜き出すこともできます。
+無音部分を自動検出して削除 次に無音部分を自動的に認識して削除するのにsoxを使います。やり方によっては.wav以外も認識するようにできるようなのですが、うちの環境ではできなかったので.wavで処理をしています。
+find . -name &#39;*.wav&#39; -exec sox &#39;{}&#39; &#39;{}&#39;_remove_silence.wav silence 1 0.1 1% -1 0.1 1% &#39;;&#39;  で先ほど作った.wavファイルから無音部分が全て削除されました。
+wavをm4aに ffmpeg で変換 wavのままだとファイルがでかすぎるのでm4aに変換します。mp3でもいいんですが、m4aの方が圧縮効率がいいのでこちらを使います。
+find . -name &#39;*_remove_silence.wav&#39; -exec ffmpeg -i &#39;{}&#39; &#39;{}&#39;.mp3 &#39;;&#39;  以上で変換終了です。
+まとめ この3行を一括変換したいフォルダにcdで移動して実行すればOKです。.wavファイルは手動で削除しときましょう。rm *.wavでもいいですが。
+上記は全てcygwin上で行ってますがもちろんLinuxでもMacでも動くはずです。</description>
+    </item>
+    
+    <item>
+      <title>find の `-exec` オプションを cygwin で使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/</link>
+      <pubDate>Tue, 15 Apr 2014 04:15:00 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/</guid>
+      <description>何故動かないか結構困ったのでメモ。
+動かないもの find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; \;  cygwin 環境、というかcmd.exeでcygwinの中のfindコマンドを呼び出してるとこれはエラーになっちゃいます。
+理由 何故ならfindの\;の\は;をエスケープする役割なので、当然ここにはエスケープキャラクターを入れて置かなければならないわけですが、Windowsのcmdにおいて\はパス区切りであって何もエスケープしてくれません。
+なのでcygwinのfindをcmd.exeやnyaosなどのWindows環境のシェルから使うときはcmd.exeのエスケープキャラクターの^を使ってこんなふうに書きましょう。
+find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; ^;  もしくはどちらの環境でも使える方法の
+find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; &#39;;&#39;  を使うのもいいかもしれません。</description>
+    </item>
+    
+    <item>
+      <title>cygwinの必要なパッケージをコマンドラインで一括インストール</title>
+      <link>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</link>
+      <pubDate>Mon, 14 Apr 2014 19:55:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</guid>
+      <description>今まではcygwinをインストールしたディレクトリを全部SugarSyncで同期して使ってたんだけど、
+よくわからないままに色々入れてたら700MBぐらいあったので整理整頓することにしました。
+どうするか？ 既にインストールされてるcygwinのファイルを整理するのはめんどくさかったの新規インストールをすることにしたのはいいけど、何せパッケージ選択がめんどくさい。めんどくさいっていうか手動でやると必ず忘れてしまうので自動化したい。
+そこでコマンドラインインストールの登場です！
+インストール方法 setup-x86.exe --quiet-mode -P util-linux,curl,wget,openssh,rsync,zip,tree -s ftp://ftp.iij.ad.jp/pub/cygwin/ --root %USERPROFILE%\cyg --local-package-dir %USERPROFILE%\cyg  これでホームディレクトリ直下の C:\Users\ironsand\cygとかにインストールされる。
+やめたパッケージ gccとか入れてcygwinでコンパイルして色々してると毎回ドツボにハマるので、もうそういうのはVirtualBox上のUbuntuですることにする。
+rubyやpythonはWindowsのネイティブパッケージを使う。結局なんだかんだでそれが一番安定してる気がするので。
+gitもcygwin用のパス名周りのエラーが鬱陶しくなることがちょくちょくあったのでChocolatey使ってcinst gitでインストールする方法に変更。
+注意点 何故か 64bit バージョンは動きませんでした。理由はわかりませんが、こういう関係のソフトは32bit版のほうが今はまだ安定してる気がするし大量にメモリ使うこともないので気にしないことにします。
+sshだとsshコマンドはインストールされないのでopensshを指定しましょう。
+インストール後に/etc/passwdのホームディレクトリ設定を/home/usernameからcygdrive/c/Users/usernameとWindowsのホームフォルダに変更しておくとsshとかのコマンドの時に設定ファイルを自動的に読みに行ってくれるので便利。便利というかしないとちゃんと動かない。
+あと環境変数にset HOME=%USERPROFILE%もどこかに仕込んでたほうが良いかも。
+Util-Linux 何故かカレンダー表示のcalコマンドが見つからなかったので探してみたら、calのみのインストールはないらしい。
+とりあえずutil-linuxが良さそうなんでこれを使う事にした。
+tree Windows由来のコマンドなのにWindowsのtreeコマンドは階層指定もできない残念仕様なのでcygwinのを入れました。tree -L 2とかで階層指定できる。便利！</description>
+    </item>
+    
+    <item>
+      <title>`/var/www/`以下のパーミッションまとめ</title>
+      <link>http://programming.ironsand.net/2014/permission-about-var-www/</link>
+      <pubDate>Thu, 10 Apr 2014 03:52:23 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/permission-about-var-www/</guid>
+      <description> /var/www配下のパーミッションをどうすべきかについて情報が錯綜してて困ったので自分なりに調べたことをまとめておきます。
+サーバープロセスが直接ファイルの変更を行うか、複数人管理かがどうかで結構変わるのでめんどくさくなってるみたいですね。
+まとめ  サーバープロセスがファイルの変更を行わず、sudo可ユーザーのみが変更
+/var/www 以下は全て root:root
+理由：apache, nginx などのプロセスが乗っ取られてもroot権限がないと改変できないため
+ サーバープロセスがファイルの変更を行わず、sudo不可のユーザーも変更
+/var/www/site を ftp-user:root に。
+複数ユーザーがFTPでアクセスして書き込み権を持つなら ftp-user:ftp-userで適当にユーザーをグループに追加
+ サーバープロセスがファイルの変更を行う(WordPressなど)、
+/var/www/site 以下の必要なフォルダ、ファイル_だけ_を ftp-user:www-user にして
+サーバープロセスのユーザーをwww-userに追加、apache所有には_絶対にしない_。
+  </description>
+    </item>
+    
+    <item>
+      <title>rbenvのインストール方法と入れとくと便利なプラグイン</title>
+      <link>http://programming.ironsand.net/2014/rbenv-and-plugins-install/</link>
+      <pubDate>Fri, 04 Apr 2014 16:11:27 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rbenv-and-plugins-install/</guid>
+      <description> gitは便利なんだけど、リポジトリ名が長くて暗記できなのがツラい所ですよね。
+忘れて毎回プラグインのリンクを探すのがめんどくさいのでいつも入れるものをメモっておきます。
+rbenv インストール必須なのまとめ # rbenv 本体 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv echo &#39;export PATH=&#34;$HOME/.rbenv/bin:$PATH&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile echo &#39;eval &#34;$(rbenv init -)&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile # Plugins mkdir ~/.rbenv/plugins # ほぼ必須。ruby本体入れるのに使う。これ無しで使う方法知らない。 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build # `rbenv rehash`が自動的に git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash # `rbenv update`コマンドが使えるように git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update # `rbenv sudo`でsudoでもrbenvが使えるように git clone git://github.com/dcarley/rbenv-sudo.git ~/.rbenv/plugins/rbenv-sudo # `rbenv install` するごとに特定のgemをいれる git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems  </description>
+    </item>
+    
+    <item>
+      <title>rubyで全角半角を考慮して文字の幅を取得</title>
+      <link>http://programming.ironsand.net/2014/get-string-size-considering-double-width-and-normal-width-ruby/</link>
+      <pubDate>Thu, 03 Apr 2014 14:54:36 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/get-string-size-considering-double-width-and-normal-width-ruby/</guid>
+      <description>文字幅をしるために全角=2,半角=1で文字サイズが取得したかったので
+やり方 &#34;日本語とEnglish&#34;.each_char.map{|c| c.ascii_only? ? 1 : 2}.inject(:+) Rubyばんざーーい！
+参考 [2013/02/20/Rubyで全半角混在文字の文字幅を計算する方法 &amp;#8211; ヽ（´・肉・｀）ノログ][1]</description>
+    </item>
+    
+    <item>
+      <title>Deviseのユーザーを`rake db:seed`で追加する</title>
+      <link>http://programming.ironsand.net/2014/how-to-add-devise-user-by-rake-db-seed/</link>
+      <pubDate>Sun, 30 Mar 2014 21:08:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-add-devise-user-by-rake-db-seed/</guid>
+      <description>db/seeds.rbにUser.createでencrypted_passwordを与えてDeviseのユーザーを作ろうとしたら失敗した。
+原因 passwordが存在しないためにvalidationに引っかかってしまってる。
+対策 passwordを平文で打てば解決するらしいけど、平文のパスワードは使いたくないのでバリデーションの方を無効化してしまいましょう。
+User.new(email: someone@example.com).save(validate: false)
+でOKです。encrypted_passwordの取得方法は色々あるでしょうが、自分の場合は一度Deviseで作ってからそれをrails console使ってUser.first.encrypted_passwordを取ってきました。
+参考 [Cannot create Devise account using rake db:seed for Rails 3.0 &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>cygwinのインストールをコマンドラインで一発で行う</title>
+      <link>http://programming.ironsand.net/2014/install-cygwin-by-command-line/</link>
+      <pubDate>Fri, 28 Mar 2014 12:13:33 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-cygwin-by-command-line/</guid>
+      <description>一度cygwinをインストールした後ならaptcygとかcygaptとか「あれどっちだっけ？」となるapt風味のインターフェースがあるんですが、初回インストール時の方法があまりなかったので書いておきます。
+インストール方法 setup-x86_64.exe --no-admin -l %USERPROFILE%\cyg\package -P wget,ssh,rsync --download -s ftp://ftp.iij.ad.jp/pub/cygwin/ -q --root %USERPROFILE%\cyg
+これでc:\Uers\ironsand\cyg配下にwget,ssh,rsyncが入ります。32bit版でも引数の取り方は変わりません。</description>
+    </item>
+    
+    <item>
+      <title>Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点</title>
+      <link>http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/</link>
+      <pubDate>Fri, 28 Mar 2014 07:29:47 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/</guid>
+      <description>/usr/bin/env: ruby.exe: そのようなファイルやディレクトリはありません
+というエラーがwheneverで作ったcronのログとして出てきて困ってた。
+bin/railsの実行権限とか/usr/bin/env ruby --version でちゃんとrubyが動いてるかどうか確認したりとか色々。
+答え Windowsで作ったRailsプロジェクトだったので ruby&amp;lt;strong&amp;gt;.exe&amp;lt;/strong&amp;gt;になってた。なんてことだ…。
+解決策 bin/railsの一行目usr/bin/env ruby.exeの.exeを削除しておきましょう。ふぁっく。</description>
+    </item>
+    
+    <item>
+      <title>xyzzyのmapcar 内で perform-string を使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/</link>
+      <pubDate>Fri, 28 Mar 2014 03:34:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/</guid>
+      <description>mapcar で perform-string を使って文字列置換しようと思ってかなりハマったのでメモって置きます。
+ダメな例 (mapcar &#39;(lambda (s) (goto-char (point-min)) (perform-replace s &#34;&#34; nil t t nil)) &#39;(&#34;foo[0-9]&#34; &#34;bar[0-9]&#34;)) これだと &amp;#8220;foo1 bar2&amp;#8221; は削除できるけど &amp;#8220;bar2&amp;#8221; と2個めの検索要素だけしかないときに削除できない
+良い例 (mapcar &#39;(lambda (s) (goto-char (point-min)) (perform-replace s &#34;&#34; nil t t t)) &#39;(&#34;foo[0-9]&#34; &#34;bar[0-9]&#34;)) perform-replaceの最後の引数NOERRORをtに設定しておけば該当する文字列がなくてもスムーズに次に進んでくれます。</description>
+    </item>
+    
+    <item>
+      <title>[失敗] VPS上のUbuntu12.04にHeadlessなChromeかFirefoxをインストールするためにやったこと</title>
+      <link>http://programming.ironsand.net/2014/install-headless-chrome-or-firefox-in-ubuntu-on-vps/</link>
+      <pubDate>Thu, 27 Mar 2014 14:23:54 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-headless-chrome-or-firefox-in-ubuntu-on-vps/</guid>
+      <description>phantomjs でzipファイルをダウンロードしたかったけど、ダウンロードオプションはまだ本体には取り込まれてないようなのでheadlessなChromeかFirefoxをVPSに入れて幸せな自動化処理生活を送ろうと思ったら全然うまく行きませんでした。
+俺の苦労を返せ！
+やったこと めんどくさいので説明は最低限で。
+FirefoxとChrome、それにSelenium Webdriverで使うためのChromeDriverをインストール
+apt-get install git unzip xvfb echo &#39;deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu precise main&#39; &amp;gt;&amp;gt; /etc/apt/sources.list echo &#39;deb-src http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu precise main&#39; &amp;gt;&amp;gt; /etc/apt/sources.list apt-get install firefox wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - echo &#34;deb http://dl.google.com/linux/chrome/deb/ stable main&#34; &amp;gt;&amp;gt; /etc/apt/sources.list.d/google.list apt-get install google-chrome-stable wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip unzip chromedriver_linux64.zip mv chromdriver /usr/local/bin この時点で
+Xvfb :1 &amp; export DISPLAY=:1 firefox すればFirefoxが立ち上がるはずだけどエラーが出てうまくいかない。
+色々と検索してみるけど結局エラーを除去する方法は見つからず。
+Rubyとか こちらはRubyを入れてselenium-webdriverを入れるまでのよくある感じのインストールメモ。DigitalOcean上のUbuntuにrootでログインしてそのままやってます。
+apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>%w(foo bar) みたいな感じでsymbolを作る方法</title>
+      <link>http://programming.ironsand.net/2014/create-a-array-of-symbol-like-string-w/</link>
+      <pubDate>Thu, 27 Mar 2014 13:57:39 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/create-a-array-of-symbol-like-string-w/</guid>
+      <description>rubyは文字列の配列を作るときに[&amp;quot;foo&amp;quot;, &amp;quot;bar&amp;quot;] と書くのがめんどくさいからという理由で %w(foo bar) みたいな感じで書けちゃいます。
+同じような感じでsymbolもかけないかと思って探してたらruby 2.0.0から%iが使えるようになったので
+%i(foo bar) で [:foo, :bar] が書けちゃいます。ステキ！
+参考 [ruby &amp;#8211; Is there way to create a symbol&amp;apos;s array like string with %w? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>linuxで特定のファイルの最終行だけ削除する</title>
+      <link>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</link>
+      <pubDate>Thu, 27 Mar 2014 11:57:07 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</guid>
+      <description>Digital OceanではOSを気軽にDropletで作成して、気軽にポイポイ捨てれるのが売りですが、そのせいで sshで新しく繋ぎ直したホストに繋ごうとすると
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that a host key has just been changed. The fingerprint for the RSA key sent by the remote host is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx. Please contact your system administrator. Add correct host key in /home/ironsand/.ssh/known_hosts to get rid of this message.</description>
+    </item>
+    
+    <item>
+      <title>wget と curl</title>
+      <link>http://programming.ironsand.net/2014/wget-and-curl/</link>
+      <pubDate>Mon, 24 Mar 2014 05:23:28 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/wget-and-curl/</guid>
+      <description> 「wgetかcurlで既にファイルが存在してたら上書きしないし、該当のディレクトリがなかったら自動的に生成するにはどうすればいいのかな？」という疑問をStack Overflowで検索！
+ディレクトリが存在しない時に自動的に作成する [linux &amp;#8211; wget -O for non-existing save path? &amp;#8211; Stack Overflow][1]
+回答意訳
+ curlならできるよ！ curlの方が強力なツールだからね！
+ 既にファイルが存在した時に上書きしない [curl &amp;#8211; Don&amp;apos;t download or overwrite file if exists &amp;#8211; Stack Overflow][2]
+回答意訳
+ wgetならできるよ！ wgetの方が強力なツールだからね！
+ 　　　　　　　　　　今ここに新たな「きのこたけのこ紛争」が巻き起ころうとしている！！ </description>
+    </item>
+    
+    <item>
+      <title>Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</title>
+      <link>http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/</link>
+      <pubDate>Sat, 22 Mar 2014 00:27:55 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/</guid>
+      <description>ホームディレクトリに直接ファイルを置くんじゃなくて、
+必要なファイルをDropboxに置いといて同期して使おうと思ったので
+mklink ~/.nyaos p:\Dropbox\rc\.nyaos
+としたら
+この操作を実行するのに十分な特権がありません。
+と怒られた。
+なぜ権限が必要か？ 「さっき自分で作ったファイルを自分のホームフォルダに移動させるのになんで権限が必要なんです！？」と不思議に思って調べてみたら、シンボリックリンクの作成に必要なSeCreateSymbolicLinkPrivilegeが通常はユーザーが持っていないかららしい。
+何故そんな謎な仕様になってるかは全くわからない。
+日本語圏で検索しても「とりあえず管理者権限にしとけ」的な情報しか出てこなかったのでここに書いておきます。
+参考 [filesystems &amp;#8211; Using windows mklink for linking 2 files &amp;#8211; Stack Overflow][1]
+[windows 7 &amp;#8211; Got not sufficient privileges message in CMD when logged on as administrator &amp;#8211; Super User][2]</description>
+    </item>
+    
+    <item>
+      <title>バッククォートを初めにシングルクォートを最後につけて書く理由</title>
+      <link>http://programming.ironsand.net/2014/why-quoted-by-back-quote-and-single-quote/</link>
+      <pubDate>Thu, 20 Mar 2014 06:04:07 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/why-quoted-by-back-quote-and-single-quote/</guid>
+      <description>さっきのエラーで rbenv: version `2.0.0&#39; is not installed
+というのが出たんだけど、こういうバックスラッシュを文字の初めに持ってきて最後はシングルクォートで閉めるタイプの書き方が英語の書き方なのかそれともプログラミング周りの慣習なのかわからなかったので調べてみた。
+英語自体の風習ではない 英語圏には引用符の始まりに ‘ を使って ‘Quoted words&amp;#8217; を使うことがあるけど、それを表現したかった人が似た形のバッククォートを使ったという経緯があるとか何とか。ちなみにLATEXの文化から来てるっぽい。
+つまり英語自体の表記文化じゃないないならMarkdown記法使う時に邪魔なので無くしてほしいなあ。
+参考 [punctuation &amp;#8211; Any reference on the usage of a backtick and single quotation mark like
+this&amp;apos;? &amp;#8211; English Language &amp;amp; Usage Stack Exchange][1]
+[Grammar Girl : Single Quotation Marks Versus Double Quotation Marks :: Quick and Dirty Tips ™][2]
+[HTML特殊文字のシングルクォートとアポストロフィの扱い：なんとなしの日記][3]
+[‘][4]</description>
+    </item>
+    
+    <item>
+      <title>rbenv: version `2.0.0′ is not installed の対処法</title>
+      <link>http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/</link>
+      <pubDate>Thu, 20 Mar 2014 05:15:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/</guid>
+      <description>&amp;#8220;Everyday Rails Testing with RSpec&amp;#8221;を購入して読んでると
+サンプルプロジェクトが紹介されてたのでgit cloneでダウンロードしてきて bundle install をすると
+rbenv: version &#39;2.0.0&#39; is not installed
+と出ちゃって困る。しかも ruby -v と確認しようと思ったら再び
+rbenv: version &#39;2.0.0&#39; is not installed
+？？？？？？
+「まさか rbenv が壊れた！？」と思って調べてたら、どうやらカレントディレクトリに.ruby-versionがあるとそのバージョンのRubyを参照しようとするために起きるらしい。
+対策 自分の場合は2.0.0.p247が入っているので該当のディレクトリでrbenv localすると.ruby-versionの中身が書き換えられて上手く動くようになりました。
+Version自体が異なる場合は上手く動かないと困るので該当のバージョンの ruby をrbenv install 2.x.xでインストールしましょう。</description>
+    </item>
+    
+    <item>
+      <title>gem `mail` と sendmail を使って簡単にRubyでメール送信</title>
+      <link>http://programming.ironsand.net/2014/send-mail-with-gem-mail-and-sendmail-command-in-ruby/</link>
+      <pubDate>Tue, 18 Mar 2014 12:29:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/send-mail-with-gem-mail-and-sendmail-command-in-ruby/</guid>
+      <description>net/smtp ライブラリを使うよりも gem mail を使えば簡単にメールが送れるらしいので調べてみた。
+方法 まず mail gem が必要なので $ gem install mail でインストールする。
+んで、下のように書けばOK!
+require &#39;mail&#39; mail = Mail.new do from &#39;me@ironsand.net&#39; to &#39;recipient@exmaple.com&#39; subject &#39;Here is the image you wanted&#39; body &#39;Body&#39; end mail.delivery_method :sendmail mail.deliver 注意点 Macでは動かなかったので、VPS上のCentOS 6.4で試してます。
+25版ポートを開けるのを忘れずに。
+参考 [email &amp;#8211; Ruby Mail gem: Connection refused &amp;#8211; connect(2) (Errno::ECONNREFUSED) &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>datatimeとtimestampの違いとRailsで知っておくべきこと</title>
+      <link>http://programming.ironsand.net/2014/difference-between-datatime-and-timestamp-in-rails/</link>
+      <pubDate>Mon, 17 Mar 2014 19:56:14 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/difference-between-datatime-and-timestamp-in-rails/</guid>
+      <description>何回か調べたけど未だに覚えられてないのでもう一度調べ直しました。
+確か前回調べたときは英語読むのがめんどくさいから日本語の情報を見て納得したんですが、今回はめんどくさがらずに英語圏で検索したらいつも通りStackOverflowにて大変わかりやすい答えが見つかりました。ありがたや〜。 (人´∀｀)
+datatime と timestamp の違い datatime が 1000年から9999年までを表現して timestamp は unix timestampのフロントエンドに過ぎないので 1970年から2038年までしか扱えない。
+扱う範囲が違うのでdatatimeが8バイトtimestampが4バイト使う。
+Rails における扱い。 これが一番重要な気がするけど、Railsではどちらを指定してもデータベースにはDATATIME型で保存される。
+何故かこのことについて述べてるサイトがあんまりなかったのでこの記事を書いておきました。
+参考 [In Ruby on Rails, what&amp;apos;s the difference between DateTime, Timestamp, Time and Date? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>複数の引数を取る関数に配列で値を渡す</title>
+      <link>http://programming.ironsand.net/2014/pass-array-as-individual-arguments/</link>
+      <pubDate>Mon, 17 Mar 2014 17:54:36 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/pass-array-as-individual-arguments/</guid>
+      <description>rubyで def foo(arg1, arg2, arg3) な関数があった時に values = [1, 2, 3] という値を渡そうとして
+foo values とすると TypeError: no implicit conversion of Array into Integer というエラーになります。
+解決策 この配列をいうなれば”展開”して渡したいわけですが、やり方がわからなかったので調べました。
+foo *values のようにまるでC言語みたいな渡し方をすればOK.
+参考 [caiustheory.com/sending-array-elements-as-individual-arguments-in-ruby][1]</description>
+    </item>
+    
+    <item>
+      <title>rubyで文字列を正規表現で分類してグループ分けする</title>
+      <link>http://programming.ironsand.net/2014/group-strings-by-similar-pattern-with-ruby/</link>
+      <pubDate>Mon, 17 Mar 2014 15:58:02 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/group-strings-by-similar-pattern-with-ruby/</guid>
+      <description>最後の数字だけ違う文字列をグループ分けしたかったんですが、自分で書いてみるとこんな面倒くさい感じになって (´・ω・｀)ｼｮﾎﾞｰﾝ
+a1 = %w(foo1 foo2 foo3 bar1 bar3 buz2) a2 = a1.map{|v| v.sub(/[0-9]$/,&#34;&#34;)}.uniq tmp = Array.new(a2.size) a2.each_with_index do |v2, i| a1.each do |v1| if v1.sub(/[0-9]$/, &#34;&#34;) == v2 tmp[i].nil? ? tmp[i] = [v1] : tmp[i].push(v1) end end end p tmp # =&amp;gt; [[&#34;foo1&#34;, &#34;foo2&#34;, &#34;foo3&#34;], [&#34;bar1&#34;, &#34;bar3&#34;], [&#34;buz2&#34;]] なので、調べてみたら非常に簡単な方法が見つかりました。
+a1 = %w(foo1 foo2 foo3 bar1 bar3 buz2) p a1.group_by{|x| x[/[a-zA-Z]+/] }.values Rubyすげぇ！
+参考 [arrays &amp;#8211; Group strings with similar pattern in Ruby &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>wget でファイルが既に存在したらダウンロードしない方法</title>
+      <link>http://programming.ironsand.net/2014/do-not-download-file-if-already-exists-with-wget/</link>
+      <pubDate>Thu, 06 Mar 2014 08:55:52 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/do-not-download-file-if-already-exists-with-wget/</guid>
+      <description>wgetで同じファイル、例えばfoo.zipをもう一度ダウンロードすると foo.zip.1と自動的に別名でファイルを保存してくれるんですが、自動処理の中で使う時に毎回ダウンロードしたくない時にはちょっとめんどくさい。
+既に存在する時はダウンロードをスキップ方法 wgetには--no-clobberもしくはそれの省略形 -nc という上書きを禁止するオプションがあるのでそれを使いましょう。
+ちなみに &amp;#8220;clobber&amp;#8221; は「不注意に上書きをしてファイルを破壊してしまう。」という意味の英単語です。
+参考 [wget &amp;#8211; skip if files exist? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>動的に追加したDOM要素にhoverイベントリスナーを追加する</title>
+      <link>http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/</link>
+      <pubDate>Fri, 31 Jan 2014 15:25:08 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/</guid>
+      <description>かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。
+前提となる知識 まず基本として $(&#39;#foo&#39;).click -&amp;gt; console.log &amp;quot;押された！&amp;quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。
+なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？
+後から追加された要素に click イベントを追加 前置きが長くなりましたが
+$(&#39;#foo&#39;).click -&amp;gt; console.log &#34;押された！&#34; を動的に追加された要素に適用させるには
+$(document).on &#39;click&#39;, &#39;#foo&#39;, -&amp;gt; console.log &#34;押された！&#34;  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。
+後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。
+記述が間違っていたので修正しました。
+onイベントの引数として &amp;quot;hover&amp;quot;を使った場合、それは単なる &amp;quot;mouseenter mouseleave&amp;quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.</description>
+    </item>
+    
+    <item>
+      <title>StackOverflowで過去の自分の質問内から検索する</title>
+      <link>http://programming.ironsand.net/2014/search-own-question-in-stackoverflow/</link>
+      <pubDate>Thu, 30 Jan 2014 14:01:28 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/search-own-question-in-stackoverflow/</guid>
+      <description>StackOverflowで昔もらった回答が思い出せない時に自分の質問内を検索したい時がありますよね。
+試しに User 知りたいこと みたいにユーザー名をそのまま入れてみたんですがうまく行きませんでした。
+解決策 Stack Overflow自体についてわからないことがある時は Meta Stack Overflow を使えばだいたいのことは解決します。
+Search 欄に user:me 知りたいこと で検索すると自動的に me が自分のユーザーIDに変更されて目的の情報を取り出すことができます。ひゃっほーい！
+参考 [How can I search my own questions? &amp;#8211; Meta Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Macで`gem install rmagick`がコケる時の対処法</title>
+      <link>http://programming.ironsand.net/2014/gem-install-rmagic-in-maverick/</link>
+      <pubDate>Mon, 27 Jan 2014 09:24:19 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/gem-install-rmagic-in-maverick/</guid>
+      <description>画像編集をRailsでしたかったので ImageMagick を Railsから使うgem rmagick をインストールしようと思ったらこんなエラーが出てしまった。環境は Maverick。
+Can&#39;t install RMagick 2.13.1. Can&#39;t find the ImageMagick library or one of the dependent libraries. Check the mkmf.log file for more detailed information. *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.log file for more details. You may need configuration options. 解決策 最新版の 2.13.2 をインストールすればOK。ちなみにライブラリのリンクを作るという方法も紹介されてましたがこっちは失敗。
+gem install rmagick -v &#39;2.</description>
+    </item>
+    
+    <item>
+      <title>rbenvでインストールしたgemをEmacsから使う</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/</link>
+      <pubDate>Thu, 23 Jan 2014 08:04:42 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/</guid>
+      <description>rspec書いてる時にEmacsから簡単に呼び出せたら便利だと思ってsmart-compileの設定をこんな風に書き換えたんだけど、
+(setq smart-compile-alist (append &#39;((&#34;\_spec.rb$&#34; . &#34;rspec %f&#34;)) &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\\.coffee$&#34; . &#34;coffee -p %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist))  でちゃんとCompile command: rspec foo_spec.rbは呼び出せるものの実行すると
+-*- mode: compilation; default-directory: &#34;~/dev/zombie/spec/lib/&#34; -*- Compilation started at Thu Jan 23 16:50:59 rspec zombie_spec.rb /bin/bash: rspec: コマンドが見つかりません Compilation exited abnormally with code 127 at Thu Jan 23 16:51:00 な感じでエラーになってしまう。
+どうやら rbenv の環境がEmacs側で認識されてないので rbenv で入れた gem のコマンドも使えないのが原因らしい。
+解決策 [rbenv.</description>
+    </item>
+    
+    <item>
+      <title>Controllerで出る`syntax error, unexpected ‘:’, expecting keyword_end`エラー</title>
+      <link>http://programming.ironsand.net/2014/syntax-error-unexpected-expecting-keyword_end-in-controller/</link>
+      <pubDate>Mon, 13 Jan 2014 09:44:32 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/syntax-error-unexpected-expecting-keyword_end-in-controller/</guid>
+      <description>yntax error, unexpected &#39;:&#39;, expecting keyword_end といつもの見慣れたようなTypoのエラーが出たのでControllerを確認したけどない。何度見てもちゃんとカッコ閉じてるし end も使ってる。なのにエラーが消えない！
+解決 モデルのほうで has_many: words って書いてました。 正しくは has_many :words ですね。悲しい。こんなものに結構な時間を着いたしたのが悲しい。</description>
+    </item>
+    
+    <item>
+      <title>Capyparaで `undefined method `visit’`と出る時の対処法</title>
+      <link>http://programming.ironsand.net/2014/how-to-solve-capypara-undefined-method-visit/</link>
+      <pubDate>Thu, 09 Jan 2014 08:55:19 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-solve-capypara-undefined-method-visit/</guid>
+      <description>「Rspecよくわかんねー。」という思いを胸に抱き続けてきましたが、やっぱりやらないとダメっぽいので使おうとしたら早速 undefined method &#39;visit&#39;と言われて困る。
+原因 このエラーの原因はCapybaraが最近のアップデートでこっそりと対象のディレクトリを requests から features に変えたのが原因らしいです。やめてほしいそういうの。
+しかも [Google group][1] にこっそり報告してるだけ。もっと こえを おおきく。
+解決策 spec_helper.rb に以下をたす解決策もあるそうですが、将来的に requests じゃなくてfeatures を使うという意向ならそうしたほうが楽そうなので mv spec/requests/ spec/features して自分は対策しました。
+ちなみに spec_helper.rbに足す場合はこちら。
+require &#39;capybara/rails&#39; require &#39;capybara/rspec&#39; include Capybara::DSL 参考 [ruby on rails &amp;#8211; Capybara: undefined method &amp;apos;visit&amp;apos; &amp;#8211; Stack Overflow][2]
+[rails 3.2でRspecを導入したけど NameError &amp;#8211; undefined method `visit&amp;apos; って出るときの対策 &amp;#8211; どぶんけーブログ][3]</description>
+    </item>
+    
+    <item>
+      <title>rbenv を最新の状態にupdate する</title>
+      <link>http://programming.ironsand.net/2014/rbenv-update/</link>
+      <pubDate>Tue, 07 Jan 2014 13:46:26 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rbenv-update/</guid>
+      <description>ruby 2.1.0 も出たことだし、とりあえずさくらVPSにおいてるCentOS上に入れておこうと思ったけど、ちょっと古いバージョンしか rbenv install --list で出てくれない。
+rbenv updateという便利なコマンドはないようなのでアップデート方法を調べてアップデートしてみた。
+アップデート方法 どうやってインストールしたかは全く覚えてなかったけど調べてみるとどうやら git clone でインストールしたっぽいので cd ~/.rbenv; git pull するだけでOKらしい。
+無事にアップデートできたのでもう一度インストールできるrubyのバージョンを確認したら ない。ない。
+どうやらrubyのインストールには ruby-buildを使ってるのでそっちをアップデートしないとインストール可能なバージョンは更新されないらしい。ちなみに存在しないバージョンのインストールを試みるとこんな感じに教えてくれる。
+ironsand@SarakuVPS ~$ rbenv install 2.0.0-p247 ruby-build: definition not found: 2.0.0-p247 You can list all available versions with `rbenv install --list&#39;. If the version you&#39;re looking for is not present, first try upgrading ruby-build. If it&#39;s still missing, open a request on the ruby-build issue tracker: https://github.com/sstephenson/ruby-build/issues ruby-build のアップデート ruby-buildもgit cloneしてるだけなので、 cd .</description>
+    </item>
+    
+    <item>
+      <title>request.fullpathでparamを使わない</title>
+      <link>http://programming.ironsand.net/2014/request-fullpath-without-params/</link>
+      <pubDate>Sun, 05 Jan 2014 03:24:33 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/request-fullpath-without-params/</guid>
+      <description>Railsのrequest.fullpath だと param 以降も受け取ってしまうので、paramの値を使わない時の方法。
+解決策 splitで邪魔なものをとる方法
+request.fullpath.split(&#34;?&#34;)[0] path を使う方法。こっちのほうがよさそう。
+request.path 参考 [ruby on rails &amp;#8211; request.fullpath with no parameters &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>`config/routes.rb`内のブロックはブロックじゃない。</title>
+      <link>http://programming.ironsand.net/2014/config-routes-is-not-pure-ruby/</link>
+      <pubDate>Fri, 03 Jan 2014 06:19:02 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/config-routes-is-not-pure-ruby/</guid>
+      <description>scope &#34;api&#34; do resources :entries end このコードをワンラインで、
+scope &#34;api&#34; { resources :entries } とかくと動かないので、routes.rb は DSLなのでブロックの書き方に影響が出てるようです。何でこうしてるかの詳しい理由はよくわからない。</description>
+    </item>
+    
+    <item>
+      <title>Maverickで`rails new` が `atomic`のインストールでこける時の対処法</title>
+      <link>http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/</link>
+      <pubDate>Fri, 03 Jan 2014 04:07:31 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/</guid>
+      <description>rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。
+エラーメッセージはこんなの。
+run bundle install Fetching gem metadata from https://rubygems.org/.......... Fetching gem metadata from https://rubygems.org/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.</description>
+    </item>
+    
+    <item>
+      <title>Zurb Foundation のトップバーの右上のメニューを消えないようにする</title>
+      <link>http://programming.ironsand.net/2014/zurb-foundation-top-bar-menu/</link>
+      <pubDate>Wed, 01 Jan 2014 14:05:29 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/zurb-foundation-top-bar-menu/</guid>
+      <description> Zurb Foundationのトップバーの右上のメニューですが、デフォルトでは幅が940pxを切るとMenuに折りたたまれてしまうという結構広い設定になっています。
+もうちょっと幅が狭くても出るようにしたかったので修正しました。
+対策 設定ファイルを以下のように書き換えます。環境はRailsです。
+// $topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout $topbar-breakpoint: emCalc(600px);  ちなみに[Menu]自体がでなくて少し困ったのですがtoggle-topbar menu-icon を設定してなかったのが原因だったようです。
+&amp;lt;ul class=&#34;title-area&#34;&amp;gt; &amp;lt;li class=&#34;name&#34;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;%= link_to &#34;Site Title&#34;, root_path %&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li class=&#34;toggle-topbar menu-icon&#34;&amp;gt;&amp;lt;a href=&#34;#&#34;&amp;gt;&amp;lt;span&amp;gt;Menu&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する</title>
+      <link>http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/</link>
+      <pubDate>Mon, 30 Dec 2013 02:45:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/</guid>
+      <description>jQuery で選択した要素が存在するかどうかの関数が何故か用意されてないようだったので追加しました。
+CoffeeScriptで書いてるのでjavascriptとして使いたい場合は converter にかけてください。
+$.fn.isExist = -&amp;gt; $(@).length != 0 $.fn.isNotExist = -&amp;gt; $(@).length == 0  参考 [How to tell if an element exists | jQuery for Designers &amp;#8211; Tutorials and screencasts][1]</description>
+    </item>
+    
+    <item>
+      <title>rails の `blank?` メソッドを jQuery に追加する方法</title>
+      <link>http://programming.ironsand.net/2013/jquery-isblank-function/</link>
+      <pubDate>Sun, 29 Dec 2013 00:34:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/jquery-isblank-function/</guid>
+      <description>rails には 値の有無をチェックするときにタブやスペースなどの空白が入っていても「空」だと判断する便利な blank? 関数が用意されていますが、どうやら JavaScript や jQuery には用意されてないので追加してみました。
+自分で書いた後にもっと良さそうなコードを見つけたのでそちらを紹介します。
+JavaScript $.fn.isBlank = function() { return !$(this.html()) || $.trim($(this).html()) === &#34;&#34;; };  Coffee もちろん Rails 標準のCoffeeも。
+$.fn.isBlank = - !$(@.html()) || $.trim($(@).html()) is &#34;&#34; 参考 [Checking for blank input with jQuery &amp;#8211; Stack Overflow][1]
+[jQuery isBlank() | LakTEK (Lakshan Perera)][2]</description>
+    </item>
+    
+    <item>
+      <title>&#34;since_id parameter is invalid.&#34;と言われた時の対処法</title>
+      <link>http://programming.ironsand.net/2013/how-to-treat-since_id-parameter-is-invalid/</link>
+      <pubDate>Fri, 27 Dec 2013 19:14:15 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/how-to-treat-since_id-parameter-is-invalid/</guid>
+      <description>Railscasts のTwitter の項目通りに書いてると since_id parameter is invalid. のエラーでつまづきました。
+どうやらTwitterAPI1.1からの変更で since_id に `` を指定できなくなったのが原因のようです。
+もちろんレコードにすでにつぶやきが入ってれば問題ないんですが初回の何も入ってない時にこけてしまうわけです。
+対策 user.twitter.list_timeline(list_id, since_id: [maximum(:tweet_id),&#34;1&#34;].max) と返り値に最低でも1が入るようにしておけばOKです。文字列にしてるのは twitter_idを文字列で保持してるからです。
+参考 [API v1.1 statuses/user_timeline since_id parameter is invalid | Twitter Developers][1]</description>
+    </item>
+    
+    <item>
+      <title>attr_accessible は Rails4では使えなくなりました</title>
+      <link>http://programming.ironsand.net/2013/attr_accessible-is-no-more-available-in-rails4/</link>
+      <pubDate>Mon, 23 Dec 2013 09:33:40 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/attr_accessible-is-no-more-available-in-rails4/</guid>
+      <description>attr_accessibleはRails4では使えなくなったのにユーザー管理の定番 gem deviseではまだ使っているようなので新しい昨日の Strong parameter に書き換えておきましょう。
+具体例 devise の設定で User モデルにこんなのが書いてると思うので
+attr_accessible :email, :password, :password_confirmation その行を削除して下の方にこれを追加しましょう。
+private def user_params params.require(:user).permit(:email, :password, :password_confirmation) end 参考 [attr_accessible][1]</description>
+    </item>
+    
+    <item>
+      <title>OmniauthとDeviseの設定ファイルを両方同時に使うとルーティングがおかしくなる</title>
+      <link>http://programming.ironsand.net/2013/must-not-use-omniauthdevise-config-file-sametime/</link>
+      <pubDate>Mon, 23 Dec 2013 09:28:29 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/must-not-use-omniauthdevise-config-file-sametime/</guid>
+      <description>何故だか理由はさっぱりわかりませんが、どうにもおかしな動きが route.rb をいくらいじってもなおらないので色々情報を探してたら、config の omniauth.rb を消したら動きました。
+consumer_key とかは devise.rb に書いておきましょう。
+参考 [ruby on rails 3 &amp;#8211; Authentication failure : Devise + OmniAuth + Twitter &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Omniauth&#43;DeviseでTwitterとかでログインもできるし連携もできるサンプル</title>
+      <link>http://programming.ironsand.net/2013/social-login-in-rails/</link>
+      <pubDate>Mon, 23 Dec 2013 08:39:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/social-login-in-rails/</guid>
+      <description>https://github.com/mohitjain/social-login-in-rails
+ここにあります。</description>
+    </item>
+    
+    <item>
+      <title>Railsで ‘not null’ の制限をマイグレーションで取り除く方法</title>
+      <link>http://programming.ironsand.net/2013/remove-constraints-from-a-user-model-in-rails/</link>
+      <pubDate>Mon, 23 Dec 2013 05:25:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/remove-constraints-from-a-user-model-in-rails/</guid>
+      <description>devise と omniauthを組みわせて使うと default の email と encrypted_password が必ず値を持たなければならない null =&amp;gt; false の制限が邪魔だったのでMigrationで削除しようとしたけど方法がわからなかったので調べてみた。
+やりかた class RemoveConditionFromUser &amp;lt; ActiveRecord::Migration def change change_column :users, :email, :string, null: true change_column :users, :encrypted_password, :string, null: true end end 参考 [Rails Migration: Remove constraint &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>homebrewでインストールパッケージリスト俺用</title>
+      <link>http://programming.ironsand.net/2013/my-homebrew-package-list/</link>
+      <pubDate>Fri, 20 Dec 2013 02:24:34 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/my-homebrew-package-list/</guid>
+      <description>さっきの記事でも書きましたが、Macを入れなおしてます。
+今度は homebrew で入れるパッケージのリストです。
+brew install --HEAD ruby-build brew tap josegonzalez/php # --universalオプションが無いとwineがこける brew install jpeg libpng --universal # php用 brew install freetype gd brew link libpng freetype jpeg brew install php55 brew install rbenv openssl readline mysql postgresql wget wine graphviz imagemagick nginx node brew install macvim --override-system-vim # Applicationsフォルダに置く brew linkapps  アホみたいにエラーが出るので brew doctorで出てくるのに全部対処しましょう。</description>
+    </item>
+    
+    <item>
+      <title>Rails開発してる私が使ってるgemの一覧</title>
+      <link>http://programming.ironsand.net/2013/gem-list-for-rails/</link>
+      <pubDate>Fri, 20 Dec 2013 02:10:27 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/gem-list-for-rails/</guid>
+      <description>Macの環境構築をやり直したので、入れてるgemの一覧を出してみました。
+actionmailer (4.0.0) actionpack (4.0.0) activemodel (4.0.0) activerecord (4.0.0) activerecord-deprecated_finders (1.0.3) activesupport (4.0.0) addressable (2.3.5) arel (4.0.0) atomic (1.1.14) bigdecimal (1.2.0) buftok (0.2.0) builder (3.1.4) bundler (1.3.5) celluloid (0.15.2) chunky_png (1.2.8) coderay (1.1.0) compass (0.12.2) compass-normalize (1.4.3) compass-recipes (0.3.0) descendants_tracker (0.0.3) diff-lcs (1.2.5) equalizer (0.0.8) erubis (2.7.0) factory_girl (4.3.0) factory_girl_rails (4.3.0) faker (1.2.0) faraday (0.8.8) ffi (1.9.3) formatador (0.2.4) fssm (0.2.10) guard (2.2.4) guard-rspec (4.2.0) hike (1.2.3) http (0.5.0) http_parser.rb (0.</description>
+    </item>
+    
+    <item>
+      <title>Ajaxで使えるロード画面のgif画像を生成できるサイト</title>
+      <link>http://programming.ironsand.net/2013/load-image-for-ajax/</link>
+      <pubDate>Tue, 17 Dec 2013 17:18:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/load-image-for-ajax/</guid>
+      <description>以前使ったAjax用の load.gif の背景が透過されてなかったので、背景が透過されたの探してたらそういう画像を生成してくれるサイトを見つけました。便利！
+[Ajaxload &amp;#8211; Ajax loading gif generator][1]</description>
+    </item>
+    
+    <item>
+      <title>MySQLのrootのパスワードをリセットするSQL</title>
+      <link>http://programming.ironsand.net/2013/mysql%E3%81%AEroot%E3%81%AE%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%99%E3%82%8Bsql/</link>
+      <pubDate>Tue, 17 Dec 2013 16:22:13 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/mysql%E3%81%AEroot%E3%81%AE%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%99%E3%82%8Bsql/</guid>
+      <description>MySQLのパスワードがわからなくなった時に使う root のパスワードリセットのためのSQL文
+UPDATE mysql.user SET Password=PASSWORD(&#39;masterpassword&#39;) WHERE User=&#39;root&#39;; FLUSH PRIVILEGES;  </description>
+    </item>
+    
+    <item>
+      <title>coffee script を Emacs の smart compile を使ってjsの出力結果を出す</title>
+      <link>http://programming.ironsand.net/2013/coffee-script-with-smart-compile/</link>
+      <pubDate>Tue, 17 Dec 2013 15:37:33 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/coffee-script-with-smart-compile/</guid>
+      <description>Railsのプロジェクトで coffee script を使うけどもコンパイルは全て Asset pipelineがやってくれるので、たまに変換結果の js をちょっと見てみたい時に困った事になります。
+なのでEmacsの smart compile の機能を使ってすぐに 出力結果を得られるようにしてみました。
+解決策 coffee -pで標準出力に変換結果を出力してくれるので
+(global-set-key (kbd &#34;C-c C-x&#34;) &#39;smart-compile) (setq smart-compile-alist (append &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\\.coffee$&#34; . &#34;coffee -p %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist))  としておけばOKです。
+参考 [Convert coffee to javascript and show the result to standard output in Emacs &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Emacsの`find-file`で開くデフォルトのパスを変更する</title>
+      <link>http://programming.ironsand.net/2013/set-default-path-for-find-file-in-emacs/</link>
+      <pubDate>Tue, 17 Dec 2013 12:36:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/set-default-path-for-find-file-in-emacs/</guid>
+      <description> 何故かMacのOSを最新の Mavericks(10.9.1)に変えたらEmacsの C-x C-f で表示されるデフォルトのパスが ルートの / に変わってしまったのでその対策。
+対策法 下の対策はうまく動いてませんでした。homebrewの最新版だと対応されてるらしいので homebrew install --cocoa emacsで homebrewから入れたら解決します。
+Emacsの設定に default-directory を追加したらOK
+ (setq default-directory &amp;#8220;~/&amp;#8221;)  参考 
+ settings &amp;#8211; emacs &amp;ldquo;Find File:&amp;rdquo; default path &amp;#8211; Stack Overflow </description>
+    </item>
+    
+    <item>
+      <title>Emacsの`M-x shell` に色を付ける</title>
+      <link>http://programming.ironsand.net/2013/colorize-emacs-shell/</link>
+      <pubDate>Sun, 15 Dec 2013 13:53:57 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/colorize-emacs-shell/</guid>
+      <description>(add-hook &#39;shell-mode-hook &#39;ansi-color-for-comint-mode-on) でOK。ちなみに M-x eshell で高機能なシェルがつかえるらしくそちらでも色がついてた。</description>
+    </item>
+    
+    <item>
+      <title>create_or_update 的なメソッドをRailsで使いたいとき</title>
+      <link>http://programming.ironsand.net/2013/create_or_update-method-in-rails/</link>
+      <pubDate>Sun, 15 Dec 2013 13:50:02 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/create_or_update-method-in-rails/</guid>
+      <description>既に該当するモデルの値が存在していたら update で値を更新して、まだ存在しない場合は create で新しくモデルのインスタンスを作成したい時ありませんか？ 少なくとも自分にはありましたし、検索でここに辿り着いたあなたもきっとあると思います。
+Railsならきっと簡単な方法があると思ったので調べてみたらありました。
+やり方。 こんな感じでOK。
+my_class = ClassName.find_or_initialize_by_name(name) my_class.update_attributes( :street_address =&amp;gt; self.street_address, :city_name =&amp;gt; self.city_name, :federalid =&amp;gt; self.federalid, :state_prov_id =&amp;gt; self.state_prov_id, :zip_code =&amp;gt; self.zip_code ) 注意点 ちなみに create_or_update は ActiveRecord::Callbacks の private 関数として用意されてるご様子。
+[create_or_update (ActiveRecord::Callbacks) &amp;#8211; APIdock][1]
+参考 [ruby &amp;#8211; create_or_update method in rails &amp;#8211; Stack Overflow][2]</description>
+    </item>
+    
+    <item>
+      <title>respond_to を ブロックを使わずに書く。</title>
+      <link>http://programming.ironsand.net/2013/respond_to_without_block_in_rails/</link>
+      <pubDate>Sun, 15 Dec 2013 09:29:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/respond_to_without_block_in_rails/</guid>
+      <description>Ajaxの処理をRailsでするときはControllerに
+respond_to do |format| format.js end と書いてたんですが、いちいちブロック引数に format を使って処理するのは無駄な気がしたので一行で書ける方法を調べてみた。
+解決策 respond_to :js でOKでした。
+respond_to :html, :js な書き方もOKなようです。
+参考 [respond_to (ActionController::MimeResponds::InstanceMethods) &amp;#8211; APIdock][1]</description>
+    </item>
+    
+    <item>
+      <title>Gemfileを開いてたらsmart-compileで`bundle install`を実行する</title>
+      <link>http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/</link>
+      <pubDate>Sun, 15 Dec 2013 07:33:43 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/</guid>
+      <description>開いてるファイルをそのまま実行できるsmart-compileでGemfileを開いてたらbundle installを実行したかったのでやり方を調べてみました。
+設定方法 どうやらsmart compile は自動的にコマンドの実行ディレクトリをファイルがある場所に移動してくれるようなので単純に Gemfileというファイル名とbundle installのコマンドを他のファイルと同じように紐付ければOKのようです。
+(global-set-key (kbd &#34;C-c C-x&#34;) &#39;smart-compile) (setq smart-compile-alist (append &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist)) もちろん ruby や php を使ってなかったら該当行は必要ありません。
+使い方 これで Gemfile を開いて C-c C-x するとこんな風に bundle install が実行されます。
+-*- mode: compilation; default-directory: &#34;~/dev/foo/&#34; -*- Compilation started at Sun Dec 15 16:29:42 bundle install Using rake (10.1.0) Using i18n (0.6.9) from git://github.com/svenfuchs/i18n.git (at master) Using minitest (4.</description>
+    </item>
+    
+    <item>
+      <title>Railsのカラム名の語頭に数字を使ってはいけない</title>
+      <link>http://programming.ironsand.net/2013/do-not-use-number-for-column-name-in-rails/</link>
+      <pubDate>Sat, 14 Dec 2013 08:08:39 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/do-not-use-number-for-column-name-in-rails/</guid>
+      <description>Railsの学習がてらに2chもどきをつくろうと思って `rails new 2ch` してみるとエラーになる。これはいいんだけど、`rails generate Model 2ch` ってエラーを吐かないのに実際は使えないので修正がめんどくさくなるので気をつけましょう。</description>
+    </item>
+    
+    <item>
+      <title>[deprecated] I18n.enforce_available_locales とか何とかRailsでエラーが出る時の対処法</title>
+      <link>http://programming.ironsand.net/2013/deprecated-i18n-enforce_available_locales/</link>
+      <pubDate>Fri, 13 Dec 2013 15:50:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/deprecated-i18n-enforce_available_locales/</guid>
+      <description>Railsでこんなdeprecatedの警告が出てきたので対処方法を調べた。
+[deprecated] I18n.enforce_available_locales will default to true in the future. If you really want to skip validation of your locale you can set I18n.enforce_available_locales = false to avoid this message. 対策 config.i18n.enforce_available_locales = true でOK, `locale validation` をきちんとするなら true、どうでも良いならfalseらしい。よくわかんない。
+参考 [ruby &amp;#8211; Rails I18n validation deprecation warning &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>link_to で内部にタグがあったりする時はブロックを使いましょう</title>
+      <link>http://programming.ironsand.net/2013/link_to-with-block/</link>
+      <pubDate>Wed, 11 Dec 2013 06:54:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/link_to-with-block/</guid>
+      <description>Zurb-FoundationとかTwitter bootstrapを使ってると、アイコンをリンク内に含めたくなったりしますよね。こんな感じに
+[crayon lang=&amp;#8221;html&amp;#8221;]
+ Reload
+[/crayon]
+でもこれをそのまま `link_to` で囲んで
+[crayon lang=&amp;#8221;html&amp;#8221;]
+&amp;lt;%= link_to &amp;ldquo; Reload&amp;#8221;,&amp;#8221;http://example.com/reload&amp;amp;#8221; %&amp;gt;
+[/crayon]
+とすると``タグがHTMLエスケープされて悲しい事態になるんです。
+対策 なのでそういう時は `link_to` さんはブロックが取れるのでブロックを使って処理しましょう。ブロックの返り値がリンクのテキストになります。
+[crayon lang=&amp;#8221;html&amp;#8221;]
+&amp;lt;%= link_to &amp;ldquo;http://example.com/reload&amp;quot;, class: &amp;lsquo;reload&amp;rsquo; do %&amp;gt;
+ Reload
+&amp;lt;% end %&amp;gt;
+[/crayon]
+ちなみに `button_to` も同じような関数なのでこういう風にかけます。
+[crayon lang=&amp;#8221;html&amp;#8221;]
+&amp;lt;%= button_to &amp;ldquo;&amp;rdquo;, class: &amp;lsquo;small radius&amp;rsquo; do %&amp;gt;
+ Reload
+&amp;lt;% end %&amp;gt;
+[/crayon]
+これ知らない時に必死にHTMLエスケープされないために何をすればよいのかを探しまくったのは今では良い思い出でもなんでもありません。時間返せ。
+参考 [ruby on rails &amp;#8211; link_to in helper with block &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>WordPressでadd_filterで適用された関数の一覧を表示する</title>
+      <link>http://programming.ironsand.net/2013/show-all-filters-in-wordpress/</link>
+      <pubDate>Tue, 10 Dec 2013 14:39:05 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/show-all-filters-in-wordpress/</guid>
+      <description>どんなフィルタが適用されてるか確認したかったので質問したら教えてもらえました。Stackexchangeの回答者様ありがとうございます。
+[crayon lang=&amp;#8221;php&amp;#8221;]
+&amp;lt;?php function get_filters_for( $hook = &amp;ldquo; ) { global $wp_filter; if( empty( $hook ) || !isset( $wp_filter[$hook] ) ) return;
+return $wp_filter[$hook];  } var_dump(get_filters_for( &amp;lsquo;the_content&amp;rsquo; )); [/crayon]
+参考 [How to check a filter are applied &amp;#8211; WordPress Answers][1]</description>
+    </item>
+    
+    <item>
+      <title>返り値が false か 整数の関数で `0` をtrueと判定する方法</title>
+      <link>http://programming.ironsand.net/2013/recognize-0-as-a-true-in-php/</link>
+      <pubDate>Tue, 10 Dec 2013 14:03:47 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/recognize-0-as-a-true-in-php/</guid>
+      <description>WordPressの has_filter()は返り値が int|boolean なので普通に if(has_filter()) で処理しちゃうと `` が返ってきた時に意図しない結果になってしまいます。
+解決策 なのでそういう時は if(is_int(has_filter())) を使いましょう。
+参考 [wordpress &amp;#8211; recognize `` as a true in PHP if statement &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>既に存在するindexにunique制限をかけるmigrationの書き方。</title>
+      <link>http://programming.ironsand.net/2013/how-to-add-unique-constraint-to-already-existing-index-by-migration/</link>
+      <pubDate>Mon, 09 Dec 2013 10:22:53 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/how-to-add-unique-constraint-to-already-existing-index-by-migration/</guid>
+      <description>そのまま unique 条件付の index を追加しようとするとエラーになるので
+まず既にある index を削除してから追加しましょう。
+[crayon title=&amp;#8221;db/migrate/add_unique_constraint.rb&amp;#8221;]
+def change
+remove_index :editabilities, [:user_id, :list_id]
+add_index :editabilities, [:user_id, :list_id], unique: true
+end
+[/crayon]
+参考 [ruby on rails &amp;#8211; How to add unique constraint to already existing index by migration &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>WordPressの教科書2の読書感想</title>
+      <link>http://programming.ironsand.net/2013/textbook-for-wordpress-2/</link>
+      <pubDate>Sun, 08 Dec 2013 01:14:54 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/textbook-for-wordpress-2/</guid>
+      <description>WordPressを覚えたくなったので[WordPressの教科書2][1]を読みながら勉強中。気になったところをメモっていきます。本の現物がないと意味不明です。
+P.065: フィルターフックを追加するのに関数名が `add_filter` なのが非常に気に食わない。そこは `add_filter_hook` とめんどくさくてもちゃんと書くところじゃないです！？
+P.071 `WP_SiteManager_bread_crumb::bread_crumb(&amp;#8216;navi_element=div&amp;amp;elm_id=bread_crumb&amp;#8217;);`
+って出てきたけど引数にこんなURL表記みたいな気持ち悪い方法使うの…？
+P.115 カスタムフィールドの名前欄を編集不可にはできないのかな？ (P.127から「専用の管理画面を作成する」が始まった！)
+P.253 Genericons便利そう。
+後は適当に流し読みしたので終了。</description>
+    </item>
+    
+    <item>
+      <title>Vimの欲しい機能を調べてみた。</title>
+      <link>http://programming.ironsand.net/2013/vim-functions/</link>
+      <pubDate>Sun, 26 May 2013 09:00:38 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/vim-functions/</guid>
+      <description>今までVimでRailsのプロジェクトの中にあるファイルを開くのに毎回FinderのウィンドウからD&amp;amp;DしていてめんどくさかったのでVimの左側にファイラーが表示できたらいいな、と思って調べてみました。
+検索した所 Opsplore が見つかったのでインストールしようかと思ったらインストールの仕方がわからなかったのでもののついでに多分パッケージ管理する拡張があるだろうと考えて調べてみたらやっぱりありました。
+NeoBundleでパッケージ管理 どうやら昔はBundleというソフトが有名だったけど、機能不足などの問題でVundleがForkされて更に統一性などの問題点が改善されたNeoBundleが出されたようです。
+はじめ動かなくて困ってTwitterでつぶやいていたら @todashuta さんが直してくれました。ありがとうございます。
+Vimpusher NeoBundleなどのパッケージ管理を使っていて、その.vimrcをGitなどのオンライン上に置いている場合はソーシャルVimプラグインサービスの[Vimpusher][1]というサービスがあり、これに登録しておくとおすすめのプラグインを紹介してくれるそうです。
+便利そうなプラグイン なんでもRailsを使うのに便利なプラグインがあるそうなので早速それを入れてみる。
+[tpope/vim-rails · GitHub][2]
+においてあるのでNeoBundleでインストールするために
+~/.vimrc に
+NeoBundle &#39;tpope/vim-rails&#39;
+と追記し、
+``今までVimでRailsのプロジェクトの中にあるファイルを開くのに毎回FinderのウィンドウからD&amp;amp;DしていてめんどくさかったのでVimの左側にファイラーが表示できたらいいな、と思って調べてみました。
+検索した所 Opsplore が見つかったのでインストールしようかと思ったらインストールの仕方がわからなかったのでもののついでに多分パッケージ管理する拡張があるだろうと考えて調べてみたらやっぱりありました。
+NeoBundleでパッケージ管理 どうやら昔はBundleというソフトが有名だったけど、機能不足などの問題でVundleがForkされて更に統一性などの問題点が改善されたNeoBundleが出されたようです。
+はじめ動かなくて困ってTwitterでつぶやいていたら @todashuta さんが直してくれました。ありがとうございます。
+Vimpusher NeoBundleなどのパッケージ管理を使っていて、その.vimrcをGitなどのオンライン上に置いている場合はソーシャルVimプラグインサービスの[Vimpusher][1]というサービスがあり、これに登録しておくとおすすめのプラグインを紹介してくれるそうです。
+便利そうなプラグイン なんでもRailsを使うのに便利なプラグインがあるそうなので早速それを入れてみる。
+[tpope/vim-rails · GitHub][2]
+においてあるのでNeoBundleでインストールするために
+~/.vimrc に
+NeoBundle &#39;tpope/vim-rails&#39;
+と追記し、
+``
+で設定の再読み込みをすると &amp;#8220;Install bundles now?&amp;#8221; と聞かれるので&amp;#8221;yes&amp;#8221;を選択すればOKです。メッセージが流れないのでフリーズしてるように感じましたが正常にインストールされてました。
+たとえば post_controller.rb 上の def index の上にカーソルがあるときに gf と入力すれば index.html.erb が開かれます。
+詳しい動作はまた今度確認することします。
+他にも入れといたほうがよさそうなプラグイン こちらのサイトを参考に便利そうなプラグインを追加していきました。
+[天井冴太的つれづれblog [天井の染み]: このVim plugin達に感謝しなければ年を越せない!私が今年使い倒した2012年のベストを全部ご紹介!][3]
+&amp;#8221; RubyやPerl風の正規表現。</description>
+    </item>
+    
+    <item>
+      <title>RailsでModelが不規則名詞だった場合のControllerの命名規則</title>
+      <link>http://programming.ironsand.net/2013/naming-convention-rails-imodel-irregular-verb/</link>
+      <pubDate>Tue, 21 May 2013 07:35:49 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/naming-convention-rails-imodel-irregular-verb/</guid>
+      <description>RailsのModelは常に単数名詞、そしてControllerはその名詞の複数形という規則がありますが、Modelが”Child&amp;#8221;などの不規則変化名詞だった時にController名はChildrenなのか、Childsなのかがわからなかったので調べました。
+答え プログラム的には当然簡単に処理できるChildsだと思ったけども実際はちゃんと不規則変化にも対応してるらしくChildrenが正解です。
+その他の不規則名詞 他の不規則名詞は
+https://github.com/rails/rails/blob/4-0-0/activesupport/lib/active_support/inflections.rb
+に載っているんですが、
+inflect.irregular(&#39;person&#39;, &#39;people&#39;) inflect.irregular(&#39;man&#39;, &#39;men&#39;) inflect.irregular(&#39;child&#39;, &#39;children&#39;) inflect.irregular(&#39;sex&#39;, &#39;sexes&#39;) inflect.irregular(&#39;move&#39;, &#39;moves&#39;) inflect.irregular(&#39;cow&#39;, &#39;kine&#39;) inflect.irregular(&#39;zombie&#39;, &#39;zombies&#39;)  zombieって不規則名詞なの…？
+cow→kineの変化はそもそも英単語がわかりませんでした、、
+Zombieが不規則名詞の理由 ([2013/12/14] 追記) 単数形から複数形への変化は規則通りですが、複数形から単数形への変化 zombies -&amp;gt; zombie が不規則で、規則通り変化させてしまうと zombies -&amp;gt; zomby になってしまうから不規則名詞らしいです。英語は難しいですね。
+情報元 [Model and Controller&amp;apos;s naming rule for irregular noun in Rails &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Railsで新規プロジェクトを作ろうとすると`expand_path’: non-absolute homeというエラーが出る</title>
+      <link>http://programming.ironsand.net/2013/expand_path-non-absolute-home-error/</link>
+      <pubDate>Wed, 01 May 2013 03:12:23 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/expand_path-non-absolute-home-error/</guid>
+      <description>rails new hoge
+とすると
+`expand_path&#39;: non-absolute home
+というエラーが出てしまって「Windowsだしなあ。」と諦めかけてたけど、このhomeというのは環境変数のHOMEのことらしく、確かにcygwinを使う時のためにHOMEに /cygdrive/ から始まる値を入れてたのを思い出したので環境変数 HOME を削除してみたら動いた。
+ちなみに irb もHOMEに入ってる値によっては動かないらしい。
+参考 `expand_path&amp;apos;: non-absolute home
+http://devnet.jetbrains.com/thread/437313</description>
+    </item>
+    
+    <item>
+      <title>wxPythonで作ったUIをpy2exeで変換すると見た目が変わる問題</title>
+      <link>http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/</link>
+      <pubDate>Fri, 29 Mar 2013 11:38:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/</guid>
+      <description>wxPythonを使って頑張って作ったGUIをPythonが入ってないPCの人も使えるようにするのにpy2exeで変換したら見た目が変わってしまった(古い？TK?)のでその対処法。
+必要なファイル Microsoft.VC90.CRT.manifest
+msvcm90.dll
+msvcp90.dll
+msvcr90.dll
+の4つのファイルが必要。自分の環境だとPython 2.7 Portableを入れたフォルダに全部入っていたので、Py27MSdllsというフォルダをsetup.pyと同じ階層に作って全部入れました。
+Microsoft.VC90.CRT.manifest の中で示されてるdllのバージョンが合ってるかどうか確認する。
+違ってたら適宜修正する。
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;yes&amp;quot;?&amp;gt;&amp;lt;br&amp;gt; &amp;lt;!-- Copyright (c) Microsoft Corporation. All rights reserved. --&amp;gt;&amp;lt;br&amp;gt; &amp;lt;assembly xmlns=&amp;quot;urn:schemas-microsoft-com:asm.v1&amp;quot; manifestVersion=&amp;quot;1.0&amp;quot;&amp;gt;&amp;lt;br&amp;gt; &amp;lt;noInheritable/&amp;gt;&amp;lt;br&amp;gt; &amp;lt;assemblyIdentity&amp;lt;br&amp;gt; type=&amp;quot;win32&amp;quot;&amp;lt;br&amp;gt; name=&amp;quot;Microsoft.VC90.CRT&amp;quot;&amp;lt;br&amp;gt; &amp;lt;s&amp;gt;version=&amp;quot;9.0.21022.8&amp;quot;&amp;lt;/s&amp;gt; &amp;lt;span style=color:red;&amp;gt;version=&amp;quot;9.0.30729.6161&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt; processorArchitecture=&amp;quot;x86&amp;quot;&amp;lt;br&amp;gt; publicKeyToken=&amp;quot;1fc8b3b9a1e18e3b&amp;quot;&amp;lt;br&amp;gt; /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;file name=&amp;quot;msvcr90.dll&amp;quot; /&amp;gt; &amp;lt;file name=&amp;quot;msvcp90.dll&amp;quot; /&amp;gt; &amp;lt;file name=&amp;quot;msvcm90.dll&amp;quot; /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/assembly&amp;gt;&amp;lt;br&amp;gt;  setup.py setup.pyを書き換えて用意したこれらのファイルを読み込むように変更する。
+# -*- coding: utf-8 -*-&amp;lt;br&amp;gt; #&amp;lt;br&amp;gt; # setup.py&amp;lt;br&amp;gt; &amp;lt;br&amp;gt; from distutils.core import setup&amp;lt;br&amp;gt; import py2exe&amp;lt;br&amp;gt; import glob&amp;lt;br&amp;gt; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt; class Target(object):&amp;lt;br&amp;gt; &amp;quot;&amp;quot;&amp;quot; A simple class that holds information on our executable file.</description>
+    </item>
+    
+    <item>
+      <title>さくらのVPSにneroAacEncをインストールしてmp3をm4aに変換する</title>
+      <link>http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/</link>
+      <pubDate>Tue, 12 Mar 2013 04:27:25 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/</guid>
+      <description>作業目的 さくらのVPSで自動ダウンロードしてるNHKの語学講座が大量になってきて容量が馬鹿にならなくなってきたので
+mp3で出力されたものをm4aに変換しようとNeroAAC Encoderのインストール作業メモ。
+インストール方法 まず
+コマンドラインツールをここからダウンロードしてくる。
+http://www.nero.com/enu/company/about-nero/nero-aac-codec.php
+wgetで直接取ってくるなら
+$ wget http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip
+圧縮ファイルを展開して
+$ unzip ~/NeroAACCodec-1.5.1.zip -d neroaac
+実行権限を付加
+$ chmod +x ./neroaac/linux/neroAac*
+んで、動作を確認
+$ ./neroaac/linux/neroAacEnc
+************************************************************* * * * Nero AAC Encoder * * Copyright 2009 Nero AG * * All Rights Reserved Worldwide * * * * Package build date: Feb 18 2010 * * Package version: 1.5.4.0 * * * * See -help for a complete list of available parameters.</description>
+    </item>
+    
+    <item>
+      <title>JqueryとHTML5でajaxなファイルのアップロード</title>
+      <link>http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/</link>
+      <pubDate>Wed, 27 Feb 2013 09:16:07 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/</guid>
+      <description>画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。
+やりたい事と条件 ・ajaxなテキストファイルのアップロード
+・テキストをRubyで編集して返す
+・画面遷移せずに結果を表示
+・IEは諦める。
+必要最低限のコード まずHTMLを用意
+ajaxupload.html
+&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;&amp;lt;html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html;charset=utf-8&amp;quot;&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;jquery-1.7.min.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;ajaxupload.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;style&amp;gt;textarea{height:80%;width:100%;}&amp;lt;/style&amp;gt;&amp;lt;br&amp;gt; &amp;lt;body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=file id=file /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=button id=upload value=&amp;quot;upload&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; &amp;lt;textarea id=output&amp;gt;&amp;lt;/textarea&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;
+つぎにjavascript
+ajaxupload.js
+&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;$(function(){ $(&amp;quot;#upload&amp;quot;).click(function(){ var file = $(&amp;quot;#file&amp;quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, &#39;UTF-8&#39;); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: &amp;quot;POST&amp;quot;, url: &amp;quot;ajaxupload.rb&amp;quot;, data: { filedata:event.</description>
+    </item>
+    
+    <item>
+      <title>Pythonのapplyを使う時の注意点、…というか使っちゃダメ。</title>
+      <link>http://programming.ironsand.net/2013/do-not-use-apply-in-python/</link>
+      <pubDate>Tue, 15 Jan 2013 18:02:10 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/do-not-use-apply-in-python/</guid>
+      <description>Lispを書いてると、他の言語でもapplyを使いたくなる。
+そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。
+基本的なapplyの使い方 `
+def hoge(word): print word
+apply(hoge,&amp;ldquo;A&amp;rdquo;) `
+とまあこんな感じ使うわけです。
+文字列を引数にできない。 ところがこの引数の&amp;#8221;A&amp;#8221;を&amp;#8221;ABC&amp;#8221;に変えるだけでエラーになる。
+&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 9, in &amp;lt;module&amp;gt; TypeError: hoge() takes exactly 1 argument (3 given)&amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;
+どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。
+解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。
+ 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような &amp;#8220;拡張された関数呼び出し構文&amp;#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。</description>
+    </item>
+    
+    <item>
+      <title>cygwinで.bash_profileが読み込まれなかった時の対処法</title>
+      <link>http://programming.ironsand.net/2012/how-to-load-bash_profile-by-cygwin/</link>
+      <pubDate>Sat, 10 Nov 2012 02:33:37 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-load-bash_profile-by-cygwin/</guid>
+      <description>cygwinでちゃんとHOMEの環境変数を設定してるのに ~/.bash_profileが読み込まれなかったのでその時の対処法。
+問題点 結局問題だったのはbashを立ち上げた時に出てくるこのエラーメッセージを無視してたのが原因でした。
+ Your group is currently &amp;#8220;mkpasswd&amp;#8221;.
+This indicates that your gid is not in /etc/group and your uid is not in /etc/passwd.
+The /etc/passwd (and possibly /etc/group) files should be rebuilt. See the man pages for mkpasswd and mkgroup then, for example, run
+mkpasswd -l [-d] &amp;gt; /etc/passwd
+mkgroup -l [-d] &amp;gt; /etc/group
+Note that the -d switch is necessary for domain users.
+ /etc/passwd を確認してみると、確かに今使ってるWindowsでのユーザ名が表示されていない。いつもcygwinのフォルダは上書きし続けて使ってるのでインストール時に既に /etc/passwd があった場合に自動更新されないみたいですね。</description>
+    </item>
+    
+    <item>
+      <title>話題のオンライン無料大学CourseraでPythonの授業をとってみた。</title>
+      <link>http://programming.ironsand.net/2012/start-coursera-python-course/</link>
+      <pubDate>Tue, 30 Oct 2012 14:45:05 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/start-coursera-python-course/</guid>
+      <description>無料のオンライン大学Courseraについてはこちらを見てください。
+【TED】 Coursera創業者による「オンライン教育が教えてくれること」 | IDEA*IDEA
+http://www.ideaxidea.com/archives/2012/09/ted_coursera.html
+このCourseraで&amp;#8221;An Introduction to Interactive Programming in Python&amp;#8221;という面白そうな授業があったので登録してみました。プログラミング経験がほとんどない人向けの講座だそうなのですが、英語のハンデもあるのでちょうどいいかと思って初めて見ました。まだ受講は受け付けていますが、10月15日からの講座なのでPythonの勉強を始めてみたい方はお早めに。
+受講方法 まず[コース一覧][1]から受講したいコースを選びます。
+受講したいコースがあったら&amp;#8221;sign up&amp;#8221;から登録します。
+で名前とメールアドレス、それにパスワードを入力。
+ここで入力する名前が証明書などに残るので本名を入力しましょう。
+ポップアップでメッセージと&amp;#8221;Go to class&amp;#8221;という表示が出てくるのでクリックして次へ。
+ここでHonor Code[敬意を持って守る規定]への同意を求められるのでよく読んで同意しましょう。
+ 一つのアカウントのみ登録します。
+ 宿題、クイズそれに試験を独力で行います。
+ 宿題、クイズそれに試験の答えを誰にも教えません。
+ 不誠実に成績を改鼠しません。
+  コースのホーム画面に飛びます。既に開始されてるコースなのでまずは溜まってるAnnouncementsから見ていきましょう。上に行くほど新しいお知らせなので一番下から読んでいきます。
+どういう風に進んでいくか。 ここからは何を受講するかによっても変わってくると思うので参考程度に読んでください。
+・毎週2セクションごと進む。
+・週の開始は土曜日の朝。(アメリカ時間？)
+・土曜日の朝に50～150行程度で作れるミニプロジェクトが割り当てられるので、それを次の土曜日の午後までに提出する。
+・そして次の日曜日から水曜日の間に生徒間で相互添削を行う。
+・相互添削で自分の評価をもらうためには最低5つを行わなければならない。
+・毎週6～10個程度の短いレクチャーの動画を見る。
+・クイズが週2回、でミニプロジェクトが1回。
+・プログラミング環境は http://www.codeskulptor.org/ を使う。
+レクチャーのビデオを見る 左上の[Video Lectures]からレクチャーが見れます。この講座をどのように進めていくかと、この講座でどのようなものが作れるかの説明があります。基本的な動作をするゲームが作れるので面白そう。
+英語は自分にはまだちょっと難しいですが、字幕を[CC]でつけて見ることもできるし、テキストやSRTファイルでダウンロードして読むこともできます。
+動画プレイヤーのVLCなら0.8倍速などのように音の高低を変化させずに再生速度を変えれますし、SRTファイルをそのまま再生中の動画にDrag &amp;amp; Dropするだけで字幕を表示できるのでオススメです。
+他にも面白そうな講座はたくさんありますので、どんな講座があるかだけでも眺めてみると良いんじゃないでしょうか。
+Course Catalog | Coursera
+https://www.coursera.org/courses</description>
+    </item>
+    
+    <item>
+      <title>NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2</title>
+      <link>http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/</link>
+      <pubDate>Wed, 06 Jun 2012 05:08:52 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/</guid>
+      <description>前回の記事の続きです。
+NHK語学のラジオ講座をさくらのVPSで自動ダウンロード
+http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/
+今回はさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするについて解説します。
+さくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。
+自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。
+ APIを使うためにSugarSyncのDeveloperに登録
+ upload_nhkradio.rb の設定
+ cronの設定
+  1. APIを使うためにSugarSyncのDeveloperに登録 まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。
+http://www.sugarsync.com/developer/signup
+もしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。
+Developer登録をすると Access Key ID と Private Access Key が手に入りますのでメモっていてください。あとで必要になります。
+次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。
+新しいアプリの作成には以下の5つの情報を入力する必要があります。
+Name:[アプリ名]&amp;#8221;NHK Radio Uploader&amp;#8221;とか適当に
+Publisher:[製作者] #名前をいれておきましょう。
+Description:[詳細] &amp;#8220;Upload NHK radio mp3&amp;#8221; とでも。
+Support URL:[作者サイト] 自分はTwitterのアカウントいれてます。
+Support Email:[連絡先] 普通に自分のメールアドレスを。
+以上でAppが作れたら App ID が入手できますのでコレもメモっておいてください。
+2. upload_nhkradio.rb の設定 必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。
+まず[upload_nhkradio.zip][2]をダウンロードして解凍し、sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rbの3つのファイルを取り出してください。
+そしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。
+#SugarSyncのユーザ名(メールアドレス),パスワード @username = &amp;quot;&amp;quot; @password = &amp;quot;&amp;quot; #App ID /sc/などから始まる英数字 @application = &amp;quot;&amp;quot; @access_key_id = &amp;quot;&amp;quot; @private_access_key = &amp;quot;&amp;quot; #refresh_tokenを設定しておけばusername, passwordはいりません。 #username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。 @refresh_token = &amp;quot;&amp;quot; #SugarSyncのどのフォルダにアップロードするか。 e.</description>
+    </item>
+    
+    <item>
+      <title>NHK語学のラジオ講座をさくらのVPSで自動ダウンロード</title>
+      <link>http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/</link>
+      <pubDate>Mon, 04 Jun 2012 05:41:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/</guid>
+      <description>NHKラジオの語学講座を毎週ダウンロードしてるんですが、
+外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。
+なのでせっかくさくらのVPSをお金払って借りてるんだから
+勝手にダウンロードするように設定しましたので参考にどうぞ。
+月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。
+実際に先週から動かしてみてますが、こりゃ楽でいいです。
+SugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。
+記事が長くなるので今回の
+さくらVPSを使って自動的にNHKラジオ講座をダウンロード
+次回の
+さくらVPSにダウンロードしたmp3をSugarsyncにアップロードする
+の2つにわけて解説していきます。
+自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。
+ flvstreamerのダウンロード、コンパイル
+ Rubyのインストール
+ CaptureStream の設定
+ cronの設定
+  1. flvstreamerのダウンロード、コンパイル flvstreamer をインストールするんですが、
+まずさくらのVPSが32ビットなのか64ビットなのか確認します。
+$ cat /proc/cpuinfo | grep flags
+して値に lm が含まれていれば64bitのCPUです。
+次に
+$ uname -a
+X86_64とかamd64とかが表示されたら、64ビット版のカーネルです。
+64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、
+32bitしかバイナリがおいてないので自分でコンパイルします。
+$ wget http://download.savannah.gnu.org/releases/flvstreamer/source/flvstreamer-2.1c1.tar.gz $ tar zxf flvstreamer-2.1c1.tar.gz $ cd flvstreamer $ make posix $ ./flvstreamer FLVStreamer v2.1c1 (c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL ERROR: You must specify a hostname (--host) or url (-r &amp;quot;rtmp://host[:port]/playpath&amp;quot;) containing a hostname  # yum install ruby</description>
+    </item>
+    
+    <item>
+      <title>コマンドプロンプトを管理者権限で実行する簡単な方法</title>
+      <link>http://programming.ironsand.net/2012/run-a-cmd-as-admin/</link>
+      <pubDate>Tue, 15 May 2012 08:34:51 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/run-a-cmd-as-admin/</guid>
+      <description>Windows7でハードディスクをヤフオクに出すためにチェックディスクをしようと思ったら
+ chkdsk d:
+十分な特権がないので、アクセスは拒否されました。
+管理者特権モードで実行しているこのユーティリティを呼び出す必要があります。
+ と文句を言われてしまいました。
+管理者権限で実行するにはデスクトップにでもショートカットを作って、プロパティから「管理者として実行」あたりにチェックを入れれば解決ですが、それさえも面倒臭い。
+コンピュータの修理を頼まれて他人のパソコンで使いたい時もあるので、もっとも簡単な方法を紹介します。
+ここまで前置き スタートボタンの「プログラムとファイルの検索」に
+&amp;#8220;cmd&amp;#8221; と打てば cmd.exe がフィルタリングされますので、そこで
+Ctrl+Shift+Enterで実行します。
+これで管理者権限で実行できます。ショートカットさえ覚えておけば初期状態のWindows7で使えるので便利ですね。
+参考 Run a Command as Administrator from the Windows 7 / Vista Run box
+http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/</description>
+    </item>
+    
+    <item>
+      <title>javascript で大文字、小文字を無視して文字列比較</title>
+      <link>http://programming.ironsand.net/2012/javascript-compare-strings-ignoring-case/</link>
+      <pubDate>Sat, 07 Jan 2012 21:12:25 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/javascript-compare-strings-ignoring-case/</guid>
+      <description>javascript で大文字、小文字を区別しないで文字列比較がしたい時は、そういう演算子は用意されてないので toLowerCase() で全部小文字にして比較しちゃいましょう。
+こんな感じ。
+function check(){ foo=&#34;ABC&#34;; bar=&#34;abc&#34;; if(foo.toLowerCase() == bar.toLowerCase()){ //大文字小文字を無視 alert(&#34;ok!!&#34;); }else{ alert(&#34;NG!&#34;); } } ちなみに英語で「大文字、小文字を区別しない。」と言いたい時は case-insensitive を使えばよいそうですよ。</description>
+    </item>
+    
+    <item>
+      <title>jQueryでマウスの右クリック、左クリックを判断する</title>
+      <link>http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/</link>
+      <pubDate>Sat, 07 Jan 2012 03:41:05 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/</guid>
+      <description>jQuery を使って
+「クリックされた時に左なら要素を消して、右なら何もしない。」
+という動作をさせようと思ったら日本語だと検索してもすぐに答えが出てこなかったので、また stackoverflow から解説を紹介します。
+実際のコードがこちら。
+$(&#39;#element&#39;).mousedown(function(event) { switch (event.which) { case 1: alert(&#39;Left mouse button pressed&#39;); break; case 2: alert(&#39;Middle mouse button pressed&#39;); break; case 3: alert(&#39;Right mouse button pressed&#39;); break; default: alert(&#39;You have a strange mouse&#39;); } });  mousedown の時に渡されるイベントを確認して場合わけすればよい、と。
+つまり左クリックで要素を隠すにはこうします。
+//左クリックされると foo を隠す $(&#34;.foo&#34;).click(function(e){ if(e.which == 1){ //左クリック $(this).hide(&#34;fast&#34;); } }); 他の方法 頻繁に使うのであれば jquery.detailclick.js を入れてこんな風に使えるようにしておくとよいかもしれません。やっぱりこちらの方が jQuery っぽくて見やすいですね。
+$(&amp;ldquo;target&amp;rdquo;).rightClick(function()
+{
+$(this).text(&amp;lsquo;右クリックされました！&amp;rsquo;).css(&amp;lsquo;background-color&amp;rsquo;, &amp;lsquo;#ff3399&amp;rsquo;);
+});
+
+ 参考   javascript - How to distinguish between left and right mouse click with jQuery?</description>
+    </item>
+    
+    <item>
+      <title>$(window).width() と $(document).width() 違い</title>
+      <link>http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/</link>
+      <pubDate>Sat, 07 Jan 2012 03:25:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/</guid>
+      <description>$(window).width() と $(document).width() や
+$(window).height() と $(document).height() がどういう時に違う値を返すかわからなかったので検索したら Stack Overflow に簡潔でわかりやすい説明がされてたので紹介します。
+ When you have a scrollbar on the webpage.
+(スクロールバーが表示されてる時)
+ わかりやすいですね。一応念のために書いておくと window が「ブラウザの表示領域」で、document が「ページ全体」です。
+参考 jquery &amp;#8211; When can $(document).width() and $(window).width() show different values? &amp;#8211; Stack Overflow
+http://stackoverflow.com/questions/8134741/when-can-document-width-and-window-width-show-different-values</description>
+    </item>
+    
+    <item>
+      <title>さくらのVPSでpythonのインタプリタを終了させる</title>
+      <link>http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/</link>
+      <pubDate>Thu, 05 Jan 2012 11:51:15 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/</guid>
+      <description>さくらのVPSにputtyを使ってSSHでログインしてる時に間違えて /usr/bin/python を叩いてしまい(コピーしようとしたら貼りつけてしまった。)インタプリタを終了できなくてちょっと焦ったので終了方法のメモ。
+&amp;#8216;Use Ctrl-D (i.e. EOF) to exit.&amp;#8217;
+とか言ってるくるけど Ctrl-D をおしてもサーバーまで届かない。
+正しい終了方法は
+import sys sys.exit() だそうです。 ああ、そうか sys をインポートしなきゃならんのか。プログラムを書いてる時だと気づくのにインタプリタ普段使わないから何かちがうものだと勝手に思い込んじゃってたよ…。
+参考 pythonインタプリタを終了する
+http://blog.justoneplanet.info/2010/08/07/python%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%82%92%E7%B5%82%E4%BA%86%E3%81%99%E3%82%8B/</description>
+    </item>
+    
+    <item>
+      <title>xampp で mod_rewrite を使う方法</title>
+      <link>http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/</link>
+      <pubDate>Thu, 05 Jan 2012 11:16:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/</guid>
+      <description>見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。
+mod_rewriteでできること ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくと
+http://localhost/index.php?user=foo&amp;amp;name=bar
+と書く所を
+http://localhost/foo/bar.html
+と書ける機能です。
+foo/bar.html にアクセスすると内部で
+index.php?user=foo&amp;amp;name=bar が呼び出されるわけです。
+Xamppの設定方法 xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。
+ まずApacheの設定ファイル http.conf を開きます。   自分の環境では[ X:\sugarsync\bin**xampp\apache\conf\httpd.conf** ] にありました。
+ モジュールがコメントアウトされてないか確認する  #LoadModule rewrite_module modules/mod_rewrite.so のようになってたら &amp;#8220;#&amp;#8221; を取って
+#LoadModule rewrite_module modules/mod_rewrite.so とします。
+ リライトの規則を書く。   http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。
+&amp;lt;IfModule rewrite_module&amp;gt; # bar.htmlを作りドキュメントルートに置いて # http://localhost/foo.html でアクセスできるか確認しましょう。 RewriteEngine On RewriteRule /foo.html /bar.html &amp;lt;/IfModule&amp;gt;  xampp を再起動 で完了   http://localhost/foo.</description>
+    </item>
+    
+    <item>
+      <title>jQueryの便利なmapの使い方</title>
+      <link>http://programming.ironsand.net/2012/how-to-use-map-in-jquery/</link>
+      <pubDate>Sun, 01 Jan 2012 02:00:09 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-use-map-in-jquery/</guid>
+      <description>lispでmapに初めて触れた時は「何、このめんどくさい関数？」と感じ、正直な話あまり触れたくもなかったのですが慣れてくるとこいつはとても便利な賢いやつです。
+さてjavascriptでもmapが使えるか調べてみたらjQueryで提供されてました。
+mapを使えば配列全部に関数を適用させて、返り値を配列で受け取れます。for文なんて使わなくてもええんやっ！！
+使い方の例 定番の累乗を求めるサンプル。
+arr = [1,2,3]; arr = $.map(arr, function(n,i){return n*n;}); for(i=0;i&amp;lt;arr.length;i++){ alert(arr[i]); } サンプルには良く使われるけど、実際にプログラミングしてて累乗が必要になったことがないですね。まあサンプルなんで実用性よりも分かりやすさが重要だから当然といえば当然の話しですね。
+とりあえずこんな感じの動作がmapはできます。
+要素をまとめて取得 たとえばこんなhtmlがあって
+&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; 配列で[1,2,3]が欲しいとする。
+そんな時もこの map を使えば一発解決さ！(深夜の外人がやってる通販のノリで)
+arr = $(&#34;div&#34;).map(function(){ return $(this).text(); }).get(); これでとれる。注意点は最後の get()。これがなくても配列っぽいのが返ってくるんだけども、これはjQuery-wrapped arrayというものらしく別物とのこと。
+for文で実行したり arr[0] で要素のアクセスしたりはできるけどもjoinすると上手く行かない。このjoinがうまくできないのにはまってだいぶ時間を食われました。
+arr.constructor でクラスを調べたら
+function Array() { [native code] } となるべき所が
+function (a, b) { return new e.fn.init(a, b, h); } になってました。この「get() すればよい」という情報を得るためにどれだけ遠回りしたことか…。
+とはいえこれで安心してmapをjavascriptでも使えるようになったのでガシガシ使っていこうと思います。
+参考 http://api.jquery.com/map/</description>
+    </item>
+    
+    <item>
+      <title>xamppでpythonを使う</title>
+      <link>http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/</link>
+      <pubDate>Wed, 16 Nov 2011 16:00:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/</guid>
+      <description>xamppには標準でpythonが入っているけど残念ながらpythonが入ってないので使いたかったら自分で入れる必要があるらしい。なので入れてみた。
+環境 Windows 7 32bit
+Xampp 1.7.7
+Python 2.6.1 (Portable)
+必要なもの &amp;#8220;Xampp python&amp;#8221;で検索するとmod_pythonの情報が出てきてインストール方法も色々と出てくるんだけれどもmod_pythonのwindows版はpythonのバージョンが2.5までにしか対応してないようで非常にめんどくさそう。
+色々探してたら簡単な方法を載せてるサイトが見つかったのでその方法を紹介します。
+インストールが必要な物は何もなし。ヽ(´▽｀)ノ
+設定方法 まず
+[xamppをインストールしたディレクトリ]\apache\conf\httpd.conf
+を開いて
+# # For Python # AddHandler cgi-script .py ScriptInterpreterSource Registry-Strict と追記します。
+場所は多分どこでもいいけど、既に
+&amp;#8220;AddHandler cgi-script .cgi .pl .asp&amp;#8221;って書いてる所があるのでその下にでも。
+んで、動かしたいpythonスクリプトの行頭に
+#!P:\Dropbox\bin\Python26\App\python.exe とpython.exeがある場所を書いておきます。
+以上で終わり。
+確認 #![python.exeの置いてる場所]\python.exe print &#34;Content-Type: text/plain&#34; print print &#34;hello world.&#34; と書いて[xamppのフォルダ]\htdocs\pythontest.py に保存して
+xampp_start.exe でサーバーを起動させて
+http://localhost/pythontext.py
+を開いて &amp;#8220;hello world.&amp;#8221;が表示されたらOK。
+サーバーが起動してる状態で設定したらxamppを一回終了させて再起動させないと動きません。
+やっとくと便利なこと http://localhost/index.html が
+http://localhost/ でも開けるように
+http://localhost/index.py が
+http://localhost/ でも開けるように設定しときましょう。
+# # DirectoryIndex: sets the file that Apache will serve if a directory # is requested.</description>
+    </item>
+    
+    <item>
+      <title>floatを指定した要素のみを含むとき背景が表示されない</title>
+      <link>http://programming.ironsand.net/2011/disappear-background-when-float-block/</link>
+      <pubDate>Mon, 12 Sep 2011 09:50:10 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/disappear-background-when-float-block/</guid>
+      <description>こんな感じでHTMLを書いたらFirefoxで背景がうまく表示されなかったので調べてみた。ほげ ほげほげ 
+何でそうなるかは下の「参考」のリンク先でわかったのだけれども対策がめんどくさい。なのでこうする事にしました。ほげ ほげほげ
+ 
+マナーはあんまりよくないですね。書きやすさ優先です。
+参考 CSSでfloatを指定したボックスを含むボックスの背景が出なくなる件
+http://www.fsiki.com/archive/css-doc/float.html</description>
+    </item>
+    
+    <item>
+      <title>rubyでwin32-open3を使う</title>
+      <link>http://programming.ironsand.net/2011/win32-open3-with-ruby/</link>
+      <pubDate>Tue, 17 May 2011 20:31:40 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/win32-open3-with-ruby/</guid>
+      <description>Rubyで外部のプログラムを起動させて標準エラー出力を得るには open3 を使わないとできないが、 fork() を使ってるためWindowsでは代替の win32-open3 を使って実現する。
+まず gem で win32-open3 をインストール
+C:\Users\tetsuyagem install win32-open3 Successfully installed win32-open3-0.3.2-x86-mswin32-60 1 gem installed Installing ri documentation for win32-open3-0.3.2-x86-mswin32-60... Installing RDoc documentation for win32-open3-0.3.2-x86-mswin32-60... 次にわざとエラを出して標準エラー出力が受け取れるか確認する。
+require &#39;rubygems&#39; require &#39;win32/open3&#39; stdin, stdout, stderr = *Open3.popen3(&#39;ruby -error&#39;) stderr.each{|line| print line } その結果
+-e:1: undefined local variable or method `rror&#39; for main:Object (NameError) 以上。
+外部プログラムでエラーでしかほしい情報を返してくれないやつとかいるのでこれが使えると大変便利。</description>
+    </item>
+    
+    <item>
+      <title>WSHで環境変数のPATHに値を追加する</title>
+      <link>http://programming.ironsand.net/2011/how-to-add-environmental-variable-by-wsh/</link>
+      <pubDate>Tue, 17 May 2011 19:36:08 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/how-to-add-environmental-variable-by-wsh/</guid>
+      <description>wshで環境変数のUserのPATHに値を追加したかったので、調べてみたらここがそれっぽいんだけど、
+WSHで環境変数を設定する
+http://www.atmarkit.co.jp/fwin2k/win2ktips/460envset/envset.html
+ここで紹介されてるwsfファイルをWindows 7(32bit)環境で動かすと、UserにSystem側のPathまで全部追加されてしまった。
+ExpandEnvironmentStrings(&amp;#8220;%Path%&amp;#8221;) を使うと全ての設定されてるパスをとってきてしまうらしい。 なので
+objEnv=objShell.Environment(&amp;#8220;USER&amp;#8221;) としといて
+objEnv.Item(&amp;#8220;path&amp;#8221;) で取得すればUserの環境変数だけが取得できるのでこっちを使うと多分良い。 WSHを普段全く触らないからホントに良いのかよくわからないけども、とりあえずうちの環境では下のコードを foo.wsf の名前で utf8n で保存してダブルクリックしたらPATHの値が更新された。 &amp;lt;?xml version=&amp;ldquo;1.0&amp;rdquo; encoding=&amp;ldquo;UTF-8&amp;rdquo; standalone=&amp;ldquo;yes&amp;rdquo; ?&amp;gt;  &amp;lt;?job error=&amp;ldquo;true&amp;rdquo; debug=&amp;ldquo;true&amp;rdquo; ?&amp;gt; &amp;lt;![CDATA[ Set objShell=WScript.CreateObject(&amp;ldquo;WScript.Shell&amp;rdquo;) Set objEnv=objShell.Environment(&amp;ldquo;USER&amp;rdquo;) objEnv.Item(&amp;ldquo;path&amp;rdquo;)=objEnv.Item(&amp;ldquo;path&amp;rdquo;) &amp;amp; &amp;ldquo;;&amp;rdquo; &amp;amp; &amp;ldquo;C:\hoge\bin&amp;rdquo; ]]&amp;gt;   
+重複確認なんて全くしてないので何個でも追加されるので注意してください。</description>
+    </item>
+    
+    <item>
+      <title>xyzzy で声調が簡単に入力できる「ton-input-mode」を公開しました。</title>
+      <link>http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/</link>
+      <pubDate>Sat, 14 May 2011 03:54:14 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/</guid>
+      <description>機能 xyzzyで&amp;#8221;wŏ shì rìbĕn rén&amp;#8221; などが、そこそこ簡単に打てるようになります。
+インストール方法 NetInstallerで以下のパッケージを追加して、&amp;#8221;ton input&amp;#8221;をインストールして下さい。
+http://ironsand.net/xyzzy/packages.l
+再起動すると有効になってます。
+再起動せずに有効にできそうですが、よくわかりませんでした。
+NetInstallerが何かわからない人はこちらを読んでください。
+http://xyzzy.s53.xrea.com/wiki/index.php?QuickTour%2Fext%2FNetInstaller
+使い方 C-F9 (Controlキーを押しながらF9キーを押す)で Ton Input モードに入ります。
+&amp;#8220;wo&amp;#8221; を打った時点で数字の&amp;#8221;3&amp;#8243;を押すと &amp;#8220;wŏ&amp;#8221; になります。
+1,2,3,4 でそれぞれの声調に、&amp;#8221;0&amp;#8243;で声調無しに変化します。
+&amp;#8220;xian&amp;#8221; の最後でキーを押せば一番最後に入力された母音の &amp;#8220;a&amp;#8221; に声調がつきます。
+Ton Input モードを終了させるには、もう一度 C-F9 を入力します。
+注意点 Ton Input モード中は数字(0～4)を入力しようとしても入りません。
+謝辞 ありがとうございます。 ありがとうございます。
+マイナーモードの作り方 [silog]
+http://white.s151.xrea.com/wiki/index.php?memo%2Fxyzzy%2Fminor-mode
+netinstaller 対応メモ
+http://d.hatena.ne.jp/bowbow99/20090710/1247182818
+そして、lispでわからないことを教えてくれた2chのxyzzyの名無しさん達がいなければ途中で作るのを諦めてたと思います。 みなさんに感謝を。</description>
+    </item>
+    
+    <item>
+      <title>さくらのレンタルサーバーでPythonのTwitterライブラリを使う</title>
+      <link>http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/</link>
+      <pubDate>Sat, 14 May 2011 01:04:54 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/</guid>
+      <description>はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。
+～～～～～～～～前置きここまで～～～～～～～～
+Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejson
+やらImportError: No module named twitter
+なんかのエラーが出てしまう。
+インストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。
+ 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet/SSH クライアント  外部モジュールのファイル本体
+使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。
+今回は python-twitter とその依存関係のファイル。
+さくらのレンタルサーバーのスタンダード以上のプラン
+スタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラ
+FTPクライアント
+なくてもできるんですが、あったほうが便利なので。
+現在使ってるのがなければFFFTPを使っておいてください。
+telnet/SSH クライアント
+次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。
+必要なモジュールファイルのダウンロード &amp;#8220;python-twitter-0.8.1.tar.gz&amp;#8221;
+http://code.google.com/p/python-twitter/
+だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された
+&amp;#8220;httplib2-0.6.0.tar.gz&amp;#8221; と
+http://code.google.com/p/httplib2/
+&amp;#8220;simplejson-2.1.5.tar.gz&amp;#8221; と
+http://pypi.python.org/pypi/simplejson
+&amp;#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&amp;#8221; を
+http://github.com/simplegeo/python-oauth2
+ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。</description>
+    </item>
+    
+    <item>
+      <title>xyzzy の backward-word と previous-word, forward-word と next-word の違い</title>
+      <link>http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/</link>
+      <pubDate>Fri, 13 May 2011 16:06:25 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/</guid>
+      <description>xyzzy の lisp の関数 backward-word, previous-word, forward-word, next-word の動作の違いがよくわからなかったので、試してみた。
+黒背景白文字が移動前のカーソルの位置で、灰色背景太字が移動後の場所。
+backward-word
+123　456　789
+123456　789
+123　456　789
+previous-word
+123　456　789
+123456　789
+123　456　789
+forward-word
+123456　789
+123456789
+123　456789
+next-word
+123　456　789
+123456　789
+123　456　789
+backward-word と previous-word は同じ動作で forward-word と next-word は動作が異なるらしい。 あってんのかな、これ。</description>
+    </item>
+    
+    <item>
+      <title>Rubyのスクリプトをサービスとして常駐させる</title>
+      <link>http://programming.ironsand.net/2011/how-to-run-ruby-script-as-a-deamon/</link>
+      <pubDate>Sat, 07 May 2011 11:46:31 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/how-to-run-ruby-script-as-a-deamon/</guid>
+      <description>PythonかRubyのスクリプトを常駐させたかったので調べてみたらRubyの方が簡単そうだったので試してみた。
+環境 OS:Windows 7
+ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]
+gem 1.3.4
+Portableバージョンを使ってます。
+Win32-ServiceのインストールC:&amp;gt;gem install win32-service するだけです。
+ただうちの環境ではこんなエラーが出てしまいました。P:/Dropbox/bin/RailsPortable/App/Rails/bin/ruby.exe extconf.rb checking for strncpy_s()&amp;hellip; yes creating Makefile nmake Microsoft&amp;reg; Program Maintenance Utility Version 9.00.21022.08 Copyright &amp;copy; Microsoft Corporation. All rights reserved. P:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby -e &amp;ldquo;puts &amp;lsquo;EXPORTS&amp;rsquo;, &amp;lsquo;Init_api&amp;rsquo;&amp;rdquo; &amp;gt; api-i386-mswin32.def cl -nologo -I. -I. -IP:/Dropbox/bin/RailsPortable/App/Rails/lib/ruby/1.8/i386-mswin32 -I. -MD -Zi -O2b2xg- -G6 -DHAVE_STRNCPY_S -c -Tcwin32/api.c cl : コマンド ライン warning D9035 : オプション &amp;lsquo;Og-&amp;rsquo; の使用は現在推奨されていません。今後のバージョンからは削除されます。 cl : コマンド ライン warning D9002 : 不明なオプション &amp;lsquo;-G6&amp;rsquo; を無視します api.</description>
+    </item>
+    
+    <item>
+      <title>SourceForgeに公開鍵をputtygen.exeで生成する</title>
+      <link>http://programming.ironsand.net/2011/generate-openssh-public-key-for-sourceforge-with-puttygen/</link>
+      <pubDate>Mon, 02 May 2011 01:59:02 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/generate-openssh-public-key-for-sourceforge-with-puttygen/</guid>
+      <description>SourceForgeはOpenSSHの公開鍵を登録しないと使えない機能が多いので
+puttygen.exe でキーを生成して登録する。
+ただputtyで使うキーがSSH形式でSourceForgeで使う形式のOpenSSHと違うためそのままでは登録できない。
+なので
+http://hiromasaya.web.fc2.com/Windows/putty.html
+を参考にして
+ssh-keygen -i -f id_rsa.pub  id_rsa_open_ssh.pub でできた id_rsa_open_ssh.pub をエディタで開いてSourceForgeの入力フィールドにコピペで登録できました。</description>
+    </item>
+    
+    <item>
+      <title>xyzzyをソースからビルドの方法をまとめてみた</title>
+      <link>http://programming.ironsand.net/2011/build-xyzzy-from-source/</link>
+      <pubDate>Thu, 28 Apr 2011 21:16:37 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/build-xyzzy-from-source/</guid>
+      <description>Xyzzy Wiki の [ソースからビルドしてみる3][1] を参考に xyzzy をソースからビルドしてみました。 ファイルを取ってきたり、めんどくさいことが多かったので以下のステップでできるように簡略化。
+[xyzzysrc-0.2.2.235-pack][2]
+これをダウンロードしてあとは01README.txtを見てください。
+ 1 Microsoft Visual C++ 2008 Express Edition インストール
+2 env.vbs を叩く (環境変数のセットとafxres.hのコピー)
+3 cd xyzzy/src
+4 nmake (デバッグ版は nmake CFG=d)
+5 ぽけーと待つ
+6 できあがり
+ 以上です。 何かおかしいところあったら連絡ださい。 俺は何もわかっていませんので。
+Unicode Consortium のファイルも同封してますが、ライセンスの確認はとってます。
+2011/05/28追記
+2chで指摘されて気づいたのですが、env.vbs で c:\Program Files\ 配下にファイルの移動を行ってるので UAC が入っているとエラーになります。 UACを一時的に切ってenv.vbs を実行してください。
+一度実行してしまえば次回以降ビルドするときにはUAC がオンでも問題ありません。</description>
+    </item>
+    
+    <item>
+      <title>xyzzyでファイル保存時にmodeの変更をする</title>
+      <link>http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/</link>
+      <pubDate>Sat, 23 Apr 2011 08:23:30 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/</guid>
+      <description>Xyzzy上で新規作成した javascript とか ruby のバッファに毎回モード設定をするのがめんどくさかったので書いた。 siteinit.l か ~/.xyzzy のどこかに貼りつけて使ってください。
+※同じ拡張子に複数のモードが紐付けられていると、古い方に設定されるようになっていたので修正;ファイル保存時に拡張子をチェックして適切なモードに変更する。 ;リネーム時にしたかったけど、hookが用意されてないので断念。 (defun set-buffer-mode () (block sbm (mapcar (lambda (l) (when (string-matchp (car l) (get-buffer-file-name)) (funcall (cdr l)) (return-from sbm)) ) *auto-mode-alist*))) (add-hook &amp;lsquo;*after-save-buffer-hook* &amp;lsquo;set-buffer-mode)</description>
+    </item>
+    
+    <item>
+      <title>PythonのGUI,Tkinterのエラー対処</title>
+      <link>http://programming.ironsand.net/2011/tkinter-importerror/</link>
+      <pubDate>Sat, 26 Feb 2011 06:38:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/tkinter-importerror/</guid>
+      <description>PythonのGUI,Tkinterを使おうとこのページの一番上のサンプルを動かそうとすると動かず第一歩をくじかれる。
+http://www.pythonware.com/library/tkinter/introduction/hello-tkinter.htm
+エラーメッセージはこんなの。
+ImportError: No module named Tkinter
+環境はWindows7でPython3.0.1 Portable。
+エラーメッセージで検索しても「yumを使ってモジュールインストールしろ。」とかLinux向けの情報しか出てこない。 適当にあさってやっと見つけた解決策はこれ。
+from Tkinter import *
+を
+from tkinter import *
+に変える。 どうも Python3からmodule名の大文字小文字が変更されたのが原因だったようだ。</description>
+    </item>
+    
+    <item>
+      <title>xyzzyからPlantUMLを使う</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Sun, 28 Mar 2010 18:53:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>テキスト形式でUMLが書けるPlantUML PlantUMLはテキスト形式でUMLを記述して画像に出力できるオープンソースのソフトウェアです。 UMLが書けるフリーソフトはいくつかありますが、テキストベースで記述できるのは大変ありがたいですね。
+PlantUMLの具体例 サンプルをPlantUMLのサイト内から引用します。
+http://plantuml.sourceforge.net/classes.html
+[][1]　こんなUMLが以下の記述で作れちゃいます。@startuml img/classes04.png abstract class AbstractList abstract AbstractCollection interface List interface Collection List &amp;lt;|&amp;ndash; AbstractList Collection &amp;lt;|&amp;ndash; AbstractCollection Collection &amp;lt;|- List AbstractCollection &amp;lt;|- AbstractList AbstractList &amp;lt;|&amp;ndash; ArrayList ArrayList : Object[] elementData ArrayList : size() enum TimeUnit TimeUnit : DAYS TimeUnit : HOURS TimeUnit : MINUTES @enduml
+PlantUMLのインストール http://plantuml.sourceforge.net/download.html
+から plantuml.jar をダウンロードしてください。
+plantumlの実行にはJavaが必要になりますので、もしJavaがインストールされていなければ
+http://www.java.com/ja/download/
+からインストールを行ってください。
+&amp;ldquo;Sequence Diagram&amp;rdquo; 以外の画像の出力、つまり普通に使うのであれば Graphviz もインストールする必要があります。
+http://graphviz.org/Download_windows.php
+からダウンロードしてインストールしてください。
+以上でインストールは終了です。
+xyzzyからPlantUMLを使う方法 さて、次は以下のコードを siteinit.</description>
+    </item>
+    
+    <item>
+      <title>Common LispでSchemeのbeginを使う</title>
+      <link>http://programming.ironsand.net/posts/2010-03-23-common-lisp%E3%81%A6%E3%82%99scheme%E3%81%AEbegin%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Tue, 23 Mar 2010 02:18:57 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/posts/2010-03-23-common-lisp%E3%81%A6%E3%82%99scheme%E3%81%AEbegin%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>Common lisp で Scheme の begin を使いたい時は progn を使います。</description>
+    </item>
+    
+    <item>
+      <title>xyzzy から Rhino(javascript)を直接実行する</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</link>
+      <pubDate>Sun, 14 Mar 2010 18:56:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</guid>
+      <description>xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin+zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。
+[][2]
+下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。
+;;jscript-mode(for Rhino) (setf \*js-prog\* &#34;java org.mozilla.javascript.tools.shell.Main&#34;) (setf \*js-classpath\* &#34;X:/sugarsync/bin/rhino1\_7R2/js.jar&#34;) (defun js-run-script-immediate () (interactive) (js-run &#34;&#34;)) (defun js-run (args) (let ((tempfile (make-temp-file-name &#34;\_\_temp\_&#34; &#34;js&#34; (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* &#34; -f \&#34;&#34; tempfile &#34;\&#34; &#34; args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive &#34;</description>
+    </item>
+    
+    <item>
+      <title>Windows(cygwin&#43;zsh)環境でRhinoを使う</title>
+      <link>http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Sun, 14 Mar 2010 02:16:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。
+ Rhino &amp;#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。
+ダウンロード+解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。
+これでインストールは完了したので
+java org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。
+zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&amp;ldquo;java org.mozilla.javascript.tools.shell.Main&amp;rdquo;
+インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &amp;ldquo;print(&amp;lsquo;hello&amp;rsquo;)&amp;rdquo; js -f hello.js
+これでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。</description>
+    </item>
+    
+    <item>
+      <title>MS、Webブラウザ選択画面のバグの解説</title>
+      <link>http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/</link>
+      <pubDate>Sat, 13 Mar 2010 17:58:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/</guid>
+      <description>MSのブラウザ選択のバグに関する説明が、全くわかってない人が書いてるとしか思えない内容だったので javascript の sort について少し解説をしようと思う。
+ MS、Webブラウザ選択画面にアルゴリズム上のバグか － ＠IT  JavaScriptの配列の並べ替え（sort）は比較関数を渡すことで柔軟な並べ替えが行える。ここではMath.rand()で半々の確率で正負の値を返しているので、隣り合う要素の並べ替えはランダムに起こる。これで結果もランダムになるように思えるが、実際に意味のある並べ替えを行うためには、並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠で、例えば「a＞b」であれば「b＜a」、「a＜bかつb＜c」であれば「a＜c」でなければならない。これは、隣り合う要素同士をただランダムに入れ替えるだけでは達成できないのだという。  この「並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠」という意味の分からない部分はおそらく下記を訳した物と思われる。
+ Doing the Microsoft Shuffle: Algorithm Fail in Browser Ballot  Sorting requires a self-consistent definition of ordering. The following assertions must be true if sorting is to make any sense at all:  だから正しい訳は「並べかえには首尾一貫した&amp;#8221;大小の定義&amp;#8221;が必要である。」になる。
+実際にどのようなバグがあったかを説明するにはコードで示すのが一番わかりやすいので直接書いていこう。 問題の、 javascript の sort関数では引数に比較関数を取れる。例えばfunction comp(a, b){ return a &amp;lt; b; //降順で並べる } function sortnum(){ return [0,3,5,6,-6].sort(comp); } //=&amp;gt;6,5,3,0,-6 function comp(a, b){ return a &amp;lt; b; //昇順で並べる } function sortnum(){ return [0,3,5,6,-6].</description>
+    </item>
+    
+  </channel>
+</rss>

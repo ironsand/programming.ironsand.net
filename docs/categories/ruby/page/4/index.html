@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/ruby/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/ruby/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>ruby - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>ruby</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-17T17:54:36JST">Mar 17, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/pass-array-as-individual-arguments/">複数の引数を取る関数に配列で値を渡す</a></h2>
+  </header>
+
+  
+  <div class="summary">rubyで def foo(arg1, arg2, arg3) な関数があった時に values = [1, 2, 3] という値を渡そうとして
+foo values とすると TypeError: no implicit conversion of Array into Integer というエラーになります。
+解決策 この配列をいうなれば”展開”して渡したいわけですが、やり方がわからなかったので調べました。
+foo *values のようにまるでC言語みたいな渡し方をすればOK.
+参考 [caiustheory.com/sending-array-elements-as-individual-arguments-in-ruby][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/pass-array-as-individual-arguments/" title="複数の引数を取る関数に配列で値を渡す">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-17T15:58:02JST">Mar 17, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/group-strings-by-similar-pattern-with-ruby/">rubyで文字列を正規表現で分類してグループ分けする</a></h2>
+  </header>
+
+  
+  <div class="summary">最後の数字だけ違う文字列をグループ分けしたかったんですが、自分で書いてみるとこんな面倒くさい感じになって (´・ω・｀)ｼｮﾎﾞｰﾝ
+a1 = %w(foo1 foo2 foo3 bar1 bar3 buz2) a2 = a1.map{|v| v.sub(/[0-9]$/,"")}.uniq tmp = Array.new(a2.size) a2.each_with_index do |v2, i| a1.each do |v1| if v1.sub(/[0-9]$/, "") == v2 tmp[i].nil? ? tmp[i] = [v1] : tmp[i].push(v1) end end end p tmp # =&gt; [["foo1", "foo2", "foo3"], ["bar1", "bar3"], ["buz2"]] なので、調べてみたら非常に簡単な方法が見つかりました。
+a1 = %w(foo1 foo2 foo3 bar1 bar3 buz2) p a1.group_by{|x| x[/[a-zA-Z]+/] }.values Rubyすげぇ！
+参考 [arrays &#8211; Group strings with similar pattern in Ruby &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/group-strings-by-similar-pattern-with-ruby/" title="rubyで文字列を正規表現で分類してグループ分けする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-27T09:24:19JST">Jan 27, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/gem-install-rmagic-in-maverick/">Macで`gem install rmagick`がコケる時の対処法</a></h2>
+  </header>
+
+  
+  <div class="summary">画像編集をRailsでしたかったので ImageMagick を Railsから使うgem rmagick をインストールしようと思ったらこんなエラーが出てしまった。環境は Maverick。
+Can't install RMagick 2.13.1. Can't find the ImageMagick library or one of the dependent libraries. Check the mkmf.log file for more detailed information. *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.log file for more details. You may need configuration options. 解決策 最新版の 2.13.2 をインストールすればOK。ちなみにライブラリのリンクを作るという方法も紹介されてましたがこっちは失敗。
+gem install rmagick -v '2.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/gem-install-rmagic-in-maverick/" title="Macで`gem install rmagick`がコケる時の対処法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-23T08:04:42JST">Jan 23, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/">rbenvでインストールしたgemをEmacsから使う</a></h2>
+  </header>
+
+  
+  <div class="summary">rspec書いてる時にEmacsから簡単に呼び出せたら便利だと思ってsmart-compileの設定をこんな風に書き換えたんだけど、
+(setq smart-compile-alist (append '(("\_spec.rb$" . "rspec %f")) '(("\\.rb$" . "ruby %f")) '(("\\.php$" . "php %f")) '(("\\.coffee$" . "coffee -p %f")) '(("\Gemfile$" . "bundle install")) smart-compile-alist))  でちゃんとCompile command: rspec foo_spec.rbは呼び出せるものの実行すると
+-*- mode: compilation; default-directory: "~/dev/zombie/spec/lib/" -*- Compilation started at Thu Jan 23 16:50:59 rspec zombie_spec.rb /bin/bash: rspec: コマンドが見つかりません Compilation exited abnormally with code 127 at Thu Jan 23 16:51:00 な感じでエラーになってしまう。
+どうやら rbenv の環境がEmacs側で認識されてないので rbenv で入れた gem のコマンドも使えないのが原因らしい。
+解決策 [rbenv.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/" title="rbenvでインストールしたgemをEmacsから使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-13T09:44:32JST">Jan 13, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/syntax-error-unexpected-expecting-keyword_end-in-controller/">Controllerで出る`syntax error, unexpected ‘:’, expecting keyword_end`エラー</a></h2>
+  </header>
+
+  
+  <div class="summary">yntax error, unexpected ':', expecting keyword_end といつもの見慣れたようなTypoのエラーが出たのでControllerを確認したけどない。何度見てもちゃんとカッコ閉じてるし end も使ってる。なのにエラーが消えない！
+解決 モデルのほうで has_many: words って書いてました。 正しくは has_many :words ですね。悲しい。こんなものに結構な時間を着いたしたのが悲しい。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/syntax-error-unexpected-expecting-keyword_end-in-controller/" title="Controllerで出る`syntax error, unexpected ‘:’, expecting keyword_end`エラー">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-09T08:55:19JST">Jan 9, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-solve-capypara-undefined-method-visit/">Capyparaで `undefined method `visit’`と出る時の対処法</a></h2>
+  </header>
+
+  
+  <div class="summary">「Rspecよくわかんねー。」という思いを胸に抱き続けてきましたが、やっぱりやらないとダメっぽいので使おうとしたら早速 undefined method 'visit'と言われて困る。
+原因 このエラーの原因はCapybaraが最近のアップデートでこっそりと対象のディレクトリを requests から features に変えたのが原因らしいです。やめてほしいそういうの。
+しかも [Google group][1] にこっそり報告してるだけ。もっと こえを おおきく。
+解決策 spec_helper.rb に以下をたす解決策もあるそうですが、将来的に requests じゃなくてfeatures を使うという意向ならそうしたほうが楽そうなので mv spec/requests/ spec/features して自分は対策しました。
+ちなみに spec_helper.rbに足す場合はこちら。
+require 'capybara/rails' require 'capybara/rspec' include Capybara::DSL 参考 [ruby on rails &#8211; Capybara: undefined method &apos;visit&apos; &#8211; Stack Overflow][2]
+[rails 3.2でRspecを導入したけど NameError &#8211; undefined method `visit&apos; って出るときの対策 &#8211; どぶんけーブログ][3]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-solve-capypara-undefined-method-visit/" title="Capyparaで `undefined method `visit’`と出る時の対処法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-07T13:46:26JST">Jan 7, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/rbenv-update/">rbenv を最新の状態にupdate する</a></h2>
+  </header>
+
+  
+  <div class="summary">ruby 2.1.0 も出たことだし、とりあえずさくらVPSにおいてるCentOS上に入れておこうと思ったけど、ちょっと古いバージョンしか rbenv install --list で出てくれない。
+rbenv updateという便利なコマンドはないようなのでアップデート方法を調べてアップデートしてみた。
+アップデート方法 どうやってインストールしたかは全く覚えてなかったけど調べてみるとどうやら git clone でインストールしたっぽいので cd ~/.rbenv; git pull するだけでOKらしい。
+無事にアップデートできたのでもう一度インストールできるrubyのバージョンを確認したら ない。ない。
+どうやらrubyのインストールには ruby-buildを使ってるのでそっちをアップデートしないとインストール可能なバージョンは更新されないらしい。ちなみに存在しないバージョンのインストールを試みるとこんな感じに教えてくれる。
+ironsand@SarakuVPS ~$ rbenv install 2.0.0-p247 ruby-build: definition not found: 2.0.0-p247 You can list all available versions with `rbenv install --list'. If the version you're looking for is not present, first try upgrading ruby-build. If it's still missing, open a request on the ruby-build issue tracker: https://github.com/sstephenson/ruby-build/issues ruby-build のアップデート ruby-buildもgit cloneしてるだけなので、 cd .</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/rbenv-update/" title="rbenv を最新の状態にupdate する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-05T03:24:33JST">Jan 5, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/request-fullpath-without-params/">request.fullpathでparamを使わない</a></h2>
+  </header>
+
+  
+  <div class="summary">Railsのrequest.fullpath だと param 以降も受け取ってしまうので、paramの値を使わない時の方法。
+解決策 splitで邪魔なものをとる方法
+request.fullpath.split("?")[0] path を使う方法。こっちのほうがよさそう。
+request.path 参考 [ruby on rails &#8211; request.fullpath with no parameters &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/request-fullpath-without-params/" title="request.fullpathでparamを使わない">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-03T06:19:02JST">Jan 3, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/config-routes-is-not-pure-ruby/">`config/routes.rb`内のブロックはブロックじゃない。</a></h2>
+  </header>
+
+  
+  <div class="summary">scope "api" do resources :entries end このコードをワンラインで、
+scope "api" { resources :entries } とかくと動かないので、routes.rb は DSLなのでブロックの書き方に影響が出てるようです。何でこうしてるかの詳しい理由はよくわからない。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/config-routes-is-not-pure-ruby/" title="`config/routes.rb`内のブロックはブロックじゃない。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-03T04:07:31JST">Jan 3, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/">Maverickで`rails new` が `atomic`のインストールでこける時の対処法</a></h2>
+  </header>
+
+  
+  <div class="summary">rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。
+エラーメッセージはこんなの。
+run bundle install Fetching gem metadata from https://rubygems.org/.......... Fetching gem metadata from https://rubygems.org/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/" title="Maverickで`rails new` が `atomic`のインストールでこける時の対処法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/categories/ruby/page/3/">Previous</a></li>
+    
+
+    
+    <li><a href="/categories/ruby/page/5/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2016/ruby%E3%81%AE%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%B7%BB%E5%AD%97%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E3%83%94%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83/" class="list-group-item">Rubyの配列から添字を使って複数の値をピックアップする</a>
+      
+      <a href="http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/" class="list-group-item">複数のカラムの値が重複するオブジェクトのIDを取得する</a>
+      
+      <a href="http://programming.ironsand.net/2016/file-write-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-file-append-%E3%82%82%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/" class="list-group-item">File.write みたいに File.append も使いたい</a>
+      
+      <a href="http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/" class="list-group-item">Hashのキーをリネームする</a>
+      
+      <a href="http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/" class="list-group-item">rake task の多重起動を禁止する排他処理を行う</a>
+      
+      <a href="http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/" class="list-group-item">rake task を途中で抜けるときはreturnじゃなくてnext</a>
+      
+      <a href="http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/" class="list-group-item">Arrayから重複する要素の配列を抜き出す</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

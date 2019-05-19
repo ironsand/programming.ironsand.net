@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>RubyとRasberry Pi でLEDをチカチカさせる - 答えを知りたい</title>
+    
+<meta name="description" content="Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。基礎知識 LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。GPIO(General-purpose input/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。つまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。[][1]B&#43;のモデルにはもっとピンがあるんですが、1から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが1だそうです。……なにそのわかりにくい基準。[][2]抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。ブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。http://jsdiy.web.fc2.com/avr_7segclockbb/LEDをチカチカさせる 最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。配線方法 ブレッドボードの配線がこんなんで、[][4]ラズパイの配線がこんなんで[][5]コードがこうです。解説サイトのRubyを修正しています。port = 24 File.write(&#34;/sys/class/gpio/export&#34;, port) sleep 0.2 # 書き込みエラー回避 File.write(&#34;/sys/class/gpio/gpio#{port}/direction&#34;, &#34;out&#34;) (1..10).each do |i| File.write(&#34;/sys/class/gpio/gpio#{port}/value&#34;, i % 2) sleep 0.2 end File.write(&#34;/sys/class/gpio/unexport&#34;, port) Lチカさせる 以上が上手くいっていたら ruby ~/led_blink.rbでスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！できなかった人は一つ一つ手順を確認していきましょう〜。それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ">
+
+<meta property="og:title" content="RubyとRasberry Pi でLEDをチカチカさせる - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。基礎知識 LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。GPIO(General-purpose input/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。つまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。[][1]B&#43;のモデルにはもっとピンがあるんですが、1から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが1だそうです。……なにそのわかりにくい基準。[][2]抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。ブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。http://jsdiy.web.fc2.com/avr_7segclockbb/LEDをチカチカさせる 最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。配線方法 ブレッドボードの配線がこんなんで、[][4]ラズパイの配線がこんなんで[][5]コードがこうです。解説サイトのRubyを修正しています。port = 24 File.write(&#34;/sys/class/gpio/export&#34;, port) sleep 0.2 # 書き込みエラー回避 File.write(&#34;/sys/class/gpio/gpio#{port}/direction&#34;, &#34;out&#34;) (1..10).each do |i| File.write(&#34;/sys/class/gpio/gpio#{port}/value&#34;, i % 2) sleep 0.2 end File.write(&#34;/sys/class/gpio/unexport&#34;, port) Lチカさせる 以上が上手くいっていたら ruby ~/led_blink.rbでスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！できなかった人は一つ一つ手順を確認していきましょう〜。それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/">
+<meta name="twitter:title" content="RubyとRasberry Pi でLEDをチカチカさせる - 答えを知りたい">
+<meta name="twitter:description" content="Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。基礎知識 LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。GPIO(General-purpose input/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。つまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。[][1]B&#43;のモデルにはもっとピンがあるんですが、1から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが1だそうです。……なにそのわかりにくい基準。[][2]抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。ブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。http://jsdiy.web.fc2.com/avr_7segclockbb/LEDをチカチカさせる 最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。配線方法 ブレッドボードの配線がこんなんで、[][4]ラズパイの配線がこんなんで[][5]コードがこうです。解説サイトのRubyを修正しています。port = 24 File.write(&#34;/sys/class/gpio/export&#34;, port) sleep 0.2 # 書き込みエラー回避 File.write(&#34;/sys/class/gpio/gpio#{port}/direction&#34;, &#34;out&#34;) (1..10).each do |i| File.write(&#34;/sys/class/gpio/gpio#{port}/value&#34;, i % 2) sleep 0.2 end File.write(&#34;/sys/class/gpio/unexport&#34;, port) Lチカさせる 以上が上手くいっていたら ruby ~/led_blink.rbでスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！できなかった人は一つ一つ手順を確認していきましょう〜。それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "RubyとRasberry Pi でLEDをチカチカさせる - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-02-22T12:14:42JST",
+    "dateModified": "2015-02-22T12:14:42JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。\n\n基礎知識 LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。\nGPIO(General-purpose input\/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。\nつまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。\n[][1]\nB\x2bのモデルにはもっとピンがあるんですが、1から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが1だそうです。……なにそのわかりにくい基準。\n[][2]\n抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。\nブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。\nhttp:\/\/jsdiy.web.fc2.com\/avr_7segclockbb\/\nLEDをチカチカさせる 最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。\n配線方法 ブレッドボードの配線がこんなんで、\n[][4]\nラズパイの配線がこんなんで\n[][5]\nコードがこうです。解説サイトのRubyを修正しています。\nport = 24 File.write(\x22\/sys\/class\/gpio\/export\x22, port) sleep 0.2 # 書き込みエラー回避 File.write(\x22\/sys\/class\/gpio\/gpio#{port}\/direction\x22, \x22out\x22) (1..10).each do |i| File.write(\x22\/sys\/class\/gpio\/gpio#{port}\/value\x22, i % 2) sleep 0.2 end File.write(\x22\/sys\/class\/gpio\/unexport\x22, port) Lチカさせる 以上が上手くいっていたら ruby ~\/led_blink.rbでスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！\nできなかった人は一つ一つ手順を確認していきましょう〜。\nそれではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">RubyとRasberry Pi でLEDをチカチカさせる</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-22T12:14:42JST">Feb 22, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">RubyとRasberry Pi でLEDをチカチカさせる</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。</p>
+
+<p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00G86DOP8/ironsand0b-22/ref=nosim/" rel="nofollow" ><img src="http://ecx.images-amazon.com/images/I/51LuR8kp9nL._SS500_.jpg" style="border: none;" alt="ハック ラズベリーパイ Raspberry Pi 電子工作入門キット。" /></a></p>
+
+<h3 id="基礎知識">基礎知識</h3>
+
+<p>LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。</p>
+
+<p>GPIO(General-purpose input/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。</p>
+
+<p>つまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。</p>
+
+<p>[<img src="http://programming.ironsand.net/wp-content/uploads/2015/02/gpio-led.png" alt="gpio-led" width="564" height="424" class="alignnone size-full wp-image-602" srcset="http://programming.ironsand.net/wp-content/uploads/2015/02/gpio-led.png 564w, http://programming.ironsand.net/wp-content/uploads/2015/02/gpio-led-300x226.png 300w" sizes="(max-width: 564px) 100vw, 564px" />][1]</p>
+
+<p><code>B+</code>のモデルにはもっとピンがあるんですが、<code>1</code>から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが<code>1</code>だそうです。……なにそのわかりにくい基準。</p>
+
+<p>[<img src="http://programming.ironsand.net/wp-content/uploads/2015/02/backside_raspberrypi.jpg" alt="backside_raspberrypi" width="1352" height="800" class="alignnone size-full wp-image-609" srcset="http://programming.ironsand.net/wp-content/uploads/2015/02/backside_raspberrypi.jpg 1352w, http://programming.ironsand.net/wp-content/uploads/2015/02/backside_raspberrypi-300x178.jpg 300w, http://programming.ironsand.net/wp-content/uploads/2015/02/backside_raspberrypi-1024x606.jpg 1024w" sizes="(max-width: 1352px) 100vw, 1352px" />][2]</p>
+
+<p>抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。</p>
+
+<p>ブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。</p>
+
+<p><a href="http://jsdiy.web.fc2.com/avr_7segclockbb/">http://jsdiy.web.fc2.com/avr_7segclockbb/</a></p>
+
+<h3 id="ledをチカチカさせる">LEDをチカチカさせる</h3>
+
+<p>最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。</p>
+
+<h3 id="配線方法">配線方法</h3>
+
+<p>ブレッドボードの配線がこんなんで、</p>
+
+<p>[<img src="http://programming.ironsand.net/wp-content/uploads/2015/02/codes_breadboard.jpg" alt="codes_breadboard" width="1067" height="800" class="alignnone size-full wp-image-605" srcset="http://programming.ironsand.net/wp-content/uploads/2015/02/codes_breadboard.jpg 1067w, http://programming.ironsand.net/wp-content/uploads/2015/02/codes_breadboard-300x225.jpg 300w, http://programming.ironsand.net/wp-content/uploads/2015/02/codes_breadboard-1024x768.jpg 1024w" sizes="(max-width: 1067px) 100vw, 1067px" />][4]</p>
+
+<p>ラズパイの配線がこんなんで</p>
+
+<p>[<img src="http://programming.ironsand.net/wp-content/uploads/2015/02/codes_raspberry.jpg" alt="codes_raspberry" width="1067" height="800" class="alignnone size-full wp-image-606" srcset="http://programming.ironsand.net/wp-content/uploads/2015/02/codes_raspberry.jpg 1067w, http://programming.ironsand.net/wp-content/uploads/2015/02/codes_raspberry-300x225.jpg 300w, http://programming.ironsand.net/wp-content/uploads/2015/02/codes_raspberry-1024x768.jpg 1024w" sizes="(max-width: 1067px) 100vw, 1067px" />][5]</p>
+
+<p>コードがこうです。解説サイトのRubyを修正しています。</p>
+
+<pre class="lang:ruby decode:true " title="/home/pi/led_blink.rb" >port = 24
+File.write("/sys/class/gpio/export", port)
+sleep 0.2 # 書き込みエラー回避
+File.write("/sys/class/gpio/gpio#{port}/direction", "out")
+
+(1..10).each do |i|
+  File.write("/sys/class/gpio/gpio#{port}/value", i % 2)
+  sleep 0.2
+end
+
+File.write("/sys/class/gpio/unexport", port)</pre>
+
+<h3 id="lチカさせる">Lチカさせる</h3>
+
+<p>以上が上手くいっていたら <code>ruby ~/led_blink.rb</code>でスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！</p>
+
+<p>できなかった人は一つ一つ手順を確認していきましょう〜。</p>
+
+<p>それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/raspberry-pie/">Raspberry Pie</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

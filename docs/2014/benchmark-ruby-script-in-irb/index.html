@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>irb上でrubyスクリプトの実行速度を測る - 答えを知りたい</title>
+    
+<meta name="description" content="例えば foo.rbというRubyスクリプトの実行時間をシェル上で知りたかったらtime foo.rbとすればいいわけですが、残念ながらirb上ではtimeコマンドをそのまま使うことができません。解決策 標準で用意されているBenchmarkライブラリを使えばOK.irb(main)&amp;gt; require &#39;benchmark&#39; irb(main)&amp;gt; puts Benchmark.measure { &#34;a&#34;*1_000_000_000 } 0.350000 0.400000 0.750000 ( 0.835234) こんな感じで表示されます。0.750000がCPUを使った時間で0.835234が実際にかかった時間。気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。ちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。参考 [Module: Benchmark (Ruby 2.1.1)][1][When benchmarking, what causes a lag between CPU time and &amp;ldquo;elapsed real time&amp;rdquo;? &amp;#8211; Stack Overflow][2]">
+
+<meta property="og:title" content="irb上でrubyスクリプトの実行速度を測る - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="例えば foo.rbというRubyスクリプトの実行時間をシェル上で知りたかったらtime foo.rbとすればいいわけですが、残念ながらirb上ではtimeコマンドをそのまま使うことができません。解決策 標準で用意されているBenchmarkライブラリを使えばOK.irb(main)&amp;gt; require &#39;benchmark&#39; irb(main)&amp;gt; puts Benchmark.measure { &#34;a&#34;*1_000_000_000 } 0.350000 0.400000 0.750000 ( 0.835234) こんな感じで表示されます。0.750000がCPUを使った時間で0.835234が実際にかかった時間。気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。ちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。参考 [Module: Benchmark (Ruby 2.1.1)][1][When benchmarking, what causes a lag between CPU time and &amp;ldquo;elapsed real time&amp;rdquo;? &amp;#8211; Stack Overflow][2]">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/">
+<meta name="twitter:title" content="irb上でrubyスクリプトの実行速度を測る - 答えを知りたい">
+<meta name="twitter:description" content="例えば foo.rbというRubyスクリプトの実行時間をシェル上で知りたかったらtime foo.rbとすればいいわけですが、残念ながらirb上ではtimeコマンドをそのまま使うことができません。解決策 標準で用意されているBenchmarkライブラリを使えばOK.irb(main)&amp;gt; require &#39;benchmark&#39; irb(main)&amp;gt; puts Benchmark.measure { &#34;a&#34;*1_000_000_000 } 0.350000 0.400000 0.750000 ( 0.835234) こんな感じで表示されます。0.750000がCPUを使った時間で0.835234が実際にかかった時間。気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。ちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。参考 [Module: Benchmark (Ruby 2.1.1)][1][When benchmarking, what causes a lag between CPU time and &amp;ldquo;elapsed real time&amp;rdquo;? &amp;#8211; Stack Overflow][2]">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "irb上でrubyスクリプトの実行速度を測る - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-04-26T16:59:23JST",
+    "dateModified": "2014-04-26T16:59:23JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "例えば foo.rbというRubyスクリプトの実行時間をシェル上で知りたかったらtime foo.rbとすればいいわけですが、残念ながらirb上ではtimeコマンドをそのまま使うことができません。\n解決策 標準で用意されているBenchmarkライブラリを使えばOK.\nirb(main)\x26gt; require \x27benchmark\x27 irb(main)\x26gt; puts Benchmark.measure { \x22a\x22*1_000_000_000 } 0.350000 0.400000 0.750000 ( 0.835234) こんな感じで表示されます。\n0.750000がCPUを使った時間で0.835234が実際にかかった時間。\n気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。\nちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。\n参考 [Module: Benchmark (Ruby 2.1.1)][1]\n[When benchmarking, what causes a lag between CPU time and \x26ldquo;elapsed real time\x26rdquo;? \x26#8211; Stack Overflow][2]"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">irb上でrubyスクリプトの実行速度を測る</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T16:59:23JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">irb上でrubyスクリプトの実行速度を測る</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>例えば <code>foo.rb</code>というRubyスクリプトの実行時間をシェル上で知りたかったら<code>time foo.rb</code>とすればいいわけですが、残念ながら<code>irb</code>上では<code>time</code>コマンドをそのまま使うことができません。</p>
+
+<h3 id="解決策">解決策</h3>
+
+<p>標準で用意されている<code>Benchmark</code>ライブラリを使えばOK.</p>
+
+<pre class="lang:ruby decode:true " >irb(main)&gt; require 'benchmark'
+irb(main)&gt; puts Benchmark.measure { "a"*1_000_000_000 }
+0.350000   0.400000   0.750000 (  0.835234)</pre>
+
+<p>こんな感じで表示されます。</p>
+
+<p><code>0.750000</code>がCPUを使った時間で<code>0.835234</code>が実際にかかった時間。</p>
+
+<p>気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。</p>
+
+<p>ちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。</p>
+
+<h3 id="参考">参考</h3>
+
+<p>[Module: Benchmark (Ruby 2.1.1)][1]</p>
+
+<p>[When benchmarking, what causes a lag between CPU time and &ldquo;elapsed real time&rdquo;? &#8211; Stack Overflow][2]</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/time/">time</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

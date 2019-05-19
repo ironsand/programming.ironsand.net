@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>time on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/time/</link>
+    <description>Recent content in time on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sat, 26 Apr 2014 16:59:23 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/time/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>irb上でrubyスクリプトの実行速度を測る</title>
+      <link>http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/</link>
+      <pubDate>Sat, 26 Apr 2014 16:59:23 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/</guid>
+      <description>例えば foo.rbというRubyスクリプトの実行時間をシェル上で知りたかったらtime foo.rbとすればいいわけですが、残念ながらirb上ではtimeコマンドをそのまま使うことができません。
+解決策 標準で用意されているBenchmarkライブラリを使えばOK.
+irb(main)&amp;gt; require &#39;benchmark&#39; irb(main)&amp;gt; puts Benchmark.measure { &#34;a&#34;*1_000_000_000 } 0.350000 0.400000 0.750000 ( 0.835234) こんな感じで表示されます。
+0.750000がCPUを使った時間で0.835234が実際にかかった時間。
+気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。
+ちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。
+参考 [Module: Benchmark (Ruby 2.1.1)][1]
+[When benchmarking, what causes a lag between CPU time and &amp;ldquo;elapsed real time&amp;rdquo;? &amp;#8211; Stack Overflow][2]</description>
+    </item>
+    
+  </channel>
+</rss>

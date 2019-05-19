@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>JqueryとHTML5でajaxなファイルのアップロード - 答えを知りたい</title>
+    
+<meta name="description" content="画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。やりたい事と条件 ・ajaxなテキストファイルのアップロード・テキストをRubyで編集して返す・画面遷移せずに結果を表示・IEは諦める。必要最低限のコード まずHTMLを用意ajaxupload.html&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;&amp;lt;html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html;charset=utf-8&amp;quot;&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;jquery-1.7.min.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;ajaxupload.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;style&amp;gt;textarea{height:80%;width:100%;}&amp;lt;/style&amp;gt;&amp;lt;br&amp;gt; &amp;lt;body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=file id=file /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=button id=upload value=&amp;quot;upload&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; &amp;lt;textarea id=output&amp;gt;&amp;lt;/textarea&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;つぎにjavascriptajaxupload.js&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;$(function(){ $(&amp;quot;#upload&amp;quot;).click(function(){ var file = $(&amp;quot;#file&amp;quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, &#39;UTF-8&#39;); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: &amp;quot;POST&amp;quot;, url: &amp;quot;ajaxupload.rb&amp;quot;, data: { filedata:event.">
+
+<meta property="og:title" content="JqueryとHTML5でajaxなファイルのアップロード - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。やりたい事と条件 ・ajaxなテキストファイルのアップロード・テキストをRubyで編集して返す・画面遷移せずに結果を表示・IEは諦める。必要最低限のコード まずHTMLを用意ajaxupload.html&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;&amp;lt;html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html;charset=utf-8&amp;quot;&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;jquery-1.7.min.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;ajaxupload.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;style&amp;gt;textarea{height:80%;width:100%;}&amp;lt;/style&amp;gt;&amp;lt;br&amp;gt; &amp;lt;body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=file id=file /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=button id=upload value=&amp;quot;upload&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; &amp;lt;textarea id=output&amp;gt;&amp;lt;/textarea&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;つぎにjavascriptajaxupload.js&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;$(function(){ $(&amp;quot;#upload&amp;quot;).click(function(){ var file = $(&amp;quot;#file&amp;quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, &#39;UTF-8&#39;); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: &amp;quot;POST&amp;quot;, url: &amp;quot;ajaxupload.rb&amp;quot;, data: { filedata:event.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/">
+<meta name="twitter:title" content="JqueryとHTML5でajaxなファイルのアップロード - 答えを知りたい">
+<meta name="twitter:description" content="画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。やりたい事と条件 ・ajaxなテキストファイルのアップロード・テキストをRubyで編集して返す・画面遷移せずに結果を表示・IEは諦める。必要最低限のコード まずHTMLを用意ajaxupload.html&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;&amp;lt;html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html;charset=utf-8&amp;quot;&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;jquery-1.7.min.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;ajaxupload.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;style&amp;gt;textarea{height:80%;width:100%;}&amp;lt;/style&amp;gt;&amp;lt;br&amp;gt; &amp;lt;body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=file id=file /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=button id=upload value=&amp;quot;upload&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; &amp;lt;textarea id=output&amp;gt;&amp;lt;/textarea&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;つぎにjavascriptajaxupload.js&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;$(function(){ $(&amp;quot;#upload&amp;quot;).click(function(){ var file = $(&amp;quot;#file&amp;quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, &#39;UTF-8&#39;); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: &amp;quot;POST&amp;quot;, url: &amp;quot;ajaxupload.rb&amp;quot;, data: { filedata:event.">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "JqueryとHTML5でajaxなファイルのアップロード - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2013-02-27T09:16:07JST",
+    "dateModified": "2013-02-27T09:16:07JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。\nやりたい事と条件 ・ajaxなテキストファイルのアップロード\n・テキストをRubyで編集して返す\n・画面遷移せずに結果を表示\n・IEは諦める。\n必要最低限のコード まずHTMLを用意\najaxupload.html\n\x26lt;\/p\x26gt; \x26lt;pre\x26gt;\x26lt;html\x26gt;\x26lt;br\x26gt; \x26lt;head\x26gt;\x26lt;br\x26gt; \x26lt;meta http-equiv=\x26quot;content-type\x26quot; content=\x26quot;text\/html;charset=utf-8\x26quot;\x26gt;\x26lt;br\x26gt; \x26lt;script type=\x26quot;text\/javascript\x26quot; src=\x26quot;jquery-1.7.min.js\x26quot; charset=\x26quot;utf8\x26quot;\x26gt;\x26lt;\/script\x26gt;\x26lt;br\x26gt; \x26lt;script type=\x26quot;text\/javascript\x26quot; src=\x26quot;ajaxupload.js\x26quot; charset=\x26quot;utf8\x26quot;\x26gt;\x26lt;\/script\x26gt;\x26lt;br\x26gt; \x26lt;\/head\x26gt;\x26lt;br\x26gt; \x26lt;style\x26gt;textarea{height:80%;width:100%;}\x26lt;\/style\x26gt;\x26lt;br\x26gt; \x26lt;body\x26gt;\x26lt;br\x26gt; \x26lt;input type=file id=file \/\x26gt;\x26lt;br\x26gt; \x26lt;input type=button id=upload value=\x26quot;upload\x26quot;\x26gt;\x26lt;br\x26gt;\x26lt;br\x26gt; \x26lt;textarea id=output\x26gt;\x26lt;\/textarea\x26gt;\x26lt;br\x26gt; \x26lt;\/body\x26gt;\x26lt;br\x26gt; \x26lt;\/html\x26gt;\x26lt;br\x26gt; \x26lt;\/pre\x26gt; \x26lt;p\x26gt;\nつぎにjavascript\najaxupload.js\n\x26lt;\/p\x26gt; \x26lt;pre\x26gt;$(function(){ $(\x26quot;#upload\x26quot;).click(function(){ var file = $(\x26quot;#file\x26quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, \x27UTF-8\x27); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: \x26quot;POST\x26quot;, url: \x26quot;ajaxupload.rb\x26quot;, data: { filedata:event."
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">JqueryとHTML5でajaxなファイルのアップロード</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-02-27T09:16:07JST">Feb 27, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">JqueryとHTML5でajaxなファイルのアップロード</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。</p>
+
+<h3 id="やりたい事と条件">やりたい事と条件</h3>
+
+<p>・ajaxなテキストファイルのアップロード</p>
+
+<p>・テキストをRubyで編集して返す</p>
+
+<p>・画面遷移せずに結果を表示</p>
+
+<p>・IEは諦める。</p>
+
+<h3 id="必要最低限のコード">必要最低限のコード</h3>
+
+<p>まずHTMLを用意</p>
+
+<p><strong>ajaxupload.html</strong></p>
+
+<p><code>&lt;/p&gt;
+&lt;pre&gt;&lt;html&gt;&lt;br&gt;
+  &lt;head&gt;&lt;br&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;&lt;br&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.7.min.js&quot; charset=&quot;utf8&quot;&gt;&lt;/script&gt;&lt;br&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;ajaxupload.js&quot; charset=&quot;utf8&quot;&gt;&lt;/script&gt;&lt;br&gt;
+  &lt;/head&gt;&lt;br&gt;
+  &lt;style&gt;textarea{height:80%;width:100%;}&lt;/style&gt;&lt;br&gt;
+  &lt;body&gt;&lt;br&gt;
+    &lt;input type=file id=file /&gt;&lt;br&gt;
+    &lt;input type=button id=upload value=&quot;upload&quot;&gt;&lt;br&gt;&lt;br&gt;
+    &lt;textarea id=output&gt;&lt;/textarea&gt;&lt;br&gt;
+  &lt;/body&gt;&lt;br&gt;
+&lt;/html&gt;&lt;br&gt;
+&lt;/pre&gt;
+&lt;p&gt;</code></p>
+
+<p>つぎにjavascript</p>
+
+<p><strong>ajaxupload.js</strong></p>
+
+<p><code>&lt;/p&gt;
+&lt;pre&gt;$(function(){
+  $(&quot;#upload&quot;).click(function(){
+    var file = $(&quot;#file&quot;)[0].files[0];
+    var reader = new FileReader();
+    reader.readAsText(file, 'UTF-8');
+    reader.onload = showFile;
+  });
+  function showFile(event) {
+    $.ajax({
+    type: &quot;POST&quot;,
+    url: &quot;ajaxupload.rb&quot;,
+    data: { filedata:event.target.result}
+    }).done(function(msg) {
+      $(&quot;#output&quot;).html(msg);
+    });
+  }
+});
+&lt;/pre&gt;
+&lt;p&gt;</code></p>
+
+<p>んで何か処理をするRubyのスクリプト。ここではファイルの中身をそのまま返してるだけ。(パス名は適宜変更してください。)</p>
+
+<p><strong>ajaxupload.rb</strong></p>
+
+<p><code>&lt;/p&gt;
+&lt;pre&gt;#!P:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby.exe
+require &quot;cgi&quot;
+cgi = CGI.new
+print &quot;Content-Type: text/html\n\n&quot;
+print cgi['filedata'][0]&lt;/pre&gt;
+&lt;p&gt;</code></p>
+
+<h3 id="デモ">デモ</h3>
+
+<p>サンプルを置いておきます。(さくらのレンタルサーバーはRubyの拡張子がrbではなくcgiじゃなくと動かなかったのでファイル名を変えています。</p>
+
+<p><a href="http://ironsand.net/misc/ajaxupload/ajaxupload.html">http://ironsand.net/misc/ajaxupload/ajaxupload.html</a></p>
+
+<p><a href=http://ironsand.net/misc/ajaxupload/ajaxupload.zip>上のコードをZIPで固めた奴</a></p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/javascript/">javascript</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/jquery/">jQuery</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

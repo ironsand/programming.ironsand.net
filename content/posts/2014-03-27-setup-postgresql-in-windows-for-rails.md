@@ -2,11 +2,11 @@
 title: WindowsのpostgreSQLをRailsで使うためのセットアップ
 author: 鉄
 type: post
-date: -001-11-30T00:00:00+00:00
+date: 2014-03-27T00:00:00+00:00
 draft: true
 url: /?p=442
 categories:
-  - 未分類
+  - Postgres
 
 ---
 WindowsでRailsをpostgreSQLと使うときの初期設定。

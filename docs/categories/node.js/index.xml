@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node.js on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/node.js/</link>
+    <description>Recent content in Node.js on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Wed, 01 Nov 2017 06:28:12 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/node.js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>NodeJSのREPLでctrl&#43;r で過去の履歴を検索</title>
+      <link>http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/</link>
+      <pubDate>Wed, 01 Nov 2017 06:28:12 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/</guid>
+      <description>bashやRubyのpryでctrl+rで使える reverse interactive search をnodeのシェルでも使う方法の紹介です。
+rlwrap のインストール rlwrapが必要なのでbrew install rlwrapでインストールしましょう。他の環境の場合は環境にあったパッケージマネージャでインストールしてください。
+rlwrapはGNUのreadline的な振る舞いをするためのパッケージだそうです。
+node側の設定 alias node=&#34;NODE_NO_READLINE=1 rlwrap node&#34; を追加してnodeでreadlineを使うように設定しておきましょう。
+参考 https://stackoverflow.com/questions/46714331/how-to-use-reverse-interactive-search-in-nodejs-repl</description>
+    </item>
+    
+  </channel>
+</rss>

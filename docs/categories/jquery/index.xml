@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jQuery on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/jquery/</link>
+    <description>Recent content in jQuery on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 31 Jan 2014 15:25:08 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>動的に追加したDOM要素にhoverイベントリスナーを追加する</title>
+      <link>http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/</link>
+      <pubDate>Fri, 31 Jan 2014 15:25:08 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/</guid>
+      <description>かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。
+前提となる知識 まず基本として $(&#39;#foo&#39;).click -&amp;gt; console.log &amp;quot;押された！&amp;quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。
+なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？
+後から追加された要素に click イベントを追加 前置きが長くなりましたが
+$(&#39;#foo&#39;).click -&amp;gt; console.log &#34;押された！&#34; を動的に追加された要素に適用させるには
+$(document).on &#39;click&#39;, &#39;#foo&#39;, -&amp;gt; console.log &#34;押された！&#34;  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。
+後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。
+記述が間違っていたので修正しました。
+onイベントの引数として &amp;quot;hover&amp;quot;を使った場合、それは単なる &amp;quot;mouseenter mouseleave&amp;quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.</description>
+    </item>
+    
+    <item>
+      <title>jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する</title>
+      <link>http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/</link>
+      <pubDate>Mon, 30 Dec 2013 02:45:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/</guid>
+      <description>jQuery で選択した要素が存在するかどうかの関数が何故か用意されてないようだったので追加しました。
+CoffeeScriptで書いてるのでjavascriptとして使いたい場合は converter にかけてください。
+$.fn.isExist = -&amp;gt; $(@).length != 0 $.fn.isNotExist = -&amp;gt; $(@).length == 0  参考 [How to tell if an element exists | jQuery for Designers &amp;#8211; Tutorials and screencasts][1]</description>
+    </item>
+    
+    <item>
+      <title>rails の `blank?` メソッドを jQuery に追加する方法</title>
+      <link>http://programming.ironsand.net/2013/jquery-isblank-function/</link>
+      <pubDate>Sun, 29 Dec 2013 00:34:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/jquery-isblank-function/</guid>
+      <description>rails には 値の有無をチェックするときにタブやスペースなどの空白が入っていても「空」だと判断する便利な blank? 関数が用意されていますが、どうやら JavaScript や jQuery には用意されてないので追加してみました。
+自分で書いた後にもっと良さそうなコードを見つけたのでそちらを紹介します。
+JavaScript $.fn.isBlank = function() { return !$(this.html()) || $.trim($(this).html()) === &#34;&#34;; };  Coffee もちろん Rails 標準のCoffeeも。
+$.fn.isBlank = - !$(@.html()) || $.trim($(@).html()) is &#34;&#34; 参考 [Checking for blank input with jQuery &amp;#8211; Stack Overflow][1]
+[jQuery isBlank() | LakTEK (Lakshan Perera)][2]</description>
+    </item>
+    
+    <item>
+      <title>JqueryとHTML5でajaxなファイルのアップロード</title>
+      <link>http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/</link>
+      <pubDate>Wed, 27 Feb 2013 09:16:07 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/</guid>
+      <description>画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。
+やりたい事と条件 ・ajaxなテキストファイルのアップロード
+・テキストをRubyで編集して返す
+・画面遷移せずに結果を表示
+・IEは諦める。
+必要最低限のコード まずHTMLを用意
+ajaxupload.html
+&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;&amp;lt;html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html;charset=utf-8&amp;quot;&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;jquery-1.7.min.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;ajaxupload.js&amp;quot; charset=&amp;quot;utf8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/head&amp;gt;&amp;lt;br&amp;gt; &amp;lt;style&amp;gt;textarea{height:80%;width:100%;}&amp;lt;/style&amp;gt;&amp;lt;br&amp;gt; &amp;lt;body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=file id=file /&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input type=button id=upload value=&amp;quot;upload&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt; &amp;lt;textarea id=output&amp;gt;&amp;lt;/textarea&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/body&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/html&amp;gt;&amp;lt;br&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;
+つぎにjavascript
+ajaxupload.js
+&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;$(function(){ $(&amp;quot;#upload&amp;quot;).click(function(){ var file = $(&amp;quot;#file&amp;quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, &#39;UTF-8&#39;); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: &amp;quot;POST&amp;quot;, url: &amp;quot;ajaxupload.rb&amp;quot;, data: { filedata:event.</description>
+    </item>
+    
+    <item>
+      <title>jQueryでマウスの右クリック、左クリックを判断する</title>
+      <link>http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/</link>
+      <pubDate>Sat, 07 Jan 2012 03:41:05 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/</guid>
+      <description>jQuery を使って
+「クリックされた時に左なら要素を消して、右なら何もしない。」
+という動作をさせようと思ったら日本語だと検索してもすぐに答えが出てこなかったので、また stackoverflow から解説を紹介します。
+実際のコードがこちら。
+$(&#39;#element&#39;).mousedown(function(event) { switch (event.which) { case 1: alert(&#39;Left mouse button pressed&#39;); break; case 2: alert(&#39;Middle mouse button pressed&#39;); break; case 3: alert(&#39;Right mouse button pressed&#39;); break; default: alert(&#39;You have a strange mouse&#39;); } });  mousedown の時に渡されるイベントを確認して場合わけすればよい、と。
+つまり左クリックで要素を隠すにはこうします。
+//左クリックされると foo を隠す $(&#34;.foo&#34;).click(function(e){ if(e.which == 1){ //左クリック $(this).hide(&#34;fast&#34;); } }); 他の方法 頻繁に使うのであれば jquery.detailclick.js を入れてこんな風に使えるようにしておくとよいかもしれません。やっぱりこちらの方が jQuery っぽくて見やすいですね。
+$(&amp;ldquo;target&amp;rdquo;).rightClick(function()
+{
+$(this).text(&amp;lsquo;右クリックされました！&amp;rsquo;).css(&amp;lsquo;background-color&amp;rsquo;, &amp;lsquo;#ff3399&amp;rsquo;);
+});
+
+ 参考   javascript - How to distinguish between left and right mouse click with jQuery?</description>
+    </item>
+    
+    <item>
+      <title>$(window).width() と $(document).width() 違い</title>
+      <link>http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/</link>
+      <pubDate>Sat, 07 Jan 2012 03:25:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/</guid>
+      <description>$(window).width() と $(document).width() や
+$(window).height() と $(document).height() がどういう時に違う値を返すかわからなかったので検索したら Stack Overflow に簡潔でわかりやすい説明がされてたので紹介します。
+ When you have a scrollbar on the webpage.
+(スクロールバーが表示されてる時)
+ わかりやすいですね。一応念のために書いておくと window が「ブラウザの表示領域」で、document が「ページ全体」です。
+参考 jquery &amp;#8211; When can $(document).width() and $(window).width() show different values? &amp;#8211; Stack Overflow
+http://stackoverflow.com/questions/8134741/when-can-document-width-and-window-width-show-different-values</description>
+    </item>
+    
+    <item>
+      <title>jQueryの便利なmapの使い方</title>
+      <link>http://programming.ironsand.net/2012/how-to-use-map-in-jquery/</link>
+      <pubDate>Sun, 01 Jan 2012 02:00:09 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-use-map-in-jquery/</guid>
+      <description>lispでmapに初めて触れた時は「何、このめんどくさい関数？」と感じ、正直な話あまり触れたくもなかったのですが慣れてくるとこいつはとても便利な賢いやつです。
+さてjavascriptでもmapが使えるか調べてみたらjQueryで提供されてました。
+mapを使えば配列全部に関数を適用させて、返り値を配列で受け取れます。for文なんて使わなくてもええんやっ！！
+使い方の例 定番の累乗を求めるサンプル。
+arr = [1,2,3]; arr = $.map(arr, function(n,i){return n*n;}); for(i=0;i&amp;lt;arr.length;i++){ alert(arr[i]); } サンプルには良く使われるけど、実際にプログラミングしてて累乗が必要になったことがないですね。まあサンプルなんで実用性よりも分かりやすさが重要だから当然といえば当然の話しですね。
+とりあえずこんな感じの動作がmapはできます。
+要素をまとめて取得 たとえばこんなhtmlがあって
+&amp;lt;div&amp;gt;1&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; 配列で[1,2,3]が欲しいとする。
+そんな時もこの map を使えば一発解決さ！(深夜の外人がやってる通販のノリで)
+arr = $(&#34;div&#34;).map(function(){ return $(this).text(); }).get(); これでとれる。注意点は最後の get()。これがなくても配列っぽいのが返ってくるんだけども、これはjQuery-wrapped arrayというものらしく別物とのこと。
+for文で実行したり arr[0] で要素のアクセスしたりはできるけどもjoinすると上手く行かない。このjoinがうまくできないのにはまってだいぶ時間を食われました。
+arr.constructor でクラスを調べたら
+function Array() { [native code] } となるべき所が
+function (a, b) { return new e.fn.init(a, b, h); } になってました。この「get() すればよい」という情報を得るためにどれだけ遠回りしたことか…。
+とはいえこれで安心してmapをjavascriptでも使えるようになったのでガシガシ使っていこうと思います。
+参考 http://api.jquery.com/map/</description>
+    </item>
+    
+  </channel>
+</rss>

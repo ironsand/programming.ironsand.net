@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cygwin on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/cygwin/</link>
+    <description>Recent content in cygwin on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sun, 20 Apr 2014 23:02:04 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/cygwin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cygwinのgitを使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/tips-git-in-cygwin/</link>
+      <pubDate>Sun, 20 Apr 2014 23:02:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/tips-git-in-cygwin/</guid>
+      <description>cygwinはWindows上で作成されたファイルを全て755の実行可能ファイルとして扱ってしまうので、そのままgitで扱うとすべてのファイルが実行可能権限を持ったなんとも危なっかしい構成になってしまいます。
+対策 $ git config core.filemode false でfilemodeの変更を無視するように設定しておきましょう。
+参考 [Windows Git users: Please check your core.fileMode setting &amp;#8211; Google グループ][1]</description>
+    </item>
+    
+    <item>
+      <title>find の `-exec` オプションを cygwin で使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/</link>
+      <pubDate>Tue, 15 Apr 2014 04:15:00 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/</guid>
+      <description>何故動かないか結構困ったのでメモ。
+動かないもの find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; \;  cygwin 環境、というかcmd.exeでcygwinの中のfindコマンドを呼び出してるとこれはエラーになっちゃいます。
+理由 何故ならfindの\;の\は;をエスケープする役割なので、当然ここにはエスケープキャラクターを入れて置かなければならないわけですが、Windowsのcmdにおいて\はパス区切りであって何もエスケープしてくれません。
+なのでcygwinのfindをcmd.exeやnyaosなどのWindows環境のシェルから使うときはcmd.exeのエスケープキャラクターの^を使ってこんなふうに書きましょう。
+find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; ^;  もしくはどちらの環境でも使える方法の
+find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; &#39;;&#39;  を使うのもいいかもしれません。</description>
+    </item>
+    
+    <item>
+      <title>cygwinの必要なパッケージをコマンドラインで一括インストール</title>
+      <link>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</link>
+      <pubDate>Mon, 14 Apr 2014 19:55:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</guid>
+      <description>今まではcygwinをインストールしたディレクトリを全部SugarSyncで同期して使ってたんだけど、
+よくわからないままに色々入れてたら700MBぐらいあったので整理整頓することにしました。
+どうするか？ 既にインストールされてるcygwinのファイルを整理するのはめんどくさかったの新規インストールをすることにしたのはいいけど、何せパッケージ選択がめんどくさい。めんどくさいっていうか手動でやると必ず忘れてしまうので自動化したい。
+そこでコマンドラインインストールの登場です！
+インストール方法 setup-x86.exe --quiet-mode -P util-linux,curl,wget,openssh,rsync,zip,tree -s ftp://ftp.iij.ad.jp/pub/cygwin/ --root %USERPROFILE%\cyg --local-package-dir %USERPROFILE%\cyg  これでホームディレクトリ直下の C:\Users\ironsand\cygとかにインストールされる。
+やめたパッケージ gccとか入れてcygwinでコンパイルして色々してると毎回ドツボにハマるので、もうそういうのはVirtualBox上のUbuntuですることにする。
+rubyやpythonはWindowsのネイティブパッケージを使う。結局なんだかんだでそれが一番安定してる気がするので。
+gitもcygwin用のパス名周りのエラーが鬱陶しくなることがちょくちょくあったのでChocolatey使ってcinst gitでインストールする方法に変更。
+注意点 何故か 64bit バージョンは動きませんでした。理由はわかりませんが、こういう関係のソフトは32bit版のほうが今はまだ安定してる気がするし大量にメモリ使うこともないので気にしないことにします。
+sshだとsshコマンドはインストールされないのでopensshを指定しましょう。
+インストール後に/etc/passwdのホームディレクトリ設定を/home/usernameからcygdrive/c/Users/usernameとWindowsのホームフォルダに変更しておくとsshとかのコマンドの時に設定ファイルを自動的に読みに行ってくれるので便利。便利というかしないとちゃんと動かない。
+あと環境変数にset HOME=%USERPROFILE%もどこかに仕込んでたほうが良いかも。
+Util-Linux 何故かカレンダー表示のcalコマンドが見つからなかったので探してみたら、calのみのインストールはないらしい。
+とりあえずutil-linuxが良さそうなんでこれを使う事にした。
+tree Windows由来のコマンドなのにWindowsのtreeコマンドは階層指定もできない残念仕様なのでcygwinのを入れました。tree -L 2とかで階層指定できる。便利！</description>
+    </item>
+    
+    <item>
+      <title>cygwinで.bash_profileが読み込まれなかった時の対処法</title>
+      <link>http://programming.ironsand.net/2012/how-to-load-bash_profile-by-cygwin/</link>
+      <pubDate>Sat, 10 Nov 2012 02:33:37 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-load-bash_profile-by-cygwin/</guid>
+      <description>cygwinでちゃんとHOMEの環境変数を設定してるのに ~/.bash_profileが読み込まれなかったのでその時の対処法。
+問題点 結局問題だったのはbashを立ち上げた時に出てくるこのエラーメッセージを無視してたのが原因でした。
+ Your group is currently &amp;#8220;mkpasswd&amp;#8221;.
+This indicates that your gid is not in /etc/group and your uid is not in /etc/passwd.
+The /etc/passwd (and possibly /etc/group) files should be rebuilt. See the man pages for mkpasswd and mkgroup then, for example, run
+mkpasswd -l [-d] &amp;gt; /etc/passwd
+mkgroup -l [-d] &amp;gt; /etc/group
+Note that the -d switch is necessary for domain users.
+ /etc/passwd を確認してみると、確かに今使ってるWindowsでのユーザ名が表示されていない。いつもcygwinのフォルダは上書きし続けて使ってるのでインストール時に既に /etc/passwd があった場合に自動更新されないみたいですね。</description>
+    </item>
+    
+  </channel>
+</rss>

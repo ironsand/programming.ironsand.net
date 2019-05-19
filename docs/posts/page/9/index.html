@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/posts/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/posts/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Posts - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Posts</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-30T02:45:45JST">Dec 30, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/">jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する</a></h2>
+  </header>
+
+  
+  <div class="summary">jQuery で選択した要素が存在するかどうかの関数が何故か用意されてないようだったので追加しました。
+CoffeeScriptで書いてるのでjavascriptとして使いたい場合は converter にかけてください。
+$.fn.isExist = -&gt; $(@).length != 0 $.fn.isNotExist = -&gt; $(@).length == 0  参考 [How to tell if an element exists | jQuery for Designers &#8211; Tutorials and screencasts][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/" title="jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-29T00:34:06JST">Dec 29, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/jquery-isblank-function/">rails の `blank?` メソッドを jQuery に追加する方法</a></h2>
+  </header>
+
+  
+  <div class="summary">rails には 値の有無をチェックするときにタブやスペースなどの空白が入っていても「空」だと判断する便利な blank? 関数が用意されていますが、どうやら JavaScript や jQuery には用意されてないので追加してみました。
+自分で書いた後にもっと良さそうなコードを見つけたのでそちらを紹介します。
+JavaScript $.fn.isBlank = function() { return !$(this.html()) || $.trim($(this).html()) === ""; };  Coffee もちろん Rails 標準のCoffeeも。
+$.fn.isBlank = - !$(@.html()) || $.trim($(@).html()) is "" 参考 [Checking for blank input with jQuery &#8211; Stack Overflow][1]
+[jQuery isBlank() | LakTEK (Lakshan Perera)][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/jquery-isblank-function/" title="rails の `blank?` メソッドを jQuery に追加する方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-27T19:14:15JST">Dec 27, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/how-to-treat-since_id-parameter-is-invalid/">&#34;since_id parameter is invalid.&#34;と言われた時の対処法</a></h2>
+  </header>
+
+  
+  <div class="summary">Railscasts のTwitter の項目通りに書いてると since_id parameter is invalid. のエラーでつまづきました。
+どうやらTwitterAPI1.1からの変更で since_id に `` を指定できなくなったのが原因のようです。
+もちろんレコードにすでにつぶやきが入ってれば問題ないんですが初回の何も入ってない時にこけてしまうわけです。
+対策 user.twitter.list_timeline(list_id, since_id: [maximum(:tweet_id),"1"].max) と返り値に最低でも1が入るようにしておけばOKです。文字列にしてるのは twitter_idを文字列で保持してるからです。
+参考 [API v1.1 statuses/user_timeline since_id parameter is invalid | Twitter Developers][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/how-to-treat-since_id-parameter-is-invalid/" title="&#34;since_id parameter is invalid.&#34;と言われた時の対処法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-23T09:33:40JST">Dec 23, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/attr_accessible-is-no-more-available-in-rails4/">attr_accessible は Rails4では使えなくなりました</a></h2>
+  </header>
+
+  
+  <div class="summary">attr_accessibleはRails4では使えなくなったのにユーザー管理の定番 gem deviseではまだ使っているようなので新しい昨日の Strong parameter に書き換えておきましょう。
+具体例 devise の設定で User モデルにこんなのが書いてると思うので
+attr_accessible :email, :password, :password_confirmation その行を削除して下の方にこれを追加しましょう。
+private def user_params params.require(:user).permit(:email, :password, :password_confirmation) end 参考 [attr_accessible][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/attr_accessible-is-no-more-available-in-rails4/" title="attr_accessible は Rails4では使えなくなりました">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-23T09:28:29JST">Dec 23, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/must-not-use-omniauthdevise-config-file-sametime/">OmniauthとDeviseの設定ファイルを両方同時に使うとルーティングがおかしくなる</a></h2>
+  </header>
+
+  
+  <div class="summary">何故だか理由はさっぱりわかりませんが、どうにもおかしな動きが route.rb をいくらいじってもなおらないので色々情報を探してたら、config の omniauth.rb を消したら動きました。
+consumer_key とかは devise.rb に書いておきましょう。
+参考 [ruby on rails 3 &#8211; Authentication failure : Devise + OmniAuth + Twitter &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/must-not-use-omniauthdevise-config-file-sametime/" title="OmniauthとDeviseの設定ファイルを両方同時に使うとルーティングがおかしくなる">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-23T08:39:04JST">Dec 23, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/social-login-in-rails/">Omniauth&#43;DeviseでTwitterとかでログインもできるし連携もできるサンプル</a></h2>
+  </header>
+
+  
+  <div class="summary">https://github.com/mohitjain/social-login-in-rails
+ここにあります。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/social-login-in-rails/" title="Omniauth&#43;DeviseでTwitterとかでログインもできるし連携もできるサンプル">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-23T05:25:01JST">Dec 23, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/remove-constraints-from-a-user-model-in-rails/">Railsで ‘not null’ の制限をマイグレーションで取り除く方法</a></h2>
+  </header>
+
+  
+  <div class="summary">devise と omniauthを組みわせて使うと default の email と encrypted_password が必ず値を持たなければならない null =&gt; false の制限が邪魔だったのでMigrationで削除しようとしたけど方法がわからなかったので調べてみた。
+やりかた class RemoveConditionFromUser &lt; ActiveRecord::Migration def change change_column :users, :email, :string, null: true change_column :users, :encrypted_password, :string, null: true end end 参考 [Rails Migration: Remove constraint &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/remove-constraints-from-a-user-model-in-rails/" title="Railsで ‘not null’ の制限をマイグレーションで取り除く方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-20T02:24:34JST">Dec 20, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/my-homebrew-package-list/">homebrewでインストールパッケージリスト俺用</a></h2>
+  </header>
+
+  
+  <div class="summary">さっきの記事でも書きましたが、Macを入れなおしてます。
+今度は homebrew で入れるパッケージのリストです。
+brew install --HEAD ruby-build brew tap josegonzalez/php # --universalオプションが無いとwineがこける brew install jpeg libpng --universal # php用 brew install freetype gd brew link libpng freetype jpeg brew install php55 brew install rbenv openssl readline mysql postgresql wget wine graphviz imagemagick nginx node brew install macvim --override-system-vim # Applicationsフォルダに置く brew linkapps  アホみたいにエラーが出るので brew doctorで出てくるのに全部対処しましょう。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/my-homebrew-package-list/" title="homebrewでインストールパッケージリスト俺用">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-20T02:10:27JST">Dec 20, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/gem-list-for-rails/">Rails開発してる私が使ってるgemの一覧</a></h2>
+  </header>
+
+  
+  <div class="summary">Macの環境構築をやり直したので、入れてるgemの一覧を出してみました。
+actionmailer (4.0.0) actionpack (4.0.0) activemodel (4.0.0) activerecord (4.0.0) activerecord-deprecated_finders (1.0.3) activesupport (4.0.0) addressable (2.3.5) arel (4.0.0) atomic (1.1.14) bigdecimal (1.2.0) buftok (0.2.0) builder (3.1.4) bundler (1.3.5) celluloid (0.15.2) chunky_png (1.2.8) coderay (1.1.0) compass (0.12.2) compass-normalize (1.4.3) compass-recipes (0.3.0) descendants_tracker (0.0.3) diff-lcs (1.2.5) equalizer (0.0.8) erubis (2.7.0) factory_girl (4.3.0) factory_girl_rails (4.3.0) faker (1.2.0) faraday (0.8.8) ffi (1.9.3) formatador (0.2.4) fssm (0.2.10) guard (2.2.4) guard-rspec (4.2.0) hike (1.2.3) http (0.5.0) http_parser.rb (0.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/gem-list-for-rails/" title="Rails開発してる私が使ってるgemの一覧">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-17T17:18:06JST">Dec 17, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/load-image-for-ajax/">Ajaxで使えるロード画面のgif画像を生成できるサイト</a></h2>
+  </header>
+
+  
+  <div class="summary">以前使ったAjax用の load.gif の背景が透過されてなかったので、背景が透過されたの探してたらそういう画像を生成してくれるサイトを見つけました。便利！
+[Ajaxload &#8211; Ajax loading gif generator][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/load-image-for-ajax/" title="Ajaxで使えるロード画面のgif画像を生成できるサイト">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/posts/page/8/">Previous</a></li>
+    
+
+    
+    <li><a href="/posts/page/10/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

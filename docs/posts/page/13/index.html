@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/posts/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/posts/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Posts - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Posts</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-05T11:16:06JST">Jan 5, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/">xampp で mod_rewrite を使う方法</a></h2>
+  </header>
+
+  
+  <div class="summary">見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。
+mod_rewriteでできること ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくと
+http://localhost/index.php?user=foo&amp;name=bar
+と書く所を
+http://localhost/foo/bar.html
+と書ける機能です。
+foo/bar.html にアクセスすると内部で
+index.php?user=foo&amp;name=bar が呼び出されるわけです。
+Xamppの設定方法 xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。
+ まずApacheの設定ファイル http.conf を開きます。   自分の環境では[ X:\sugarsync\bin**xampp\apache\conf\httpd.conf** ] にありました。
+ モジュールがコメントアウトされてないか確認する  #LoadModule rewrite_module modules/mod_rewrite.so のようになってたら &#8220;#&#8221; を取って
+#LoadModule rewrite_module modules/mod_rewrite.so とします。
+ リライトの規則を書く。   http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。
+&lt;IfModule rewrite_module&gt; # bar.htmlを作りドキュメントルートに置いて # http://localhost/foo.html でアクセスできるか確認しましょう。 RewriteEngine On RewriteRule /foo.html /bar.html &lt;/IfModule&gt;  xampp を再起動 で完了   http://localhost/foo.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/" title="xampp で mod_rewrite を使う方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-01T02:00:09JST">Jan 1, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-use-map-in-jquery/">jQueryの便利なmapの使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">lispでmapに初めて触れた時は「何、このめんどくさい関数？」と感じ、正直な話あまり触れたくもなかったのですが慣れてくるとこいつはとても便利な賢いやつです。
+さてjavascriptでもmapが使えるか調べてみたらjQueryで提供されてました。
+mapを使えば配列全部に関数を適用させて、返り値を配列で受け取れます。for文なんて使わなくてもええんやっ！！
+使い方の例 定番の累乗を求めるサンプル。
+arr = [1,2,3]; arr = $.map(arr, function(n,i){return n*n;}); for(i=0;i&lt;arr.length;i++){ alert(arr[i]); } サンプルには良く使われるけど、実際にプログラミングしてて累乗が必要になったことがないですね。まあサンプルなんで実用性よりも分かりやすさが重要だから当然といえば当然の話しですね。
+とりあえずこんな感じの動作がmapはできます。
+要素をまとめて取得 たとえばこんなhtmlがあって
+&lt;div&gt;1&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; 配列で[1,2,3]が欲しいとする。
+そんな時もこの map を使えば一発解決さ！(深夜の外人がやってる通販のノリで)
+arr = $("div").map(function(){ return $(this).text(); }).get(); これでとれる。注意点は最後の get()。これがなくても配列っぽいのが返ってくるんだけども、これはjQuery-wrapped arrayというものらしく別物とのこと。
+for文で実行したり arr[0] で要素のアクセスしたりはできるけどもjoinすると上手く行かない。このjoinがうまくできないのにはまってだいぶ時間を食われました。
+arr.constructor でクラスを調べたら
+function Array() { [native code] } となるべき所が
+function (a, b) { return new e.fn.init(a, b, h); } になってました。この「get() すればよい」という情報を得るためにどれだけ遠回りしたことか…。
+とはいえこれで安心してmapをjavascriptでも使えるようになったのでガシガシ使っていこうと思います。
+参考 http://api.jquery.com/map/</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-use-map-in-jquery/" title="jQueryの便利なmapの使い方">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-11-16T16:00:03JST">Nov 16, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/">xamppでpythonを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">xamppには標準でpythonが入っているけど残念ながらpythonが入ってないので使いたかったら自分で入れる必要があるらしい。なので入れてみた。
+環境 Windows 7 32bit
+Xampp 1.7.7
+Python 2.6.1 (Portable)
+必要なもの &#8220;Xampp python&#8221;で検索するとmod_pythonの情報が出てきてインストール方法も色々と出てくるんだけれどもmod_pythonのwindows版はpythonのバージョンが2.5までにしか対応してないようで非常にめんどくさそう。
+色々探してたら簡単な方法を載せてるサイトが見つかったのでその方法を紹介します。
+インストールが必要な物は何もなし。ヽ(´▽｀)ノ
+設定方法 まず
+[xamppをインストールしたディレクトリ]\apache\conf\httpd.conf
+を開いて
+# # For Python # AddHandler cgi-script .py ScriptInterpreterSource Registry-Strict と追記します。
+場所は多分どこでもいいけど、既に
+&#8220;AddHandler cgi-script .cgi .pl .asp&#8221;って書いてる所があるのでその下にでも。
+んで、動かしたいpythonスクリプトの行頭に
+#!P:\Dropbox\bin\Python26\App\python.exe とpython.exeがある場所を書いておきます。
+以上で終わり。
+確認 #![python.exeの置いてる場所]\python.exe print "Content-Type: text/plain" print print "hello world." と書いて[xamppのフォルダ]\htdocs\pythontest.py に保存して
+xampp_start.exe でサーバーを起動させて
+http://localhost/pythontext.py
+を開いて &#8220;hello world.&#8221;が表示されたらOK。
+サーバーが起動してる状態で設定したらxamppを一回終了させて再起動させないと動きません。
+やっとくと便利なこと http://localhost/index.html が
+http://localhost/ でも開けるように
+http://localhost/index.py が
+http://localhost/ でも開けるように設定しときましょう。
+# # DirectoryIndex: sets the file that Apache will serve if a directory # is requested.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/" title="xamppでpythonを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-09-12T09:50:10JST">Sep 12, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/disappear-background-when-float-block/">floatを指定した要素のみを含むとき背景が表示されない</a></h2>
+  </header>
+
+  
+  <div class="summary">こんな感じでHTMLを書いたらFirefoxで背景がうまく表示されなかったので調べてみた。ほげ ほげほげ 
+何でそうなるかは下の「参考」のリンク先でわかったのだけれども対策がめんどくさい。なのでこうする事にしました。ほげ ほげほげ
+ 
+マナーはあんまりよくないですね。書きやすさ優先です。
+参考 CSSでfloatを指定したボックスを含むボックスの背景が出なくなる件
+http://www.fsiki.com/archive/css-doc/float.html</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/disappear-background-when-float-block/" title="floatを指定した要素のみを含むとき背景が表示されない">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-17T20:31:40JST">May 17, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/win32-open3-with-ruby/">rubyでwin32-open3を使う</a></h2>
+  </header>
+
+  
+  <div class="summary">Rubyで外部のプログラムを起動させて標準エラー出力を得るには open3 を使わないとできないが、 fork() を使ってるためWindowsでは代替の win32-open3 を使って実現する。
+まず gem で win32-open3 をインストール
+C:\Users\tetsuyagem install win32-open3 Successfully installed win32-open3-0.3.2-x86-mswin32-60 1 gem installed Installing ri documentation for win32-open3-0.3.2-x86-mswin32-60... Installing RDoc documentation for win32-open3-0.3.2-x86-mswin32-60... 次にわざとエラを出して標準エラー出力が受け取れるか確認する。
+require 'rubygems' require 'win32/open3' stdin, stdout, stderr = *Open3.popen3('ruby -error') stderr.each{|line| print line } その結果
+-e:1: undefined local variable or method `rror' for main:Object (NameError) 以上。
+外部プログラムでエラーでしかほしい情報を返してくれないやつとかいるのでこれが使えると大変便利。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/win32-open3-with-ruby/" title="rubyでwin32-open3を使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-17T19:36:08JST">May 17, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/how-to-add-environmental-variable-by-wsh/">WSHで環境変数のPATHに値を追加する</a></h2>
+  </header>
+
+  
+  <div class="summary">wshで環境変数のUserのPATHに値を追加したかったので、調べてみたらここがそれっぽいんだけど、
+WSHで環境変数を設定する
+http://www.atmarkit.co.jp/fwin2k/win2ktips/460envset/envset.html
+ここで紹介されてるwsfファイルをWindows 7(32bit)環境で動かすと、UserにSystem側のPathまで全部追加されてしまった。
+ExpandEnvironmentStrings(&#8220;%Path%&#8221;) を使うと全ての設定されてるパスをとってきてしまうらしい。 なので
+objEnv=objShell.Environment(&#8220;USER&#8221;) としといて
+objEnv.Item(&#8220;path&#8221;) で取得すればUserの環境変数だけが取得できるのでこっちを使うと多分良い。 WSHを普段全く触らないからホントに良いのかよくわからないけども、とりあえずうちの環境では下のコードを foo.wsf の名前で utf8n で保存してダブルクリックしたらPATHの値が更新された。 &lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo; standalone=&ldquo;yes&rdquo; ?&gt;  &lt;?job error=&ldquo;true&rdquo; debug=&ldquo;true&rdquo; ?&gt; &lt;![CDATA[ Set objShell=WScript.CreateObject(&ldquo;WScript.Shell&rdquo;) Set objEnv=objShell.Environment(&ldquo;USER&rdquo;) objEnv.Item(&ldquo;path&rdquo;)=objEnv.Item(&ldquo;path&rdquo;) &amp; &ldquo;;&rdquo; &amp; &ldquo;C:\hoge\bin&rdquo; ]]&gt;   
+重複確認なんて全くしてないので何個でも追加されるので注意してください。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/how-to-add-environmental-variable-by-wsh/" title="WSHで環境変数のPATHに値を追加する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-14T03:54:14JST">May 14, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/">xyzzy で声調が簡単に入力できる「ton-input-mode」を公開しました。</a></h2>
+  </header>
+
+  
+  <div class="summary">機能 xyzzyで&#8221;wŏ shì rìbĕn rén&#8221; などが、そこそこ簡単に打てるようになります。
+インストール方法 NetInstallerで以下のパッケージを追加して、&#8221;ton input&#8221;をインストールして下さい。
+http://ironsand.net/xyzzy/packages.l
+再起動すると有効になってます。
+再起動せずに有効にできそうですが、よくわかりませんでした。
+NetInstallerが何かわからない人はこちらを読んでください。
+http://xyzzy.s53.xrea.com/wiki/index.php?QuickTour%2Fext%2FNetInstaller
+使い方 C-F9 (Controlキーを押しながらF9キーを押す)で Ton Input モードに入ります。
+&#8220;wo&#8221; を打った時点で数字の&#8221;3&#8243;を押すと &#8220;wŏ&#8221; になります。
+1,2,3,4 でそれぞれの声調に、&#8221;0&#8243;で声調無しに変化します。
+&#8220;xian&#8221; の最後でキーを押せば一番最後に入力された母音の &#8220;a&#8221; に声調がつきます。
+Ton Input モードを終了させるには、もう一度 C-F9 を入力します。
+注意点 Ton Input モード中は数字(0～4)を入力しようとしても入りません。
+謝辞 ありがとうございます。 ありがとうございます。
+マイナーモードの作り方 [silog]
+http://white.s151.xrea.com/wiki/index.php?memo%2Fxyzzy%2Fminor-mode
+netinstaller 対応メモ
+http://d.hatena.ne.jp/bowbow99/20090710/1247182818
+そして、lispでわからないことを教えてくれた2chのxyzzyの名無しさん達がいなければ途中で作るのを諦めてたと思います。 みなさんに感謝を。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/" title="xyzzy で声調が簡単に入力できる「ton-input-mode」を公開しました。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-14T01:04:54JST">May 14, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/">さくらのレンタルサーバーでPythonのTwitterライブラリを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。
+～～～～～～～～前置きここまで～～～～～～～～
+Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejson
+やらImportError: No module named twitter
+なんかのエラーが出てしまう。
+インストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。
+ 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet/SSH クライアント  外部モジュールのファイル本体
+使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。
+今回は python-twitter とその依存関係のファイル。
+さくらのレンタルサーバーのスタンダード以上のプラン
+スタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラ
+FTPクライアント
+なくてもできるんですが、あったほうが便利なので。
+現在使ってるのがなければFFFTPを使っておいてください。
+telnet/SSH クライアント
+次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。
+必要なモジュールファイルのダウンロード &#8220;python-twitter-0.8.1.tar.gz&#8221;
+http://code.google.com/p/python-twitter/
+だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された
+&#8220;httplib2-0.6.0.tar.gz&#8221; と
+http://code.google.com/p/httplib2/
+&#8220;simplejson-2.1.5.tar.gz&#8221; と
+http://pypi.python.org/pypi/simplejson
+&#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&#8221; を
+http://github.com/simplegeo/python-oauth2
+ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/" title="さくらのレンタルサーバーでPythonのTwitterライブラリを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-13T16:06:25JST">May 13, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/">xyzzy の backward-word と previous-word, forward-word と next-word の違い</a></h2>
+  </header>
+
+  
+  <div class="summary">xyzzy の lisp の関数 backward-word, previous-word, forward-word, next-word の動作の違いがよくわからなかったので、試してみた。
+黒背景白文字が移動前のカーソルの位置で、灰色背景太字が移動後の場所。
+backward-word
+123　456　789
+123456　789
+123　456　789
+previous-word
+123　456　789
+123456　789
+123　456　789
+forward-word
+123456　789
+123456789
+123　456789
+next-word
+123　456　789
+123456　789
+123　456　789
+backward-word と previous-word は同じ動作で forward-word と next-word は動作が異なるらしい。 あってんのかな、これ。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/" title="xyzzy の backward-word と previous-word, forward-word と next-word の違い">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-07T11:46:31JST">May 7, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/how-to-run-ruby-script-as-a-deamon/">Rubyのスクリプトをサービスとして常駐させる</a></h2>
+  </header>
+
+  
+  <div class="summary">PythonかRubyのスクリプトを常駐させたかったので調べてみたらRubyの方が簡単そうだったので試してみた。
+環境 OS:Windows 7
+ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]
+gem 1.3.4
+Portableバージョンを使ってます。
+Win32-ServiceのインストールC:&gt;gem install win32-service するだけです。
+ただうちの環境ではこんなエラーが出てしまいました。P:/Dropbox/bin/RailsPortable/App/Rails/bin/ruby.exe extconf.rb checking for strncpy_s()&hellip; yes creating Makefile nmake Microsoft&reg; Program Maintenance Utility Version 9.00.21022.08 Copyright &copy; Microsoft Corporation. All rights reserved. P:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby -e &ldquo;puts &lsquo;EXPORTS&rsquo;, &lsquo;Init_api&rsquo;&rdquo; &gt; api-i386-mswin32.def cl -nologo -I. -I. -IP:/Dropbox/bin/RailsPortable/App/Rails/lib/ruby/1.8/i386-mswin32 -I. -MD -Zi -O2b2xg- -G6 -DHAVE_STRNCPY_S -c -Tcwin32/api.c cl : コマンド ライン warning D9035 : オプション &lsquo;Og-&rsquo; の使用は現在推奨されていません。今後のバージョンからは削除されます。 cl : コマンド ライン warning D9002 : 不明なオプション &lsquo;-G6&rsquo; を無視します api.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/how-to-run-ruby-script-as-a-deamon/" title="Rubyのスクリプトをサービスとして常駐させる">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/posts/page/12/">Previous</a></li>
+    
+
+    
+    <li><a href="/posts/page/14/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

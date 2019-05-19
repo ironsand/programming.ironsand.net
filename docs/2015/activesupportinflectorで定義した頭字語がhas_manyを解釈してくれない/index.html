@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法 - 答えを知りたい</title>
+    
+<meta name="description" content=" Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。ActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym &#39;GNU&#39; end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。 LoadError: Unable to autoload constant Gnu, expected/Users/ironsand/dev/myproject/app/models/gnu.rb to define it 対策 クラス名を明示的に指定するとOKです。has_many :gnus, class_name = &#34;GNU&#34; ">
+
+<meta property="og:title" content="ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法 - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content=" Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。ActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym &#39;GNU&#39; end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。 LoadError: Unable to autoload constant Gnu, expected/Users/ironsand/dev/myproject/app/models/gnu.rb to define it 対策 クラス名を明示的に指定するとOKです。has_many :gnus, class_name = &#34;GNU&#34; ">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/">
+<meta name="twitter:title" content="ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法 - 答えを知りたい">
+<meta name="twitter:description" content=" Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。ActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym &#39;GNU&#39; end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。 LoadError: Unable to autoload constant Gnu, expected/Users/ironsand/dev/myproject/app/models/gnu.rb to define it 対策 クラス名を明示的に指定するとOKです。has_many :gnus, class_name = &#34;GNU&#34; ">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法 - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-02-02T07:23:20JST",
+    "dateModified": "2015-02-02T07:23:20JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": " Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。\nRailsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。\nActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym \x27GNU\x27 end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。\n LoadError: Unable to autoload constant Gnu, expected\n\/Users\/ironsand\/dev\/myproject\/app\/models\/gnu.rb to define it\n 対策 クラス名を明示的に指定するとOKです。\nhas_many :gnus, class_name = \x22GNU\x22 "
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-02T07:23:20JST">Feb 2, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>Rubyの命名規則としてクラス名は通常は<code>CamelCase</code>で記述しますが、<code>HTTP</code>などの頭字語(Acronym)はそのまますべて大文字で記述します。</p>
+
+<p>Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。</p>
+
+<pre class="lang:ruby decode:true " title="config/initializers/inflections.rb" >ActiveSupport::Inflector.inflections(:en) do |inflect|
+    inflect.acronym 'GNU'
+end
+</pre>
+
+<p>ただ<code>has_many</code>でこのクラスを持とうとすると以下のエラーになってしまいます。</p>
+
+<blockquote>
+<p>LoadError: Unable to autoload constant Gnu, expected</p>
+
+<p>/Users/ironsand/dev/myproject/app/models/gnu.rb to define it</p>
+</blockquote>
+
+<h3 id="対策">対策</h3>
+
+<p>クラス名を明示的に指定するとOKです。</p>
+
+<pre>has_many :gnus, class_name => "GNU"</pre>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/rails/">Rails</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/sox/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/sox/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>sox - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>sox</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-11-24T02:01:20JST">Nov 24, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/">sox を 無音部分のある音声を分断</a></h2>
+  </header>
+
+  
+  <div class="summary">音声つき単語帳の単語と例文とかを切り出してランダム出題する形にしたかったのでまずsoxを使って無音部分で音声を分割しました。
+$ sox in.wav out.wav silence 1 0.3 0.1% 1 0.3 0.1% : newfile : restart これでout001.wavなどのように連番でファイルが保存されます。初めの0.3が音声の前の部分の無音の長さで、後ろの0.3が音声の後に続く無音部分の長さです。
+参考 [sox fails to split files &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/" title="sox を 無音部分のある音声を分断">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-15T16:56:13JST">Apr 15, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-extract-audios-without-silence-with-ffmpeg-and-sox/">ffmpeg と sox でドラマから音声を無音部分を除いて抜き出す</a></h2>
+  </header>
+
+  
+  <div class="summary">英語の勉強にアメリカドラマから音声を抜き出して、その中のサイレンス部分を削除したかったのでやり方を調べたらffmpegとsoxで簡単にできることがわかったので、その方法を紹介します。
+動画から音声を抜き出す 一つの動画から音声を抜き出すときは
+ffmpeg -i input.mp4 -vn output.wav  で抜き出せるので
+フォルダごとまとめて処理するには
+find . -name '*.mp4' -exec ffmpeg -i '{}' -vn '{}'.wav ';'  でフォルダ内の全ての.mp4の動画ファイルから.wavファイルが抜き出されます。-vnが no videoのオプションです。
+他にも-acodec copy として音声ファイルを変換せずに抜き出すこともできます。
+無音部分を自動検出して削除 次に無音部分を自動的に認識して削除するのにsoxを使います。やり方によっては.wav以外も認識するようにできるようなのですが、うちの環境ではできなかったので.wavで処理をしています。
+find . -name '*.wav' -exec sox '{}' '{}'_remove_silence.wav silence 1 0.1 1% -1 0.1 1% ';'  で先ほど作った.wavファイルから無音部分が全て削除されました。
+wavをm4aに ffmpeg で変換 wavのままだとファイルがでかすぎるのでm4aに変換します。mp3でもいいんですが、m4aの方が圧縮効率がいいのでこちらを使います。
+find . -name '*_remove_silence.wav' -exec ffmpeg -i '{}' '{}'.mp3 ';'  以上で変換終了です。
+まとめ この3行を一括変換したいフォルダにcdで移動して実行すればOKです。.wavファイルは手動で削除しときましょう。rm *.wavでもいいですが。
+上記は全てcygwin上で行ってますがもちろんLinuxでもMacでも動くはずです。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-extract-audios-without-silence-with-ffmpeg-and-sox/" title="ffmpeg と sox でドラマから音声を無音部分を除いて抜き出す">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/" class="list-group-item">sox を 無音部分のある音声を分断</a>
+      
+      <a href="http://programming.ironsand.net/2014/how-to-extract-audios-without-silence-with-ffmpeg-and-sox/" class="list-group-item">ffmpeg と sox でドラマから音声を無音部分を除いて抜き出す</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

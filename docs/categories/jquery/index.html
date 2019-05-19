@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/jquery/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/jquery/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>jQuery - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>jQuery</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-31T15:25:08JST">Jan 31, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/">動的に追加したDOM要素にhoverイベントリスナーを追加する</a></h2>
+  </header>
+
+  
+  <div class="summary">かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。
+前提となる知識 まず基本として $('#foo').click -&gt; console.log &quot;押された！&quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。
+なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？
+後から追加された要素に click イベントを追加 前置きが長くなりましたが
+$('#foo').click -&gt; console.log "押された！" を動的に追加された要素に適用させるには
+$(document).on 'click', '#foo', -&gt; console.log "押された！"  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。
+後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。
+記述が間違っていたので修正しました。
+onイベントの引数として &quot;hover&quot;を使った場合、それは単なる &quot;mouseenter mouseleave&quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/" title="動的に追加したDOM要素にhoverイベントリスナーを追加する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-30T02:45:45JST">Dec 30, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/">jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する</a></h2>
+  </header>
+
+  
+  <div class="summary">jQuery で選択した要素が存在するかどうかの関数が何故か用意されてないようだったので追加しました。
+CoffeeScriptで書いてるのでjavascriptとして使いたい場合は converter にかけてください。
+$.fn.isExist = -&gt; $(@).length != 0 $.fn.isNotExist = -&gt; $(@).length == 0  参考 [How to tell if an element exists | jQuery for Designers &#8211; Tutorials and screencasts][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/" title="jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-29T00:34:06JST">Dec 29, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/jquery-isblank-function/">rails の `blank?` メソッドを jQuery に追加する方法</a></h2>
+  </header>
+
+  
+  <div class="summary">rails には 値の有無をチェックするときにタブやスペースなどの空白が入っていても「空」だと判断する便利な blank? 関数が用意されていますが、どうやら JavaScript や jQuery には用意されてないので追加してみました。
+自分で書いた後にもっと良さそうなコードを見つけたのでそちらを紹介します。
+JavaScript $.fn.isBlank = function() { return !$(this.html()) || $.trim($(this).html()) === ""; };  Coffee もちろん Rails 標準のCoffeeも。
+$.fn.isBlank = - !$(@.html()) || $.trim($(@).html()) is "" 参考 [Checking for blank input with jQuery &#8211; Stack Overflow][1]
+[jQuery isBlank() | LakTEK (Lakshan Perera)][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/jquery-isblank-function/" title="rails の `blank?` メソッドを jQuery に追加する方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-02-27T09:16:07JST">Feb 27, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/">JqueryとHTML5でajaxなファイルのアップロード</a></h2>
+  </header>
+
+  
+  <div class="summary">画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。
+やりたい事と条件 ・ajaxなテキストファイルのアップロード
+・テキストをRubyで編集して返す
+・画面遷移せずに結果を表示
+・IEは諦める。
+必要最低限のコード まずHTMLを用意
+ajaxupload.html
+&lt;/p&gt; &lt;pre&gt;&lt;html&gt;&lt;br&gt; &lt;head&gt;&lt;br&gt; &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;&lt;br&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.7.min.js&quot; charset=&quot;utf8&quot;&gt;&lt;/script&gt;&lt;br&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;ajaxupload.js&quot; charset=&quot;utf8&quot;&gt;&lt;/script&gt;&lt;br&gt; &lt;/head&gt;&lt;br&gt; &lt;style&gt;textarea{height:80%;width:100%;}&lt;/style&gt;&lt;br&gt; &lt;body&gt;&lt;br&gt; &lt;input type=file id=file /&gt;&lt;br&gt; &lt;input type=button id=upload value=&quot;upload&quot;&gt;&lt;br&gt;&lt;br&gt; &lt;textarea id=output&gt;&lt;/textarea&gt;&lt;br&gt; &lt;/body&gt;&lt;br&gt; &lt;/html&gt;&lt;br&gt; &lt;/pre&gt; &lt;p&gt;
+つぎにjavascript
+ajaxupload.js
+&lt;/p&gt; &lt;pre&gt;$(function(){ $(&quot;#upload&quot;).click(function(){ var file = $(&quot;#file&quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, 'UTF-8'); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: &quot;POST&quot;, url: &quot;ajaxupload.rb&quot;, data: { filedata:event.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/" title="JqueryとHTML5でajaxなファイルのアップロード">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-07T03:41:05JST">Jan 7, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/">jQueryでマウスの右クリック、左クリックを判断する</a></h2>
+  </header>
+
+  
+  <div class="summary">jQuery を使って
+「クリックされた時に左なら要素を消して、右なら何もしない。」
+という動作をさせようと思ったら日本語だと検索してもすぐに答えが出てこなかったので、また stackoverflow から解説を紹介します。
+実際のコードがこちら。
+$('#element').mousedown(function(event) { switch (event.which) { case 1: alert('Left mouse button pressed'); break; case 2: alert('Middle mouse button pressed'); break; case 3: alert('Right mouse button pressed'); break; default: alert('You have a strange mouse'); } });  mousedown の時に渡されるイベントを確認して場合わけすればよい、と。
+つまり左クリックで要素を隠すにはこうします。
+//左クリックされると foo を隠す $(".foo").click(function(e){ if(e.which == 1){ //左クリック $(this).hide("fast"); } }); 他の方法 頻繁に使うのであれば jquery.detailclick.js を入れてこんな風に使えるようにしておくとよいかもしれません。やっぱりこちらの方が jQuery っぽくて見やすいですね。
+$(&ldquo;target&rdquo;).rightClick(function()
+{
+$(this).text(&lsquo;右クリックされました！&rsquo;).css(&lsquo;background-color&rsquo;, &lsquo;#ff3399&rsquo;);
+});
+
+ 参考   javascript - How to distinguish between left and right mouse click with jQuery?</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/" title="jQueryでマウスの右クリック、左クリックを判断する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-07T03:25:58JST">Jan 7, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/">$(window).width() と $(document).width() 違い</a></h2>
+  </header>
+
+  
+  <div class="summary">$(window).width() と $(document).width() や
+$(window).height() と $(document).height() がどういう時に違う値を返すかわからなかったので検索したら Stack Overflow に簡潔でわかりやすい説明がされてたので紹介します。
+ When you have a scrollbar on the webpage.
+(スクロールバーが表示されてる時)
+ わかりやすいですね。一応念のために書いておくと window が「ブラウザの表示領域」で、document が「ページ全体」です。
+参考 jquery &#8211; When can $(document).width() and $(window).width() show different values? &#8211; Stack Overflow
+http://stackoverflow.com/questions/8134741/when-can-document-width-and-window-width-show-different-values</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/" title="$(window).width() と $(document).width() 違い">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-01T02:00:09JST">Jan 1, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-use-map-in-jquery/">jQueryの便利なmapの使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">lispでmapに初めて触れた時は「何、このめんどくさい関数？」と感じ、正直な話あまり触れたくもなかったのですが慣れてくるとこいつはとても便利な賢いやつです。
+さてjavascriptでもmapが使えるか調べてみたらjQueryで提供されてました。
+mapを使えば配列全部に関数を適用させて、返り値を配列で受け取れます。for文なんて使わなくてもええんやっ！！
+使い方の例 定番の累乗を求めるサンプル。
+arr = [1,2,3]; arr = $.map(arr, function(n,i){return n*n;}); for(i=0;i&lt;arr.length;i++){ alert(arr[i]); } サンプルには良く使われるけど、実際にプログラミングしてて累乗が必要になったことがないですね。まあサンプルなんで実用性よりも分かりやすさが重要だから当然といえば当然の話しですね。
+とりあえずこんな感じの動作がmapはできます。
+要素をまとめて取得 たとえばこんなhtmlがあって
+&lt;div&gt;1&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; 配列で[1,2,3]が欲しいとする。
+そんな時もこの map を使えば一発解決さ！(深夜の外人がやってる通販のノリで)
+arr = $("div").map(function(){ return $(this).text(); }).get(); これでとれる。注意点は最後の get()。これがなくても配列っぽいのが返ってくるんだけども、これはjQuery-wrapped arrayというものらしく別物とのこと。
+for文で実行したり arr[0] で要素のアクセスしたりはできるけどもjoinすると上手く行かない。このjoinがうまくできないのにはまってだいぶ時間を食われました。
+arr.constructor でクラスを調べたら
+function Array() { [native code] } となるべき所が
+function (a, b) { return new e.fn.init(a, b, h); } になってました。この「get() すればよい」という情報を得るためにどれだけ遠回りしたことか…。
+とはいえこれで安心してmapをjavascriptでも使えるようになったのでガシガシ使っていこうと思います。
+参考 http://api.jquery.com/map/</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-use-map-in-jquery/" title="jQueryの便利なmapの使い方">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/" class="list-group-item">動的に追加したDOM要素にhoverイベントリスナーを追加する</a>
+      
+      <a href="http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/" class="list-group-item">jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する</a>
+      
+      <a href="http://programming.ironsand.net/2013/jquery-isblank-function/" class="list-group-item">rails の `blank?` メソッドを jQuery に追加する方法</a>
+      
+      <a href="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/" class="list-group-item">JqueryとHTML5でajaxなファイルのアップロード</a>
+      
+      <a href="http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/" class="list-group-item">jQueryでマウスの右クリック、左クリックを判断する</a>
+      
+      <a href="http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/" class="list-group-item">$(window).width() と $(document).width() 違い</a>
+      
+      <a href="http://programming.ironsand.net/2012/how-to-use-map-in-jquery/" class="list-group-item">jQueryの便利なmapの使い方</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

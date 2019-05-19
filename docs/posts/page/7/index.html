@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/posts/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/posts/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Posts - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Posts</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-24T05:23:28JST">Mar 24, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/wget-and-curl/">wget と curl</a></h2>
+  </header>
+
+  
+  <div class="summary"> 「wgetかcurlで既にファイルが存在してたら上書きしないし、該当のディレクトリがなかったら自動的に生成するにはどうすればいいのかな？」という疑問をStack Overflowで検索！
+ディレクトリが存在しない時に自動的に作成する [linux &#8211; wget -O for non-existing save path? &#8211; Stack Overflow][1]
+回答意訳
+ curlならできるよ！ curlの方が強力なツールだからね！
+ 既にファイルが存在した時に上書きしない [curl &#8211; Don&apos;t download or overwrite file if exists &#8211; Stack Overflow][2]
+回答意訳
+ wgetならできるよ！ wgetの方が強力なツールだからね！
+ 　　　　　　　　　　今ここに新たな「きのこたけのこ紛争」が巻き起ころうとしている！！ </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/wget-and-curl/" title="wget と curl">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-22T00:27:55JST">Mar 22, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/">Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</a></h2>
+  </header>
+
+  
+  <div class="summary">ホームディレクトリに直接ファイルを置くんじゃなくて、
+必要なファイルをDropboxに置いといて同期して使おうと思ったので
+mklink ~/.nyaos p:\Dropbox\rc\.nyaos
+としたら
+この操作を実行するのに十分な特権がありません。
+と怒られた。
+なぜ権限が必要か？ 「さっき自分で作ったファイルを自分のホームフォルダに移動させるのになんで権限が必要なんです！？」と不思議に思って調べてみたら、シンボリックリンクの作成に必要なSeCreateSymbolicLinkPrivilegeが通常はユーザーが持っていないかららしい。
+何故そんな謎な仕様になってるかは全くわからない。
+日本語圏で検索しても「とりあえず管理者権限にしとけ」的な情報しか出てこなかったのでここに書いておきます。
+参考 [filesystems &#8211; Using windows mklink for linking 2 files &#8211; Stack Overflow][1]
+[windows 7 &#8211; Got not sufficient privileges message in CMD when logged on as administrator &#8211; Super User][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/" title="Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-20T06:04:07JST">Mar 20, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/why-quoted-by-back-quote-and-single-quote/">バッククォートを初めにシングルクォートを最後につけて書く理由</a></h2>
+  </header>
+
+  
+  <div class="summary">さっきのエラーで rbenv: version `2.0.0' is not installed
+というのが出たんだけど、こういうバックスラッシュを文字の初めに持ってきて最後はシングルクォートで閉めるタイプの書き方が英語の書き方なのかそれともプログラミング周りの慣習なのかわからなかったので調べてみた。
+英語自体の風習ではない 英語圏には引用符の始まりに ‘ を使って ‘Quoted words&#8217; を使うことがあるけど、それを表現したかった人が似た形のバッククォートを使ったという経緯があるとか何とか。ちなみにLATEXの文化から来てるっぽい。
+つまり英語自体の表記文化じゃないないならMarkdown記法使う時に邪魔なので無くしてほしいなあ。
+参考 [punctuation &#8211; Any reference on the usage of a backtick and single quotation mark like
+this&apos;? &#8211; English Language &amp; Usage Stack Exchange][1]
+[Grammar Girl : Single Quotation Marks Versus Double Quotation Marks :: Quick and Dirty Tips ™][2]
+[HTML特殊文字のシングルクォートとアポストロフィの扱い：なんとなしの日記][3]
+[‘][4]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/why-quoted-by-back-quote-and-single-quote/" title="バッククォートを初めにシングルクォートを最後につけて書く理由">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-20T05:15:06JST">Mar 20, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/">rbenv: version `2.0.0′ is not installed の対処法</a></h2>
+  </header>
+
+  
+  <div class="summary">&#8220;Everyday Rails Testing with RSpec&#8221;を購入して読んでると
+サンプルプロジェクトが紹介されてたのでgit cloneでダウンロードしてきて bundle install をすると
+rbenv: version '2.0.0' is not installed
+と出ちゃって困る。しかも ruby -v と確認しようと思ったら再び
+rbenv: version '2.0.0' is not installed
+？？？？？？
+「まさか rbenv が壊れた！？」と思って調べてたら、どうやらカレントディレクトリに.ruby-versionがあるとそのバージョンのRubyを参照しようとするために起きるらしい。
+対策 自分の場合は2.0.0.p247が入っているので該当のディレクトリでrbenv localすると.ruby-versionの中身が書き換えられて上手く動くようになりました。
+Version自体が異なる場合は上手く動かないと困るので該当のバージョンの ruby をrbenv install 2.x.xでインストールしましょう。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/" title="rbenv: version `2.0.0′ is not installed の対処法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-18T12:29:20JST">Mar 18, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/send-mail-with-gem-mail-and-sendmail-command-in-ruby/">gem `mail` と sendmail を使って簡単にRubyでメール送信</a></h2>
+  </header>
+
+  
+  <div class="summary">net/smtp ライブラリを使うよりも gem mail を使えば簡単にメールが送れるらしいので調べてみた。
+方法 まず mail gem が必要なので $ gem install mail でインストールする。
+んで、下のように書けばOK!
+require 'mail' mail = Mail.new do from 'me@ironsand.net' to 'recipient@exmaple.com' subject 'Here is the image you wanted' body 'Body' end mail.delivery_method :sendmail mail.deliver 注意点 Macでは動かなかったので、VPS上のCentOS 6.4で試してます。
+25版ポートを開けるのを忘れずに。
+参考 [email &#8211; Ruby Mail gem: Connection refused &#8211; connect(2) (Errno::ECONNREFUSED) &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/send-mail-with-gem-mail-and-sendmail-command-in-ruby/" title="gem `mail` と sendmail を使って簡単にRubyでメール送信">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-17T19:56:14JST">Mar 17, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/difference-between-datatime-and-timestamp-in-rails/">datatimeとtimestampの違いとRailsで知っておくべきこと</a></h2>
+  </header>
+
+  
+  <div class="summary">何回か調べたけど未だに覚えられてないのでもう一度調べ直しました。
+確か前回調べたときは英語読むのがめんどくさいから日本語の情報を見て納得したんですが、今回はめんどくさがらずに英語圏で検索したらいつも通りStackOverflowにて大変わかりやすい答えが見つかりました。ありがたや〜。 (人´∀｀)
+datatime と timestamp の違い datatime が 1000年から9999年までを表現して timestamp は unix timestampのフロントエンドに過ぎないので 1970年から2038年までしか扱えない。
+扱う範囲が違うのでdatatimeが8バイトtimestampが4バイト使う。
+Rails における扱い。 これが一番重要な気がするけど、Railsではどちらを指定してもデータベースにはDATATIME型で保存される。
+何故かこのことについて述べてるサイトがあんまりなかったのでこの記事を書いておきました。
+参考 [In Ruby on Rails, what&apos;s the difference between DateTime, Timestamp, Time and Date? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/difference-between-datatime-and-timestamp-in-rails/" title="datatimeとtimestampの違いとRailsで知っておくべきこと">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-17T17:54:36JST">Mar 17, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/pass-array-as-individual-arguments/">複数の引数を取る関数に配列で値を渡す</a></h2>
+  </header>
+
+  
+  <div class="summary">rubyで def foo(arg1, arg2, arg3) な関数があった時に values = [1, 2, 3] という値を渡そうとして
+foo values とすると TypeError: no implicit conversion of Array into Integer というエラーになります。
+解決策 この配列をいうなれば”展開”して渡したいわけですが、やり方がわからなかったので調べました。
+foo *values のようにまるでC言語みたいな渡し方をすればOK.
+参考 [caiustheory.com/sending-array-elements-as-individual-arguments-in-ruby][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/pass-array-as-individual-arguments/" title="複数の引数を取る関数に配列で値を渡す">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-17T15:58:02JST">Mar 17, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/group-strings-by-similar-pattern-with-ruby/">rubyで文字列を正規表現で分類してグループ分けする</a></h2>
+  </header>
+
+  
+  <div class="summary">最後の数字だけ違う文字列をグループ分けしたかったんですが、自分で書いてみるとこんな面倒くさい感じになって (´・ω・｀)ｼｮﾎﾞｰﾝ
+a1 = %w(foo1 foo2 foo3 bar1 bar3 buz2) a2 = a1.map{|v| v.sub(/[0-9]$/,"")}.uniq tmp = Array.new(a2.size) a2.each_with_index do |v2, i| a1.each do |v1| if v1.sub(/[0-9]$/, "") == v2 tmp[i].nil? ? tmp[i] = [v1] : tmp[i].push(v1) end end end p tmp # =&gt; [["foo1", "foo2", "foo3"], ["bar1", "bar3"], ["buz2"]] なので、調べてみたら非常に簡単な方法が見つかりました。
+a1 = %w(foo1 foo2 foo3 bar1 bar3 buz2) p a1.group_by{|x| x[/[a-zA-Z]+/] }.values Rubyすげぇ！
+参考 [arrays &#8211; Group strings with similar pattern in Ruby &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/group-strings-by-similar-pattern-with-ruby/" title="rubyで文字列を正規表現で分類してグループ分けする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-06T08:55:52JST">Mar 6, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/do-not-download-file-if-already-exists-with-wget/">wget でファイルが既に存在したらダウンロードしない方法</a></h2>
+  </header>
+
+  
+  <div class="summary">wgetで同じファイル、例えばfoo.zipをもう一度ダウンロードすると foo.zip.1と自動的に別名でファイルを保存してくれるんですが、自動処理の中で使う時に毎回ダウンロードしたくない時にはちょっとめんどくさい。
+既に存在する時はダウンロードをスキップ方法 wgetには--no-clobberもしくはそれの省略形 -nc という上書きを禁止するオプションがあるのでそれを使いましょう。
+ちなみに &#8220;clobber&#8221; は「不注意に上書きをしてファイルを破壊してしまう。」という意味の英単語です。
+参考 [wget &#8211; skip if files exist? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/do-not-download-file-if-already-exists-with-wget/" title="wget でファイルが既に存在したらダウンロードしない方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-31T15:25:08JST">Jan 31, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/">動的に追加したDOM要素にhoverイベントリスナーを追加する</a></h2>
+  </header>
+
+  
+  <div class="summary">かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。
+前提となる知識 まず基本として $('#foo').click -&gt; console.log &quot;押された！&quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。
+なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？
+後から追加された要素に click イベントを追加 前置きが長くなりましたが
+$('#foo').click -&gt; console.log "押された！" を動的に追加された要素に適用させるには
+$(document).on 'click', '#foo', -&gt; console.log "押された！"  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。
+後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。
+記述が間違っていたので修正しました。
+onイベントの引数として &quot;hover&quot;を使った場合、それは単なる &quot;mouseenter mouseleave&quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/" title="動的に追加したDOM要素にhoverイベントリスナーを追加する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/posts/page/6/">Previous</a></li>
+    
+
+    
+    <li><a href="/posts/page/8/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

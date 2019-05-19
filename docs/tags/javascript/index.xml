@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/javascript/</link>
+    <description>Recent content in javascript on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sun, 14 Mar 2010 18:56:16 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>xyzzy から Rhino(javascript)を直接実行する</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</link>
+      <pubDate>Sun, 14 Mar 2010 18:56:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</guid>
+      <description>xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin+zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。
+[][2]
+下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。
+;;jscript-mode(for Rhino) (setf \*js-prog\* &#34;java org.mozilla.javascript.tools.shell.Main&#34;) (setf \*js-classpath\* &#34;X:/sugarsync/bin/rhino1\_7R2/js.jar&#34;) (defun js-run-script-immediate () (interactive) (js-run &#34;&#34;)) (defun js-run (args) (let ((tempfile (make-temp-file-name &#34;\_\_temp\_&#34; &#34;js&#34; (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* &#34; -f \&#34;&#34; tempfile &#34;\&#34; &#34; args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive &#34;</description>
+    </item>
+    
+    <item>
+      <title>Windows(cygwin&#43;zsh)環境でRhinoを使う</title>
+      <link>http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Sun, 14 Mar 2010 02:16:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。
+ Rhino &amp;#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。
+ダウンロード+解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。
+これでインストールは完了したので
+java org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。
+zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&amp;ldquo;java org.mozilla.javascript.tools.shell.Main&amp;rdquo;
+インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &amp;ldquo;print(&amp;lsquo;hello&amp;rsquo;)&amp;rdquo; js -f hello.js
+これでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。</description>
+    </item>
+    
+    <item>
+      <title>MS、Webブラウザ選択画面のバグの解説</title>
+      <link>http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/</link>
+      <pubDate>Sat, 13 Mar 2010 17:58:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/</guid>
+      <description>MSのブラウザ選択のバグに関する説明が、全くわかってない人が書いてるとしか思えない内容だったので javascript の sort について少し解説をしようと思う。
+ MS、Webブラウザ選択画面にアルゴリズム上のバグか － ＠IT  JavaScriptの配列の並べ替え（sort）は比較関数を渡すことで柔軟な並べ替えが行える。ここではMath.rand()で半々の確率で正負の値を返しているので、隣り合う要素の並べ替えはランダムに起こる。これで結果もランダムになるように思えるが、実際に意味のある並べ替えを行うためには、並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠で、例えば「a＞b」であれば「b＜a」、「a＜bかつb＜c」であれば「a＜c」でなければならない。これは、隣り合う要素同士をただランダムに入れ替えるだけでは達成できないのだという。  この「並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠」という意味の分からない部分はおそらく下記を訳した物と思われる。
+ Doing the Microsoft Shuffle: Algorithm Fail in Browser Ballot  Sorting requires a self-consistent definition of ordering. The following assertions must be true if sorting is to make any sense at all:  だから正しい訳は「並べかえには首尾一貫した&amp;#8221;大小の定義&amp;#8221;が必要である。」になる。
+実際にどのようなバグがあったかを説明するにはコードで示すのが一番わかりやすいので直接書いていこう。 問題の、 javascript の sort関数では引数に比較関数を取れる。例えばfunction comp(a, b){ return a &amp;lt; b; //降順で並べる } function sortnum(){ return [0,3,5,6,-6].sort(comp); } //=&amp;gt;6,5,3,0,-6 function comp(a, b){ return a &amp;lt; b; //昇順で並べる } function sortnum(){ return [0,3,5,6,-6].</description>
+    </item>
+    
+  </channel>
+</rss>

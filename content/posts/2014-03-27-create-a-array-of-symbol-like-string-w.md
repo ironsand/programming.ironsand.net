@@ -1,5 +1,5 @@
 ---
-title: %w(foo bar) みたいな感じでsymbolを作る方法
+title: "%w(foo bar) みたいな感じでsymbolを作る方法"
 author: 鉄
 type: post
 date: 2014-03-27T13:57:39+00:00

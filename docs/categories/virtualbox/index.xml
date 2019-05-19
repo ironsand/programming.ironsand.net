@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualbox on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/virtualbox/</link>
+    <description>Recent content in Virtualbox on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Mon, 02 Apr 2018 23:37:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/virtualbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</title>
+      <link>http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/</link>
+      <pubDate>Mon, 02 Apr 2018 23:37:46 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/</guid>
+      <description>Virtualboxの共有フォルダ機能は便利なんですが、/etc/fstabに追加しようとするとvboxsfがマウント時にまだ読み込まれてないとかでディストリビューションによっては使えません。
+あまり行儀はよくないのですが/etc/rc.localでマウントしてしまえば解決です。
+mount -t vboxsf share /home/ironsand/share || /bin/true exit 0  exit 0より前に書くことだけ気をつけましょう。
+参考 How to mount a VirtualBox shared folder at startup?</description>
+    </item>
+    
+  </channel>
+</rss>

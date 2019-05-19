@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/postgresql/</link>
+    <description>Recent content in Postgresql on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 25 Apr 2014 11:28:56 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Railsで使うpostgresqlのスーパーユーザーを作成する</title>
+      <link>http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/</link>
+      <pubDate>Fri, 25 Apr 2014 11:28:56 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/</guid>
+      <description>RailsでPostgresqlを使うときに毎回そのためのユーザーの作成方法を忘れてしまうのでメモ。
+まずユーザーを作成 WindowsでChocolateyを使ってpostgresqlをインストールしてると初期パスワードはPostgres1234になってるので、
+$ psql.exe -U postgres ユーザ postgres のパスワード: ←ここでパスワードを入力 psql (9.2.1) &#34;help&#34; でヘルプを表示します. postgres=# create user deployer; CREATE ROLE postgres=# alter user deployer with superuser; ALTER ROLE これでパスワード無しのdeployerユーザーが必要な権限付きで作成される。
+※ Linux系のOSならsudo -u postgres psqlでpsqlコマンドを使いましょう。
+パスワード無しユーザーでもOKにする これだけだとfe_sendauth: no password suppliedというエラーが出てしまうので
+C:\PostgreSQL\data\pg_hba.confを開いて
+# IPv4 local connections: host all all 127.0.0.1/32 md5 # IPv6 local connections: host all all ::1/128 md5 を
+# IPv4 local connections: host all all 127.0.0.1/32 trust # IPv6 local connections: host all all ::1/128 trust に書き換える。</description>
+    </item>
+    
+  </channel>
+</rss>

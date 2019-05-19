@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WSH on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/wsh/</link>
+    <description>Recent content in WSH on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Tue, 17 May 2011 19:36:08 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/wsh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WSHで環境変数のPATHに値を追加する</title>
+      <link>http://programming.ironsand.net/2011/how-to-add-environmental-variable-by-wsh/</link>
+      <pubDate>Tue, 17 May 2011 19:36:08 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/how-to-add-environmental-variable-by-wsh/</guid>
+      <description>wshで環境変数のUserのPATHに値を追加したかったので、調べてみたらここがそれっぽいんだけど、
+WSHで環境変数を設定する
+http://www.atmarkit.co.jp/fwin2k/win2ktips/460envset/envset.html
+ここで紹介されてるwsfファイルをWindows 7(32bit)環境で動かすと、UserにSystem側のPathまで全部追加されてしまった。
+ExpandEnvironmentStrings(&amp;#8220;%Path%&amp;#8221;) を使うと全ての設定されてるパスをとってきてしまうらしい。 なので
+objEnv=objShell.Environment(&amp;#8220;USER&amp;#8221;) としといて
+objEnv.Item(&amp;#8220;path&amp;#8221;) で取得すればUserの環境変数だけが取得できるのでこっちを使うと多分良い。 WSHを普段全く触らないからホントに良いのかよくわからないけども、とりあえずうちの環境では下のコードを foo.wsf の名前で utf8n で保存してダブルクリックしたらPATHの値が更新された。 &amp;lt;?xml version=&amp;ldquo;1.0&amp;rdquo; encoding=&amp;ldquo;UTF-8&amp;rdquo; standalone=&amp;ldquo;yes&amp;rdquo; ?&amp;gt;  &amp;lt;?job error=&amp;ldquo;true&amp;rdquo; debug=&amp;ldquo;true&amp;rdquo; ?&amp;gt; &amp;lt;![CDATA[ Set objShell=WScript.CreateObject(&amp;ldquo;WScript.Shell&amp;rdquo;) Set objEnv=objShell.Environment(&amp;ldquo;USER&amp;rdquo;) objEnv.Item(&amp;ldquo;path&amp;rdquo;)=objEnv.Item(&amp;ldquo;path&amp;rdquo;) &amp;amp; &amp;ldquo;;&amp;rdquo; &amp;amp; &amp;ldquo;C:\hoge\bin&amp;rdquo; ]]&amp;gt;   
+重複確認なんて全くしてないので何個でも追加されるので注意してください。</description>
+    </item>
+    
+  </channel>
+</rss>

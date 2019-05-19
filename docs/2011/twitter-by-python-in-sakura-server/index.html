@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>さくらのレンタルサーバーでPythonのTwitterライブラリを使う - 答えを知りたい</title>
+    
+<meta name="description" content="はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。～～～～～～～～前置きここまで～～～～～～～～Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejsonやらImportError: No module named twitterなんかのエラーが出てしまう。インストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet/SSH クライアント  外部モジュールのファイル本体使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。今回は python-twitter とその依存関係のファイル。さくらのレンタルサーバーのスタンダード以上のプランスタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラFTPクライアントなくてもできるんですが、あったほうが便利なので。現在使ってるのがなければFFFTPを使っておいてください。telnet/SSH クライアント次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。必要なモジュールファイルのダウンロード &amp;#8220;python-twitter-0.8.1.tar.gz&amp;#8221;http://code.google.com/p/python-twitter/だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された&amp;#8220;httplib2-0.6.0.tar.gz&amp;#8221; とhttp://code.google.com/p/httplib2/&amp;#8220;simplejson-2.1.5.tar.gz&amp;#8221; とhttp://pypi.python.org/pypi/simplejson&amp;#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&amp;#8221; をhttp://github.com/simplegeo/python-oauth2ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。">
+
+<meta property="og:title" content="さくらのレンタルサーバーでPythonのTwitterライブラリを使う - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。～～～～～～～～前置きここまで～～～～～～～～Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejsonやらImportError: No module named twitterなんかのエラーが出てしまう。インストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet/SSH クライアント  外部モジュールのファイル本体使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。今回は python-twitter とその依存関係のファイル。さくらのレンタルサーバーのスタンダード以上のプランスタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラFTPクライアントなくてもできるんですが、あったほうが便利なので。現在使ってるのがなければFFFTPを使っておいてください。telnet/SSH クライアント次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。必要なモジュールファイルのダウンロード &amp;#8220;python-twitter-0.8.1.tar.gz&amp;#8221;http://code.google.com/p/python-twitter/だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された&amp;#8220;httplib2-0.6.0.tar.gz&amp;#8221; とhttp://code.google.com/p/httplib2/&amp;#8220;simplejson-2.1.5.tar.gz&amp;#8221; とhttp://pypi.python.org/pypi/simplejson&amp;#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&amp;#8221; をhttp://github.com/simplegeo/python-oauth2ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/">
+<meta name="twitter:title" content="さくらのレンタルサーバーでPythonのTwitterライブラリを使う - 答えを知りたい">
+<meta name="twitter:description" content="はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。～～～～～～～～前置きここまで～～～～～～～～Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejsonやらImportError: No module named twitterなんかのエラーが出てしまう。インストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet/SSH クライアント  外部モジュールのファイル本体使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。今回は python-twitter とその依存関係のファイル。さくらのレンタルサーバーのスタンダード以上のプランスタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラFTPクライアントなくてもできるんですが、あったほうが便利なので。現在使ってるのがなければFFFTPを使っておいてください。telnet/SSH クライアント次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。必要なモジュールファイルのダウンロード &amp;#8220;python-twitter-0.8.1.tar.gz&amp;#8221;http://code.google.com/p/python-twitter/だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された&amp;#8220;httplib2-0.6.0.tar.gz&amp;#8221; とhttp://code.google.com/p/httplib2/&amp;#8220;simplejson-2.1.5.tar.gz&amp;#8221; とhttp://pypi.python.org/pypi/simplejson&amp;#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&amp;#8221; をhttp://github.com/simplegeo/python-oauth2ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "さくらのレンタルサーバーでPythonのTwitterライブラリを使う - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2011-05-14T01:04:54JST",
+    "dateModified": "2011-05-14T01:04:54JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。\n～～～～～～～～前置きここまで～～～～～～～～\nTwitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejson\nやらImportError: No module named twitter\nなんかのエラーが出てしまう。\nインストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。\n 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet\/SSH クライアント  外部モジュールのファイル本体\n使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。\n今回は python-twitter とその依存関係のファイル。\nさくらのレンタルサーバーのスタンダード以上のプラン\nスタンダード以上のプランでないと telnet\/SSH が使えないのでライトプランの人は諦めてください。(ノД`)\/~ サヨーナラ\nFTPクライアント\nなくてもできるんですが、あったほうが便利なので。\n現在使ってるのがなければFFFTPを使っておいてください。\ntelnet\/SSH クライアント\n次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。\n必要なモジュールファイルのダウンロード \x26#8220;python-twitter-0.8.1.tar.gz\x26#8221;\nhttp:\/\/code.google.com\/p\/python-twitter\/\nだけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された\n\x26#8220;httplib2-0.6.0.tar.gz\x26#8221; と\nhttp:\/\/code.google.com\/p\/httplib2\/\n\x26#8220;simplejson-2.1.5.tar.gz\x26#8221; と\nhttp:\/\/pypi.python.org\/pypi\/simplejson\n\x26#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz\x26#8221; を\nhttp:\/\/github.com\/simplegeo\/python-oauth2\nダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">さくらのレンタルサーバーでPythonのTwitterライブラリを使う</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-14T01:04:54JST">May 14, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">さくらのレンタルサーバーでPythonのTwitterライブラリを使う</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<h3 id="はじめに">はじめに</h3>
+
+<p>最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。</p>
+
+<p>～～～～～～～～前置きここまで～～～～～～～～</p>
+
+<p>Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずに<pre class=prettyprint>ImportError: No module named simplejson</pre></p>
+
+<p>やら<pre class=prettyprint>ImportError: No module named twitter</pre></p>
+
+<p>なんかのエラーが出てしまう。</p>
+
+<h3 id="インストールに必要なもの">インストールに必要なもの</h3>
+
+<p>外部モジュールを使うためには以下の物が必要になってくる。</p>
+
+<ol>
+<li>外部モジュールのファイル本体</li>
+<li>さくらのレンタルサーバーのスタンダード以上のプラン</li>
+<li>FTPクライアント</li>
+<li>telnet/SSH クライアント</li>
+</ol>
+
+<p><strong>外部モジュールのファイル本体</strong></p>
+
+<p>使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。</p>
+
+<p>今回は python-twitter とその依存関係のファイル。</p>
+
+<p><strong>さくらのレンタルサーバーのスタンダード以上のプラン</strong></p>
+
+<p>スタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラ</p>
+
+<p><strong>FTPクライアント</strong></p>
+
+<p>なくてもできるんですが、あったほうが便利なので。</p>
+
+<p>現在使ってるのがなければFFFTPを使っておいてください。</p>
+
+<p><strong>telnet/SSH クライアント</strong></p>
+
+<p>次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「<a href=http://yebisuya.dip.jp/Software/PuTTY/>PuTTY ごった煮版</a>」を使いましょう。</p>
+
+<h3 id="必要なモジュールファイルのダウンロード">必要なモジュールファイルのダウンロード</h3>
+
+<p>&#8220;python-twitter-0.8.1.tar.gz&#8221;</p>
+
+<p><a href="http://code.google.com/p/python-twitter/">http://code.google.com/p/python-twitter/</a></p>
+
+<p>だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された</p>
+
+<p>&#8220;httplib2-0.6.0.tar.gz&#8221; と</p>
+
+<p><a href="http://code.google.com/p/httplib2/">http://code.google.com/p/httplib2/</a></p>
+
+<p>&#8220;simplejson-2.1.5.tar.gz&#8221; と</p>
+
+<p><a href="http://pypi.python.org/pypi/simplejson">http://pypi.python.org/pypi/simplejson</a></p>
+
+<p>&#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&#8221; を</p>
+
+<p><a href="http://github.com/simplegeo/python-oauth2">http://github.com/simplegeo/python-oauth2</a></p>
+
+<p>ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。</p>
+
+<p>FTPクライアントでファイルのアップロード問題ないでしょうから説明を飛ばします。ホームディレクトリの直下にtempとか適当なフォルダを作ってそこに上げておいてください。</p>
+
+<h3 id="puttyの使い方">PuTTYの使い方</h3>
+
+<p>PuTTYのインストールが終わったらputty.exeを起動して設定画で[Session]の中にある Host Name (or IP address) に [username].sakura.ne.jp を入力して、それから Port を &#8220;22&#8221; に設定します。</p>
+
+<p>設定を入力したら[Open]で telnet を開いて<pre class=prettyprint>login as:</pre></p>
+
+<p>でユーザー名とパスワードを入力します。 ユーザー名に .sakura.ne.jp 部分は<strong>いりません。</strong></p>
+
+<p>ログインできたらちゃんと動いてるか確認するためにpythonのバージョンの確認をしておきましょう。<pre class=prettyprint>%python &ndash;version Python 2.6.2</pre></p>
+
+<p>あと作業時に環境変数PYTHONPATHを設定しておかないとうまくいかないで、<pre class=prettyprint>setenv PYTHONPATH ~/lib/python</pre></p>
+
+<p>でsetenv PYTHONPATH ~/lib/python で設定しておきます。</p>
+
+<p>次にさっきアップロードしたファイルを展開します。 tempフォルダを作ったので<pre class=prettyprint>%cd temp</pre></p>
+
+<p>でカレントディレクトリを変更して、<pre class=prettyprint>%tar zxvf simplejson-2.1.5.tar.gz</pre></p>
+
+<p>を4回繰り返して全部展開します。 ファイル名は数文字入力してTABキーを押せば補完されます。</p>
+
+<p>解凍できたら展開されたディレクトリに入って<pre class=prettyprint>%python setup.py install &ndash;home=~</pre></p>
+
+<p>と入力します。これを4回繰り返すわけですが、依存関係があるので</p>
+
+<p>C:\python-twitter-0.8.1&gt;python setup.py build</p>
+
+<p>C:\python-twitter-0.8.1&gt;python setup.py install</p>
+
+<p>httplib2 → simplejson → simplegeo → python-twitter</p>
+
+<p>の順で行ってください。</p>
+
+<p>最後にちゃんとインストールで来たか import で確認しておきます。<pre class=prettyprint>%python &gt;&gt;&gt;import twitter &gt;&gt;&gt;exit()</pre></p>
+
+<p>エラーが出てこなければ成功です。</p>
+
+<h3 id="参考にしたサイト">参考にしたサイト</h3>
+
+<p>「さくらのレンタルサーバ」で Python 外部モジュールを使う　改訂版</p>
+
+<p><a href="http://www.emptypage.jp/notes/pymods-on-sakura.html">http://www.emptypage.jp/notes/pymods-on-sakura.html</a></p>
+
+<p>Python Twitter のインストール</p>
+
+<p><a href="http://www.yukun.info/blog/2011/03/python-twitter-install.html">http://www.yukun.info/blog/2011/03/python-twitter-install.html</a></p>
+
+<p>Twitter Bot を作ってみる</p>
+
+<p><a href="http://lazycozysblog.blogspot.com/2010/03/twitter-bot.html">http://lazycozysblog.blogspot.com/2010/03/twitter-bot.html</a></p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/python/">python</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

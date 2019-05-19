@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-17T16:22:13JST">Dec 17, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/mysql%E3%81%AEroot%E3%81%AE%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%99%E3%82%8Bsql/">MySQLのrootのパスワードをリセットするSQL</a></h2>
+  </header>
+
+  
+  <div class="summary">MySQLのパスワードがわからなくなった時に使う root のパスワードリセットのためのSQL文
+UPDATE mysql.user SET Password=PASSWORD('masterpassword') WHERE User='root'; FLUSH PRIVILEGES;  </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/mysql%E3%81%AEroot%E3%81%AE%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%99%E3%82%8Bsql/" title="MySQLのrootのパスワードをリセットするSQL">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-17T15:37:33JST">Dec 17, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/coffee-script-with-smart-compile/">coffee script を Emacs の smart compile を使ってjsの出力結果を出す</a></h2>
+  </header>
+
+  
+  <div class="summary">Railsのプロジェクトで coffee script を使うけどもコンパイルは全て Asset pipelineがやってくれるので、たまに変換結果の js をちょっと見てみたい時に困った事になります。
+なのでEmacsの smart compile の機能を使ってすぐに 出力結果を得られるようにしてみました。
+解決策 coffee -pで標準出力に変換結果を出力してくれるので
+(global-set-key (kbd "C-c C-x") 'smart-compile) (setq smart-compile-alist (append '(("\\.rb$" . "ruby %f")) '(("\\.php$" . "php %f")) '(("\\.coffee$" . "coffee -p %f")) '(("\Gemfile$" . "bundle install")) smart-compile-alist))  としておけばOKです。
+参考 [Convert coffee to javascript and show the result to standard output in Emacs &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/coffee-script-with-smart-compile/" title="coffee script を Emacs の smart compile を使ってjsの出力結果を出す">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-17T12:36:01JST">Dec 17, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/set-default-path-for-find-file-in-emacs/">Emacsの`find-file`で開くデフォルトのパスを変更する</a></h2>
+  </header>
+
+  
+  <div class="summary"> 何故かMacのOSを最新の Mavericks(10.9.1)に変えたらEmacsの C-x C-f で表示されるデフォルトのパスが ルートの / に変わってしまったのでその対策。
+対策法 下の対策はうまく動いてませんでした。homebrewの最新版だと対応されてるらしいので homebrew install --cocoa emacsで homebrewから入れたら解決します。
+Emacsの設定に default-directory を追加したらOK
+ (setq default-directory &#8220;~/&#8221;)  参考 
+ settings &#8211; emacs &ldquo;Find File:&rdquo; default path &#8211; Stack Overflow </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/set-default-path-for-find-file-in-emacs/" title="Emacsの`find-file`で開くデフォルトのパスを変更する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-15T13:53:57JST">Dec 15, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/colorize-emacs-shell/">Emacsの`M-x shell` に色を付ける</a></h2>
+  </header>
+
+  
+  <div class="summary">(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on) でOK。ちなみに M-x eshell で高機能なシェルがつかえるらしくそちらでも色がついてた。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/colorize-emacs-shell/" title="Emacsの`M-x shell` に色を付ける">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-15T13:50:02JST">Dec 15, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/create_or_update-method-in-rails/">create_or_update 的なメソッドをRailsで使いたいとき</a></h2>
+  </header>
+
+  
+  <div class="summary">既に該当するモデルの値が存在していたら update で値を更新して、まだ存在しない場合は create で新しくモデルのインスタンスを作成したい時ありませんか？ 少なくとも自分にはありましたし、検索でここに辿り着いたあなたもきっとあると思います。
+Railsならきっと簡単な方法があると思ったので調べてみたらありました。
+やり方。 こんな感じでOK。
+my_class = ClassName.find_or_initialize_by_name(name) my_class.update_attributes( :street_address =&gt; self.street_address, :city_name =&gt; self.city_name, :federalid =&gt; self.federalid, :state_prov_id =&gt; self.state_prov_id, :zip_code =&gt; self.zip_code ) 注意点 ちなみに create_or_update は ActiveRecord::Callbacks の private 関数として用意されてるご様子。
+[create_or_update (ActiveRecord::Callbacks) &#8211; APIdock][1]
+参考 [ruby &#8211; create_or_update method in rails &#8211; Stack Overflow][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/create_or_update-method-in-rails/" title="create_or_update 的なメソッドをRailsで使いたいとき">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-15T09:29:01JST">Dec 15, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/respond_to_without_block_in_rails/">respond_to を ブロックを使わずに書く。</a></h2>
+  </header>
+
+  
+  <div class="summary">Ajaxの処理をRailsでするときはControllerに
+respond_to do |format| format.js end と書いてたんですが、いちいちブロック引数に format を使って処理するのは無駄な気がしたので一行で書ける方法を調べてみた。
+解決策 respond_to :js でOKでした。
+respond_to :html, :js な書き方もOKなようです。
+参考 [respond_to (ActionController::MimeResponds::InstanceMethods) &#8211; APIdock][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/respond_to_without_block_in_rails/" title="respond_to を ブロックを使わずに書く。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-15T07:33:43JST">Dec 15, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/">Gemfileを開いてたらsmart-compileで`bundle install`を実行する</a></h2>
+  </header>
+
+  
+  <div class="summary">開いてるファイルをそのまま実行できるsmart-compileでGemfileを開いてたらbundle installを実行したかったのでやり方を調べてみました。
+設定方法 どうやらsmart compile は自動的にコマンドの実行ディレクトリをファイルがある場所に移動してくれるようなので単純に Gemfileというファイル名とbundle installのコマンドを他のファイルと同じように紐付ければOKのようです。
+(global-set-key (kbd "C-c C-x") 'smart-compile) (setq smart-compile-alist (append '(("\\.rb$" . "ruby %f")) '(("\\.php$" . "php %f")) '(("\Gemfile$" . "bundle install")) smart-compile-alist)) もちろん ruby や php を使ってなかったら該当行は必要ありません。
+使い方 これで Gemfile を開いて C-c C-x するとこんな風に bundle install が実行されます。
+-*- mode: compilation; default-directory: "~/dev/foo/" -*- Compilation started at Sun Dec 15 16:29:42 bundle install Using rake (10.1.0) Using i18n (0.6.9) from git://github.com/svenfuchs/i18n.git (at master) Using minitest (4.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/" title="Gemfileを開いてたらsmart-compileで`bundle install`を実行する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-14T08:08:39JST">Dec 14, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/do-not-use-number-for-column-name-in-rails/">Railsのカラム名の語頭に数字を使ってはいけない</a></h2>
+  </header>
+
+  
+  <div class="summary">Railsの学習がてらに2chもどきをつくろうと思って `rails new 2ch` してみるとエラーになる。これはいいんだけど、`rails generate Model 2ch` ってエラーを吐かないのに実際は使えないので修正がめんどくさくなるので気をつけましょう。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/do-not-use-number-for-column-name-in-rails/" title="Railsのカラム名の語頭に数字を使ってはいけない">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-13T15:50:45JST">Dec 13, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/deprecated-i18n-enforce_available_locales/">[deprecated] I18n.enforce_available_locales とか何とかRailsでエラーが出る時の対処法</a></h2>
+  </header>
+
+  
+  <div class="summary">Railsでこんなdeprecatedの警告が出てきたので対処方法を調べた。
+[deprecated] I18n.enforce_available_locales will default to true in the future. If you really want to skip validation of your locale you can set I18n.enforce_available_locales = false to avoid this message. 対策 config.i18n.enforce_available_locales = true でOK, `locale validation` をきちんとするなら true、どうでも良いならfalseらしい。よくわかんない。
+参考 [ruby &#8211; Rails I18n validation deprecation warning &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/deprecated-i18n-enforce_available_locales/" title="[deprecated] I18n.enforce_available_locales とか何とかRailsでエラーが出る時の対処法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-11T06:54:04JST">Dec 11, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/link_to-with-block/">link_to で内部にタグがあったりする時はブロックを使いましょう</a></h2>
+  </header>
+
+  
+  <div class="summary">Zurb-FoundationとかTwitter bootstrapを使ってると、アイコンをリンク内に含めたくなったりしますよね。こんな感じに
+[crayon lang=&#8221;html&#8221;]
+ Reload
+[/crayon]
+でもこれをそのまま `link_to` で囲んで
+[crayon lang=&#8221;html&#8221;]
+&lt;%= link_to &ldquo; Reload&#8221;,&#8221;http://example.com/reload&amp;#8221; %&gt;
+[/crayon]
+とすると``タグがHTMLエスケープされて悲しい事態になるんです。
+対策 なのでそういう時は `link_to` さんはブロックが取れるのでブロックを使って処理しましょう。ブロックの返り値がリンクのテキストになります。
+[crayon lang=&#8221;html&#8221;]
+&lt;%= link_to &ldquo;http://example.com/reload&quot;, class: &lsquo;reload&rsquo; do %&gt;
+ Reload
+&lt;% end %&gt;
+[/crayon]
+ちなみに `button_to` も同じような関数なのでこういう風にかけます。
+[crayon lang=&#8221;html&#8221;]
+&lt;%= button_to &ldquo;&rdquo;, class: &lsquo;small radius&rsquo; do %&gt;
+ Reload
+&lt;% end %&gt;
+[/crayon]
+これ知らない時に必死にHTMLエスケープされないために何をすればよいのかを探しまくったのは今では良い思い出でもなんでもありません。時間返せ。
+参考 [ruby on rails &#8211; link_to in helper with block &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/link_to-with-block/" title="link_to で内部にタグがあったりする時はブロックを使いましょう">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/page/9/">Previous</a></li>
+    
+
+    
+    <li><a href="/page/11/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

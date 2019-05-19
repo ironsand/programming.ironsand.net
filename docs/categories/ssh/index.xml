@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/ssh/</link>
+    <description>Recent content in ssh on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Wed, 30 Apr 2014 21:23:03 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>screenを使ってssh経由のコマンドを便利に</title>
+      <link>http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/</link>
+      <pubDate>Wed, 30 Apr 2014 21:23:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/</guid>
+      <description>sshでログインして処理の重たいコマンドを実行した後にセッションが途切れてしまうとそのコマンドをもう一度fbなどでフォアグラウンドに持ってこようと思っても残念ながらできません。違うシェルのインスタンスから立ち上げたらプロセスは別のインスタンスのシェルには持ってこれないかららしいです。
+Screenの使い方 まず初めからコマンドをscreenを使って立ち上げておきましょう。
+$ screen ruby it_takes_very_long.rb
+そして、一旦sshの接続を切って繋ぎ直します。
+$ screen -listをするとこんな感じで表示されるので
+There is a screen on: 31744.pts-0.Sakura (Detached) 1 Socket in /var/run/screen/S-ironsand.  $ screen -r 31744.pts-0.Sakuraでスクリーンに繋ぎ直せば画面への出力をもう一度見ることが出来ます。
+参考 [Linux Screen Tutorial &amp;#8211; YouTube][1]</description>
+    </item>
+    
+    <item>
+      <title>cygwinの必要なパッケージをコマンドラインで一括インストール</title>
+      <link>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</link>
+      <pubDate>Mon, 14 Apr 2014 19:55:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</guid>
+      <description>今まではcygwinをインストールしたディレクトリを全部SugarSyncで同期して使ってたんだけど、
+よくわからないままに色々入れてたら700MBぐらいあったので整理整頓することにしました。
+どうするか？ 既にインストールされてるcygwinのファイルを整理するのはめんどくさかったの新規インストールをすることにしたのはいいけど、何せパッケージ選択がめんどくさい。めんどくさいっていうか手動でやると必ず忘れてしまうので自動化したい。
+そこでコマンドラインインストールの登場です！
+インストール方法 setup-x86.exe --quiet-mode -P util-linux,curl,wget,openssh,rsync,zip,tree -s ftp://ftp.iij.ad.jp/pub/cygwin/ --root %USERPROFILE%\cyg --local-package-dir %USERPROFILE%\cyg  これでホームディレクトリ直下の C:\Users\ironsand\cygとかにインストールされる。
+やめたパッケージ gccとか入れてcygwinでコンパイルして色々してると毎回ドツボにハマるので、もうそういうのはVirtualBox上のUbuntuですることにする。
+rubyやpythonはWindowsのネイティブパッケージを使う。結局なんだかんだでそれが一番安定してる気がするので。
+gitもcygwin用のパス名周りのエラーが鬱陶しくなることがちょくちょくあったのでChocolatey使ってcinst gitでインストールする方法に変更。
+注意点 何故か 64bit バージョンは動きませんでした。理由はわかりませんが、こういう関係のソフトは32bit版のほうが今はまだ安定してる気がするし大量にメモリ使うこともないので気にしないことにします。
+sshだとsshコマンドはインストールされないのでopensshを指定しましょう。
+インストール後に/etc/passwdのホームディレクトリ設定を/home/usernameからcygdrive/c/Users/usernameとWindowsのホームフォルダに変更しておくとsshとかのコマンドの時に設定ファイルを自動的に読みに行ってくれるので便利。便利というかしないとちゃんと動かない。
+あと環境変数にset HOME=%USERPROFILE%もどこかに仕込んでたほうが良いかも。
+Util-Linux 何故かカレンダー表示のcalコマンドが見つからなかったので探してみたら、calのみのインストールはないらしい。
+とりあえずutil-linuxが良さそうなんでこれを使う事にした。
+tree Windows由来のコマンドなのにWindowsのtreeコマンドは階層指定もできない残念仕様なのでcygwinのを入れました。tree -L 2とかで階層指定できる。便利！</description>
+    </item>
+    
+    <item>
+      <title>linuxで特定のファイルの最終行だけ削除する</title>
+      <link>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</link>
+      <pubDate>Thu, 27 Mar 2014 11:57:07 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</guid>
+      <description>Digital OceanではOSを気軽にDropletで作成して、気軽にポイポイ捨てれるのが売りですが、そのせいで sshで新しく繋ぎ直したホストに繋ごうとすると
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that a host key has just been changed. The fingerprint for the RSA key sent by the remote host is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx. Please contact your system administrator. Add correct host key in /home/ironsand/.ssh/known_hosts to get rid of this message.</description>
+    </item>
+    
+  </channel>
+</rss>

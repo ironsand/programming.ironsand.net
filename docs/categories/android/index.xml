@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/android/</link>
+    <description>Recent content in Android on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sat, 01 Sep 2018 08:09:53 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>なろうリーダーでフォント入れ替える方法</title>
+      <link>http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sat, 01 Sep 2018 08:09:53 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/</guid>
+      <description>こんな感じになります 設定方法など なろうリーダーで縦書きができるようになったのですが、Kindleなどど違ってIPAフォントをアプリの機能でダウンロードしてインストールすることはできないようです。
+設定のキャッシュ設定→保存先に
+/storage/emulated/0/Android/data/com.tscsoft.naroureader/files  のようにキャッシュ用のフォルダが示されてるので、以下のサイトからフォントを落としてきてこのフォルダにコピーすれば設定からIPAフォントが選べるようになります。
+https://ipafont.ipa.go.jp/old/ipafont/download.html
+ファイルの移動にはAirmoreを使うと便利です。
+Airmoreで転送する際には頭の/storage/emulated/0/を無視してAndroidディレクトリから選んでいけばOKです。files/fontsとなっていますのでその中に入れましょう。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/git/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/git/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>git - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>git</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-25T11:43:19JST">Apr 25, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/">git の `error: src refspec master does not match any.`への対処</a></h2>
+  </header>
+
+  
+  <div class="summary">$ git push -u origin master error: src refspec master does not match any. という見たことないエラーが出てビビる。
+原因と対策 原因：コミットしてない
+対策：コミットする
+以上！
+参考 [src refspec master does not match any when pushing commits in git &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/" title="git の `error: src refspec master does not match any.`への対処">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-20T23:02:04JST">Apr 20, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/tips-git-in-cygwin/">cygwinのgitを使うときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">cygwinはWindows上で作成されたファイルを全て755の実行可能ファイルとして扱ってしまうので、そのままgitで扱うとすべてのファイルが実行可能権限を持ったなんとも危なっかしい構成になってしまいます。
+対策 $ git config core.filemode false でfilemodeの変更を無視するように設定しておきましょう。
+参考 [Windows Git users: Please check your core.fileMode setting &#8211; Google グループ][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/tips-git-in-cygwin/" title="cygwinのgitを使うときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-14T19:55:58JST">Apr 14, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/">cygwinの必要なパッケージをコマンドラインで一括インストール</a></h2>
+  </header>
+
+  
+  <div class="summary">今まではcygwinをインストールしたディレクトリを全部SugarSyncで同期して使ってたんだけど、
+よくわからないままに色々入れてたら700MBぐらいあったので整理整頓することにしました。
+どうするか？ 既にインストールされてるcygwinのファイルを整理するのはめんどくさかったの新規インストールをすることにしたのはいいけど、何せパッケージ選択がめんどくさい。めんどくさいっていうか手動でやると必ず忘れてしまうので自動化したい。
+そこでコマンドラインインストールの登場です！
+インストール方法 setup-x86.exe --quiet-mode -P util-linux,curl,wget,openssh,rsync,zip,tree -s ftp://ftp.iij.ad.jp/pub/cygwin/ --root %USERPROFILE%\cyg --local-package-dir %USERPROFILE%\cyg  これでホームディレクトリ直下の C:\Users\ironsand\cygとかにインストールされる。
+やめたパッケージ gccとか入れてcygwinでコンパイルして色々してると毎回ドツボにハマるので、もうそういうのはVirtualBox上のUbuntuですることにする。
+rubyやpythonはWindowsのネイティブパッケージを使う。結局なんだかんだでそれが一番安定してる気がするので。
+gitもcygwin用のパス名周りのエラーが鬱陶しくなることがちょくちょくあったのでChocolatey使ってcinst gitでインストールする方法に変更。
+注意点 何故か 64bit バージョンは動きませんでした。理由はわかりませんが、こういう関係のソフトは32bit版のほうが今はまだ安定してる気がするし大量にメモリ使うこともないので気にしないことにします。
+sshだとsshコマンドはインストールされないのでopensshを指定しましょう。
+インストール後に/etc/passwdのホームディレクトリ設定を/home/usernameからcygdrive/c/Users/usernameとWindowsのホームフォルダに変更しておくとsshとかのコマンドの時に設定ファイルを自動的に読みに行ってくれるので便利。便利というかしないとちゃんと動かない。
+あと環境変数にset HOME=%USERPROFILE%もどこかに仕込んでたほうが良いかも。
+Util-Linux 何故かカレンダー表示のcalコマンドが見つからなかったので探してみたら、calのみのインストールはないらしい。
+とりあえずutil-linuxが良さそうなんでこれを使う事にした。
+tree Windows由来のコマンドなのにWindowsのtreeコマンドは階層指定もできない残念仕様なのでcygwinのを入れました。tree -L 2とかで階層指定できる。便利！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/" title="cygwinの必要なパッケージをコマンドラインで一括インストール">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/" class="list-group-item">git の `error: src refspec master does not match any.`への対処</a>
+      
+      <a href="http://programming.ironsand.net/2014/tips-git-in-cygwin/" class="list-group-item">cygwinのgitを使うときの注意点</a>
+      
+      <a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/" class="list-group-item">cygwinの必要なパッケージをコマンドラインで一括インストール</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

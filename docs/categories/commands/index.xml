@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Commands on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/commands/</link>
+    <description>Recent content in Commands on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Tue, 24 Nov 2015 02:01:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/commands/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sox を 無音部分のある音声を分断</title>
+      <link>http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/</link>
+      <pubDate>Tue, 24 Nov 2015 02:01:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/</guid>
+      <description>音声つき単語帳の単語と例文とかを切り出してランダム出題する形にしたかったのでまずsoxを使って無音部分で音声を分割しました。
+$ sox in.wav out.wav silence 1 0.3 0.1% 1 0.3 0.1% : newfile : restart これでout001.wavなどのように連番でファイルが保存されます。初めの0.3が音声の前の部分の無音の長さで、後ろの0.3が音声の後に続く無音部分の長さです。
+参考 [sox fails to split files &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>ffmpegで動画を再エンコードせずにアスペクト比のみ変更する</title>
+      <link>http://programming.ironsand.net/2015/ffmpeg%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E5%86%8D%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%9B%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E6%AF%94%E3%81%AE%E3%81%BF/</link>
+      <pubDate>Fri, 13 Nov 2015 17:19:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/ffmpeg%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E5%86%8D%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%9B%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E6%AF%94%E3%81%AE%E3%81%BF/</guid>
+      <description>昔録った動画のアスペクト比を間違えて設定してしまってたので一括で16:9にしたかったのでやり方を調べました。
+方法 $ ffmpeg -i movie.mp4 -c copy -aspect 16:9 movie_out.mp4  とこんな感じで出来ます。ちなみにある程度新しいffmpegじゃないとちゃんと動かないので新しいのを入れましょう。あとコンテナがアスペクト比の設定に対応してないともちろんダメです。
+ちなみに私はWindowsで動かしました。</description>
+    </item>
+    
+    <item>
+      <title>FFmpeg使って複数の音声と字幕から一つの動画を作成する</title>
+      <link>http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/</link>
+      <pubDate>Sun, 27 Sep 2015 02:49:40 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/</guid>
+      <description>ffmpegを使って複数の音声と字幕から一つの動画を作成する方法。
+ffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4  コマンドの解説 まず入力ソースに使う動画は一つ一つに-iオプションを付けて呼び出します。
+そして-map の横についてる数字は何個目の引数として呼び込まれたか:その動画や音声のどのストリームかを表しています。そして-metadataを使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。
+ちなみに-acodec copy -vcodec copyという使い方をされてる人が多いですが-c copyで一括指定できます。
+知っとくと便利なこと -t 数値で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は-t 180などして簡単に動画の確認だけすると良いでしょう。</description>
+    </item>
+    
+    <item>
+      <title>git の `error: src refspec master does not match any.`への対処</title>
+      <link>http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/</link>
+      <pubDate>Fri, 25 Apr 2014 11:43:19 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/</guid>
+      <description>$ git push -u origin master error: src refspec master does not match any. という見たことないエラーが出てビビる。
+原因と対策 原因：コミットしてない
+対策：コミットする
+以上！
+参考 [src refspec master does not match any when pushing commits in git &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>cygwinのgitを使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/tips-git-in-cygwin/</link>
+      <pubDate>Sun, 20 Apr 2014 23:02:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/tips-git-in-cygwin/</guid>
+      <description>cygwinはWindows上で作成されたファイルを全て755の実行可能ファイルとして扱ってしまうので、そのままgitで扱うとすべてのファイルが実行可能権限を持ったなんとも危なっかしい構成になってしまいます。
+対策 $ git config core.filemode false でfilemodeの変更を無視するように設定しておきましょう。
+参考 [Windows Git users: Please check your core.fileMode setting &amp;#8211; Google グループ][1]</description>
+    </item>
+    
+    <item>
+      <title>find の `-exec` オプションを cygwin で使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/</link>
+      <pubDate>Tue, 15 Apr 2014 04:15:00 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/</guid>
+      <description>何故動かないか結構困ったのでメモ。
+動かないもの find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; \;  cygwin 環境、というかcmd.exeでcygwinの中のfindコマンドを呼び出してるとこれはエラーになっちゃいます。
+理由 何故ならfindの\;の\は;をエスケープする役割なので、当然ここにはエスケープキャラクターを入れて置かなければならないわけですが、Windowsのcmdにおいて\はパス区切りであって何もエスケープしてくれません。
+なのでcygwinのfindをcmd.exeやnyaosなどのWindows環境のシェルから使うときはcmd.exeのエスケープキャラクターの^を使ってこんなふうに書きましょう。
+find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; ^;  もしくはどちらの環境でも使える方法の
+find . -name &#39;*.mkv&#39; -exec bash -c &#39;echo &amp;quot;{}&amp;quot;&#39; &#39;;&#39;  を使うのもいいかもしれません。</description>
+    </item>
+    
+    <item>
+      <title>cygwinの必要なパッケージをコマンドラインで一括インストール</title>
+      <link>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</link>
+      <pubDate>Mon, 14 Apr 2014 19:55:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/</guid>
+      <description>今まではcygwinをインストールしたディレクトリを全部SugarSyncで同期して使ってたんだけど、
+よくわからないままに色々入れてたら700MBぐらいあったので整理整頓することにしました。
+どうするか？ 既にインストールされてるcygwinのファイルを整理するのはめんどくさかったの新規インストールをすることにしたのはいいけど、何せパッケージ選択がめんどくさい。めんどくさいっていうか手動でやると必ず忘れてしまうので自動化したい。
+そこでコマンドラインインストールの登場です！
+インストール方法 setup-x86.exe --quiet-mode -P util-linux,curl,wget,openssh,rsync,zip,tree -s ftp://ftp.iij.ad.jp/pub/cygwin/ --root %USERPROFILE%\cyg --local-package-dir %USERPROFILE%\cyg  これでホームディレクトリ直下の C:\Users\ironsand\cygとかにインストールされる。
+やめたパッケージ gccとか入れてcygwinでコンパイルして色々してると毎回ドツボにハマるので、もうそういうのはVirtualBox上のUbuntuですることにする。
+rubyやpythonはWindowsのネイティブパッケージを使う。結局なんだかんだでそれが一番安定してる気がするので。
+gitもcygwin用のパス名周りのエラーが鬱陶しくなることがちょくちょくあったのでChocolatey使ってcinst gitでインストールする方法に変更。
+注意点 何故か 64bit バージョンは動きませんでした。理由はわかりませんが、こういう関係のソフトは32bit版のほうが今はまだ安定してる気がするし大量にメモリ使うこともないので気にしないことにします。
+sshだとsshコマンドはインストールされないのでopensshを指定しましょう。
+インストール後に/etc/passwdのホームディレクトリ設定を/home/usernameからcygdrive/c/Users/usernameとWindowsのホームフォルダに変更しておくとsshとかのコマンドの時に設定ファイルを自動的に読みに行ってくれるので便利。便利というかしないとちゃんと動かない。
+あと環境変数にset HOME=%USERPROFILE%もどこかに仕込んでたほうが良いかも。
+Util-Linux 何故かカレンダー表示のcalコマンドが見つからなかったので探してみたら、calのみのインストールはないらしい。
+とりあえずutil-linuxが良さそうなんでこれを使う事にした。
+tree Windows由来のコマンドなのにWindowsのtreeコマンドは階層指定もできない残念仕様なのでcygwinのを入れました。tree -L 2とかで階層指定できる。便利！</description>
+    </item>
+    
+    <item>
+      <title>linuxで特定のファイルの最終行だけ削除する</title>
+      <link>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</link>
+      <pubDate>Thu, 27 Mar 2014 11:57:07 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</guid>
+      <description>Digital OceanではOSを気軽にDropletで作成して、気軽にポイポイ捨てれるのが売りですが、そのせいで sshで新しく繋ぎ直したホストに繋ごうとすると
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that a host key has just been changed. The fingerprint for the RSA key sent by the remote host is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx. Please contact your system administrator. Add correct host key in /home/ironsand/.ssh/known_hosts to get rid of this message.</description>
+    </item>
+    
+    <item>
+      <title>wget と curl</title>
+      <link>http://programming.ironsand.net/2014/wget-and-curl/</link>
+      <pubDate>Mon, 24 Mar 2014 05:23:28 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/wget-and-curl/</guid>
+      <description> 「wgetかcurlで既にファイルが存在してたら上書きしないし、該当のディレクトリがなかったら自動的に生成するにはどうすればいいのかな？」という疑問をStack Overflowで検索！
+ディレクトリが存在しない時に自動的に作成する [linux &amp;#8211; wget -O for non-existing save path? &amp;#8211; Stack Overflow][1]
+回答意訳
+ curlならできるよ！ curlの方が強力なツールだからね！
+ 既にファイルが存在した時に上書きしない [curl &amp;#8211; Don&amp;apos;t download or overwrite file if exists &amp;#8211; Stack Overflow][2]
+回答意訳
+ wgetならできるよ！ wgetの方が強力なツールだからね！
+ 　　　　　　　　　　今ここに新たな「きのこたけのこ紛争」が巻き起ころうとしている！！ </description>
+    </item>
+    
+    <item>
+      <title>Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</title>
+      <link>http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/</link>
+      <pubDate>Sat, 22 Mar 2014 00:27:55 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/</guid>
+      <description>ホームディレクトリに直接ファイルを置くんじゃなくて、
+必要なファイルをDropboxに置いといて同期して使おうと思ったので
+mklink ~/.nyaos p:\Dropbox\rc\.nyaos
+としたら
+この操作を実行するのに十分な特権がありません。
+と怒られた。
+なぜ権限が必要か？ 「さっき自分で作ったファイルを自分のホームフォルダに移動させるのになんで権限が必要なんです！？」と不思議に思って調べてみたら、シンボリックリンクの作成に必要なSeCreateSymbolicLinkPrivilegeが通常はユーザーが持っていないかららしい。
+何故そんな謎な仕様になってるかは全くわからない。
+日本語圏で検索しても「とりあえず管理者権限にしとけ」的な情報しか出てこなかったのでここに書いておきます。
+参考 [filesystems &amp;#8211; Using windows mklink for linking 2 files &amp;#8211; Stack Overflow][1]
+[windows 7 &amp;#8211; Got not sufficient privileges message in CMD when logged on as administrator &amp;#8211; Super User][2]</description>
+    </item>
+    
+    <item>
+      <title>wget でファイルが既に存在したらダウンロードしない方法</title>
+      <link>http://programming.ironsand.net/2014/do-not-download-file-if-already-exists-with-wget/</link>
+      <pubDate>Thu, 06 Mar 2014 08:55:52 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/do-not-download-file-if-already-exists-with-wget/</guid>
+      <description>wgetで同じファイル、例えばfoo.zipをもう一度ダウンロードすると foo.zip.1と自動的に別名でファイルを保存してくれるんですが、自動処理の中で使う時に毎回ダウンロードしたくない時にはちょっとめんどくさい。
+既に存在する時はダウンロードをスキップ方法 wgetには--no-clobberもしくはそれの省略形 -nc という上書きを禁止するオプションがあるのでそれを使いましょう。
+ちなみに &amp;#8220;clobber&amp;#8221; は「不注意に上書きをしてファイルを破壊してしまう。」という意味の英単語です。
+参考 [wget &amp;#8211; skip if files exist? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+  </channel>
+</rss>

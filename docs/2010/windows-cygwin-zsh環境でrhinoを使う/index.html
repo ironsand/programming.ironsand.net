@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Windows(cygwin&#43;zsh)環境でRhinoを使う - 答えを知りたい</title>
+    
+<meta name="description" content="Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。 Rhino &amp;#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。ダウンロード&#43;解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。これでインストールは完了したのでjava org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&amp;ldquo;java org.mozilla.javascript.tools.shell.Main&amp;rdquo;インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &amp;ldquo;print(&amp;lsquo;hello&amp;rsquo;)&amp;rdquo; js -f hello.jsこれでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。">
+
+<meta property="og:title" content="Windows(cygwin&#43;zsh)環境でRhinoを使う - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。 Rhino &amp;#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。ダウンロード&#43;解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。これでインストールは完了したのでjava org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&amp;ldquo;java org.mozilla.javascript.tools.shell.Main&amp;rdquo;インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &amp;ldquo;print(&amp;lsquo;hello&amp;rsquo;)&amp;rdquo; js -f hello.jsこれでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/">
+<meta name="twitter:title" content="Windows(cygwin&#43;zsh)環境でRhinoを使う - 答えを知りたい">
+<meta name="twitter:description" content="Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。 Rhino &amp;#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。ダウンロード&#43;解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。これでインストールは完了したのでjava org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&amp;ldquo;java org.mozilla.javascript.tools.shell.Main&amp;rdquo;インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &amp;ldquo;print(&amp;lsquo;hello&amp;rsquo;)&amp;rdquo; js -f hello.jsこれでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "Windows(cygwin\x2bzsh)環境でRhinoを使う - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2010-03-14T02:16:35JST",
+    "dateModified": "2010-03-14T02:16:35JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。\n Rhino \x26#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http:\/\/www.mozilla-japan.org\/rhino\/download.html からダウンロードして使うことにする。\nダウンロード\x2b解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\\sugarsync\\bin\\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\\sygarsync\\bin\\rhino1_7R2\\js.jar export CLASSPATH # \/cygdrive\/x\/～ の形式では java が認識しない。\nこれでインストールは完了したので\njava org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。\nzshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~\/zshrc で alias を設定しておくと良い。alias js=\x26ldquo;java org.mozilla.javascript.tools.shell.Main\x26rdquo;\nインタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e \x26ldquo;print(\x26lsquo;hello\x26rsquo;)\x26rdquo; js -f hello.js\nこれでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">Windows(cygwin&#43;zsh)環境でRhinoを使う</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-14T02:16:35JST">Mar 14, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">Windows(cygwin&#43;zsh)環境でRhinoを使う</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<h4 id="rhinoとは何か">Rhinoとは何か？</h4>
+
+<p>javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。</p>
+
+<blockquote cite="https://developer.mozilla.org/ja/Rhino">
+  <p>
+    <a href="https://developer.mozilla.org/ja/Rhino">Rhino &#8211; MDC</a>
+  </p>
+  
+  <p>
+    Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。
+  </p>
+</blockquote>
+
+<h4 id="rhinoのインストール方法">Rhinoのインストール方法</h4>
+
+<p>J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は <a href="http://www.mozilla-japan.org/rhino/download.html">http://www.mozilla-japan.org/rhino/download.html</a> からダウンロードして使うことにする。</p>
+
+<p>ダウンロード+解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。<pre class=prettyprint>CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。</pre></p>
+
+<p>これでインストールは完了したので</p>
+
+<pre>java org.mozilla.javascript.tools.shell.Main</pre>
+
+<p>と入力すればインタープリタが起動する。</p>
+
+<h4 id="zshrcでエイリアスの設定">zshrcでエイリアスの設定</h4>
+
+<p>しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。<pre class=prettyprint>alias js=&ldquo;java org.mozilla.javascript.tools.shell.Main&rdquo;</pre></p>
+
+<p>インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。<pre class=prettyprint>js -e &ldquo;print(&lsquo;hello&rsquo;)&rdquo; js -f hello.js</pre></p>
+
+<p>これでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/javascript/">javascript</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.nettags/java/">JAVA</a></li>
+          
+          <li><a href="http://programming.ironsand.nettags/javascript/">javascript</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

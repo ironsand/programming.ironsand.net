@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rbenv on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/rbenv/</link>
+    <description>Recent content in rbenv on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Thu, 20 Mar 2014 05:15:06 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/rbenv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>rbenv: version `2.0.0′ is not installed の対処法</title>
+      <link>http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/</link>
+      <pubDate>Thu, 20 Mar 2014 05:15:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/</guid>
+      <description>&amp;#8220;Everyday Rails Testing with RSpec&amp;#8221;を購入して読んでると
+サンプルプロジェクトが紹介されてたのでgit cloneでダウンロードしてきて bundle install をすると
+rbenv: version &#39;2.0.0&#39; is not installed
+と出ちゃって困る。しかも ruby -v と確認しようと思ったら再び
+rbenv: version &#39;2.0.0&#39; is not installed
+？？？？？？
+「まさか rbenv が壊れた！？」と思って調べてたら、どうやらカレントディレクトリに.ruby-versionがあるとそのバージョンのRubyを参照しようとするために起きるらしい。
+対策 自分の場合は2.0.0.p247が入っているので該当のディレクトリでrbenv localすると.ruby-versionの中身が書き換えられて上手く動くようになりました。
+Version自体が異なる場合は上手く動かないと困るので該当のバージョンの ruby をrbenv install 2.x.xでインストールしましょう。</description>
+    </item>
+    
+  </channel>
+</rss>

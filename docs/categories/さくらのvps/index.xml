@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>さくらのVPS on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/%E3%81%95%E3%81%8F%E3%82%89%E3%81%AEvps/</link>
+    <description>Recent content in さくらのVPS on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Tue, 07 Jan 2014 13:46:26 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/%E3%81%95%E3%81%8F%E3%82%89%E3%81%AEvps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>rbenv を最新の状態にupdate する</title>
+      <link>http://programming.ironsand.net/2014/rbenv-update/</link>
+      <pubDate>Tue, 07 Jan 2014 13:46:26 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rbenv-update/</guid>
+      <description>ruby 2.1.0 も出たことだし、とりあえずさくらVPSにおいてるCentOS上に入れておこうと思ったけど、ちょっと古いバージョンしか rbenv install --list で出てくれない。
+rbenv updateという便利なコマンドはないようなのでアップデート方法を調べてアップデートしてみた。
+アップデート方法 どうやってインストールしたかは全く覚えてなかったけど調べてみるとどうやら git clone でインストールしたっぽいので cd ~/.rbenv; git pull するだけでOKらしい。
+無事にアップデートできたのでもう一度インストールできるrubyのバージョンを確認したら ない。ない。
+どうやらrubyのインストールには ruby-buildを使ってるのでそっちをアップデートしないとインストール可能なバージョンは更新されないらしい。ちなみに存在しないバージョンのインストールを試みるとこんな感じに教えてくれる。
+ironsand@SarakuVPS ~$ rbenv install 2.0.0-p247 ruby-build: definition not found: 2.0.0-p247 You can list all available versions with `rbenv install --list&#39;. If the version you&#39;re looking for is not present, first try upgrading ruby-build. If it&#39;s still missing, open a request on the ruby-build issue tracker: https://github.com/sstephenson/ruby-build/issues ruby-build のアップデート ruby-buildもgit cloneしてるだけなので、 cd .</description>
+    </item>
+    
+    <item>
+      <title>さくらのVPSにneroAacEncをインストールしてmp3をm4aに変換する</title>
+      <link>http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/</link>
+      <pubDate>Tue, 12 Mar 2013 04:27:25 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/</guid>
+      <description>作業目的 さくらのVPSで自動ダウンロードしてるNHKの語学講座が大量になってきて容量が馬鹿にならなくなってきたので
+mp3で出力されたものをm4aに変換しようとNeroAAC Encoderのインストール作業メモ。
+インストール方法 まず
+コマンドラインツールをここからダウンロードしてくる。
+http://www.nero.com/enu/company/about-nero/nero-aac-codec.php
+wgetで直接取ってくるなら
+$ wget http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip
+圧縮ファイルを展開して
+$ unzip ~/NeroAACCodec-1.5.1.zip -d neroaac
+実行権限を付加
+$ chmod +x ./neroaac/linux/neroAac*
+んで、動作を確認
+$ ./neroaac/linux/neroAacEnc
+************************************************************* * * * Nero AAC Encoder * * Copyright 2009 Nero AG * * All Rights Reserved Worldwide * * * * Package build date: Feb 18 2010 * * Package version: 1.5.4.0 * * * * See -help for a complete list of available parameters.</description>
+    </item>
+    
+    <item>
+      <title>NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2</title>
+      <link>http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/</link>
+      <pubDate>Wed, 06 Jun 2012 05:08:52 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/</guid>
+      <description>前回の記事の続きです。
+NHK語学のラジオ講座をさくらのVPSで自動ダウンロード
+http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/
+今回はさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするについて解説します。
+さくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。
+自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。
+ APIを使うためにSugarSyncのDeveloperに登録
+ upload_nhkradio.rb の設定
+ cronの設定
+  1. APIを使うためにSugarSyncのDeveloperに登録 まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。
+http://www.sugarsync.com/developer/signup
+もしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。
+Developer登録をすると Access Key ID と Private Access Key が手に入りますのでメモっていてください。あとで必要になります。
+次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。
+新しいアプリの作成には以下の5つの情報を入力する必要があります。
+Name:[アプリ名]&amp;#8221;NHK Radio Uploader&amp;#8221;とか適当に
+Publisher:[製作者] #名前をいれておきましょう。
+Description:[詳細] &amp;#8220;Upload NHK radio mp3&amp;#8221; とでも。
+Support URL:[作者サイト] 自分はTwitterのアカウントいれてます。
+Support Email:[連絡先] 普通に自分のメールアドレスを。
+以上でAppが作れたら App ID が入手できますのでコレもメモっておいてください。
+2. upload_nhkradio.rb の設定 必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。
+まず[upload_nhkradio.zip][2]をダウンロードして解凍し、sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rbの3つのファイルを取り出してください。
+そしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。
+#SugarSyncのユーザ名(メールアドレス),パスワード @username = &amp;quot;&amp;quot; @password = &amp;quot;&amp;quot; #App ID /sc/などから始まる英数字 @application = &amp;quot;&amp;quot; @access_key_id = &amp;quot;&amp;quot; @private_access_key = &amp;quot;&amp;quot; #refresh_tokenを設定しておけばusername, passwordはいりません。 #username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。 @refresh_token = &amp;quot;&amp;quot; #SugarSyncのどのフォルダにアップロードするか。 e.</description>
+    </item>
+    
+    <item>
+      <title>NHK語学のラジオ講座をさくらのVPSで自動ダウンロード</title>
+      <link>http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/</link>
+      <pubDate>Mon, 04 Jun 2012 05:41:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/</guid>
+      <description>NHKラジオの語学講座を毎週ダウンロードしてるんですが、
+外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。
+なのでせっかくさくらのVPSをお金払って借りてるんだから
+勝手にダウンロードするように設定しましたので参考にどうぞ。
+月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。
+実際に先週から動かしてみてますが、こりゃ楽でいいです。
+SugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。
+記事が長くなるので今回の
+さくらVPSを使って自動的にNHKラジオ講座をダウンロード
+次回の
+さくらVPSにダウンロードしたmp3をSugarsyncにアップロードする
+の2つにわけて解説していきます。
+自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。
+ flvstreamerのダウンロード、コンパイル
+ Rubyのインストール
+ CaptureStream の設定
+ cronの設定
+  1. flvstreamerのダウンロード、コンパイル flvstreamer をインストールするんですが、
+まずさくらのVPSが32ビットなのか64ビットなのか確認します。
+$ cat /proc/cpuinfo | grep flags
+して値に lm が含まれていれば64bitのCPUです。
+次に
+$ uname -a
+X86_64とかamd64とかが表示されたら、64ビット版のカーネルです。
+64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、
+32bitしかバイナリがおいてないので自分でコンパイルします。
+$ wget http://download.savannah.gnu.org/releases/flvstreamer/source/flvstreamer-2.1c1.tar.gz $ tar zxf flvstreamer-2.1c1.tar.gz $ cd flvstreamer $ make posix $ ./flvstreamer FLVStreamer v2.1c1 (c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL ERROR: You must specify a hostname (--host) or url (-r &amp;quot;rtmp://host[:port]/playpath&amp;quot;) containing a hostname  # yum install ruby</description>
+    </item>
+    
+    <item>
+      <title>さくらのVPSでpythonのインタプリタを終了させる</title>
+      <link>http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/</link>
+      <pubDate>Thu, 05 Jan 2012 11:51:15 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/</guid>
+      <description>さくらのVPSにputtyを使ってSSHでログインしてる時に間違えて /usr/bin/python を叩いてしまい(コピーしようとしたら貼りつけてしまった。)インタプリタを終了できなくてちょっと焦ったので終了方法のメモ。
+&amp;#8216;Use Ctrl-D (i.e. EOF) to exit.&amp;#8217;
+とか言ってるくるけど Ctrl-D をおしてもサーバーまで届かない。
+正しい終了方法は
+import sys sys.exit() だそうです。 ああ、そうか sys をインポートしなきゃならんのか。プログラムを書いてる時だと気づくのにインタプリタ普段使わないから何かちがうものだと勝手に思い込んじゃってたよ…。
+参考 pythonインタプリタを終了する
+http://blog.justoneplanet.info/2010/08/07/python%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%82%92%E7%B5%82%E4%BA%86%E3%81%99%E3%82%8B/</description>
+    </item>
+    
+  </channel>
+</rss>

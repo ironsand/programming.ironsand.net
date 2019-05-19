@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xyzzy on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/xyzzy/</link>
+    <description>Recent content in xyzzy on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sat, 23 Apr 2011 08:23:30 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/xyzzy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>xyzzyでファイル保存時にmodeの変更をする</title>
+      <link>http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/</link>
+      <pubDate>Sat, 23 Apr 2011 08:23:30 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/</guid>
+      <description>Xyzzy上で新規作成した javascript とか ruby のバッファに毎回モード設定をするのがめんどくさかったので書いた。 siteinit.l か ~/.xyzzy のどこかに貼りつけて使ってください。
+※同じ拡張子に複数のモードが紐付けられていると、古い方に設定されるようになっていたので修正;ファイル保存時に拡張子をチェックして適切なモードに変更する。 ;リネーム時にしたかったけど、hookが用意されてないので断念。 (defun set-buffer-mode () (block sbm (mapcar (lambda (l) (when (string-matchp (car l) (get-buffer-file-name)) (funcall (cdr l)) (return-from sbm)) ) *auto-mode-alist*))) (add-hook &amp;lsquo;*after-save-buffer-hook* &amp;lsquo;set-buffer-mode)</description>
+    </item>
+    
+    <item>
+      <title>xyzzyからPlantUMLを使う</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Sun, 28 Mar 2010 18:53:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>テキスト形式でUMLが書けるPlantUML PlantUMLはテキスト形式でUMLを記述して画像に出力できるオープンソースのソフトウェアです。 UMLが書けるフリーソフトはいくつかありますが、テキストベースで記述できるのは大変ありがたいですね。
+PlantUMLの具体例 サンプルをPlantUMLのサイト内から引用します。
+http://plantuml.sourceforge.net/classes.html
+[][1]　こんなUMLが以下の記述で作れちゃいます。@startuml img/classes04.png abstract class AbstractList abstract AbstractCollection interface List interface Collection List &amp;lt;|&amp;ndash; AbstractList Collection &amp;lt;|&amp;ndash; AbstractCollection Collection &amp;lt;|- List AbstractCollection &amp;lt;|- AbstractList AbstractList &amp;lt;|&amp;ndash; ArrayList ArrayList : Object[] elementData ArrayList : size() enum TimeUnit TimeUnit : DAYS TimeUnit : HOURS TimeUnit : MINUTES @enduml
+PlantUMLのインストール http://plantuml.sourceforge.net/download.html
+から plantuml.jar をダウンロードしてください。
+plantumlの実行にはJavaが必要になりますので、もしJavaがインストールされていなければ
+http://www.java.com/ja/download/
+からインストールを行ってください。
+&amp;ldquo;Sequence Diagram&amp;rdquo; 以外の画像の出力、つまり普通に使うのであれば Graphviz もインストールする必要があります。
+http://graphviz.org/Download_windows.php
+からダウンロードしてインストールしてください。
+以上でインストールは終了です。
+xyzzyからPlantUMLを使う方法 さて、次は以下のコードを siteinit.</description>
+    </item>
+    
+    <item>
+      <title>xyzzy から Rhino(javascript)を直接実行する</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</link>
+      <pubDate>Sun, 14 Mar 2010 18:56:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</guid>
+      <description>xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin+zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。
+[][2]
+下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。
+;;jscript-mode(for Rhino) (setf \*js-prog\* &#34;java org.mozilla.javascript.tools.shell.Main&#34;) (setf \*js-classpath\* &#34;X:/sugarsync/bin/rhino1\_7R2/js.jar&#34;) (defun js-run-script-immediate () (interactive) (js-run &#34;&#34;)) (defun js-run (args) (let ((tempfile (make-temp-file-name &#34;\_\_temp\_&#34; &#34;js&#34; (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* &#34; -f \&#34;&#34; tempfile &#34;\&#34; &#34; args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive &#34;</description>
+    </item>
+    
+  </channel>
+</rss>

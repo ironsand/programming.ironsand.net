@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/python/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/python/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>python - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>python</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-03-29T11:38:45JST">Mar 29, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/">wxPythonで作ったUIをpy2exeで変換すると見た目が変わる問題</a></h2>
+  </header>
+
+  
+  <div class="summary">wxPythonを使って頑張って作ったGUIをPythonが入ってないPCの人も使えるようにするのにpy2exeで変換したら見た目が変わってしまった(古い？TK?)のでその対処法。
+必要なファイル Microsoft.VC90.CRT.manifest
+msvcm90.dll
+msvcp90.dll
+msvcr90.dll
+の4つのファイルが必要。自分の環境だとPython 2.7 Portableを入れたフォルダに全部入っていたので、Py27MSdllsというフォルダをsetup.pyと同じ階層に作って全部入れました。
+Microsoft.VC90.CRT.manifest の中で示されてるdllのバージョンが合ってるかどうか確認する。
+違ってたら適宜修正する。
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;br&gt; &lt;!-- Copyright (c) Microsoft Corporation. All rights reserved. --&gt;&lt;br&gt; &lt;assembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; manifestVersion=&quot;1.0&quot;&gt;&lt;br&gt; &lt;noInheritable/&gt;&lt;br&gt; &lt;assemblyIdentity&lt;br&gt; type=&quot;win32&quot;&lt;br&gt; name=&quot;Microsoft.VC90.CRT&quot;&lt;br&gt; &lt;s&gt;version=&quot;9.0.21022.8&quot;&lt;/s&gt; &lt;span style=color:red;&gt;version=&quot;9.0.30729.6161&quot;&lt;/span&gt;&lt;br&gt; processorArchitecture=&quot;x86&quot;&lt;br&gt; publicKeyToken=&quot;1fc8b3b9a1e18e3b&quot;&lt;br&gt; /&gt;&lt;br&gt; &lt;file name=&quot;msvcr90.dll&quot; /&gt; &lt;file name=&quot;msvcp90.dll&quot; /&gt; &lt;file name=&quot;msvcm90.dll&quot; /&gt;&lt;br&gt; &lt;/assembly&gt;&lt;br&gt;  setup.py setup.pyを書き換えて用意したこれらのファイルを読み込むように変更する。
+# -*- coding: utf-8 -*-&lt;br&gt; #&lt;br&gt; # setup.py&lt;br&gt; &lt;br&gt; from distutils.core import setup&lt;br&gt; import py2exe&lt;br&gt; import glob&lt;br&gt; &lt;br&gt; &lt;br&gt; class Target(object):&lt;br&gt; &quot;&quot;&quot; A simple class that holds information on our executable file.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/" title="wxPythonで作ったUIをpy2exeで変換すると見た目が変わる問題">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-01-15T18:02:10JST">Jan 15, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/do-not-use-apply-in-python/">Pythonのapplyを使う時の注意点、…というか使っちゃダメ。</a></h2>
+  </header>
+
+  
+  <div class="summary">Lispを書いてると、他の言語でもapplyを使いたくなる。
+そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。
+基本的なapplyの使い方 `
+def hoge(word): print word
+apply(hoge,&ldquo;A&rdquo;) `
+とまあこんな感じ使うわけです。
+文字列を引数にできない。 ところがこの引数の&#8221;A&#8221;を&#8221;ABC&#8221;に変えるだけでエラーになる。
+&lt;/p&gt; &lt;pre&gt;Traceback (most recent call last): File &quot;&lt;stdin&gt;&quot;, line 9, in &lt;module&gt; TypeError: hoge() takes exactly 1 argument (3 given)&lt;/pre&gt; &lt;p&gt;
+どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。
+解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。
+ 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような &#8220;拡張された関数呼び出し構文&#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/do-not-use-apply-in-python/" title="Pythonのapplyを使う時の注意点、…というか使っちゃダメ。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-10-30T14:45:05JST">Oct 30, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/start-coursera-python-course/">話題のオンライン無料大学CourseraでPythonの授業をとってみた。</a></h2>
+  </header>
+
+  
+  <div class="summary">無料のオンライン大学Courseraについてはこちらを見てください。
+【TED】 Coursera創業者による「オンライン教育が教えてくれること」 | IDEA*IDEA
+http://www.ideaxidea.com/archives/2012/09/ted_coursera.html
+このCourseraで&#8221;An Introduction to Interactive Programming in Python&#8221;という面白そうな授業があったので登録してみました。プログラミング経験がほとんどない人向けの講座だそうなのですが、英語のハンデもあるのでちょうどいいかと思って初めて見ました。まだ受講は受け付けていますが、10月15日からの講座なのでPythonの勉強を始めてみたい方はお早めに。
+受講方法 まず[コース一覧][1]から受講したいコースを選びます。
+受講したいコースがあったら&#8221;sign up&#8221;から登録します。
+で名前とメールアドレス、それにパスワードを入力。
+ここで入力する名前が証明書などに残るので本名を入力しましょう。
+ポップアップでメッセージと&#8221;Go to class&#8221;という表示が出てくるのでクリックして次へ。
+ここでHonor Code[敬意を持って守る規定]への同意を求められるのでよく読んで同意しましょう。
+ 一つのアカウントのみ登録します。
+ 宿題、クイズそれに試験を独力で行います。
+ 宿題、クイズそれに試験の答えを誰にも教えません。
+ 不誠実に成績を改鼠しません。
+  コースのホーム画面に飛びます。既に開始されてるコースなのでまずは溜まってるAnnouncementsから見ていきましょう。上に行くほど新しいお知らせなので一番下から読んでいきます。
+どういう風に進んでいくか。 ここからは何を受講するかによっても変わってくると思うので参考程度に読んでください。
+・毎週2セクションごと進む。
+・週の開始は土曜日の朝。(アメリカ時間？)
+・土曜日の朝に50～150行程度で作れるミニプロジェクトが割り当てられるので、それを次の土曜日の午後までに提出する。
+・そして次の日曜日から水曜日の間に生徒間で相互添削を行う。
+・相互添削で自分の評価をもらうためには最低5つを行わなければならない。
+・毎週6～10個程度の短いレクチャーの動画を見る。
+・クイズが週2回、でミニプロジェクトが1回。
+・プログラミング環境は http://www.codeskulptor.org/ を使う。
+レクチャーのビデオを見る 左上の[Video Lectures]からレクチャーが見れます。この講座をどのように進めていくかと、この講座でどのようなものが作れるかの説明があります。基本的な動作をするゲームが作れるので面白そう。
+英語は自分にはまだちょっと難しいですが、字幕を[CC]でつけて見ることもできるし、テキストやSRTファイルでダウンロードして読むこともできます。
+動画プレイヤーのVLCなら0.8倍速などのように音の高低を変化させずに再生速度を変えれますし、SRTファイルをそのまま再生中の動画にDrag &amp; Dropするだけで字幕を表示できるのでオススメです。
+他にも面白そうな講座はたくさんありますので、どんな講座があるかだけでも眺めてみると良いんじゃないでしょうか。
+Course Catalog | Coursera
+https://www.coursera.org/courses</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/start-coursera-python-course/" title="話題のオンライン無料大学CourseraでPythonの授業をとってみた。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-05T11:51:15JST">Jan 5, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/">さくらのVPSでpythonのインタプリタを終了させる</a></h2>
+  </header>
+
+  
+  <div class="summary">さくらのVPSにputtyを使ってSSHでログインしてる時に間違えて /usr/bin/python を叩いてしまい(コピーしようとしたら貼りつけてしまった。)インタプリタを終了できなくてちょっと焦ったので終了方法のメモ。
+&#8216;Use Ctrl-D (i.e. EOF) to exit.&#8217;
+とか言ってるくるけど Ctrl-D をおしてもサーバーまで届かない。
+正しい終了方法は
+import sys sys.exit() だそうです。 ああ、そうか sys をインポートしなきゃならんのか。プログラムを書いてる時だと気づくのにインタプリタ普段使わないから何かちがうものだと勝手に思い込んじゃってたよ…。
+参考 pythonインタプリタを終了する
+http://blog.justoneplanet.info/2010/08/07/python%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%82%92%E7%B5%82%E4%BA%86%E3%81%99%E3%82%8B/</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/" title="さくらのVPSでpythonのインタプリタを終了させる">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-11-16T16:00:03JST">Nov 16, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/">xamppでpythonを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">xamppには標準でpythonが入っているけど残念ながらpythonが入ってないので使いたかったら自分で入れる必要があるらしい。なので入れてみた。
+環境 Windows 7 32bit
+Xampp 1.7.7
+Python 2.6.1 (Portable)
+必要なもの &#8220;Xampp python&#8221;で検索するとmod_pythonの情報が出てきてインストール方法も色々と出てくるんだけれどもmod_pythonのwindows版はpythonのバージョンが2.5までにしか対応してないようで非常にめんどくさそう。
+色々探してたら簡単な方法を載せてるサイトが見つかったのでその方法を紹介します。
+インストールが必要な物は何もなし。ヽ(´▽｀)ノ
+設定方法 まず
+[xamppをインストールしたディレクトリ]\apache\conf\httpd.conf
+を開いて
+# # For Python # AddHandler cgi-script .py ScriptInterpreterSource Registry-Strict と追記します。
+場所は多分どこでもいいけど、既に
+&#8220;AddHandler cgi-script .cgi .pl .asp&#8221;って書いてる所があるのでその下にでも。
+んで、動かしたいpythonスクリプトの行頭に
+#!P:\Dropbox\bin\Python26\App\python.exe とpython.exeがある場所を書いておきます。
+以上で終わり。
+確認 #![python.exeの置いてる場所]\python.exe print "Content-Type: text/plain" print print "hello world." と書いて[xamppのフォルダ]\htdocs\pythontest.py に保存して
+xampp_start.exe でサーバーを起動させて
+http://localhost/pythontext.py
+を開いて &#8220;hello world.&#8221;が表示されたらOK。
+サーバーが起動してる状態で設定したらxamppを一回終了させて再起動させないと動きません。
+やっとくと便利なこと http://localhost/index.html が
+http://localhost/ でも開けるように
+http://localhost/index.py が
+http://localhost/ でも開けるように設定しときましょう。
+# # DirectoryIndex: sets the file that Apache will serve if a directory # is requested.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/" title="xamppでpythonを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-14T01:04:54JST">May 14, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/">さくらのレンタルサーバーでPythonのTwitterライブラリを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">はじめに 最初に書いておきます。 SSH でログインした telnet 上ではTwitterのつぶやきが行えることを確認しましたが cron で動かしたり、CGIから呼び出したりはうまくいってません。 その情報がほしい方は他のサイトへどうぞ。 情報をすでに持っている方はぜひ教えてください。
+～～～～～～～～前置きここまで～～～～～～～～
+Twitterの投稿をPythonを使ってさくらのレンタルサーバで行いたいけども外部モジュールである simplejson や twitter をインストールしないと動かずにImportError: No module named simplejson
+やらImportError: No module named twitter
+なんかのエラーが出てしまう。
+インストールに必要なもの 外部モジュールを使うためには以下の物が必要になってくる。
+ 外部モジュールのファイル本体 さくらのレンタルサーバーのスタンダード以上のプラン FTPクライアント telnet/SSH クライアント  外部モジュールのファイル本体
+使いたい外部モジュールのファイルをダウンロードしてサーバーにあげて置かなければいけません。
+今回は python-twitter とその依存関係のファイル。
+さくらのレンタルサーバーのスタンダード以上のプラン
+スタンダード以上のプランでないと telnet/SSH が使えないのでライトプランの人は諦めてください。(ノД`)/~ サヨーナラ
+FTPクライアント
+なくてもできるんですが、あったほうが便利なので。
+現在使ってるのがなければFFFTPを使っておいてください。
+telnet/SSH クライアント
+次に telnet クライアント。 これも何使っても構わないんですが、既に使ってる別のがないのであればフリーの「PuTTY ごった煮版」を使いましょう。
+必要なモジュールファイルのダウンロード &#8220;python-twitter-0.8.1.tar.gz&#8221;
+http://code.google.com/p/python-twitter/
+だけをインストールするで良いなら楽なんですが、依存関係が3つあるって上のサイトに書いてますので、指定された
+&#8220;httplib2-0.6.0.tar.gz&#8221; と
+http://code.google.com/p/httplib2/
+&#8220;simplejson-2.1.5.tar.gz&#8221; と
+http://pypi.python.org/pypi/simplejson
+&#8220;simplegeo-python-oauth2-debian-1.5.169-0-gaee5557.tar.gz&#8221; を
+http://github.com/simplegeo/python-oauth2
+ダウンロードしてきてFTPクライアントを使ってサーバーにアップロードします。ファイルを展開してからアップロードしても良いんですが、そうすると転送時間が結構かかっちゃうのでtelnet上で展開することにします。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/" title="さくらのレンタルサーバーでPythonのTwitterライブラリを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-02-26T06:38:20JST">Feb 26, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/tkinter-importerror/">PythonのGUI,Tkinterのエラー対処</a></h2>
+  </header>
+
+  
+  <div class="summary">PythonのGUI,Tkinterを使おうとこのページの一番上のサンプルを動かそうとすると動かず第一歩をくじかれる。
+http://www.pythonware.com/library/tkinter/introduction/hello-tkinter.htm
+エラーメッセージはこんなの。
+ImportError: No module named Tkinter
+環境はWindows7でPython3.0.1 Portable。
+エラーメッセージで検索しても「yumを使ってモジュールインストールしろ。」とかLinux向けの情報しか出てこない。 適当にあさってやっと見つけた解決策はこれ。
+from Tkinter import *
+を
+from tkinter import *
+に変える。 どうも Python3からmodule名の大文字小文字が変更されたのが原因だったようだ。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/tkinter-importerror/" title="PythonのGUI,Tkinterのエラー対処">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/" class="list-group-item">wxPythonで作ったUIをpy2exeで変換すると見た目が変わる問題</a>
+      
+      <a href="http://programming.ironsand.net/2013/do-not-use-apply-in-python/" class="list-group-item">Pythonのapplyを使う時の注意点、…というか使っちゃダメ。</a>
+      
+      <a href="http://programming.ironsand.net/2012/start-coursera-python-course/" class="list-group-item">話題のオンライン無料大学CourseraでPythonの授業をとってみた。</a>
+      
+      <a href="http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/" class="list-group-item">さくらのVPSでpythonのインタプリタを終了させる</a>
+      
+      <a href="http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/" class="list-group-item">xamppでpythonを使う</a>
+      
+      <a href="http://programming.ironsand.net/2011/twitter-by-python-in-sakura-server/" class="list-group-item">さくらのレンタルサーバーでPythonのTwitterライブラリを使う</a>
+      
+      <a href="http://programming.ironsand.net/2011/tkinter-importerror/" class="list-group-item">PythonのGUI,Tkinterのエラー対処</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

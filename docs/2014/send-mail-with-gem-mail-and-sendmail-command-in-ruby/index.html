@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2014/send-mail-with-gem-mail-and-sendmail-command-in-ruby/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>gem `mail` と sendmail を使って簡単にRubyでメール送信 - 答えを知りたい</title>
+    
+<meta name="description" content="net/smtp ライブラリを使うよりも gem mail を使えば簡単にメールが送れるらしいので調べてみた。方法 まず mail gem が必要なので $ gem install mail でインストールする。んで、下のように書けばOK!require &#39;mail&#39; mail = Mail.new do from &#39;me@ironsand.net&#39; to &#39;recipient@exmaple.com&#39; subject &#39;Here is the image you wanted&#39; body &#39;Body&#39; end mail.delivery_method :sendmail mail.deliver 注意点 Macでは動かなかったので、VPS上のCentOS 6.4で試してます。25版ポートを開けるのを忘れずに。参考 [email &amp;#8211; Ruby Mail gem: Connection refused &amp;#8211; connect(2) (Errno::ECONNREFUSED) &amp;#8211; Stack Overflow][1]">
+
+<meta property="og:title" content="gem `mail` と sendmail を使って簡単にRubyでメール送信 - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2014/send-mail-with-gem-mail-and-sendmail-command-in-ruby/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="net/smtp ライブラリを使うよりも gem mail を使えば簡単にメールが送れるらしいので調べてみた。方法 まず mail gem が必要なので $ gem install mail でインストールする。んで、下のように書けばOK!require &#39;mail&#39; mail = Mail.new do from &#39;me@ironsand.net&#39; to &#39;recipient@exmaple.com&#39; subject &#39;Here is the image you wanted&#39; body &#39;Body&#39; end mail.delivery_method :sendmail mail.deliver 注意点 Macでは動かなかったので、VPS上のCentOS 6.4で試してます。25版ポートを開けるのを忘れずに。参考 [email &amp;#8211; Ruby Mail gem: Connection refused &amp;#8211; connect(2) (Errno::ECONNREFUSED) &amp;#8211; Stack Overflow][1]">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2014/send-mail-with-gem-mail-and-sendmail-command-in-ruby/">
+<meta name="twitter:title" content="gem `mail` と sendmail を使って簡単にRubyでメール送信 - 答えを知りたい">
+<meta name="twitter:description" content="net/smtp ライブラリを使うよりも gem mail を使えば簡単にメールが送れるらしいので調べてみた。方法 まず mail gem が必要なので $ gem install mail でインストールする。んで、下のように書けばOK!require &#39;mail&#39; mail = Mail.new do from &#39;me@ironsand.net&#39; to &#39;recipient@exmaple.com&#39; subject &#39;Here is the image you wanted&#39; body &#39;Body&#39; end mail.delivery_method :sendmail mail.deliver 注意点 Macでは動かなかったので、VPS上のCentOS 6.4で試してます。25版ポートを開けるのを忘れずに。参考 [email &amp;#8211; Ruby Mail gem: Connection refused &amp;#8211; connect(2) (Errno::ECONNREFUSED) &amp;#8211; Stack Overflow][1]">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "gem `mail` と sendmail を使って簡単にRubyでメール送信 - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-03-18T12:29:20JST",
+    "dateModified": "2014-03-18T12:29:20JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "net\/smtp ライブラリを使うよりも gem mail を使えば簡単にメールが送れるらしいので調べてみた。\n方法 まず mail gem が必要なので $ gem install mail でインストールする。\nんで、下のように書けばOK!\nrequire \x27mail\x27 mail = Mail.new do from \x27me@ironsand.net\x27 to \x27recipient@exmaple.com\x27 subject \x27Here is the image you wanted\x27 body \x27Body\x27 end mail.delivery_method :sendmail mail.deliver 注意点 Macでは動かなかったので、VPS上のCentOS 6.4で試してます。\n25版ポートを開けるのを忘れずに。\n参考 [email \x26#8211; Ruby Mail gem: Connection refused \x26#8211; connect(2) (Errno::ECONNREFUSED) \x26#8211; Stack Overflow][1]"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">gem `mail` と sendmail を使って簡単にRubyでメール送信</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-18T12:29:20JST">Mar 18, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">gem `mail` と sendmail を使って簡単にRubyでメール送信</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p><code>net/smtp</code> ライブラリを使うよりも <code>gem mail</code> を使えば簡単にメールが送れるらしいので調べてみた。</p>
+
+<h3 id="方法">方法</h3>
+
+<p>まず <code>mail</code> gem が必要なので <code>$ gem install mail</code> でインストールする。</p>
+
+<p>んで、下のように書けばOK!</p>
+
+<pre class="lang:ruby decode:true " >require 'mail'
+mail = Mail.new do
+  from     'me@ironsand.net'
+  to       'recipient@exmaple.com'
+  subject  'Here is the image you wanted'
+  body     'Body'
+end
+
+mail.delivery_method :sendmail
+
+mail.deliver</pre>
+
+<h3 id="注意点">注意点</h3>
+
+<p>Macでは動かなかったので、VPS上の<code>CentOS 6.4</code>で試してます。</p>
+
+<p>25版ポートを開けるのを忘れずに。</p>
+
+<h3 id="参考">参考</h3>
+
+<p>[email &#8211; Ruby Mail gem: Connection refused &#8211; connect(2) (Errno::ECONNREFUSED) &#8211; Stack Overflow][1]</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

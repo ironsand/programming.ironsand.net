@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTML on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/html/</link>
+    <description>Recent content in HTML on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Mon, 12 Sep 2011 09:50:10 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>floatを指定した要素のみを含むとき背景が表示されない</title>
+      <link>http://programming.ironsand.net/2011/disappear-background-when-float-block/</link>
+      <pubDate>Mon, 12 Sep 2011 09:50:10 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/disappear-background-when-float-block/</guid>
+      <description>こんな感じでHTMLを書いたらFirefoxで背景がうまく表示されなかったので調べてみた。ほげ ほげほげ 
+何でそうなるかは下の「参考」のリンク先でわかったのだけれども対策がめんどくさい。なのでこうする事にしました。ほげ ほげほげ
+ 
+マナーはあんまりよくないですね。書きやすさ優先です。
+参考 CSSでfloatを指定したボックスを含むボックスの背景が出なくなる件
+http://www.fsiki.com/archive/css-doc/float.html</description>
+    </item>
+    
+  </channel>
+</rss>

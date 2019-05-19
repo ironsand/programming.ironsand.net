@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AngularJS on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/angularjs/</link>
+    <description>Recent content in AngularJS on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Thu, 17 Apr 2014 18:37:04 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/angularjs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rails&#43;Angular.js で InvalidAuthenticityTokenエラーが出るときの対処法</title>
+      <link>http://programming.ironsand.net/2014/how-to-handle-invalidauthenticitytoken-error-in-rails-and-angular/</link>
+      <pubDate>Thu, 17 Apr 2014 18:37:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-handle-invalidauthenticitytoken-error-in-rails-and-angular/</guid>
+      <description>RailsのDBからGETでデータの呼び出しはできるけど、PUTで値の追加ができなくてこんなエラーに成った時の対処法
+Completed 422 Unprocessable Entity in 126ms ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken: 原因 CSRF対策です。
+ダメな対策 モデルにこれを追加
+skip_before_filter :verify_authenticity_token サイバーノーガード戦法です。おすすめしません。
+良さそうな対策 gem の&amp;lt;a href=&amp;quot;https://github.com/xrd/ng-rails-csrf&amp;quot;&amp;gt;ns-csrf-rails&amp;lt;/a&amp;gt;を使う。わからないことは全部gemにまかせてしまいましょう。</description>
+    </item>
+    
+  </channel>
+</rss>

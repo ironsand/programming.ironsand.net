@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/xyzzy/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/xyzzy/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>xyzzy - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>xyzzy</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-28T03:34:03JST">Mar 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/">xyzzyのmapcar 内で perform-string を使うときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">mapcar で perform-string を使って文字列置換しようと思ってかなりハマったのでメモって置きます。
+ダメな例 (mapcar '(lambda (s) (goto-char (point-min)) (perform-replace s "" nil t t nil)) '("foo[0-9]" "bar[0-9]")) これだと &#8220;foo1 bar2&#8221; は削除できるけど &#8220;bar2&#8221; と2個めの検索要素だけしかないときに削除できない
+良い例 (mapcar '(lambda (s) (goto-char (point-min)) (perform-replace s "" nil t t t)) '("foo[0-9]" "bar[0-9]")) perform-replaceの最後の引数NOERRORをtに設定しておけば該当する文字列がなくてもスムーズに次に進んでくれます。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/" title="xyzzyのmapcar 内で perform-string を使うときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-14T03:54:14JST">May 14, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/">xyzzy で声調が簡単に入力できる「ton-input-mode」を公開しました。</a></h2>
+  </header>
+
+  
+  <div class="summary">機能 xyzzyで&#8221;wŏ shì rìbĕn rén&#8221; などが、そこそこ簡単に打てるようになります。
+インストール方法 NetInstallerで以下のパッケージを追加して、&#8221;ton input&#8221;をインストールして下さい。
+http://ironsand.net/xyzzy/packages.l
+再起動すると有効になってます。
+再起動せずに有効にできそうですが、よくわかりませんでした。
+NetInstallerが何かわからない人はこちらを読んでください。
+http://xyzzy.s53.xrea.com/wiki/index.php?QuickTour%2Fext%2FNetInstaller
+使い方 C-F9 (Controlキーを押しながらF9キーを押す)で Ton Input モードに入ります。
+&#8220;wo&#8221; を打った時点で数字の&#8221;3&#8243;を押すと &#8220;wŏ&#8221; になります。
+1,2,3,4 でそれぞれの声調に、&#8221;0&#8243;で声調無しに変化します。
+&#8220;xian&#8221; の最後でキーを押せば一番最後に入力された母音の &#8220;a&#8221; に声調がつきます。
+Ton Input モードを終了させるには、もう一度 C-F9 を入力します。
+注意点 Ton Input モード中は数字(0～4)を入力しようとしても入りません。
+謝辞 ありがとうございます。 ありがとうございます。
+マイナーモードの作り方 [silog]
+http://white.s151.xrea.com/wiki/index.php?memo%2Fxyzzy%2Fminor-mode
+netinstaller 対応メモ
+http://d.hatena.ne.jp/bowbow99/20090710/1247182818
+そして、lispでわからないことを教えてくれた2chのxyzzyの名無しさん達がいなければ途中で作るのを諦めてたと思います。 みなさんに感謝を。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/" title="xyzzy で声調が簡単に入力できる「ton-input-mode」を公開しました。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-13T16:06:25JST">May 13, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/">xyzzy の backward-word と previous-word, forward-word と next-word の違い</a></h2>
+  </header>
+
+  
+  <div class="summary">xyzzy の lisp の関数 backward-word, previous-word, forward-word, next-word の動作の違いがよくわからなかったので、試してみた。
+黒背景白文字が移動前のカーソルの位置で、灰色背景太字が移動後の場所。
+backward-word
+123　456　789
+123456　789
+123　456　789
+previous-word
+123　456　789
+123456　789
+123　456　789
+forward-word
+123456　789
+123456789
+123　456789
+next-word
+123　456　789
+123456　789
+123　456　789
+backward-word と previous-word は同じ動作で forward-word と next-word は動作が異なるらしい。 あってんのかな、これ。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/" title="xyzzy の backward-word と previous-word, forward-word と next-word の違い">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-04-28T21:16:37JST">Apr 28, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/build-xyzzy-from-source/">xyzzyをソースからビルドの方法をまとめてみた</a></h2>
+  </header>
+
+  
+  <div class="summary">Xyzzy Wiki の [ソースからビルドしてみる3][1] を参考に xyzzy をソースからビルドしてみました。 ファイルを取ってきたり、めんどくさいことが多かったので以下のステップでできるように簡略化。
+[xyzzysrc-0.2.2.235-pack][2]
+これをダウンロードしてあとは01README.txtを見てください。
+ 1 Microsoft Visual C++ 2008 Express Edition インストール
+2 env.vbs を叩く (環境変数のセットとafxres.hのコピー)
+3 cd xyzzy/src
+4 nmake (デバッグ版は nmake CFG=d)
+5 ぽけーと待つ
+6 できあがり
+ 以上です。 何かおかしいところあったら連絡ださい。 俺は何もわかっていませんので。
+Unicode Consortium のファイルも同封してますが、ライセンスの確認はとってます。
+2011/05/28追記
+2chで指摘されて気づいたのですが、env.vbs で c:\Program Files\ 配下にファイルの移動を行ってるので UAC が入っているとエラーになります。 UACを一時的に切ってenv.vbs を実行してください。
+一度実行してしまえば次回以降ビルドするときにはUAC がオンでも問題ありません。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/build-xyzzy-from-source/" title="xyzzyをソースからビルドの方法をまとめてみた">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-04-23T08:23:30JST">Apr 23, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/">xyzzyでファイル保存時にmodeの変更をする</a></h2>
+  </header>
+
+  
+  <div class="summary">Xyzzy上で新規作成した javascript とか ruby のバッファに毎回モード設定をするのがめんどくさかったので書いた。 siteinit.l か ~/.xyzzy のどこかに貼りつけて使ってください。
+※同じ拡張子に複数のモードが紐付けられていると、古い方に設定されるようになっていたので修正;ファイル保存時に拡張子をチェックして適切なモードに変更する。 ;リネーム時にしたかったけど、hookが用意されてないので断念。 (defun set-buffer-mode () (block sbm (mapcar (lambda (l) (when (string-matchp (car l) (get-buffer-file-name)) (funcall (cdr l)) (return-from sbm)) ) *auto-mode-alist*))) (add-hook &lsquo;*after-save-buffer-hook* &lsquo;set-buffer-mode)</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/" title="xyzzyでファイル保存時にmodeの変更をする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-28T18:53:16JST">Mar 28, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/">xyzzyからPlantUMLを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">テキスト形式でUMLが書けるPlantUML PlantUMLはテキスト形式でUMLを記述して画像に出力できるオープンソースのソフトウェアです。 UMLが書けるフリーソフトはいくつかありますが、テキストベースで記述できるのは大変ありがたいですね。
+PlantUMLの具体例 サンプルをPlantUMLのサイト内から引用します。
+http://plantuml.sourceforge.net/classes.html
+[][1]　こんなUMLが以下の記述で作れちゃいます。@startuml img/classes04.png abstract class AbstractList abstract AbstractCollection interface List interface Collection List &lt;|&ndash; AbstractList Collection &lt;|&ndash; AbstractCollection Collection &lt;|- List AbstractCollection &lt;|- AbstractList AbstractList &lt;|&ndash; ArrayList ArrayList : Object[] elementData ArrayList : size() enum TimeUnit TimeUnit : DAYS TimeUnit : HOURS TimeUnit : MINUTES @enduml
+PlantUMLのインストール http://plantuml.sourceforge.net/download.html
+から plantuml.jar をダウンロードしてください。
+plantumlの実行にはJavaが必要になりますので、もしJavaがインストールされていなければ
+http://www.java.com/ja/download/
+からインストールを行ってください。
+&ldquo;Sequence Diagram&rdquo; 以外の画像の出力、つまり普通に使うのであれば Graphviz もインストールする必要があります。
+http://graphviz.org/Download_windows.php
+からダウンロードしてインストールしてください。
+以上でインストールは終了です。
+xyzzyからPlantUMLを使う方法 さて、次は以下のコードを siteinit.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/" title="xyzzyからPlantUMLを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-14T18:56:16JST">Mar 14, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">xyzzy から Rhino(javascript)を直接実行する</a></h2>
+  </header>
+
+  
+  <div class="summary">xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin+zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。
+[][2]
+下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。
+;;jscript-mode(for Rhino) (setf \*js-prog\* "java org.mozilla.javascript.tools.shell.Main") (setf \*js-classpath\* "X:/sugarsync/bin/rhino1\_7R2/js.jar") (defun js-run-script-immediate () (interactive) (js-run "")) (defun js-run (args) (let ((tempfile (make-temp-file-name "\_\_temp\_" "js" (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* " -f \"" tempfile "\" " args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive "</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/" title="xyzzy から Rhino(javascript)を直接実行する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/" class="list-group-item">xyzzyのmapcar 内で perform-string を使うときの注意点</a>
+      
+      <a href="http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/" class="list-group-item">xyzzy で声調が簡単に入力できる「ton-input-mode」を公開しました。</a>
+      
+      <a href="http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/" class="list-group-item">xyzzy の backward-word と previous-word, forward-word と next-word の違い</a>
+      
+      <a href="http://programming.ironsand.net/2011/build-xyzzy-from-source/" class="list-group-item">xyzzyをソースからビルドの方法をまとめてみた</a>
+      
+      <a href="http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/" class="list-group-item">xyzzyでファイル保存時にmodeの変更をする</a>
+      
+      <a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/" class="list-group-item">xyzzyからPlantUMLを使う</a>
+      
+      <a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/" class="list-group-item">xyzzy から Rhino(javascript)を直接実行する</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

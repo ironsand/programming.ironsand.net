@@ -1,5 +1,5 @@
 ---
-title: `config/routes.rb`内のブロックはブロックじゃない。
+title: "`config/routes.rb`内のブロックはブロックじゃない。"
 author: 鉄
 type: post
 date: 2014-01-03T06:19:02+00:00

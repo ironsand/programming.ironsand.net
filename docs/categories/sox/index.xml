@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sox on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/sox/</link>
+    <description>Recent content in sox on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Tue, 24 Nov 2015 02:01:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/sox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sox を 無音部分のある音声を分断</title>
+      <link>http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/</link>
+      <pubDate>Tue, 24 Nov 2015 02:01:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/</guid>
+      <description>音声つき単語帳の単語と例文とかを切り出してランダム出題する形にしたかったのでまずsoxを使って無音部分で音声を分割しました。
+$ sox in.wav out.wav silence 1 0.3 0.1% 1 0.3 0.1% : newfile : restart これでout001.wavなどのように連番でファイルが保存されます。初めの0.3が音声の前の部分の無音の長さで、後ろの0.3が音声の後に続く無音部分の長さです。
+参考 [sox fails to split files &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>ffmpeg と sox でドラマから音声を無音部分を除いて抜き出す</title>
+      <link>http://programming.ironsand.net/2014/how-to-extract-audios-without-silence-with-ffmpeg-and-sox/</link>
+      <pubDate>Tue, 15 Apr 2014 16:56:13 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-extract-audios-without-silence-with-ffmpeg-and-sox/</guid>
+      <description>英語の勉強にアメリカドラマから音声を抜き出して、その中のサイレンス部分を削除したかったのでやり方を調べたらffmpegとsoxで簡単にできることがわかったので、その方法を紹介します。
+動画から音声を抜き出す 一つの動画から音声を抜き出すときは
+ffmpeg -i input.mp4 -vn output.wav  で抜き出せるので
+フォルダごとまとめて処理するには
+find . -name &#39;*.mp4&#39; -exec ffmpeg -i &#39;{}&#39; -vn &#39;{}&#39;.wav &#39;;&#39;  でフォルダ内の全ての.mp4の動画ファイルから.wavファイルが抜き出されます。-vnが no videoのオプションです。
+他にも-acodec copy として音声ファイルを変換せずに抜き出すこともできます。
+無音部分を自動検出して削除 次に無音部分を自動的に認識して削除するのにsoxを使います。やり方によっては.wav以外も認識するようにできるようなのですが、うちの環境ではできなかったので.wavで処理をしています。
+find . -name &#39;*.wav&#39; -exec sox &#39;{}&#39; &#39;{}&#39;_remove_silence.wav silence 1 0.1 1% -1 0.1 1% &#39;;&#39;  で先ほど作った.wavファイルから無音部分が全て削除されました。
+wavをm4aに ffmpeg で変換 wavのままだとファイルがでかすぎるのでm4aに変換します。mp3でもいいんですが、m4aの方が圧縮効率がいいのでこちらを使います。
+find . -name &#39;*_remove_silence.wav&#39; -exec ffmpeg -i &#39;{}&#39; &#39;{}&#39;.mp3 &#39;;&#39;  以上で変換終了です。
+まとめ この3行を一括変換したいフォルダにcdで移動して実行すればOKです。.wavファイルは手動で削除しときましょう。rm *.wavでもいいですが。
+上記は全てcygwin上で行ってますがもちろんLinuxでもMacでも動くはずです。</description>
+    </item>
+    
+  </channel>
+</rss>

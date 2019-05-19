@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>coffee on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/coffee/</link>
+    <description>Recent content in coffee on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 31 Jan 2014 15:25:08 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/coffee/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>動的に追加したDOM要素にhoverイベントリスナーを追加する</title>
+      <link>http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/</link>
+      <pubDate>Fri, 31 Jan 2014 15:25:08 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/</guid>
+      <description>かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。
+前提となる知識 まず基本として $(&#39;#foo&#39;).click -&amp;gt; console.log &amp;quot;押された！&amp;quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。
+なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？
+後から追加された要素に click イベントを追加 前置きが長くなりましたが
+$(&#39;#foo&#39;).click -&amp;gt; console.log &#34;押された！&#34; を動的に追加された要素に適用させるには
+$(document).on &#39;click&#39;, &#39;#foo&#39;, -&amp;gt; console.log &#34;押された！&#34;  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。
+後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。
+記述が間違っていたので修正しました。
+onイベントの引数として &amp;quot;hover&amp;quot;を使った場合、それは単なる &amp;quot;mouseenter mouseleave&amp;quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.</description>
+    </item>
+    
+    <item>
+      <title>jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する</title>
+      <link>http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/</link>
+      <pubDate>Mon, 30 Dec 2013 02:45:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/</guid>
+      <description>jQuery で選択した要素が存在するかどうかの関数が何故か用意されてないようだったので追加しました。
+CoffeeScriptで書いてるのでjavascriptとして使いたい場合は converter にかけてください。
+$.fn.isExist = -&amp;gt; $(@).length != 0 $.fn.isNotExist = -&amp;gt; $(@).length == 0  参考 [How to tell if an element exists | jQuery for Designers &amp;#8211; Tutorials and screencasts][1]</description>
+    </item>
+    
+    <item>
+      <title>rails の `blank?` メソッドを jQuery に追加する方法</title>
+      <link>http://programming.ironsand.net/2013/jquery-isblank-function/</link>
+      <pubDate>Sun, 29 Dec 2013 00:34:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/jquery-isblank-function/</guid>
+      <description>rails には 値の有無をチェックするときにタブやスペースなどの空白が入っていても「空」だと判断する便利な blank? 関数が用意されていますが、どうやら JavaScript や jQuery には用意されてないので追加してみました。
+自分で書いた後にもっと良さそうなコードを見つけたのでそちらを紹介します。
+JavaScript $.fn.isBlank = function() { return !$(this.html()) || $.trim($(this).html()) === &#34;&#34;; };  Coffee もちろん Rails 標準のCoffeeも。
+$.fn.isBlank = - !$(@.html()) || $.trim($(@).html()) is &#34;&#34; 参考 [Checking for blank input with jQuery &amp;#8211; Stack Overflow][1]
+[jQuery isBlank() | LakTEK (Lakshan Perera)][2]</description>
+    </item>
+    
+    <item>
+      <title>coffee script を Emacs の smart compile を使ってjsの出力結果を出す</title>
+      <link>http://programming.ironsand.net/2013/coffee-script-with-smart-compile/</link>
+      <pubDate>Tue, 17 Dec 2013 15:37:33 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/coffee-script-with-smart-compile/</guid>
+      <description>Railsのプロジェクトで coffee script を使うけどもコンパイルは全て Asset pipelineがやってくれるので、たまに変換結果の js をちょっと見てみたい時に困った事になります。
+なのでEmacsの smart compile の機能を使ってすぐに 出力結果を得られるようにしてみました。
+解決策 coffee -pで標準出力に変換結果を出力してくれるので
+(global-set-key (kbd &#34;C-c C-x&#34;) &#39;smart-compile) (setq smart-compile-alist (append &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\\.coffee$&#34; . &#34;coffee -p %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist))  としておけばOKです。
+参考 [Convert coffee to javascript and show the result to standard output in Emacs &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+  </channel>
+</rss>

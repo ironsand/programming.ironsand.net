@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/posts/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/posts/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Posts - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Posts</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-10T14:39:05JST">Dec 10, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/show-all-filters-in-wordpress/">WordPressでadd_filterで適用された関数の一覧を表示する</a></h2>
+  </header>
+
+  
+  <div class="summary">どんなフィルタが適用されてるか確認したかったので質問したら教えてもらえました。Stackexchangeの回答者様ありがとうございます。
+[crayon lang=&#8221;php&#8221;]
+&lt;?php function get_filters_for( $hook = &ldquo; ) { global $wp_filter; if( empty( $hook ) || !isset( $wp_filter[$hook] ) ) return;
+return $wp_filter[$hook];  } var_dump(get_filters_for( &lsquo;the_content&rsquo; )); [/crayon]
+参考 [How to check a filter are applied &#8211; WordPress Answers][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/show-all-filters-in-wordpress/" title="WordPressでadd_filterで適用された関数の一覧を表示する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-10T14:03:47JST">Dec 10, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/recognize-0-as-a-true-in-php/">返り値が false か 整数の関数で `0` をtrueと判定する方法</a></h2>
+  </header>
+
+  
+  <div class="summary">WordPressの has_filter()は返り値が int|boolean なので普通に if(has_filter()) で処理しちゃうと `` が返ってきた時に意図しない結果になってしまいます。
+解決策 なのでそういう時は if(is_int(has_filter())) を使いましょう。
+参考 [wordpress &#8211; recognize `` as a true in PHP if statement &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/recognize-0-as-a-true-in-php/" title="返り値が false か 整数の関数で `0` をtrueと判定する方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-09T10:22:53JST">Dec 9, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/how-to-add-unique-constraint-to-already-existing-index-by-migration/">既に存在するindexにunique制限をかけるmigrationの書き方。</a></h2>
+  </header>
+
+  
+  <div class="summary">そのまま unique 条件付の index を追加しようとするとエラーになるので
+まず既にある index を削除してから追加しましょう。
+[crayon title=&#8221;db/migrate/add_unique_constraint.rb&#8221;]
+def change
+remove_index :editabilities, [:user_id, :list_id]
+add_index :editabilities, [:user_id, :list_id], unique: true
+end
+[/crayon]
+参考 [ruby on rails &#8211; How to add unique constraint to already existing index by migration &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/how-to-add-unique-constraint-to-already-existing-index-by-migration/" title="既に存在するindexにunique制限をかけるmigrationの書き方。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-12-08T01:14:54JST">Dec 8, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/textbook-for-wordpress-2/">WordPressの教科書2の読書感想</a></h2>
+  </header>
+
+  
+  <div class="summary">WordPressを覚えたくなったので[WordPressの教科書2][1]を読みながら勉強中。気になったところをメモっていきます。本の現物がないと意味不明です。
+P.065: フィルターフックを追加するのに関数名が `add_filter` なのが非常に気に食わない。そこは `add_filter_hook` とめんどくさくてもちゃんと書くところじゃないです！？
+P.071 `WP_SiteManager_bread_crumb::bread_crumb(&#8216;navi_element=div&amp;elm_id=bread_crumb&#8217;);`
+って出てきたけど引数にこんなURL表記みたいな気持ち悪い方法使うの…？
+P.115 カスタムフィールドの名前欄を編集不可にはできないのかな？ (P.127から「専用の管理画面を作成する」が始まった！)
+P.253 Genericons便利そう。
+後は適当に流し読みしたので終了。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/textbook-for-wordpress-2/" title="WordPressの教科書2の読書感想">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-05-26T09:00:38JST">May 26, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/vim-functions/">Vimの欲しい機能を調べてみた。</a></h2>
+  </header>
+
+  
+  <div class="summary">今までVimでRailsのプロジェクトの中にあるファイルを開くのに毎回FinderのウィンドウからD&amp;DしていてめんどくさかったのでVimの左側にファイラーが表示できたらいいな、と思って調べてみました。
+検索した所 Opsplore が見つかったのでインストールしようかと思ったらインストールの仕方がわからなかったのでもののついでに多分パッケージ管理する拡張があるだろうと考えて調べてみたらやっぱりありました。
+NeoBundleでパッケージ管理 どうやら昔はBundleというソフトが有名だったけど、機能不足などの問題でVundleがForkされて更に統一性などの問題点が改善されたNeoBundleが出されたようです。
+はじめ動かなくて困ってTwitterでつぶやいていたら @todashuta さんが直してくれました。ありがとうございます。
+Vimpusher NeoBundleなどのパッケージ管理を使っていて、その.vimrcをGitなどのオンライン上に置いている場合はソーシャルVimプラグインサービスの[Vimpusher][1]というサービスがあり、これに登録しておくとおすすめのプラグインを紹介してくれるそうです。
+便利そうなプラグイン なんでもRailsを使うのに便利なプラグインがあるそうなので早速それを入れてみる。
+[tpope/vim-rails · GitHub][2]
+においてあるのでNeoBundleでインストールするために
+~/.vimrc に
+NeoBundle 'tpope/vim-rails'
+と追記し、
+``今までVimでRailsのプロジェクトの中にあるファイルを開くのに毎回FinderのウィンドウからD&amp;DしていてめんどくさかったのでVimの左側にファイラーが表示できたらいいな、と思って調べてみました。
+検索した所 Opsplore が見つかったのでインストールしようかと思ったらインストールの仕方がわからなかったのでもののついでに多分パッケージ管理する拡張があるだろうと考えて調べてみたらやっぱりありました。
+NeoBundleでパッケージ管理 どうやら昔はBundleというソフトが有名だったけど、機能不足などの問題でVundleがForkされて更に統一性などの問題点が改善されたNeoBundleが出されたようです。
+はじめ動かなくて困ってTwitterでつぶやいていたら @todashuta さんが直してくれました。ありがとうございます。
+Vimpusher NeoBundleなどのパッケージ管理を使っていて、その.vimrcをGitなどのオンライン上に置いている場合はソーシャルVimプラグインサービスの[Vimpusher][1]というサービスがあり、これに登録しておくとおすすめのプラグインを紹介してくれるそうです。
+便利そうなプラグイン なんでもRailsを使うのに便利なプラグインがあるそうなので早速それを入れてみる。
+[tpope/vim-rails · GitHub][2]
+においてあるのでNeoBundleでインストールするために
+~/.vimrc に
+NeoBundle 'tpope/vim-rails'
+と追記し、
+``
+で設定の再読み込みをすると &#8220;Install bundles now?&#8221; と聞かれるので&#8221;yes&#8221;を選択すればOKです。メッセージが流れないのでフリーズしてるように感じましたが正常にインストールされてました。
+たとえば post_controller.rb 上の def index の上にカーソルがあるときに gf と入力すれば index.html.erb が開かれます。
+詳しい動作はまた今度確認することします。
+他にも入れといたほうがよさそうなプラグイン こちらのサイトを参考に便利そうなプラグインを追加していきました。
+[天井冴太的つれづれblog [天井の染み]: このVim plugin達に感謝しなければ年を越せない!私が今年使い倒した2012年のベストを全部ご紹介!][3]
+&#8221; RubyやPerl風の正規表現。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/vim-functions/" title="Vimの欲しい機能を調べてみた。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-05-21T07:35:49JST">May 21, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/naming-convention-rails-imodel-irregular-verb/">RailsでModelが不規則名詞だった場合のControllerの命名規則</a></h2>
+  </header>
+
+  
+  <div class="summary">RailsのModelは常に単数名詞、そしてControllerはその名詞の複数形という規則がありますが、Modelが”Child&#8221;などの不規則変化名詞だった時にController名はChildrenなのか、Childsなのかがわからなかったので調べました。
+答え プログラム的には当然簡単に処理できるChildsだと思ったけども実際はちゃんと不規則変化にも対応してるらしくChildrenが正解です。
+その他の不規則名詞 他の不規則名詞は
+https://github.com/rails/rails/blob/4-0-0/activesupport/lib/active_support/inflections.rb
+に載っているんですが、
+inflect.irregular('person', 'people') inflect.irregular('man', 'men') inflect.irregular('child', 'children') inflect.irregular('sex', 'sexes') inflect.irregular('move', 'moves') inflect.irregular('cow', 'kine') inflect.irregular('zombie', 'zombies')  zombieって不規則名詞なの…？
+cow→kineの変化はそもそも英単語がわかりませんでした、、
+Zombieが不規則名詞の理由 ([2013/12/14] 追記) 単数形から複数形への変化は規則通りですが、複数形から単数形への変化 zombies -&gt; zombie が不規則で、規則通り変化させてしまうと zombies -&gt; zomby になってしまうから不規則名詞らしいです。英語は難しいですね。
+情報元 [Model and Controller&apos;s naming rule for irregular noun in Rails &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/naming-convention-rails-imodel-irregular-verb/" title="RailsでModelが不規則名詞だった場合のControllerの命名規則">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-05-01T03:12:23JST">May 1, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/expand_path-non-absolute-home-error/">Railsで新規プロジェクトを作ろうとすると`expand_path’: non-absolute homeというエラーが出る</a></h2>
+  </header>
+
+  
+  <div class="summary">rails new hoge
+とすると
+`expand_path': non-absolute home
+というエラーが出てしまって「Windowsだしなあ。」と諦めかけてたけど、このhomeというのは環境変数のHOMEのことらしく、確かにcygwinを使う時のためにHOMEに /cygdrive/ から始まる値を入れてたのを思い出したので環境変数 HOME を削除してみたら動いた。
+ちなみに irb もHOMEに入ってる値によっては動かないらしい。
+参考 `expand_path&apos;: non-absolute home
+http://devnet.jetbrains.com/thread/437313</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/expand_path-non-absolute-home-error/" title="Railsで新規プロジェクトを作ろうとすると`expand_path’: non-absolute homeというエラーが出る">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-03-29T11:38:45JST">Mar 29, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/">wxPythonで作ったUIをpy2exeで変換すると見た目が変わる問題</a></h2>
+  </header>
+
+  
+  <div class="summary">wxPythonを使って頑張って作ったGUIをPythonが入ってないPCの人も使えるようにするのにpy2exeで変換したら見た目が変わってしまった(古い？TK?)のでその対処法。
+必要なファイル Microsoft.VC90.CRT.manifest
+msvcm90.dll
+msvcp90.dll
+msvcr90.dll
+の4つのファイルが必要。自分の環境だとPython 2.7 Portableを入れたフォルダに全部入っていたので、Py27MSdllsというフォルダをsetup.pyと同じ階層に作って全部入れました。
+Microsoft.VC90.CRT.manifest の中で示されてるdllのバージョンが合ってるかどうか確認する。
+違ってたら適宜修正する。
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;br&gt; &lt;!-- Copyright (c) Microsoft Corporation. All rights reserved. --&gt;&lt;br&gt; &lt;assembly xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; manifestVersion=&quot;1.0&quot;&gt;&lt;br&gt; &lt;noInheritable/&gt;&lt;br&gt; &lt;assemblyIdentity&lt;br&gt; type=&quot;win32&quot;&lt;br&gt; name=&quot;Microsoft.VC90.CRT&quot;&lt;br&gt; &lt;s&gt;version=&quot;9.0.21022.8&quot;&lt;/s&gt; &lt;span style=color:red;&gt;version=&quot;9.0.30729.6161&quot;&lt;/span&gt;&lt;br&gt; processorArchitecture=&quot;x86&quot;&lt;br&gt; publicKeyToken=&quot;1fc8b3b9a1e18e3b&quot;&lt;br&gt; /&gt;&lt;br&gt; &lt;file name=&quot;msvcr90.dll&quot; /&gt; &lt;file name=&quot;msvcp90.dll&quot; /&gt; &lt;file name=&quot;msvcm90.dll&quot; /&gt;&lt;br&gt; &lt;/assembly&gt;&lt;br&gt;  setup.py setup.pyを書き換えて用意したこれらのファイルを読み込むように変更する。
+# -*- coding: utf-8 -*-&lt;br&gt; #&lt;br&gt; # setup.py&lt;br&gt; &lt;br&gt; from distutils.core import setup&lt;br&gt; import py2exe&lt;br&gt; import glob&lt;br&gt; &lt;br&gt; &lt;br&gt; class Target(object):&lt;br&gt; &quot;&quot;&quot; A simple class that holds information on our executable file.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/wxpython-b-py2exe-differ-appearance/" title="wxPythonで作ったUIをpy2exeで変換すると見た目が変わる問題">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-03-12T04:27:25JST">Mar 12, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/">さくらのVPSにneroAacEncをインストールしてmp3をm4aに変換する</a></h2>
+  </header>
+
+  
+  <div class="summary">作業目的 さくらのVPSで自動ダウンロードしてるNHKの語学講座が大量になってきて容量が馬鹿にならなくなってきたので
+mp3で出力されたものをm4aに変換しようとNeroAAC Encoderのインストール作業メモ。
+インストール方法 まず
+コマンドラインツールをここからダウンロードしてくる。
+http://www.nero.com/enu/company/about-nero/nero-aac-codec.php
+wgetで直接取ってくるなら
+$ wget http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip
+圧縮ファイルを展開して
+$ unzip ~/NeroAACCodec-1.5.1.zip -d neroaac
+実行権限を付加
+$ chmod +x ./neroaac/linux/neroAac*
+んで、動作を確認
+$ ./neroaac/linux/neroAacEnc
+************************************************************* * * * Nero AAC Encoder * * Copyright 2009 Nero AG * * All Rights Reserved Worldwide * * * * Package build date: Feb 18 2010 * * Package version: 1.5.4.0 * * * * See -help for a complete list of available parameters.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/" title="さくらのVPSにneroAacEncをインストールしてmp3をm4aに変換する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-02-27T09:16:07JST">Feb 27, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/">JqueryとHTML5でajaxなファイルのアップロード</a></h2>
+  </header>
+
+  
+  <div class="summary">画面遷移無しでファイルのアップロードしようと思ったらiframeを使った技とかややこしい情報が色々出てきて、なかなかやりたいことに辿りつけなかったのでメモ。
+やりたい事と条件 ・ajaxなテキストファイルのアップロード
+・テキストをRubyで編集して返す
+・画面遷移せずに結果を表示
+・IEは諦める。
+必要最低限のコード まずHTMLを用意
+ajaxupload.html
+&lt;/p&gt; &lt;pre&gt;&lt;html&gt;&lt;br&gt; &lt;head&gt;&lt;br&gt; &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;&lt;br&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.7.min.js&quot; charset=&quot;utf8&quot;&gt;&lt;/script&gt;&lt;br&gt; &lt;script type=&quot;text/javascript&quot; src=&quot;ajaxupload.js&quot; charset=&quot;utf8&quot;&gt;&lt;/script&gt;&lt;br&gt; &lt;/head&gt;&lt;br&gt; &lt;style&gt;textarea{height:80%;width:100%;}&lt;/style&gt;&lt;br&gt; &lt;body&gt;&lt;br&gt; &lt;input type=file id=file /&gt;&lt;br&gt; &lt;input type=button id=upload value=&quot;upload&quot;&gt;&lt;br&gt;&lt;br&gt; &lt;textarea id=output&gt;&lt;/textarea&gt;&lt;br&gt; &lt;/body&gt;&lt;br&gt; &lt;/html&gt;&lt;br&gt; &lt;/pre&gt; &lt;p&gt;
+つぎにjavascript
+ajaxupload.js
+&lt;/p&gt; &lt;pre&gt;$(function(){ $(&quot;#upload&quot;).click(function(){ var file = $(&quot;#file&quot;)[0].files[0]; var reader = new FileReader(); reader.readAsText(file, 'UTF-8'); reader.onload = showFile; }); function showFile(event) { $.ajax({ type: &quot;POST&quot;, url: &quot;ajaxupload.rb&quot;, data: { filedata:event.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/" title="JqueryとHTML5でajaxなファイルのアップロード">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/posts/page/10/">Previous</a></li>
+    
+
+    
+    <li><a href="/posts/page/12/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>FFmpeg使って複数の音声と字幕から一つの動画を作成する - 答えを知りたい</title>
+    
+<meta name="description" content="ffmpegを使って複数の音声と字幕から一つの動画を作成する方法。ffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4  コマンドの解説 まず入力ソースに使う動画は一つ一つに-iオプションを付けて呼び出します。そして-map の横についてる数字は何個目の引数として呼び込まれたか:その動画や音声のどのストリームかを表しています。そして-metadataを使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。ちなみに-acodec copy -vcodec copyという使い方をされてる人が多いですが-c copyで一括指定できます。知っとくと便利なこと -t 数値で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は-t 180などして簡単に動画の確認だけすると良いでしょう。">
+
+<meta property="og:title" content="FFmpeg使って複数の音声と字幕から一つの動画を作成する - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="ffmpegを使って複数の音声と字幕から一つの動画を作成する方法。ffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4  コマンドの解説 まず入力ソースに使う動画は一つ一つに-iオプションを付けて呼び出します。そして-map の横についてる数字は何個目の引数として呼び込まれたか:その動画や音声のどのストリームかを表しています。そして-metadataを使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。ちなみに-acodec copy -vcodec copyという使い方をされてる人が多いですが-c copyで一括指定できます。知っとくと便利なこと -t 数値で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は-t 180などして簡単に動画の確認だけすると良いでしょう。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/">
+<meta name="twitter:title" content="FFmpeg使って複数の音声と字幕から一つの動画を作成する - 答えを知りたい">
+<meta name="twitter:description" content="ffmpegを使って複数の音声と字幕から一つの動画を作成する方法。ffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4  コマンドの解説 まず入力ソースに使う動画は一つ一つに-iオプションを付けて呼び出します。そして-map の横についてる数字は何個目の引数として呼び込まれたか:その動画や音声のどのストリームかを表しています。そして-metadataを使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。ちなみに-acodec copy -vcodec copyという使い方をされてる人が多いですが-c copyで一括指定できます。知っとくと便利なこと -t 数値で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は-t 180などして簡単に動画の確認だけすると良いでしょう。">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "FFmpeg使って複数の音声と字幕から一つの動画を作成する - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-09-27T02:49:40JST",
+    "dateModified": "2015-09-27T02:49:40JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "ffmpegを使って複数の音声と字幕から一つの動画を作成する方法。\nffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4  コマンドの解説 まず入力ソースに使う動画は一つ一つに-iオプションを付けて呼び出します。\nそして-map の横についてる数字は何個目の引数として呼び込まれたか:その動画や音声のどのストリームかを表しています。そして-metadataを使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。\nちなみに-acodec copy -vcodec copyという使い方をされてる人が多いですが-c copyで一括指定できます。\n知っとくと便利なこと -t 数値で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は-t 180などして簡単に動画の確認だけすると良いでしょう。"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">FFmpeg使って複数の音声と字幕から一つの動画を作成する</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-09-27T02:49:40JST">Sep 27, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">FFmpeg使って複数の音声と字幕から一つの動画を作成する</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p><code>ffmpeg</code>を使って複数の音声と字幕から一つの動画を作成する方法。</p>
+
+<pre class="lang:sh decode:true " >ffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4
+</pre>
+
+<h2 id="コマンドの解説">コマンドの解説</h2>
+
+<p>まず入力ソースに使う動画は一つ一つに<code>-i</code>オプションを付けて呼び出します。</p>
+
+<p>そして<code>-map</code> の横についてる数字は<code>何個目の引数として呼び込まれたか:その動画や音声のどのストリームか</code>を表しています。そして<code>-metadata</code>を使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。</p>
+
+<p>ちなみに<code>-acodec copy -vcodec copy</code>という使い方をされてる人が多いですが<code>-c copy</code>で一括指定できます。</p>
+
+<h2 id="知っとくと便利なこと">知っとくと便利なこと</h2>
+
+<p><code>-t 数値</code>で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は<code>-t 180</code>などして簡単に動画の確認だけすると良いでしょう。</p>
+
+<p><code>ffmpeg</code>はなんでもできるし、どのOSでも使えるのに引数がめんどくさすぎるせいであまり情報がないのがもったいないですよね。</p>
+
+<p>何かわからないことがあったらコメント欄で聞いてください。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/commands/">Commands</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/ffmpeg/">ffmpeg</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

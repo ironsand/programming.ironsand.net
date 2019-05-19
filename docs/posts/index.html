@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/posts/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/posts/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Posts - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Posts</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-18T00:00:00JST">May 18, 2019</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/">WordpressからHugoに移行した記録</a></h2>
+  </header>
+
+  
+  <div class="summary">インストール方法 Macなら特に何も面倒くさいことをせずに
+brew update brew install hugo  でOKです。
+無事インストールできたか確認ついでにバージョンも表示。
+% hugo version Hugo Static Site Generator v0.55.5/extended darwin/amd64 BuildDate: unknown  始め方 まずこのサイトの置き場所のためにディレクトリを~/www/programming.ironsand.netを作って、そこにcdで移動。
+% hugo new site . Congratulations! Your new Hugo site is created in /Users/ironsand/www/programming.ironsand.net. Just a few more steps and you're ready to go: 1. Download a theme into the same-named folder. Choose a theme from https://themes.gohugo.io/, or create your own with the &quot;hugo new theme &lt;THEMENAME&gt;&quot; command.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" title="WordpressからHugoに移行した記録">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-01T08:09:53JST">Sep 1, 2018</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/">なろうリーダーでフォント入れ替える方法</a></h2>
+  </header>
+
+  
+  <div class="summary">こんな感じになります 設定方法など なろうリーダーで縦書きができるようになったのですが、Kindleなどど違ってIPAフォントをアプリの機能でダウンロードしてインストールすることはできないようです。
+設定のキャッシュ設定→保存先に
+/storage/emulated/0/Android/data/com.tscsoft.naroureader/files  のようにキャッシュ用のフォルダが示されてるので、以下のサイトからフォントを落としてきてこのフォルダにコピーすれば設定からIPAフォントが選べるようになります。
+https://ipafont.ipa.go.jp/old/ipafont/download.html
+ファイルの移動にはAirmoreを使うと便利です。
+Airmoreで転送する際には頭の/storage/emulated/0/を無視してAndroidディレクトリから選んでいけばOKです。files/fontsとなっていますのでその中に入れましょう。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" title="なろうリーダーでフォント入れ替える方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-04-02T23:37:46JST">Apr 2, 2018</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a></h2>
+  </header>
+
+  
+  <div class="summary">Virtualboxの共有フォルダ機能は便利なんですが、/etc/fstabに追加しようとするとvboxsfがマウント時にまだ読み込まれてないとかでディストリビューションによっては使えません。
+あまり行儀はよくないのですが/etc/rc.localでマウントしてしまえば解決です。
+mount -t vboxsf share /home/ironsand/share || /bin/true exit 0  exit 0より前に書くことだけ気をつけましょう。
+参考 How to mount a VirtualBox shared folder at startup?</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" title="VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-01-29T20:00:47JST">Jan 29, 2018</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/">Faviconを取得する簡単な方法</a></h2>
+  </header>
+
+  
+  <div class="summary">faviconを取得したければ&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot;&gt;を探すなどの正攻法がありますが、
+色々と例外があるようなのでめんどくさい時はGoogleさんに任せてしまいましょう。
+URI('https://www.google.com/s2/favicons?domain_url=stackoverflow.com').read  でとれます。
+参考 https://stackoverflow.com/questions/5119041/how-can-i-get-a-web-sites-favicon</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" title="Faviconを取得する簡単な方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-12-26T03:32:49JST">Dec 26, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/">invalid value for BigDecimal が Ruby 2.4から出るようになった</a></h2>
+  </header>
+
+  
+  <div class="summary">Ruby 2.3 まではBigdecimalへの変換を行う String#to_dが数字ではない文字列だった場合にString#to_iと同じ0.0を返す仕様だったのに2.4からは例外を吐くようになったようです。
+Ruby 2.3 require 'bigdecimal' require 'bigdecimal/util' 'abc'.to_d #=&gt; 0.0 Ruby 2.4 require 'bigdecimal' require 'bigdecimal/util' 'abc'.to_d ArgumentError: invalid value for BigDecimal(): "abc" 対策 バグでした。gem update bigdecimal して、Gemfileを設定しましょう。
+https://github.com/ruby/bigdecimal/issues/51
+gem 'bigdecimal', '1.3.4'    
+Tweet 
+/fb:like</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" title="invalid value for BigDecimal が Ruby 2.4から出るようになった">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-11-01T14:07:45JST">Nov 1, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a></h2>
+  </header>
+
+  
+  <div class="summary">状態 こういうふうに書いたらtarget: '_blank'が効かなくて困った。
+simple_format(auto_link(text, :target =&gt; &quot;_blank&quot; ))  対策 simple_formatはaタグのtarget属性を取り除いてしまうので順番を入れ替えて、こう書くとOK。
+auto_link(simple_format(text), :target =&gt; &quot;_blank&quot; )  参考 https://github.com/tenderlove/rails_autolink/issues/20#issuecomment-24818734
+   
+Tweet 
+/fb:like</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" title="simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-11-01T06:28:12JST">Nov 1, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a></h2>
+  </header>
+
+  
+  <div class="summary">bashやRubyのpryでctrl+rで使える reverse interactive search をnodeのシェルでも使う方法の紹介です。
+rlwrap のインストール rlwrapが必要なのでbrew install rlwrapでインストールしましょう。他の環境の場合は環境にあったパッケージマネージャでインストールしてください。
+rlwrapはGNUのreadline的な振る舞いをするためのパッケージだそうです。
+node側の設定 alias node="NODE_NO_READLINE=1 rlwrap node" を追加してnodeでreadlineを使うように設定しておきましょう。
+参考 https://stackoverflow.com/questions/46714331/how-to-use-reverse-interactive-search-in-nodejs-repl</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" title="NodeJSのREPLでctrl&#43;r で過去の履歴を検索">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-10-18T22:47:37JST">Oct 18, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/">zshでhistoryに実行時間も残す方法</a></h2>
+  </header>
+
+  
+  <div class="summary">bashだとHISTTIMEFORMAT=&quot;[%F %T] &quot;とか~/.bashrcに書いておけばログに実行した日時も残しておけるんだけどzshだとHISTTIMEFORMATがないらしいので方法を調べてみた。
+設定しなくてOK デフォルトで使えるようになってるらしい
+$ history -E 1 2.12.2013 14:19 history -E $ history -i 1 2013-12-02 14:19 history -E $ history -D 1 0:00 history -E 2 0:00 history -i  だけでOK。
+参考 https://unix.stackexchange.com/questions/103398/datetime-stamp-when-running-history-command-in-zsh-shell
+   
+Tweet 
+/fb:like</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" title="zshでhistoryに実行時間も残す方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-08-05T16:25:25JST">Aug 5, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a></h2>
+  </header>
+
+  
+  <div class="summary">WordpressからHUGOに移行する時にTwitterやFacebookなどのソーシャルボタンが本文にハードコーディングされてたので強引に削除しました。 特定の行以降を全て削除するという力技なので間違って想定外のものが消えないか気をつけましょう。
+# pry &gt; require 'nokogiri' Pathname.glob('posts/*.md').each{|f| text = f.read.gsub(/&lt;div class='wp_social_bookmarking_light'&gt;.*/m,''); f.write(text)}  </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" title="HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-05-08T07:17:27JST">May 8, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a></h2>
+  </header>
+
+  
+  <div class="summary">更新されてる時だけファイルをダウンロードしたいときなどに使う目的で。
+uri = URI('http://example.com/foo.xls') Net::HTTP.get_response(uri)['last-modified'] &quot;Mon, 08 May 2017 01:34:46 GMT&quot;  </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" title="Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li class="disabled"><a href="#">Previous</a></li>
+    
+
+    
+    <li><a href="/posts/page/2/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

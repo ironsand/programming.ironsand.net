@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aac on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/aac/</link>
+    <description>Recent content in aac on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Tue, 12 Mar 2013 04:27:25 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/aac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>さくらのVPSにneroAacEncをインストールしてmp3をm4aに変換する</title>
+      <link>http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/</link>
+      <pubDate>Tue, 12 Mar 2013 04:27:25 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/encode-mp3-m4a-aac-in-sakura-vps/</guid>
+      <description>作業目的 さくらのVPSで自動ダウンロードしてるNHKの語学講座が大量になってきて容量が馬鹿にならなくなってきたので
+mp3で出力されたものをm4aに変換しようとNeroAAC Encoderのインストール作業メモ。
+インストール方法 まず
+コマンドラインツールをここからダウンロードしてくる。
+http://www.nero.com/enu/company/about-nero/nero-aac-codec.php
+wgetで直接取ってくるなら
+$ wget http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip
+圧縮ファイルを展開して
+$ unzip ~/NeroAACCodec-1.5.1.zip -d neroaac
+実行権限を付加
+$ chmod +x ./neroaac/linux/neroAac*
+んで、動作を確認
+$ ./neroaac/linux/neroAacEnc
+************************************************************* * * * Nero AAC Encoder * * Copyright 2009 Nero AG * * All Rights Reserved Worldwide * * * * Package build date: Feb 18 2010 * * Package version: 1.5.4.0 * * * * See -help for a complete list of available parameters.</description>
+    </item>
+    
+  </channel>
+</rss>

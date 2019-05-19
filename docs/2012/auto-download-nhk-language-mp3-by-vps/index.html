@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>NHK語学のラジオ講座をさくらのVPSで自動ダウンロード - 答えを知りたい</title>
+    
+<meta name="description" content="NHKラジオの語学講座を毎週ダウンロードしてるんですが、外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。なのでせっかくさくらのVPSをお金払って借りてるんだから勝手にダウンロードするように設定しましたので参考にどうぞ。月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。実際に先週から動かしてみてますが、こりゃ楽でいいです。SugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。記事が長くなるので今回のさくらVPSを使って自動的にNHKラジオ講座をダウンロード次回のさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするの2つにわけて解説していきます。自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。 flvstreamerのダウンロード、コンパイル Rubyのインストール CaptureStream の設定 cronの設定  1. flvstreamerのダウンロード、コンパイル flvstreamer をインストールするんですが、まずさくらのVPSが32ビットなのか64ビットなのか確認します。$ cat /proc/cpuinfo | grep flagsして値に lm が含まれていれば64bitのCPUです。次に$ uname -aX86_64とかamd64とかが表示されたら、64ビット版のカーネルです。64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、32bitしかバイナリがおいてないので自分でコンパイルします。$ wget http://download.savannah.gnu.org/releases/flvstreamer/source/flvstreamer-2.1c1.tar.gz $ tar zxf flvstreamer-2.1c1.tar.gz $ cd flvstreamer $ make posix $ ./flvstreamer FLVStreamer v2.1c1 (c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL ERROR: You must specify a hostname (--host) or url (-r &amp;quot;rtmp://host[:port]/playpath&amp;quot;) containing a hostname  # yum install ruby">
+
+<meta property="og:title" content="NHK語学のラジオ講座をさくらのVPSで自動ダウンロード - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="NHKラジオの語学講座を毎週ダウンロードしてるんですが、外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。なのでせっかくさくらのVPSをお金払って借りてるんだから勝手にダウンロードするように設定しましたので参考にどうぞ。月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。実際に先週から動かしてみてますが、こりゃ楽でいいです。SugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。記事が長くなるので今回のさくらVPSを使って自動的にNHKラジオ講座をダウンロード次回のさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするの2つにわけて解説していきます。自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。 flvstreamerのダウンロード、コンパイル Rubyのインストール CaptureStream の設定 cronの設定  1. flvstreamerのダウンロード、コンパイル flvstreamer をインストールするんですが、まずさくらのVPSが32ビットなのか64ビットなのか確認します。$ cat /proc/cpuinfo | grep flagsして値に lm が含まれていれば64bitのCPUです。次に$ uname -aX86_64とかamd64とかが表示されたら、64ビット版のカーネルです。64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、32bitしかバイナリがおいてないので自分でコンパイルします。$ wget http://download.savannah.gnu.org/releases/flvstreamer/source/flvstreamer-2.1c1.tar.gz $ tar zxf flvstreamer-2.1c1.tar.gz $ cd flvstreamer $ make posix $ ./flvstreamer FLVStreamer v2.1c1 (c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL ERROR: You must specify a hostname (--host) or url (-r &amp;quot;rtmp://host[:port]/playpath&amp;quot;) containing a hostname  # yum install ruby">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/">
+<meta name="twitter:title" content="NHK語学のラジオ講座をさくらのVPSで自動ダウンロード - 答えを知りたい">
+<meta name="twitter:description" content="NHKラジオの語学講座を毎週ダウンロードしてるんですが、外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。なのでせっかくさくらのVPSをお金払って借りてるんだから勝手にダウンロードするように設定しましたので参考にどうぞ。月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。実際に先週から動かしてみてますが、こりゃ楽でいいです。SugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。記事が長くなるので今回のさくらVPSを使って自動的にNHKラジオ講座をダウンロード次回のさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするの2つにわけて解説していきます。自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。 flvstreamerのダウンロード、コンパイル Rubyのインストール CaptureStream の設定 cronの設定  1. flvstreamerのダウンロード、コンパイル flvstreamer をインストールするんですが、まずさくらのVPSが32ビットなのか64ビットなのか確認します。$ cat /proc/cpuinfo | grep flagsして値に lm が含まれていれば64bitのCPUです。次に$ uname -aX86_64とかamd64とかが表示されたら、64ビット版のカーネルです。64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、32bitしかバイナリがおいてないので自分でコンパイルします。$ wget http://download.savannah.gnu.org/releases/flvstreamer/source/flvstreamer-2.1c1.tar.gz $ tar zxf flvstreamer-2.1c1.tar.gz $ cd flvstreamer $ make posix $ ./flvstreamer FLVStreamer v2.1c1 (c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL ERROR: You must specify a hostname (--host) or url (-r &amp;quot;rtmp://host[:port]/playpath&amp;quot;) containing a hostname  # yum install ruby">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "NHK語学のラジオ講座をさくらのVPSで自動ダウンロード - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2012-06-04T05:41:35JST",
+    "dateModified": "2012-06-04T05:41:35JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "NHKラジオの語学講座を毎週ダウンロードしてるんですが、\n外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。\nなのでせっかくさくらのVPSをお金払って借りてるんだから\n勝手にダウンロードするように設定しましたので参考にどうぞ。\n月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。\n実際に先週から動かしてみてますが、こりゃ楽でいいです。\nSugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。\n記事が長くなるので今回の\nさくらVPSを使って自動的にNHKラジオ講座をダウンロード\n次回の\nさくらVPSにダウンロードしたmp3をSugarsyncにアップロードする\nの2つにわけて解説していきます。\n自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。\n flvstreamerのダウンロード、コンパイル\n Rubyのインストール\n CaptureStream の設定\n cronの設定\n  1. flvstreamerのダウンロード、コンパイル flvstreamer をインストールするんですが、\nまずさくらのVPSが32ビットなのか64ビットなのか確認します。\n$ cat \/proc\/cpuinfo | grep flags\nして値に lm が含まれていれば64bitのCPUです。\n次に\n$ uname -a\nX86_64とかamd64とかが表示されたら、64ビット版のカーネルです。\n64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、\n32bitしかバイナリがおいてないので自分でコンパイルします。\n$ wget http:\/\/download.savannah.gnu.org\/releases\/flvstreamer\/source\/flvstreamer-2.1c1.tar.gz $ tar zxf flvstreamer-2.1c1.tar.gz $ cd flvstreamer $ make posix $ .\/flvstreamer FLVStreamer v2.1c1 (c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL ERROR: You must specify a hostname (--host) or url (-r \x26quot;rtmp:\/\/host[:port]\/playpath\x26quot;) containing a hostname  # yum install ruby"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">NHK語学のラジオ講座をさくらのVPSで自動ダウンロード</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-06-04T05:41:35JST">Jun 4, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">NHK語学のラジオ講座をさくらのVPSで自動ダウンロード</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>NHKラジオの語学講座を毎週ダウンロードしてるんですが、</p>
+
+<p>外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。</p>
+
+<p>なのでせっかくさくらのVPSをお金払って借りてるんだから</p>
+
+<p>勝手にダウンロードするように設定しましたので参考にどうぞ。</p>
+
+<p>月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。</p>
+
+<p>実際に先週から動かしてみてますが、こりゃ楽でいいです。</p>
+
+<p>SugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。</p>
+
+<p>記事が長くなるので今回の</p>
+
+<p><strong>さくらVPSを使って自動的にNHKラジオ講座をダウンロード</strong></p>
+
+<p>次回の</p>
+
+<p><strong>さくらVPSにダウンロードしたmp3をSugarsyncにアップロードする</strong></p>
+
+<p>の2つにわけて解説していきます。</p>
+
+<p>自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。</p>
+
+<ol>
+<li><p>flvstreamerのダウンロード、コンパイル</p></li>
+
+<li><p>Rubyのインストール</p></li>
+
+<li><p>CaptureStream の設定</p></li>
+
+<li><p>cronの設定</p></li>
+</ol>
+
+<h3 id="1-flvstreamerのダウンロード-コンパイル">1. flvstreamerのダウンロード、コンパイル</h3>
+
+<p>flvstreamer をインストールするんですが、</p>
+
+<p>まずさくらのVPSが32ビットなのか64ビットなのか確認します。</p>
+
+<p><code>$ cat /proc/cpuinfo | grep flags</code></p>
+
+<p>して値に lm が含まれていれば64bitのCPUです。</p>
+
+<p>次に</p>
+
+<p><code>$ uname -a</code></p>
+
+<p>X86_64とかamd64とかが表示されたら、64ビット版のカーネルです。</p>
+
+<p>64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、</p>
+
+<p>32bitしかバイナリがおいてないので自分でコンパイルします。</p>
+
+<pre><code>$ wget http://download.savannah.gnu.org/releases/flvstreamer/source/flvstreamer-2.1c1.tar.gz
+$ tar zxf flvstreamer-2.1c1.tar.gz
+$ cd flvstreamer
+$ make posix
+$ ./flvstreamer
+FLVStreamer v2.1c1
+(c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL
+ERROR: You must specify a hostname (--host) or url (-r &quot;rtmp://host[:port]/playpath&quot;) containing a hostname
+</code></pre>
+
+<p><code># yum install ruby</code></p>
+
+<p>やってることは</p>
+
+<ol>
+<li><p>wget で flvstreamerの圧縮されたソースコードをダウンロード</p></li>
+
+<li><p>tar で圧縮ファイルを展開</p></li>
+
+<li><p>展開したファイルに移動してビルド</p></li>
+
+<li><p>引数なしで動かしてインストールが正常終了したか動作確認</p></li>
+</ol>
+
+<p>となります。</p>
+
+<p>動作を確認したら</p>
+
+<pre><code>$mkdir ~/bin
+$mv flvstreamer ~/bin
+</code></pre>
+
+<p>とHOMEフォルダ直下にbinを作って、そこに置いておきます。</p>
+
+<p>( ~/ はユーザーのHOMEディレクトリ)</p>
+
+<p>それからついでにbashにPATHを通しておきましょう。</p>
+
+<p><code>$vi ~/.bashrc</code></p>
+
+<p>でBashの設定ファイルを開いてファイルの最後に</p>
+
+<p><code>PATH=&quot;$PATH&quot;:~/bin</code></p>
+
+<p>を追加しておきます。</p>
+
+<p><code>$source ~/.bashrc</code></p>
+
+<p>として設定を反映させておきましょう。</p>
+
+<p>これでどこからでもflvstreamerを呼び出せるようになりました。</p>
+
+<h3 id="2-rubyのインストール">2. rubyのインストール</h3>
+
+<p>次にCaptureStream.rbを動かすためにrubyをインストールします。</p>
+
+<p>以前は yum で入るRubyのバージョンが1.8.5だったので、1.8.7を入れるためにソースからインストールしていたようですが、今は1.8.7が普通に入るので yum でインストールします。</p>
+
+<p><code>sudo yum install ruby</code></p>
+
+<h3 id="3-capturestream-の設定">3. CaptureStream の設定</h3>
+
+<p>まず CaptureStream.rb をダウンロードしてきます。</p>
+
+<p><a href="http://sourceforge.jp/projects/capturestream/releases/">http://sourceforge.jp/projects/capturestream/releases/</a></p>
+
+<p>ダウンロードしてきた CaptureStream.rbをテキストエディタで開いて設定します。</p>
+
+<p>中に設定方法が書いていますが、</p>
+
+<p><code>$default_target = []</code></p>
+
+<p>に</p>
+
+<p><code>$default_target = [&quot;business1&quot;,&quot;business2&quot;,&quot;chinese&quot;,&quot;french&quot;, &quot;italian&quot;, &quot;hangeul&quot;, &quot;german&quot;, &quot;spanish&quot;, &quot;russian&quot;, &quot;levelup-chinese&quot;, &quot;levelup-hangeul&quot;]</code></p>
+
+<p>のようにダウンロードしたい講座名を指定します。</p>
+
+<p>これだけで動作は問題ないのですが、</p>
+
+<p>自分の場合は保存ファイル名が「毎日ドイツ語_2012_06_04」のよりも「毎日ドイツ語-2012-06-04」の方が好きなので</p>
+
+<pre><code># 保存ファイル名
+$out_file_hash
+</code></pre>
+
+<p>の値を「&#8221;%k_%Y_%M_%D&#8221; → &#8220;%k-%Y-%M-%D&#8221;」と変更しました。</p>
+
+<p>設定が終わったらnhklangなど適当な名前のフォルダを作ってWinSCPなどでCaptureStream.rbをアップロードします。</p>
+
+<p>ここまでの設定で既に語学講座のダウンロードはできるようになっているはずなので、</p>
+
+<pre><code>ruby ~/nhklang/CaptureStream.rb
+</code></pre>
+
+<p>で実際にファイルがダウンロードできてるか確認しておいたほうが良いでしょう。</p>
+
+<p>うまくいかなかったらコメント欄に質問をどうぞ。</p>
+
+<h3 id="4-cronの設定">4. cronの設定</h3>
+
+<p>あとは毎週決まった時間にダウンロードするためのcronの設定を行います。</p>
+
+<pre><code>crontab -e
+</code></pre>
+
+<p>でcronの設定ファイルを開いて</p>
+
+<pre><code>PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:~/bin
+0 11 * * mon ruby ~/nhklang/CaptureStream.rb &gt;&gt; ~/nhklang/Capture.log&lt;/pre&gt;
+&lt;p&gt;&lt;/p&gt;
+
+
+と書いて保存します。これで毎週月曜日の11時にダウンロードが行われます。  
+ただ、実際に来週まで動くかどうか待つのは面倒だという方は時間設定を数分後にして動作確認をすると良いでしょう。
+
+
+### 参考
+
+
+Ubuntu 10.4 Server上でCaptureStream Ruby版を使ってNHK語学講座をダウンロード: らぶらぶ♪じゃんく  
+&lt;http://app.m-cocolog.jp/t/typecast/27561/29112/69881215?page=2&gt;
+
+
+CaptureStream Ruby版を使ってCentOS 5.5上でNHK語学講座をダウンロードする - fujitaka’s lifelog  
+&lt;http://d.hatena.ne.jp/fujitakastyle/20110403/1301837105&gt;
+
+
+Linuxでの32ビットと64ビットマシンの見分け方。 - IT memorandum  
+&lt;http://d.hatena.ne.jp/jun-ya/20090511/1242028435&gt;
+
+
+CaptureStream Ruby版を使ってCentOS 5.5上でNHK語学講座をダウンロードする - fujitaka’s lifelog  
+&lt;http://d.hatena.ne.jp/fujitakastyle/20110403/1301837105&gt;
+
+
+さくらVPSでRuby on Railsを動かすメモ - @yuumi3のお仕事日記  
+&lt;http://d.hatena.ne.jp/yuum3/20100927/1285567203&gt;
+
+
+[さくらVPS]　デフォルトだと日本語が文字化けするよね？ | DENPA GROOVE  
+&lt;http://jokami.mydns.jp/2010/10/01/%E3%81%95%E3%81%8F%E3%82%89vps%E3%80%80%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%A0%E3%81%A8%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%8C%E6%96%87%E5%AD%97%E5%8C%96%E3%81%91%E3%81%99%E3%82%8B/&gt;
+
+
+cron（クーロン）の設定 - プログラムを定期的に自動実行 [Fedora, RedHat, CentOS] - Linux  
+&lt;http://memorva.jp/memo/linux/cron.php&gt;
+</code></pre>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/%E3%81%95%E3%81%8F%E3%82%89%E3%81%AEvps/">さくらのVPS</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

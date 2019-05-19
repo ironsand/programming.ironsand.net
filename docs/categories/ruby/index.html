@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/ruby/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/ruby/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>ruby - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>ruby</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-01-29T20:00:47JST">Jan 29, 2018</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/">Faviconを取得する簡単な方法</a></h2>
+  </header>
+
+  
+  <div class="summary">faviconを取得したければ&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot;&gt;を探すなどの正攻法がありますが、
+色々と例外があるようなのでめんどくさい時はGoogleさんに任せてしまいましょう。
+URI('https://www.google.com/s2/favicons?domain_url=stackoverflow.com').read  でとれます。
+参考 https://stackoverflow.com/questions/5119041/how-can-i-get-a-web-sites-favicon</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" title="Faviconを取得する簡単な方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-12-26T03:32:49JST">Dec 26, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/">invalid value for BigDecimal が Ruby 2.4から出るようになった</a></h2>
+  </header>
+
+  
+  <div class="summary">Ruby 2.3 まではBigdecimalへの変換を行う String#to_dが数字ではない文字列だった場合にString#to_iと同じ0.0を返す仕様だったのに2.4からは例外を吐くようになったようです。
+Ruby 2.3 require 'bigdecimal' require 'bigdecimal/util' 'abc'.to_d #=&gt; 0.0 Ruby 2.4 require 'bigdecimal' require 'bigdecimal/util' 'abc'.to_d ArgumentError: invalid value for BigDecimal(): "abc" 対策 バグでした。gem update bigdecimal して、Gemfileを設定しましょう。
+https://github.com/ruby/bigdecimal/issues/51
+gem 'bigdecimal', '1.3.4'    
+Tweet 
+/fb:like</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" title="invalid value for BigDecimal が Ruby 2.4から出るようになった">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2017-11-01T14:07:45JST">Nov 1, 2017</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a></h2>
+  </header>
+
+  
+  <div class="summary">状態 こういうふうに書いたらtarget: '_blank'が効かなくて困った。
+simple_format(auto_link(text, :target =&gt; &quot;_blank&quot; ))  対策 simple_formatはaタグのtarget属性を取り除いてしまうので順番を入れ替えて、こう書くとOK。
+auto_link(simple_format(text), :target =&gt; &quot;_blank&quot; )  参考 https://github.com/tenderlove/rails_autolink/issues/20#issuecomment-24818734
+   
+Tweet 
+/fb:like</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" title="simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-05-02T18:07:17JST">May 2, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2016/ruby%E3%81%AE%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%B7%BB%E5%AD%97%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E3%83%94%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83/">Rubyの配列から添字を使って複数の値をピックアップする</a></h2>
+  </header>
+
+  
+  <div class="summary">foo = [1,2,3,4,5] foo.values_at(2,4) # =&gt; 3, 5 いつも忘れるので自分が忘れた時に検索ですぐ引っかかるようなタイトルにしてます。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2016/ruby%E3%81%AE%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%B7%BB%E5%AD%97%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E3%83%94%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83/" title="Rubyの配列から添字を使って複数の値をピックアップする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-03-30T02:32:30JST">Mar 30, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/">複数のカラムの値が重複するオブジェクトのIDを取得する</a></h2>
+  </header>
+
+  
+  <div class="summary"> 複数カラムの値が重複してるオブジェクトの情報を取るために
+posts = Post.select(:title, :user_id, :date).group(:title, :user_id, :date).having("count(*) &gt; 1").all とするとこんな感じのidがnilの配列が返ってくるので
+:id =&gt; nil, :user_id =&gt; 1345, :title =&gt; 'foo', :date =&gt; Tue, 01 Sep 2015 posts.each do |post| duplicated_posts = Post.where(user_id: post.user_id, title: post.title, date: post.date) # なんか処理する end な感じで適当に処理しましょう。
+追記 こちらのほうがスッキリ書けますね。
+posts.each do |post| duplicated_posts = Post.where(post.attributes.except('id')) # なんか処理する end </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/" title="複数のカラムの値が重複するオブジェクトのIDを取得する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-03-28T01:35:03JST">Mar 28, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2016/file-write-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-file-append-%E3%82%82%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/">File.write みたいに File.append も使いたい</a></h2>
+  </header>
+
+  
+  <div class="summary">File.write(filename, text)でファイルに書き込みできるの便利ですよね。
+でも、File.appendは用意されてないのでFile.open(filename, 'a'){|f| f.write(text)}のように書かなきゃいけません。めんどくさい。
+なのでめんどくさくないように定義しましょう。やっぱり既存クラスのメソッド拡張ができるRubyはいいですね。
+class File def self.append(filename, text) File.open(filename, 'a'){|f| f.write(text)} end end </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2016/file-write-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-file-append-%E3%82%82%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/" title="File.write みたいに File.append も使いたい">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2016-02-15T06:08:20JST">Feb 15, 2016</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/">Hashのキーをリネームする</a></h2>
+  </header>
+
+  
+  <div class="summary">Hashのキーをリネームしたかったけどデフォルトのメソッドはないようなので書いた
+class Hash def rename_key(old:, new:) return unless has_key?(old) return if has_key?(new) self[new] = self.delete(old) self end end 使い方 h = {a: 1, b: 2} { :a =&gt; 1, :b =&gt; 2 } [92] pry(main)&gt; h.rename_key(old: :a, new: :c) { :b =&gt; 2, :c =&gt; 1 } 変更前のキーが存在しない時と、変更後のキーが存在する時は何もしない。
+実際の入れ替え処理はself[new] = self.delete(old)だけで終わってます。
+参考 http://kmckelvin.com/blog/2014/06/renaming-items-in-a-ruby-hash</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/" title="Hashのキーをリネームする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-08-13T08:13:13JST">Aug 13, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/">rake task の多重起動を禁止する排他処理を行う</a></h2>
+  </header>
+
+  
+  <div class="summary">rake task で長時間起動するため排他処理をしておかないと複数起動してしまう物があったので多重起動を禁止にしました。
+namespace :foo do task :update_all =&gt; :environment do |task| process_count = `ps -ef | grep #{task.name} | grep -v grep | wc -l`.to_i next if process_count &gt; 1 end end でOK。呼び出し部分をメソッド化とかしたかったけど、上手くいかなかったのでとりあえずこれで。タスクのブロック引数としてtaskをちゃんと書いておかないとtask.nameが使えないので注意しましょう。
+参考 [ShellScript &#8211; Rakeタスク実行時、プロセス起動数を確認して排他制御する &#8211; Qiita][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/" title="rake task の多重起動を禁止する排他処理を行う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-08-13T07:37:22JST">Aug 13, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/">rake task を途中で抜けるときはreturnじゃなくてnext</a></h2>
+  </header>
+
+  
+  <div class="summary">task :do_something do return if some_condition? do_job end  というように条件に合致しない時に returnを使って処理を抜けようとするとこんなエラーになります。
+LocalJumpError: unexpected return これは rake task がメソッドではなくブロックだから起きるので next を使ってやりましょう。それで抜けれます。
+task :do_something do next if some_condition? do_job end  ちなみにnextは気持ち悪いんのでせめてbreakを使いたいと思ったんですが、それだと
+LocalJumpError: break from proc-closure  になってしまいます。
+参考 [ruby &#8211; How do I return early from a rake task? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/" title="rake task を途中で抜けるときはreturnじゃなくてnext">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-03-18T00:08:08JST">Mar 18, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/">Arrayから重複する要素の配列を抜き出す</a></h2>
+  </header>
+
+  
+  <div class="summary">やり過ぎはダメだと言われても、やっぱり基底クラスの拡張は楽しい！
+class Array def duplicated select{ |v| count(v) &gt; 1}.uniq end end 使い方 a = [3, 5, 3, 4] =&gt; [3, 5, 3, 4] [15] pry(main)&gt; a.duplicated =&gt; [3] [16] pry(main)&gt; a = [3, 5, 3, 4, 5] =&gt; [3, 5, 3, 4, 5] [17] pry(main)&gt; a.duplicated =&gt; [3, 5] 参考 [Ruby: How to find and return a duplicate value in array? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/" title="Arrayから重複する要素の配列を抜き出す">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li class="disabled"><a href="#">Previous</a></li>
+    
+
+    
+    <li><a href="/categories/ruby/page/2/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2016/ruby%E3%81%AE%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%B7%BB%E5%AD%97%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E3%83%94%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83/" class="list-group-item">Rubyの配列から添字を使って複数の値をピックアップする</a>
+      
+      <a href="http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/" class="list-group-item">複数のカラムの値が重複するオブジェクトのIDを取得する</a>
+      
+      <a href="http://programming.ironsand.net/2016/file-write-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-file-append-%E3%82%82%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/" class="list-group-item">File.write みたいに File.append も使いたい</a>
+      
+      <a href="http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/" class="list-group-item">Hashのキーをリネームする</a>
+      
+      <a href="http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/" class="list-group-item">rake task の多重起動を禁止する排他処理を行う</a>
+      
+      <a href="http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/" class="list-group-item">rake task を途中で抜けるときはreturnじゃなくてnext</a>
+      
+      <a href="http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/" class="list-group-item">Arrayから重複する要素の配列を抜き出す</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

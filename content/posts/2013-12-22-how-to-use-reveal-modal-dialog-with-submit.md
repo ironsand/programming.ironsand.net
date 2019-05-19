@@ -2,7 +2,7 @@
 title: FormのSubmitでZurb-FoundationのReveal Modalを使う方法
 author: 鉄
 type: post
-date: -001-11-30T00:00:00+00:00
+date: 2013-12-22T00:00:00+00:00
 draft: true
 url: /?p=295
 categories:

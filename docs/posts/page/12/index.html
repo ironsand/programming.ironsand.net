@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/posts/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/posts/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Posts - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Posts</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-01-15T18:02:10JST">Jan 15, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2013/do-not-use-apply-in-python/">Pythonのapplyを使う時の注意点、…というか使っちゃダメ。</a></h2>
+  </header>
+
+  
+  <div class="summary">Lispを書いてると、他の言語でもapplyを使いたくなる。
+そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。
+基本的なapplyの使い方 `
+def hoge(word): print word
+apply(hoge,&ldquo;A&rdquo;) `
+とまあこんな感じ使うわけです。
+文字列を引数にできない。 ところがこの引数の&#8221;A&#8221;を&#8221;ABC&#8221;に変えるだけでエラーになる。
+&lt;/p&gt; &lt;pre&gt;Traceback (most recent call last): File &quot;&lt;stdin&gt;&quot;, line 9, in &lt;module&gt; TypeError: hoge() takes exactly 1 argument (3 given)&lt;/pre&gt; &lt;p&gt;
+どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。
+解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。
+ 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような &#8220;拡張された関数呼び出し構文&#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2013/do-not-use-apply-in-python/" title="Pythonのapplyを使う時の注意点、…というか使っちゃダメ。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-11-10T02:33:37JST">Nov 10, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-load-bash_profile-by-cygwin/">cygwinで.bash_profileが読み込まれなかった時の対処法</a></h2>
+  </header>
+
+  
+  <div class="summary">cygwinでちゃんとHOMEの環境変数を設定してるのに ~/.bash_profileが読み込まれなかったのでその時の対処法。
+問題点 結局問題だったのはbashを立ち上げた時に出てくるこのエラーメッセージを無視してたのが原因でした。
+ Your group is currently &#8220;mkpasswd&#8221;.
+This indicates that your gid is not in /etc/group and your uid is not in /etc/passwd.
+The /etc/passwd (and possibly /etc/group) files should be rebuilt. See the man pages for mkpasswd and mkgroup then, for example, run
+mkpasswd -l [-d] &gt; /etc/passwd
+mkgroup -l [-d] &gt; /etc/group
+Note that the -d switch is necessary for domain users.
+ /etc/passwd を確認してみると、確かに今使ってるWindowsでのユーザ名が表示されていない。いつもcygwinのフォルダは上書きし続けて使ってるのでインストール時に既に /etc/passwd があった場合に自動更新されないみたいですね。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-load-bash_profile-by-cygwin/" title="cygwinで.bash_profileが読み込まれなかった時の対処法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-10-30T14:45:05JST">Oct 30, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/start-coursera-python-course/">話題のオンライン無料大学CourseraでPythonの授業をとってみた。</a></h2>
+  </header>
+
+  
+  <div class="summary">無料のオンライン大学Courseraについてはこちらを見てください。
+【TED】 Coursera創業者による「オンライン教育が教えてくれること」 | IDEA*IDEA
+http://www.ideaxidea.com/archives/2012/09/ted_coursera.html
+このCourseraで&#8221;An Introduction to Interactive Programming in Python&#8221;という面白そうな授業があったので登録してみました。プログラミング経験がほとんどない人向けの講座だそうなのですが、英語のハンデもあるのでちょうどいいかと思って初めて見ました。まだ受講は受け付けていますが、10月15日からの講座なのでPythonの勉強を始めてみたい方はお早めに。
+受講方法 まず[コース一覧][1]から受講したいコースを選びます。
+受講したいコースがあったら&#8221;sign up&#8221;から登録します。
+で名前とメールアドレス、それにパスワードを入力。
+ここで入力する名前が証明書などに残るので本名を入力しましょう。
+ポップアップでメッセージと&#8221;Go to class&#8221;という表示が出てくるのでクリックして次へ。
+ここでHonor Code[敬意を持って守る規定]への同意を求められるのでよく読んで同意しましょう。
+ 一つのアカウントのみ登録します。
+ 宿題、クイズそれに試験を独力で行います。
+ 宿題、クイズそれに試験の答えを誰にも教えません。
+ 不誠実に成績を改鼠しません。
+  コースのホーム画面に飛びます。既に開始されてるコースなのでまずは溜まってるAnnouncementsから見ていきましょう。上に行くほど新しいお知らせなので一番下から読んでいきます。
+どういう風に進んでいくか。 ここからは何を受講するかによっても変わってくると思うので参考程度に読んでください。
+・毎週2セクションごと進む。
+・週の開始は土曜日の朝。(アメリカ時間？)
+・土曜日の朝に50～150行程度で作れるミニプロジェクトが割り当てられるので、それを次の土曜日の午後までに提出する。
+・そして次の日曜日から水曜日の間に生徒間で相互添削を行う。
+・相互添削で自分の評価をもらうためには最低5つを行わなければならない。
+・毎週6～10個程度の短いレクチャーの動画を見る。
+・クイズが週2回、でミニプロジェクトが1回。
+・プログラミング環境は http://www.codeskulptor.org/ を使う。
+レクチャーのビデオを見る 左上の[Video Lectures]からレクチャーが見れます。この講座をどのように進めていくかと、この講座でどのようなものが作れるかの説明があります。基本的な動作をするゲームが作れるので面白そう。
+英語は自分にはまだちょっと難しいですが、字幕を[CC]でつけて見ることもできるし、テキストやSRTファイルでダウンロードして読むこともできます。
+動画プレイヤーのVLCなら0.8倍速などのように音の高低を変化させずに再生速度を変えれますし、SRTファイルをそのまま再生中の動画にDrag &amp; Dropするだけで字幕を表示できるのでオススメです。
+他にも面白そうな講座はたくさんありますので、どんな講座があるかだけでも眺めてみると良いんじゃないでしょうか。
+Course Catalog | Coursera
+https://www.coursera.org/courses</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/start-coursera-python-course/" title="話題のオンライン無料大学CourseraでPythonの授業をとってみた。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-06-06T05:08:52JST">Jun 6, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/">NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2</a></h2>
+  </header>
+
+  
+  <div class="summary">前回の記事の続きです。
+NHK語学のラジオ講座をさくらのVPSで自動ダウンロード
+http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/
+今回はさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするについて解説します。
+さくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。
+自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。
+ APIを使うためにSugarSyncのDeveloperに登録
+ upload_nhkradio.rb の設定
+ cronの設定
+  1. APIを使うためにSugarSyncのDeveloperに登録 まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。
+http://www.sugarsync.com/developer/signup
+もしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。
+Developer登録をすると Access Key ID と Private Access Key が手に入りますのでメモっていてください。あとで必要になります。
+次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。
+新しいアプリの作成には以下の5つの情報を入力する必要があります。
+Name:[アプリ名]&#8221;NHK Radio Uploader&#8221;とか適当に
+Publisher:[製作者] #名前をいれておきましょう。
+Description:[詳細] &#8220;Upload NHK radio mp3&#8221; とでも。
+Support URL:[作者サイト] 自分はTwitterのアカウントいれてます。
+Support Email:[連絡先] 普通に自分のメールアドレスを。
+以上でAppが作れたら App ID が入手できますのでコレもメモっておいてください。
+2. upload_nhkradio.rb の設定 必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。
+まず[upload_nhkradio.zip][2]をダウンロードして解凍し、sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rbの3つのファイルを取り出してください。
+そしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。
+#SugarSyncのユーザ名(メールアドレス),パスワード @username = &quot;&quot; @password = &quot;&quot; #App ID /sc/などから始まる英数字 @application = &quot;&quot; @access_key_id = &quot;&quot; @private_access_key = &quot;&quot; #refresh_tokenを設定しておけばusername, passwordはいりません。 #username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。 @refresh_token = &quot;&quot; #SugarSyncのどのフォルダにアップロードするか。 e.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/" title="NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-06-04T05:41:35JST">Jun 4, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/">NHK語学のラジオ講座をさくらのVPSで自動ダウンロード</a></h2>
+  </header>
+
+  
+  <div class="summary">NHKラジオの語学講座を毎週ダウンロードしてるんですが、
+外国語を勉強してるのは海外に行くためでして、海外だとダウンロードができないことがよくあります。
+なのでせっかくさくらのVPSをお金払って借りてるんだから
+勝手にダウンロードするように設定しましたので参考にどうぞ。
+月曜日の12時頃には決めておいたフォルダにmp3ファイルができてます。
+実際に先週から動かしてみてますが、こりゃ楽でいいです。
+SugarSync にアップロードしてるので海外にいるときにiPhoneがあるだけで新しい音声を聞くことも出来ます。
+記事が長くなるので今回の
+さくらVPSを使って自動的にNHKラジオ講座をダウンロード
+次回の
+さくらVPSにダウンロードしたmp3をSugarsyncにアップロードする
+の2つにわけて解説していきます。
+自動的にNHKラジオ講座をダウンロードするには以下の4つの手順が必要です。
+ flvstreamerのダウンロード、コンパイル
+ Rubyのインストール
+ CaptureStream の設定
+ cronの設定
+  1. flvstreamerのダウンロード、コンパイル flvstreamer をインストールするんですが、
+まずさくらのVPSが32ビットなのか64ビットなのか確認します。
+$ cat /proc/cpuinfo | grep flags
+して値に lm が含まれていれば64bitのCPUです。
+次に
+$ uname -a
+X86_64とかamd64とかが表示されたら、64ビット版のカーネルです。
+64bitだとわかったので、64bitのflvstreamerをインストールしたいんですが、
+32bitしかバイナリがおいてないので自分でコンパイルします。
+$ wget http://download.savannah.gnu.org/releases/flvstreamer/source/flvstreamer-2.1c1.tar.gz $ tar zxf flvstreamer-2.1c1.tar.gz $ cd flvstreamer $ make posix $ ./flvstreamer FLVStreamer v2.1c1 (c) 2010 Andrej Stepanchuk, Howard Chu, The Flvstreamer Team; license: GPL ERROR: You must specify a hostname (--host) or url (-r &quot;rtmp://host[:port]/playpath&quot;) containing a hostname  # yum install ruby</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/" title="NHK語学のラジオ講座をさくらのVPSで自動ダウンロード">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-05-15T08:34:51JST">May 15, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/run-a-cmd-as-admin/">コマンドプロンプトを管理者権限で実行する簡単な方法</a></h2>
+  </header>
+
+  
+  <div class="summary">Windows7でハードディスクをヤフオクに出すためにチェックディスクをしようと思ったら
+ chkdsk d:
+十分な特権がないので、アクセスは拒否されました。
+管理者特権モードで実行しているこのユーティリティを呼び出す必要があります。
+ と文句を言われてしまいました。
+管理者権限で実行するにはデスクトップにでもショートカットを作って、プロパティから「管理者として実行」あたりにチェックを入れれば解決ですが、それさえも面倒臭い。
+コンピュータの修理を頼まれて他人のパソコンで使いたい時もあるので、もっとも簡単な方法を紹介します。
+ここまで前置き スタートボタンの「プログラムとファイルの検索」に
+&#8220;cmd&#8221; と打てば cmd.exe がフィルタリングされますので、そこで
+Ctrl+Shift+Enterで実行します。
+これで管理者権限で実行できます。ショートカットさえ覚えておけば初期状態のWindows7で使えるので便利ですね。
+参考 Run a Command as Administrator from the Windows 7 / Vista Run box
+http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/run-a-cmd-as-admin/" title="コマンドプロンプトを管理者権限で実行する簡単な方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-07T21:12:25JST">Jan 7, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/javascript-compare-strings-ignoring-case/">javascript で大文字、小文字を無視して文字列比較</a></h2>
+  </header>
+
+  
+  <div class="summary">javascript で大文字、小文字を区別しないで文字列比較がしたい時は、そういう演算子は用意されてないので toLowerCase() で全部小文字にして比較しちゃいましょう。
+こんな感じ。
+function check(){ foo="ABC"; bar="abc"; if(foo.toLowerCase() == bar.toLowerCase()){ //大文字小文字を無視 alert("ok!!"); }else{ alert("NG!"); } } ちなみに英語で「大文字、小文字を区別しない。」と言いたい時は case-insensitive を使えばよいそうですよ。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/javascript-compare-strings-ignoring-case/" title="javascript で大文字、小文字を無視して文字列比較">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-07T03:41:05JST">Jan 7, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/">jQueryでマウスの右クリック、左クリックを判断する</a></h2>
+  </header>
+
+  
+  <div class="summary">jQuery を使って
+「クリックされた時に左なら要素を消して、右なら何もしない。」
+という動作をさせようと思ったら日本語だと検索してもすぐに答えが出てこなかったので、また stackoverflow から解説を紹介します。
+実際のコードがこちら。
+$('#element').mousedown(function(event) { switch (event.which) { case 1: alert('Left mouse button pressed'); break; case 2: alert('Middle mouse button pressed'); break; case 3: alert('Right mouse button pressed'); break; default: alert('You have a strange mouse'); } });  mousedown の時に渡されるイベントを確認して場合わけすればよい、と。
+つまり左クリックで要素を隠すにはこうします。
+//左クリックされると foo を隠す $(".foo").click(function(e){ if(e.which == 1){ //左クリック $(this).hide("fast"); } }); 他の方法 頻繁に使うのであれば jquery.detailclick.js を入れてこんな風に使えるようにしておくとよいかもしれません。やっぱりこちらの方が jQuery っぽくて見やすいですね。
+$(&ldquo;target&rdquo;).rightClick(function()
+{
+$(this).text(&lsquo;右クリックされました！&rsquo;).css(&lsquo;background-color&rsquo;, &lsquo;#ff3399&rsquo;);
+});
+
+ 参考   javascript - How to distinguish between left and right mouse click with jQuery?</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/" title="jQueryでマウスの右クリック、左クリックを判断する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-07T03:25:58JST">Jan 7, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/">$(window).width() と $(document).width() 違い</a></h2>
+  </header>
+
+  
+  <div class="summary">$(window).width() と $(document).width() や
+$(window).height() と $(document).height() がどういう時に違う値を返すかわからなかったので検索したら Stack Overflow に簡潔でわかりやすい説明がされてたので紹介します。
+ When you have a scrollbar on the webpage.
+(スクロールバーが表示されてる時)
+ わかりやすいですね。一応念のために書いておくと window が「ブラウザの表示領域」で、document が「ページ全体」です。
+参考 jquery &#8211; When can $(document).width() and $(window).width() show different values? &#8211; Stack Overflow
+http://stackoverflow.com/questions/8134741/when-can-document-width-and-window-width-show-different-values</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/" title="$(window).width() と $(document).width() 違い">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-05T11:51:15JST">Jan 5, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/">さくらのVPSでpythonのインタプリタを終了させる</a></h2>
+  </header>
+
+  
+  <div class="summary">さくらのVPSにputtyを使ってSSHでログインしてる時に間違えて /usr/bin/python を叩いてしまい(コピーしようとしたら貼りつけてしまった。)インタプリタを終了できなくてちょっと焦ったので終了方法のメモ。
+&#8216;Use Ctrl-D (i.e. EOF) to exit.&#8217;
+とか言ってるくるけど Ctrl-D をおしてもサーバーまで届かない。
+正しい終了方法は
+import sys sys.exit() だそうです。 ああ、そうか sys をインポートしなきゃならんのか。プログラムを書いてる時だと気づくのにインタプリタ普段使わないから何かちがうものだと勝手に思い込んじゃってたよ…。
+参考 pythonインタプリタを終了する
+http://blog.justoneplanet.info/2010/08/07/python%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF%E3%82%92%E7%B5%82%E4%BA%86%E3%81%99%E3%82%8B/</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-exit-python-interpreter-by-sakura-vps/" title="さくらのVPSでpythonのインタプリタを終了させる">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/posts/page/11/">Previous</a></li>
+    
+
+    
+    <li><a href="/posts/page/13/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

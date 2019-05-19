@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2011/how-to-run-ruby-script-as-a-deamon/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Rubyのスクリプトをサービスとして常駐させる - 答えを知りたい</title>
+    
+<meta name="description" content="PythonかRubyのスクリプトを常駐させたかったので調べてみたらRubyの方が簡単そうだったので試してみた。環境 OS:Windows 7ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]gem 1.3.4Portableバージョンを使ってます。Win32-ServiceのインストールC:&amp;gt;gem install win32-service するだけです。ただうちの環境ではこんなエラーが出てしまいました。P:/Dropbox/bin/RailsPortable/App/Rails/bin/ruby.exe extconf.rb checking for strncpy_s()&amp;hellip; yes creating Makefile nmake Microsoft&amp;reg; Program Maintenance Utility Version 9.00.21022.08 Copyright &amp;copy; Microsoft Corporation. All rights reserved. P:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby -e &amp;ldquo;puts &amp;lsquo;EXPORTS&amp;rsquo;, &amp;lsquo;Init_api&amp;rsquo;&amp;rdquo; &amp;gt; api-i386-mswin32.def cl -nologo -I. -I. -IP:/Dropbox/bin/RailsPortable/App/Rails/lib/ruby/1.8/i386-mswin32 -I. -MD -Zi -O2b2xg- -G6 -DHAVE_STRNCPY_S -c -Tcwin32/api.c cl : コマンド ライン warning D9035 : オプション &amp;lsquo;Og-&amp;rsquo; の使用は現在推奨されていません。今後のバージョンからは削除されます。 cl : コマンド ライン warning D9002 : 不明なオプション &amp;lsquo;-G6&amp;rsquo; を無視します api.">
+
+<meta property="og:title" content="Rubyのスクリプトをサービスとして常駐させる - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2011/how-to-run-ruby-script-as-a-deamon/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="PythonかRubyのスクリプトを常駐させたかったので調べてみたらRubyの方が簡単そうだったので試してみた。環境 OS:Windows 7ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]gem 1.3.4Portableバージョンを使ってます。Win32-ServiceのインストールC:&amp;gt;gem install win32-service するだけです。ただうちの環境ではこんなエラーが出てしまいました。P:/Dropbox/bin/RailsPortable/App/Rails/bin/ruby.exe extconf.rb checking for strncpy_s()&amp;hellip; yes creating Makefile nmake Microsoft&amp;reg; Program Maintenance Utility Version 9.00.21022.08 Copyright &amp;copy; Microsoft Corporation. All rights reserved. P:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby -e &amp;ldquo;puts &amp;lsquo;EXPORTS&amp;rsquo;, &amp;lsquo;Init_api&amp;rsquo;&amp;rdquo; &amp;gt; api-i386-mswin32.def cl -nologo -I. -I. -IP:/Dropbox/bin/RailsPortable/App/Rails/lib/ruby/1.8/i386-mswin32 -I. -MD -Zi -O2b2xg- -G6 -DHAVE_STRNCPY_S -c -Tcwin32/api.c cl : コマンド ライン warning D9035 : オプション &amp;lsquo;Og-&amp;rsquo; の使用は現在推奨されていません。今後のバージョンからは削除されます。 cl : コマンド ライン warning D9002 : 不明なオプション &amp;lsquo;-G6&amp;rsquo; を無視します api.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2011/how-to-run-ruby-script-as-a-deamon/">
+<meta name="twitter:title" content="Rubyのスクリプトをサービスとして常駐させる - 答えを知りたい">
+<meta name="twitter:description" content="PythonかRubyのスクリプトを常駐させたかったので調べてみたらRubyの方が簡単そうだったので試してみた。環境 OS:Windows 7ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]gem 1.3.4Portableバージョンを使ってます。Win32-ServiceのインストールC:&amp;gt;gem install win32-service するだけです。ただうちの環境ではこんなエラーが出てしまいました。P:/Dropbox/bin/RailsPortable/App/Rails/bin/ruby.exe extconf.rb checking for strncpy_s()&amp;hellip; yes creating Makefile nmake Microsoft&amp;reg; Program Maintenance Utility Version 9.00.21022.08 Copyright &amp;copy; Microsoft Corporation. All rights reserved. P:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby -e &amp;ldquo;puts &amp;lsquo;EXPORTS&amp;rsquo;, &amp;lsquo;Init_api&amp;rsquo;&amp;rdquo; &amp;gt; api-i386-mswin32.def cl -nologo -I. -I. -IP:/Dropbox/bin/RailsPortable/App/Rails/lib/ruby/1.8/i386-mswin32 -I. -MD -Zi -O2b2xg- -G6 -DHAVE_STRNCPY_S -c -Tcwin32/api.c cl : コマンド ライン warning D9035 : オプション &amp;lsquo;Og-&amp;rsquo; の使用は現在推奨されていません。今後のバージョンからは削除されます。 cl : コマンド ライン warning D9002 : 不明なオプション &amp;lsquo;-G6&amp;rsquo; を無視します api.">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "Rubyのスクリプトをサービスとして常駐させる - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2011-05-07T11:46:31JST",
+    "dateModified": "2011-05-07T11:46:31JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "PythonかRubyのスクリプトを常駐させたかったので調べてみたらRubyの方が簡単そうだったので試してみた。\n環境 OS:Windows 7\nruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]\ngem 1.3.4\nPortableバージョンを使ってます。\nWin32-ServiceのインストールC:\x26gt;gem install win32-service するだけです。\nただうちの環境ではこんなエラーが出てしまいました。P:\/Dropbox\/bin\/RailsPortable\/App\/Rails\/bin\/ruby.exe extconf.rb checking for strncpy_s()\x26hellip; yes creating Makefile nmake Microsoft\x26reg; Program Maintenance Utility Version 9.00.21022.08 Copyright \x26copy; Microsoft Corporation. All rights reserved. P:\\Dropbox\\bin\\RailsPortable\\App\\Rails\\bin\\ruby -e \x26ldquo;puts \x26lsquo;EXPORTS\x26rsquo;, \x26lsquo;Init_api\x26rsquo;\x26rdquo; \x26gt; api-i386-mswin32.def cl -nologo -I. -I. -IP:\/Dropbox\/bin\/RailsPortable\/App\/Rails\/lib\/ruby\/1.8\/i386-mswin32 -I. -MD -Zi -O2b2xg- -G6 -DHAVE_STRNCPY_S -c -Tcwin32\/api.c cl : コマンド ライン warning D9035 : オプション \x26lsquo;Og-\x26rsquo; の使用は現在推奨されていません。今後のバージョンからは削除されます。 cl : コマンド ライン warning D9002 : 不明なオプション \x26lsquo;-G6\x26rsquo; を無視します api."
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">Rubyのスクリプトをサービスとして常駐させる</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-07T11:46:31JST">May 7, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">Rubyのスクリプトをサービスとして常駐させる</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>PythonかRubyのスクリプトを常駐させたかったので調べてみたらRubyの方が簡単そうだったので試してみた。</p>
+
+<h3 id="環境">環境</h3>
+
+<p>OS:Windows 7</p>
+
+<p>ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]</p>
+
+<p>gem 1.3.4</p>
+
+<p>Portableバージョンを使ってます。</p>
+
+<h3 id="win32-serviceのインストール-pre-class-prettyprint-c-gem-install-win32-service-pre">Win32-Serviceのインストール<pre class=prettyprint>C:&gt;gem install win32-service</pre></h3>
+
+<p>するだけです。</p>
+
+<p>ただうちの環境ではこんなエラーが出てしまいました。<pre class=prettyprint>P:/Dropbox/bin/RailsPortable/App/Rails/bin/ruby.exe extconf.rb checking for strncpy_s()&hellip; yes creating Makefile nmake Microsoft&reg; Program Maintenance Utility Version 9.00.21022.08 Copyright &copy; Microsoft Corporation. All rights reserved. P:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby -e &ldquo;puts &lsquo;EXPORTS&rsquo;, &lsquo;Init_api&rsquo;&rdquo; &gt; api-i386-mswin32.def cl -nologo -I. -I. -IP:/Dropbox/bin/RailsPortable/App/Rails/lib/ruby/1.8/i386-mswin32 -I. -MD -Zi -O2b2xg- -G6 -DHAVE_STRNCPY_S -c -Tcwin32/api.c cl : コマンド ライン warning D9035 : オプション &lsquo;Og-&rsquo; の使用は現在推奨されていません。今後のバージョンからは削除されます。 cl : コマンド ライン warning D9002 : 不明なオプション &lsquo;-G6&rsquo; を無視します api.c p:\dropbox\bin\railsportable\app\rails\lib\ruby\1.8\i386-mswin32\config.h(2) : fatal error C1189: #error : MSC version unmatch NMAKE : fatal error U1077: &lsquo;&ldquo;C:\Program Files\Microsoft Visual Studio 9.0\VC\bin\cl.EXE&rdquo;&rsquo; : Stop.</pre></p>
+
+<p>うわー、意味ワカンネー。</p>
+
+<p>それっぽい所にある &#8220;MSC version unmatch&#8221; でぐぐってみると、このエラーは使っているコンパイラがruby本体に使われたものと違ったら起きるものらしい。</p>
+
+<p>本当はruby本体に使われたコンパイラを調べて、それと同じものを用意しないといけないけども、「コンパイラが新しい分には大丈夫だろ」と言う事で</p>
+
+<pre>P:\Dropbox\bin\RailsPortable\App\Rails\lib\ruby\1.8\i386-mswin32\config.h</pre>
+
+<p>にある config.h をひらいて</p>
+
+<pre>#if _MSC_VER != 1200
+#error MSC version unmatch
+#endif</pre>
+
+<p>を</p>
+
+<pre>#if _MSC_VER &lt; 1200
+#error MSC version unmatch
+#endif</pre>
+
+<p>に修正。直してからもう一度<pre class=prettyprint>C:&gt;gem install win32-service</pre></p>
+
+<p>すればインストールが最後まで終わりました。</p>
+
+<h3 id="実際にサービスで動かせるか確認">実際にサービスで動かせるか確認</h3>
+
+<p>実際にデーモン化できるかどうかを確認するために以下のスクリプトをコピペして好きな場所に好きな名前で保存。</p>
+
+<p>俺は P:\Dropbox\servicetest.rb に保存しました。<pre class=prettyprint>require &lsquo;rubygems&rsquo; require &lsquo;win32/daemon&rsquo; include Win32 class Daemon def service_main while running? sleep 3 File.open(&ldquo;c:\test.log&rdquo;, &ldquo;a&rdquo;){ |f| f.puts &ldquo;service is running&rdquo; } end end def service_stop exit! end end Daemon.mainloop</pre></p>
+
+<p>てっきりこれを</p>
+
+<pre>P:\Dropbox>ruby servicetest.rb</pre>
+
+<p>すれば良いと思ったのに、やってみると</p>
+
+<pre>in `mainloop': Service_Main thread exited abnormally (Win32::Daemon::Error)</pre>
+
+<p>なエラーが帰ってきてしまいました。</p>
+
+<p>サービスとして使うために、事前にサービスとして登録しないと動かないらしいので</p>
+
+<pre>C:\Users\tetsuya>sc create rubyservice binPath= "p:\Dropbox\bin\RailsPortable\App\Rails\bin\ruby p:\Dropbox\servicetest.rb" type= own start= auto
+[SC] CreateService SUCCESS</pre>
+
+<p>&ldquo;rubyservice&rdquo;になってるサービス名は何でも良いです、適当に好きな名前にしてください。binPath で指定するruby.exe の場所とサービス化したい .rb ファイルの場所はフルパスで記入してください。 <b style=color:#d00;>PATHを通してても無視されます。</b></p>
+
+<p>サービスが登録されたら起動します。</p>
+
+<pre>C:\Users\tetsuya>sc start rubyservice
+
+SERVICE_NAME: rubyservice
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 4  RUNNING
+                                (STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+        PID                : 5868
+        FLAGS              :
+</pre>
+
+<p>上手くいってたら、これで3秒毎に &ldquo;C:\test.log&rdquo; に &ldquo;service is running&rdquo; と書き込み続けるサービスが作成されているはずです。</p>
+
+<p>このまま放置しとくと邪魔なので、使わないサービスは</p>
+
+<pre>C:\Users\tetsuya>sc delete rubyservice
+[SC] DeleteService SUCCESS</pre>
+
+<p>で削除しておきましょう。次回Windows起動時に削除されます。<div style=color:red;>require &lsquo;rubygems&rsquo; が抜けてしまっていたので追記</div></p>
+
+<h3 id="参考サイト">参考サイト</h3>
+
+<p>Win32-Serviceが欲しかったのでRubyGemsをインストール</p>
+
+<p><a href="http://projectzero-swb.blogspot.com/2009/08/win32-servicerubygems.html">http://projectzero-swb.blogspot.com/2009/08/win32-servicerubygems.html</a></p>
+
+<p>RubyでWindowsのサービスを作る</p>
+
+<p><a href="http://projectzero-swb.blogspot.com/2009/08/rubywindows.html">http://projectzero-swb.blogspot.com/2009/08/rubywindows.html</a></p>
+
+<p>[ruby] Windowsでgem install jsonでエラー</p>
+
+<p><a href="http://www.pistolfly.jp/weblog/2008/03/windowsgem-install-json.html">http://www.pistolfly.jp/weblog/2008/03/windowsgem-install-json.html</a></p>
+
+<p>File: daemon.txt</p>
+
+<p><a href="http://rubyforge.org/docman/view.php/85/596/daemon.html">http://rubyforge.org/docman/view.php/85/596/daemon.html</a></p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.nettags/windows/">Windows</a></li>
+          
+          <li><a href="http://programming.ironsand.nettags/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3/">デーモン</a></li>
+          
+          <li><a href="http://programming.ironsand.nettags/%E5%B8%B8%E9%A7%90/">常駐</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

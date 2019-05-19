@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rails on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/rails/</link>
+    <description>Recent content in Rails on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Wed, 01 Nov 2017 14:07:45 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/rails/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</title>
+      <link>http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/</link>
+      <pubDate>Wed, 01 Nov 2017 14:07:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/</guid>
+      <description>状態 こういうふうに書いたらtarget: &#39;_blank&#39;が効かなくて困った。
+simple_format(auto_link(text, :target =&amp;gt; &amp;quot;_blank&amp;quot; ))  対策 simple_formatはaタグのtarget属性を取り除いてしまうので順番を入れ替えて、こう書くとOK。
+auto_link(simple_format(text), :target =&amp;gt; &amp;quot;_blank&amp;quot; )  参考 https://github.com/tenderlove/rails_autolink/issues/20#issuecomment-24818734
+   
+Tweet 
+/fb:like</description>
+    </item>
+    
+    <item>
+      <title>複数のカラムの値が重複するオブジェクトのIDを取得する</title>
+      <link>http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/</link>
+      <pubDate>Wed, 30 Mar 2016 02:32:30 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/</guid>
+      <description> 複数カラムの値が重複してるオブジェクトの情報を取るために
+posts = Post.select(:title, :user_id, :date).group(:title, :user_id, :date).having(&#34;count(*) &amp;gt; 1&#34;).all とするとこんな感じのidがnilの配列が返ってくるので
+:id =&amp;gt; nil, :user_id =&amp;gt; 1345, :title =&amp;gt; &#39;foo&#39;, :date =&amp;gt; Tue, 01 Sep 2015 posts.each do |post| duplicated_posts = Post.where(user_id: post.user_id, title: post.title, date: post.date) # なんか処理する end な感じで適当に処理しましょう。
+追記 こちらのほうがスッキリ書けますね。
+posts.each do |post| duplicated_posts = Post.where(post.attributes.except(&#39;id&#39;)) # なんか処理する end </description>
+    </item>
+    
+    <item>
+      <title>Hashのキーをリネームする</title>
+      <link>http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/</link>
+      <pubDate>Mon, 15 Feb 2016 06:08:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/</guid>
+      <description>Hashのキーをリネームしたかったけどデフォルトのメソッドはないようなので書いた
+class Hash def rename_key(old:, new:) return unless has_key?(old) return if has_key?(new) self[new] = self.delete(old) self end end 使い方 h = {a: 1, b: 2} { :a =&amp;gt; 1, :b =&amp;gt; 2 } [92] pry(main)&amp;gt; h.rename_key(old: :a, new: :c) { :b =&amp;gt; 2, :c =&amp;gt; 1 } 変更前のキーが存在しない時と、変更後のキーが存在する時は何もしない。
+実際の入れ替え処理はself[new] = self.delete(old)だけで終わってます。
+参考 http://kmckelvin.com/blog/2014/06/renaming-items-in-a-ruby-hash</description>
+    </item>
+    
+    <item>
+      <title>rake task の多重起動を禁止する排他処理を行う</title>
+      <link>http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/</link>
+      <pubDate>Thu, 13 Aug 2015 08:13:13 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/</guid>
+      <description>rake task で長時間起動するため排他処理をしておかないと複数起動してしまう物があったので多重起動を禁止にしました。
+namespace :foo do task :update_all =&amp;gt; :environment do |task| process_count = `ps -ef | grep #{task.name} | grep -v grep | wc -l`.to_i next if process_count &amp;gt; 1 end end でOK。呼び出し部分をメソッド化とかしたかったけど、上手くいかなかったのでとりあえずこれで。タスクのブロック引数としてtaskをちゃんと書いておかないとtask.nameが使えないので注意しましょう。
+参考 [ShellScript &amp;#8211; Rakeタスク実行時、プロセス起動数を確認して排他制御する &amp;#8211; Qiita][1]</description>
+    </item>
+    
+    <item>
+      <title>rake task を途中で抜けるときはreturnじゃなくてnext</title>
+      <link>http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/</link>
+      <pubDate>Thu, 13 Aug 2015 07:37:22 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/</guid>
+      <description>task :do_something do return if some_condition? do_job end  というように条件に合致しない時に returnを使って処理を抜けようとするとこんなエラーになります。
+LocalJumpError: unexpected return これは rake task がメソッドではなくブロックだから起きるので next を使ってやりましょう。それで抜けれます。
+task :do_something do next if some_condition? do_job end  ちなみにnextは気持ち悪いんのでせめてbreakを使いたいと思ったんですが、それだと
+LocalJumpError: break from proc-closure  になってしまいます。
+参考 [ruby &amp;#8211; How do I return early from a rake task? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Helperメソッド内で form_tag を使うときの注意点</title>
+      <link>http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/</link>
+      <pubDate>Fri, 20 Feb 2015 02:30:59 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/</guid>
+      <description>form_tagを使えばブロック内の全体を返してくれるかと思ったのですが、そうではないらしく最終行だけ返ってきてしまいます。
+具体例 つまり
+def generate_form(path) form_tag(path) do input_tag submit_tag end end だとフォームそのものと最終行のsubmit_tagだけが表示されてその他の入力フィールドが一切表示されません。
+対策 なので以下のように毎行Stringを保存しておきましょう。何でこんな仕様になってるんだろう…？
+def generate_form(path) form_tag(path) do str = input_tag str += submit_tag str end end 参考 [ruby on rails &amp;#8211; How do I use form_tag from within a helper? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>既にインデックスをつけているカラムにUnique制限をつける</title>
+      <link>http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/</link>
+      <pubDate>Mon, 02 Feb 2015 08:18:21 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/</guid>
+      <description>Railsで既にindexをつけているカラムにunique制限をもうけるには、ユニーク制限だけを付加することができないので一旦インデックス自体を削除してから新規に unique な index を追加します。
+def change remove_index :editabilities, [:user_id, :list_id] add_index :editabilities, [:user_id, :list_id], unique: true end  参考 [ruby on rails &amp;#8211; How to add unique constraint to already existing index by migration &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法</title>
+      <link>http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/</link>
+      <pubDate>Mon, 02 Feb 2015 07:23:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/</guid>
+      <description> Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。
+Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。
+ActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym &#39;GNU&#39; end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。
+ LoadError: Unable to autoload constant Gnu, expected
+/Users/ironsand/dev/myproject/app/models/gnu.rb to define it
+ 対策 クラス名を明示的に指定するとOKです。
+has_many :gnus, class_name = &#34;GNU&#34; </description>
+    </item>
+    
+    <item>
+      <title>Railsで使うpostgresqlのスーパーユーザーを作成する</title>
+      <link>http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/</link>
+      <pubDate>Fri, 25 Apr 2014 11:28:56 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/</guid>
+      <description>RailsでPostgresqlを使うときに毎回そのためのユーザーの作成方法を忘れてしまうのでメモ。
+まずユーザーを作成 WindowsでChocolateyを使ってpostgresqlをインストールしてると初期パスワードはPostgres1234になってるので、
+$ psql.exe -U postgres ユーザ postgres のパスワード: ←ここでパスワードを入力 psql (9.2.1) &#34;help&#34; でヘルプを表示します. postgres=# create user deployer; CREATE ROLE postgres=# alter user deployer with superuser; ALTER ROLE これでパスワード無しのdeployerユーザーが必要な権限付きで作成される。
+※ Linux系のOSならsudo -u postgres psqlでpsqlコマンドを使いましょう。
+パスワード無しユーザーでもOKにする これだけだとfe_sendauth: no password suppliedというエラーが出てしまうので
+C:\PostgreSQL\data\pg_hba.confを開いて
+# IPv4 local connections: host all all 127.0.0.1/32 md5 # IPv6 local connections: host all all ::1/128 md5 を
+# IPv4 local connections: host all all 127.0.0.1/32 trust # IPv6 local connections: host all all ::1/128 trust に書き換える。</description>
+    </item>
+    
+    <item>
+      <title>WindowsのRailsでtwitter-bootstrap-railsを使う方法</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-twitter-bootstrap-rails-in-windows/</link>
+      <pubDate>Sun, 20 Apr 2014 09:13:20 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-twitter-bootstrap-rails-in-windows/</guid>
+      <description>twitter-bootstrap-railsを普通にWindowsで使おうとするとlibv8がないからアカンで～的なエラーが出てきてインストールに失敗します。
+対策 特定のバージョンはインストールできるのでそれをインストールしましょう。
+gem install libv8 --version 3.11.8.0
+あとはGemfileにgem &#39;therubyracer&#39;, platforms: :rubyのコメントアウトを外してgem twitter-bottstrap-railsを追加すれば万事OK！
+追記、より良い解決策 そもそもbootstrap-sassを使えばよいのでは？</description>
+    </item>
+    
+    <item>
+      <title>Rails&#43;Angular.js で InvalidAuthenticityTokenエラーが出るときの対処法</title>
+      <link>http://programming.ironsand.net/2014/how-to-handle-invalidauthenticitytoken-error-in-rails-and-angular/</link>
+      <pubDate>Thu, 17 Apr 2014 18:37:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-handle-invalidauthenticitytoken-error-in-rails-and-angular/</guid>
+      <description>RailsのDBからGETでデータの呼び出しはできるけど、PUTで値の追加ができなくてこんなエラーに成った時の対処法
+Completed 422 Unprocessable Entity in 126ms ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken: 原因 CSRF対策です。
+ダメな対策 モデルにこれを追加
+skip_before_filter :verify_authenticity_token サイバーノーガード戦法です。おすすめしません。
+良さそうな対策 gem の&amp;lt;a href=&amp;quot;https://github.com/xrd/ng-rails-csrf&amp;quot;&amp;gt;ns-csrf-rails&amp;lt;/a&amp;gt;を使う。わからないことは全部gemにまかせてしまいましょう。</description>
+    </item>
+    
+    <item>
+      <title>Deviseのユーザーを`rake db:seed`で追加する</title>
+      <link>http://programming.ironsand.net/2014/how-to-add-devise-user-by-rake-db-seed/</link>
+      <pubDate>Sun, 30 Mar 2014 21:08:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-add-devise-user-by-rake-db-seed/</guid>
+      <description>db/seeds.rbにUser.createでencrypted_passwordを与えてDeviseのユーザーを作ろうとしたら失敗した。
+原因 passwordが存在しないためにvalidationに引っかかってしまってる。
+対策 passwordを平文で打てば解決するらしいけど、平文のパスワードは使いたくないのでバリデーションの方を無効化してしまいましょう。
+User.new(email: someone@example.com).save(validate: false)
+でOKです。encrypted_passwordの取得方法は色々あるでしょうが、自分の場合は一度Deviseで作ってからそれをrails console使ってUser.first.encrypted_passwordを取ってきました。
+参考 [Cannot create Devise account using rake db:seed for Rails 3.0 &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点</title>
+      <link>http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/</link>
+      <pubDate>Fri, 28 Mar 2014 07:29:47 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/</guid>
+      <description>/usr/bin/env: ruby.exe: そのようなファイルやディレクトリはありません
+というエラーがwheneverで作ったcronのログとして出てきて困ってた。
+bin/railsの実行権限とか/usr/bin/env ruby --version でちゃんとrubyが動いてるかどうか確認したりとか色々。
+答え Windowsで作ったRailsプロジェクトだったので ruby&amp;lt;strong&amp;gt;.exe&amp;lt;/strong&amp;gt;になってた。なんてことだ…。
+解決策 bin/railsの一行目usr/bin/env ruby.exeの.exeを削除しておきましょう。ふぁっく。</description>
+    </item>
+    
+    <item>
+      <title>rbenv: version `2.0.0′ is not installed の対処法</title>
+      <link>http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/</link>
+      <pubDate>Thu, 20 Mar 2014 05:15:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rbenv-version-2-0-0-is-not-installed/</guid>
+      <description>&amp;#8220;Everyday Rails Testing with RSpec&amp;#8221;を購入して読んでると
+サンプルプロジェクトが紹介されてたのでgit cloneでダウンロードしてきて bundle install をすると
+rbenv: version &#39;2.0.0&#39; is not installed
+と出ちゃって困る。しかも ruby -v と確認しようと思ったら再び
+rbenv: version &#39;2.0.0&#39; is not installed
+？？？？？？
+「まさか rbenv が壊れた！？」と思って調べてたら、どうやらカレントディレクトリに.ruby-versionがあるとそのバージョンのRubyを参照しようとするために起きるらしい。
+対策 自分の場合は2.0.0.p247が入っているので該当のディレクトリでrbenv localすると.ruby-versionの中身が書き換えられて上手く動くようになりました。
+Version自体が異なる場合は上手く動かないと困るので該当のバージョンの ruby をrbenv install 2.x.xでインストールしましょう。</description>
+    </item>
+    
+    <item>
+      <title>datatimeとtimestampの違いとRailsで知っておくべきこと</title>
+      <link>http://programming.ironsand.net/2014/difference-between-datatime-and-timestamp-in-rails/</link>
+      <pubDate>Mon, 17 Mar 2014 19:56:14 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/difference-between-datatime-and-timestamp-in-rails/</guid>
+      <description>何回か調べたけど未だに覚えられてないのでもう一度調べ直しました。
+確か前回調べたときは英語読むのがめんどくさいから日本語の情報を見て納得したんですが、今回はめんどくさがらずに英語圏で検索したらいつも通りStackOverflowにて大変わかりやすい答えが見つかりました。ありがたや〜。 (人´∀｀)
+datatime と timestamp の違い datatime が 1000年から9999年までを表現して timestamp は unix timestampのフロントエンドに過ぎないので 1970年から2038年までしか扱えない。
+扱う範囲が違うのでdatatimeが8バイトtimestampが4バイト使う。
+Rails における扱い。 これが一番重要な気がするけど、Railsではどちらを指定してもデータベースにはDATATIME型で保存される。
+何故かこのことについて述べてるサイトがあんまりなかったのでこの記事を書いておきました。
+参考 [In Ruby on Rails, what&amp;apos;s the difference between DateTime, Timestamp, Time and Date? &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Macで`gem install rmagick`がコケる時の対処法</title>
+      <link>http://programming.ironsand.net/2014/gem-install-rmagic-in-maverick/</link>
+      <pubDate>Mon, 27 Jan 2014 09:24:19 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/gem-install-rmagic-in-maverick/</guid>
+      <description>画像編集をRailsでしたかったので ImageMagick を Railsから使うgem rmagick をインストールしようと思ったらこんなエラーが出てしまった。環境は Maverick。
+Can&#39;t install RMagick 2.13.1. Can&#39;t find the ImageMagick library or one of the dependent libraries. Check the mkmf.log file for more detailed information. *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.log file for more details. You may need configuration options. 解決策 最新版の 2.13.2 をインストールすればOK。ちなみにライブラリのリンクを作るという方法も紹介されてましたがこっちは失敗。
+gem install rmagick -v &#39;2.</description>
+    </item>
+    
+    <item>
+      <title>rbenvでインストールしたgemをEmacsから使う</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/</link>
+      <pubDate>Thu, 23 Jan 2014 08:04:42 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/</guid>
+      <description>rspec書いてる時にEmacsから簡単に呼び出せたら便利だと思ってsmart-compileの設定をこんな風に書き換えたんだけど、
+(setq smart-compile-alist (append &#39;((&#34;\_spec.rb$&#34; . &#34;rspec %f&#34;)) &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\\.coffee$&#34; . &#34;coffee -p %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist))  でちゃんとCompile command: rspec foo_spec.rbは呼び出せるものの実行すると
+-*- mode: compilation; default-directory: &#34;~/dev/zombie/spec/lib/&#34; -*- Compilation started at Thu Jan 23 16:50:59 rspec zombie_spec.rb /bin/bash: rspec: コマンドが見つかりません Compilation exited abnormally with code 127 at Thu Jan 23 16:51:00 な感じでエラーになってしまう。
+どうやら rbenv の環境がEmacs側で認識されてないので rbenv で入れた gem のコマンドも使えないのが原因らしい。
+解決策 [rbenv.</description>
+    </item>
+    
+    <item>
+      <title>Controllerで出る`syntax error, unexpected ‘:’, expecting keyword_end`エラー</title>
+      <link>http://programming.ironsand.net/2014/syntax-error-unexpected-expecting-keyword_end-in-controller/</link>
+      <pubDate>Mon, 13 Jan 2014 09:44:32 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/syntax-error-unexpected-expecting-keyword_end-in-controller/</guid>
+      <description>yntax error, unexpected &#39;:&#39;, expecting keyword_end といつもの見慣れたようなTypoのエラーが出たのでControllerを確認したけどない。何度見てもちゃんとカッコ閉じてるし end も使ってる。なのにエラーが消えない！
+解決 モデルのほうで has_many: words って書いてました。 正しくは has_many :words ですね。悲しい。こんなものに結構な時間を着いたしたのが悲しい。</description>
+    </item>
+    
+    <item>
+      <title>Capyparaで `undefined method `visit’`と出る時の対処法</title>
+      <link>http://programming.ironsand.net/2014/how-to-solve-capypara-undefined-method-visit/</link>
+      <pubDate>Thu, 09 Jan 2014 08:55:19 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-solve-capypara-undefined-method-visit/</guid>
+      <description>「Rspecよくわかんねー。」という思いを胸に抱き続けてきましたが、やっぱりやらないとダメっぽいので使おうとしたら早速 undefined method &#39;visit&#39;と言われて困る。
+原因 このエラーの原因はCapybaraが最近のアップデートでこっそりと対象のディレクトリを requests から features に変えたのが原因らしいです。やめてほしいそういうの。
+しかも [Google group][1] にこっそり報告してるだけ。もっと こえを おおきく。
+解決策 spec_helper.rb に以下をたす解決策もあるそうですが、将来的に requests じゃなくてfeatures を使うという意向ならそうしたほうが楽そうなので mv spec/requests/ spec/features して自分は対策しました。
+ちなみに spec_helper.rbに足す場合はこちら。
+require &#39;capybara/rails&#39; require &#39;capybara/rspec&#39; include Capybara::DSL 参考 [ruby on rails &amp;#8211; Capybara: undefined method &amp;apos;visit&amp;apos; &amp;#8211; Stack Overflow][2]
+[rails 3.2でRspecを導入したけど NameError &amp;#8211; undefined method `visit&amp;apos; って出るときの対策 &amp;#8211; どぶんけーブログ][3]</description>
+    </item>
+    
+    <item>
+      <title>request.fullpathでparamを使わない</title>
+      <link>http://programming.ironsand.net/2014/request-fullpath-without-params/</link>
+      <pubDate>Sun, 05 Jan 2014 03:24:33 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/request-fullpath-without-params/</guid>
+      <description>Railsのrequest.fullpath だと param 以降も受け取ってしまうので、paramの値を使わない時の方法。
+解決策 splitで邪魔なものをとる方法
+request.fullpath.split(&#34;?&#34;)[0] path を使う方法。こっちのほうがよさそう。
+request.path 参考 [ruby on rails &amp;#8211; request.fullpath with no parameters &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>`config/routes.rb`内のブロックはブロックじゃない。</title>
+      <link>http://programming.ironsand.net/2014/config-routes-is-not-pure-ruby/</link>
+      <pubDate>Fri, 03 Jan 2014 06:19:02 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/config-routes-is-not-pure-ruby/</guid>
+      <description>scope &#34;api&#34; do resources :entries end このコードをワンラインで、
+scope &#34;api&#34; { resources :entries } とかくと動かないので、routes.rb は DSLなのでブロックの書き方に影響が出てるようです。何でこうしてるかの詳しい理由はよくわからない。</description>
+    </item>
+    
+    <item>
+      <title>Maverickで`rails new` が `atomic`のインストールでこける時の対処法</title>
+      <link>http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/</link>
+      <pubDate>Fri, 03 Jan 2014 04:07:31 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/</guid>
+      <description>rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。
+エラーメッセージはこんなの。
+run bundle install Fetching gem metadata from https://rubygems.org/.......... Fetching gem metadata from https://rubygems.org/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.</description>
+    </item>
+    
+    <item>
+      <title>Zurb Foundation のトップバーの右上のメニューを消えないようにする</title>
+      <link>http://programming.ironsand.net/2014/zurb-foundation-top-bar-menu/</link>
+      <pubDate>Wed, 01 Jan 2014 14:05:29 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/zurb-foundation-top-bar-menu/</guid>
+      <description> Zurb Foundationのトップバーの右上のメニューですが、デフォルトでは幅が940pxを切るとMenuに折りたたまれてしまうという結構広い設定になっています。
+もうちょっと幅が狭くても出るようにしたかったので修正しました。
+対策 設定ファイルを以下のように書き換えます。環境はRailsです。
+// $topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout $topbar-breakpoint: emCalc(600px);  ちなみに[Menu]自体がでなくて少し困ったのですがtoggle-topbar menu-icon を設定してなかったのが原因だったようです。
+&amp;lt;ul class=&#34;title-area&#34;&amp;gt; &amp;lt;li class=&#34;name&#34;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;%= link_to &#34;Site Title&#34;, root_path %&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li class=&#34;toggle-topbar menu-icon&#34;&amp;gt;&amp;lt;a href=&#34;#&#34;&amp;gt;&amp;lt;span&amp;gt;Menu&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>&#34;since_id parameter is invalid.&#34;と言われた時の対処法</title>
+      <link>http://programming.ironsand.net/2013/how-to-treat-since_id-parameter-is-invalid/</link>
+      <pubDate>Fri, 27 Dec 2013 19:14:15 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/how-to-treat-since_id-parameter-is-invalid/</guid>
+      <description>Railscasts のTwitter の項目通りに書いてると since_id parameter is invalid. のエラーでつまづきました。
+どうやらTwitterAPI1.1からの変更で since_id に `` を指定できなくなったのが原因のようです。
+もちろんレコードにすでにつぶやきが入ってれば問題ないんですが初回の何も入ってない時にこけてしまうわけです。
+対策 user.twitter.list_timeline(list_id, since_id: [maximum(:tweet_id),&#34;1&#34;].max) と返り値に最低でも1が入るようにしておけばOKです。文字列にしてるのは twitter_idを文字列で保持してるからです。
+参考 [API v1.1 statuses/user_timeline since_id parameter is invalid | Twitter Developers][1]</description>
+    </item>
+    
+    <item>
+      <title>attr_accessible は Rails4では使えなくなりました</title>
+      <link>http://programming.ironsand.net/2013/attr_accessible-is-no-more-available-in-rails4/</link>
+      <pubDate>Mon, 23 Dec 2013 09:33:40 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/attr_accessible-is-no-more-available-in-rails4/</guid>
+      <description>attr_accessibleはRails4では使えなくなったのにユーザー管理の定番 gem deviseではまだ使っているようなので新しい昨日の Strong parameter に書き換えておきましょう。
+具体例 devise の設定で User モデルにこんなのが書いてると思うので
+attr_accessible :email, :password, :password_confirmation その行を削除して下の方にこれを追加しましょう。
+private def user_params params.require(:user).permit(:email, :password, :password_confirmation) end 参考 [attr_accessible][1]</description>
+    </item>
+    
+    <item>
+      <title>OmniauthとDeviseの設定ファイルを両方同時に使うとルーティングがおかしくなる</title>
+      <link>http://programming.ironsand.net/2013/must-not-use-omniauthdevise-config-file-sametime/</link>
+      <pubDate>Mon, 23 Dec 2013 09:28:29 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/must-not-use-omniauthdevise-config-file-sametime/</guid>
+      <description>何故だか理由はさっぱりわかりませんが、どうにもおかしな動きが route.rb をいくらいじってもなおらないので色々情報を探してたら、config の omniauth.rb を消したら動きました。
+consumer_key とかは devise.rb に書いておきましょう。
+参考 [ruby on rails 3 &amp;#8211; Authentication failure : Devise + OmniAuth + Twitter &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Omniauth&#43;DeviseでTwitterとかでログインもできるし連携もできるサンプル</title>
+      <link>http://programming.ironsand.net/2013/social-login-in-rails/</link>
+      <pubDate>Mon, 23 Dec 2013 08:39:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/social-login-in-rails/</guid>
+      <description>https://github.com/mohitjain/social-login-in-rails
+ここにあります。</description>
+    </item>
+    
+    <item>
+      <title>Railsで ‘not null’ の制限をマイグレーションで取り除く方法</title>
+      <link>http://programming.ironsand.net/2013/remove-constraints-from-a-user-model-in-rails/</link>
+      <pubDate>Mon, 23 Dec 2013 05:25:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/remove-constraints-from-a-user-model-in-rails/</guid>
+      <description>devise と omniauthを組みわせて使うと default の email と encrypted_password が必ず値を持たなければならない null =&amp;gt; false の制限が邪魔だったのでMigrationで削除しようとしたけど方法がわからなかったので調べてみた。
+やりかた class RemoveConditionFromUser &amp;lt; ActiveRecord::Migration def change change_column :users, :email, :string, null: true change_column :users, :encrypted_password, :string, null: true end end 参考 [Rails Migration: Remove constraint &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Rails開発してる私が使ってるgemの一覧</title>
+      <link>http://programming.ironsand.net/2013/gem-list-for-rails/</link>
+      <pubDate>Fri, 20 Dec 2013 02:10:27 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/gem-list-for-rails/</guid>
+      <description>Macの環境構築をやり直したので、入れてるgemの一覧を出してみました。
+actionmailer (4.0.0) actionpack (4.0.0) activemodel (4.0.0) activerecord (4.0.0) activerecord-deprecated_finders (1.0.3) activesupport (4.0.0) addressable (2.3.5) arel (4.0.0) atomic (1.1.14) bigdecimal (1.2.0) buftok (0.2.0) builder (3.1.4) bundler (1.3.5) celluloid (0.15.2) chunky_png (1.2.8) coderay (1.1.0) compass (0.12.2) compass-normalize (1.4.3) compass-recipes (0.3.0) descendants_tracker (0.0.3) diff-lcs (1.2.5) equalizer (0.0.8) erubis (2.7.0) factory_girl (4.3.0) factory_girl_rails (4.3.0) faker (1.2.0) faraday (0.8.8) ffi (1.9.3) formatador (0.2.4) fssm (0.2.10) guard (2.2.4) guard-rspec (4.2.0) hike (1.2.3) http (0.5.0) http_parser.rb (0.</description>
+    </item>
+    
+    <item>
+      <title>create_or_update 的なメソッドをRailsで使いたいとき</title>
+      <link>http://programming.ironsand.net/2013/create_or_update-method-in-rails/</link>
+      <pubDate>Sun, 15 Dec 2013 13:50:02 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/create_or_update-method-in-rails/</guid>
+      <description>既に該当するモデルの値が存在していたら update で値を更新して、まだ存在しない場合は create で新しくモデルのインスタンスを作成したい時ありませんか？ 少なくとも自分にはありましたし、検索でここに辿り着いたあなたもきっとあると思います。
+Railsならきっと簡単な方法があると思ったので調べてみたらありました。
+やり方。 こんな感じでOK。
+my_class = ClassName.find_or_initialize_by_name(name) my_class.update_attributes( :street_address =&amp;gt; self.street_address, :city_name =&amp;gt; self.city_name, :federalid =&amp;gt; self.federalid, :state_prov_id =&amp;gt; self.state_prov_id, :zip_code =&amp;gt; self.zip_code ) 注意点 ちなみに create_or_update は ActiveRecord::Callbacks の private 関数として用意されてるご様子。
+[create_or_update (ActiveRecord::Callbacks) &amp;#8211; APIdock][1]
+参考 [ruby &amp;#8211; create_or_update method in rails &amp;#8211; Stack Overflow][2]</description>
+    </item>
+    
+    <item>
+      <title>respond_to を ブロックを使わずに書く。</title>
+      <link>http://programming.ironsand.net/2013/respond_to_without_block_in_rails/</link>
+      <pubDate>Sun, 15 Dec 2013 09:29:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/respond_to_without_block_in_rails/</guid>
+      <description>Ajaxの処理をRailsでするときはControllerに
+respond_to do |format| format.js end と書いてたんですが、いちいちブロック引数に format を使って処理するのは無駄な気がしたので一行で書ける方法を調べてみた。
+解決策 respond_to :js でOKでした。
+respond_to :html, :js な書き方もOKなようです。
+参考 [respond_to (ActionController::MimeResponds::InstanceMethods) &amp;#8211; APIdock][1]</description>
+    </item>
+    
+    <item>
+      <title>Gemfileを開いてたらsmart-compileで`bundle install`を実行する</title>
+      <link>http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/</link>
+      <pubDate>Sun, 15 Dec 2013 07:33:43 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/</guid>
+      <description>開いてるファイルをそのまま実行できるsmart-compileでGemfileを開いてたらbundle installを実行したかったのでやり方を調べてみました。
+設定方法 どうやらsmart compile は自動的にコマンドの実行ディレクトリをファイルがある場所に移動してくれるようなので単純に Gemfileというファイル名とbundle installのコマンドを他のファイルと同じように紐付ければOKのようです。
+(global-set-key (kbd &#34;C-c C-x&#34;) &#39;smart-compile) (setq smart-compile-alist (append &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist)) もちろん ruby や php を使ってなかったら該当行は必要ありません。
+使い方 これで Gemfile を開いて C-c C-x するとこんな風に bundle install が実行されます。
+-*- mode: compilation; default-directory: &#34;~/dev/foo/&#34; -*- Compilation started at Sun Dec 15 16:29:42 bundle install Using rake (10.1.0) Using i18n (0.6.9) from git://github.com/svenfuchs/i18n.git (at master) Using minitest (4.</description>
+    </item>
+    
+    <item>
+      <title>Railsのカラム名の語頭に数字を使ってはいけない</title>
+      <link>http://programming.ironsand.net/2013/do-not-use-number-for-column-name-in-rails/</link>
+      <pubDate>Sat, 14 Dec 2013 08:08:39 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/do-not-use-number-for-column-name-in-rails/</guid>
+      <description>Railsの学習がてらに2chもどきをつくろうと思って `rails new 2ch` してみるとエラーになる。これはいいんだけど、`rails generate Model 2ch` ってエラーを吐かないのに実際は使えないので修正がめんどくさくなるので気をつけましょう。</description>
+    </item>
+    
+    <item>
+      <title>[deprecated] I18n.enforce_available_locales とか何とかRailsでエラーが出る時の対処法</title>
+      <link>http://programming.ironsand.net/2013/deprecated-i18n-enforce_available_locales/</link>
+      <pubDate>Fri, 13 Dec 2013 15:50:45 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/deprecated-i18n-enforce_available_locales/</guid>
+      <description>Railsでこんなdeprecatedの警告が出てきたので対処方法を調べた。
+[deprecated] I18n.enforce_available_locales will default to true in the future. If you really want to skip validation of your locale you can set I18n.enforce_available_locales = false to avoid this message. 対策 config.i18n.enforce_available_locales = true でOK, `locale validation` をきちんとするなら true、どうでも良いならfalseらしい。よくわかんない。
+参考 [ruby &amp;#8211; Rails I18n validation deprecation warning &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>link_to で内部にタグがあったりする時はブロックを使いましょう</title>
+      <link>http://programming.ironsand.net/2013/link_to-with-block/</link>
+      <pubDate>Wed, 11 Dec 2013 06:54:04 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/link_to-with-block/</guid>
+      <description>Zurb-FoundationとかTwitter bootstrapを使ってると、アイコンをリンク内に含めたくなったりしますよね。こんな感じに
+[crayon lang=&amp;#8221;html&amp;#8221;]
+ Reload
+[/crayon]
+でもこれをそのまま `link_to` で囲んで
+[crayon lang=&amp;#8221;html&amp;#8221;]
+&amp;lt;%= link_to &amp;ldquo; Reload&amp;#8221;,&amp;#8221;http://example.com/reload&amp;amp;#8221; %&amp;gt;
+[/crayon]
+とすると``タグがHTMLエスケープされて悲しい事態になるんです。
+対策 なのでそういう時は `link_to` さんはブロックが取れるのでブロックを使って処理しましょう。ブロックの返り値がリンクのテキストになります。
+[crayon lang=&amp;#8221;html&amp;#8221;]
+&amp;lt;%= link_to &amp;ldquo;http://example.com/reload&amp;quot;, class: &amp;lsquo;reload&amp;rsquo; do %&amp;gt;
+ Reload
+&amp;lt;% end %&amp;gt;
+[/crayon]
+ちなみに `button_to` も同じような関数なのでこういう風にかけます。
+[crayon lang=&amp;#8221;html&amp;#8221;]
+&amp;lt;%= button_to &amp;ldquo;&amp;rdquo;, class: &amp;lsquo;small radius&amp;rsquo; do %&amp;gt;
+ Reload
+&amp;lt;% end %&amp;gt;
+[/crayon]
+これ知らない時に必死にHTMLエスケープされないために何をすればよいのかを探しまくったのは今では良い思い出でもなんでもありません。時間返せ。
+参考 [ruby on rails &amp;#8211; link_to in helper with block &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>既に存在するindexにunique制限をかけるmigrationの書き方。</title>
+      <link>http://programming.ironsand.net/2013/how-to-add-unique-constraint-to-already-existing-index-by-migration/</link>
+      <pubDate>Mon, 09 Dec 2013 10:22:53 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/how-to-add-unique-constraint-to-already-existing-index-by-migration/</guid>
+      <description>そのまま unique 条件付の index を追加しようとするとエラーになるので
+まず既にある index を削除してから追加しましょう。
+[crayon title=&amp;#8221;db/migrate/add_unique_constraint.rb&amp;#8221;]
+def change
+remove_index :editabilities, [:user_id, :list_id]
+add_index :editabilities, [:user_id, :list_id], unique: true
+end
+[/crayon]
+参考 [ruby on rails &amp;#8211; How to add unique constraint to already existing index by migration &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>RailsでModelが不規則名詞だった場合のControllerの命名規則</title>
+      <link>http://programming.ironsand.net/2013/naming-convention-rails-imodel-irregular-verb/</link>
+      <pubDate>Tue, 21 May 2013 07:35:49 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/naming-convention-rails-imodel-irregular-verb/</guid>
+      <description>RailsのModelは常に単数名詞、そしてControllerはその名詞の複数形という規則がありますが、Modelが”Child&amp;#8221;などの不規則変化名詞だった時にController名はChildrenなのか、Childsなのかがわからなかったので調べました。
+答え プログラム的には当然簡単に処理できるChildsだと思ったけども実際はちゃんと不規則変化にも対応してるらしくChildrenが正解です。
+その他の不規則名詞 他の不規則名詞は
+https://github.com/rails/rails/blob/4-0-0/activesupport/lib/active_support/inflections.rb
+に載っているんですが、
+inflect.irregular(&#39;person&#39;, &#39;people&#39;) inflect.irregular(&#39;man&#39;, &#39;men&#39;) inflect.irregular(&#39;child&#39;, &#39;children&#39;) inflect.irregular(&#39;sex&#39;, &#39;sexes&#39;) inflect.irregular(&#39;move&#39;, &#39;moves&#39;) inflect.irregular(&#39;cow&#39;, &#39;kine&#39;) inflect.irregular(&#39;zombie&#39;, &#39;zombies&#39;)  zombieって不規則名詞なの…？
+cow→kineの変化はそもそも英単語がわかりませんでした、、
+Zombieが不規則名詞の理由 ([2013/12/14] 追記) 単数形から複数形への変化は規則通りですが、複数形から単数形への変化 zombies -&amp;gt; zombie が不規則で、規則通り変化させてしまうと zombies -&amp;gt; zomby になってしまうから不規則名詞らしいです。英語は難しいですね。
+情報元 [Model and Controller&amp;apos;s naming rule for irregular noun in Rails &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Railsで新規プロジェクトを作ろうとすると`expand_path’: non-absolute homeというエラーが出る</title>
+      <link>http://programming.ironsand.net/2013/expand_path-non-absolute-home-error/</link>
+      <pubDate>Wed, 01 May 2013 03:12:23 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/expand_path-non-absolute-home-error/</guid>
+      <description>rails new hoge
+とすると
+`expand_path&#39;: non-absolute home
+というエラーが出てしまって「Windowsだしなあ。」と諦めかけてたけど、このhomeというのは環境変数のHOMEのことらしく、確かにcygwinを使う時のためにHOMEに /cygdrive/ から始まる値を入れてたのを思い出したので環境変数 HOME を削除してみたら動いた。
+ちなみに irb もHOMEに入ってる値によっては動かないらしい。
+参考 `expand_path&amp;apos;: non-absolute home
+http://devnet.jetbrains.com/thread/437313</description>
+    </item>
+    
+  </channel>
+</rss>

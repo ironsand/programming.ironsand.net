@@ -1,5 +1,5 @@
 ---
-title: `since_id parameter is invalid.`って言われた時の対処法
+title: '"since_id parameter is invalid."と言われた時の対処法'
 author: 鉄
 type: post
 date: 2013-12-27T19:14:15+00:00
@@ -7,7 +7,6 @@ url: /2013/how-to-treat-since_id-parameter-is-invalid/
 categories:
   - Rails
   - ruby
-
 ---
 Railscasts のTwitter の項目通りに書いてると `since_id parameter is invalid.` のエラーでつまづきました。
 

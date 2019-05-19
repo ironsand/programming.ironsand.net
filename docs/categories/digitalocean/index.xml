@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DigitalOcean on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/digitalocean/</link>
+    <description>Recent content in DigitalOcean on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Thu, 27 Mar 2014 14:23:54 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/digitalocean/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[失敗] VPS上のUbuntu12.04にHeadlessなChromeかFirefoxをインストールするためにやったこと</title>
+      <link>http://programming.ironsand.net/2014/install-headless-chrome-or-firefox-in-ubuntu-on-vps/</link>
+      <pubDate>Thu, 27 Mar 2014 14:23:54 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-headless-chrome-or-firefox-in-ubuntu-on-vps/</guid>
+      <description>phantomjs でzipファイルをダウンロードしたかったけど、ダウンロードオプションはまだ本体には取り込まれてないようなのでheadlessなChromeかFirefoxをVPSに入れて幸せな自動化処理生活を送ろうと思ったら全然うまく行きませんでした。
+俺の苦労を返せ！
+やったこと めんどくさいので説明は最低限で。
+FirefoxとChrome、それにSelenium Webdriverで使うためのChromeDriverをインストール
+apt-get install git unzip xvfb echo &#39;deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu precise main&#39; &amp;gt;&amp;gt; /etc/apt/sources.list echo &#39;deb-src http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu precise main&#39; &amp;gt;&amp;gt; /etc/apt/sources.list apt-get install firefox wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - echo &#34;deb http://dl.google.com/linux/chrome/deb/ stable main&#34; &amp;gt;&amp;gt; /etc/apt/sources.list.d/google.list apt-get install google-chrome-stable wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip unzip chromedriver_linux64.zip mv chromdriver /usr/local/bin この時点で
+Xvfb :1 &amp; export DISPLAY=:1 firefox すればFirefoxが立ち上がるはずだけどエラーが出てうまくいかない。
+色々と検索してみるけど結局エラーを除去する方法は見つからず。
+Rubyとか こちらはRubyを入れてselenium-webdriverを入れるまでのよくある感じのインストールメモ。DigitalOcean上のUbuntuにrootでログインしてそのままやってます。
+apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>linuxで特定のファイルの最終行だけ削除する</title>
+      <link>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</link>
+      <pubDate>Thu, 27 Mar 2014 11:57:07 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/</guid>
+      <description>Digital OceanではOSを気軽にDropletで作成して、気軽にポイポイ捨てれるのが売りですが、そのせいで sshで新しく繋ぎ直したホストに繋ごうとすると
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that a host key has just been changed. The fingerprint for the RSA key sent by the remote host is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx. Please contact your system administrator. Add correct host key in /home/ironsand/.ssh/known_hosts to get rid of this message.</description>
+    </item>
+    
+  </channel>
+</rss>

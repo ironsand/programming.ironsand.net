@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>NokogiriとSelenium-WebDriverのxpathの違い - 答えを知りたい</title>
+    
+<meta name="description" content="Selenium-WebDriverとNokogiriで同じファイルを開いても違うxpathを書かないといけないとダメで少しハマったのでメモ。違いの原因 同じHTMLを解析してもSelenium-WebDriverでChromeやFirefoxで開いた時は任意の要素であるtbodyが挿入されるために違いが発生します。実際の例 例えば&amp;lt;table&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/table&amp;gt; とある時にNokogiri の場合 require &#39;nokogiri&#39; doc = Nokogiri::HTML(File.read(&#34;test.html&#34;)) doc.xpath(&#34;//table/tr&#34;) Selenium WebDriver の場合 require &#39;selenium-webdriver&#39; driver = Selenium::WebDriver.for :chrome driver.get(&#34;file:///C:/Users/ironsand/test.html&#34;) driver.find_element(:xpath, &#34;//table/tbody/tr&#34;) 基本的な対策 大体の場合は//table//trとどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに//tr/td/font[contains(text(), &#39;Keyword&#39;)]/../../following-sibling::tr[3]/tdな感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。参考 [ruby &amp;#8211; How to get element that have same parent and n th different position by xpath &amp;#8211; Stack Overflow][1]">
+
+<meta property="og:title" content="NokogiriとSelenium-WebDriverのxpathの違い - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="Selenium-WebDriverとNokogiriで同じファイルを開いても違うxpathを書かないといけないとダメで少しハマったのでメモ。違いの原因 同じHTMLを解析してもSelenium-WebDriverでChromeやFirefoxで開いた時は任意の要素であるtbodyが挿入されるために違いが発生します。実際の例 例えば&amp;lt;table&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/table&amp;gt; とある時にNokogiri の場合 require &#39;nokogiri&#39; doc = Nokogiri::HTML(File.read(&#34;test.html&#34;)) doc.xpath(&#34;//table/tr&#34;) Selenium WebDriver の場合 require &#39;selenium-webdriver&#39; driver = Selenium::WebDriver.for :chrome driver.get(&#34;file:///C:/Users/ironsand/test.html&#34;) driver.find_element(:xpath, &#34;//table/tbody/tr&#34;) 基本的な対策 大体の場合は//table//trとどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに//tr/td/font[contains(text(), &#39;Keyword&#39;)]/../../following-sibling::tr[3]/tdな感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。参考 [ruby &amp;#8211; How to get element that have same parent and n th different position by xpath &amp;#8211; Stack Overflow][1]">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/">
+<meta name="twitter:title" content="NokogiriとSelenium-WebDriverのxpathの違い - 答えを知りたい">
+<meta name="twitter:description" content="Selenium-WebDriverとNokogiriで同じファイルを開いても違うxpathを書かないといけないとダメで少しハマったのでメモ。違いの原因 同じHTMLを解析してもSelenium-WebDriverでChromeやFirefoxで開いた時は任意の要素であるtbodyが挿入されるために違いが発生します。実際の例 例えば&amp;lt;table&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt; &amp;lt;/tr&amp;gt; &amp;lt;/table&amp;gt; とある時にNokogiri の場合 require &#39;nokogiri&#39; doc = Nokogiri::HTML(File.read(&#34;test.html&#34;)) doc.xpath(&#34;//table/tr&#34;) Selenium WebDriver の場合 require &#39;selenium-webdriver&#39; driver = Selenium::WebDriver.for :chrome driver.get(&#34;file:///C:/Users/ironsand/test.html&#34;) driver.find_element(:xpath, &#34;//table/tbody/tr&#34;) 基本的な対策 大体の場合は//table//trとどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに//tr/td/font[contains(text(), &#39;Keyword&#39;)]/../../following-sibling::tr[3]/tdな感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。参考 [ruby &amp;#8211; How to get element that have same parent and n th different position by xpath &amp;#8211; Stack Overflow][1]">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "NokogiriとSelenium-WebDriverのxpathの違い - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-05-04T01:39:37JST",
+    "dateModified": "2014-05-04T01:39:37JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "Selenium-WebDriverとNokogiriで同じファイルを開いても違うxpathを書かないといけないとダメで少しハマったのでメモ。\n違いの原因 同じHTMLを解析してもSelenium-WebDriverでChromeやFirefoxで開いた時は任意の要素であるtbodyが挿入されるために違いが発生します。\n実際の例 例えば\n\x26lt;table\x26gt; \x26lt;tr\x26gt; \x26lt;td\x26gt;\x26lt;\/td\x26gt; \x26lt;\/tr\x26gt; \x26lt;\/table\x26gt; とある時に\nNokogiri の場合 require \x27nokogiri\x27 doc = Nokogiri::HTML(File.read(\x22test.html\x22)) doc.xpath(\x22\/\/table\/tr\x22) Selenium WebDriver の場合 require \x27selenium-webdriver\x27 driver = Selenium::WebDriver.for :chrome driver.get(\x22file:\/\/\/C:\/Users\/ironsand\/test.html\x22) driver.find_element(:xpath, \x22\/\/table\/tbody\/tr\x22) 基本的な対策 大体の場合は\/\/table\/\/trとどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに\n\/\/tr\/td\/font[contains(text(), \x27Keyword\x27)]\/..\/..\/following-sibling::tr[3]\/td\nな感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。\n参考 [ruby \x26#8211; How to get element that have same parent and n th different position by xpath \x26#8211; Stack Overflow][1]"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">NokogiriとSelenium-WebDriverのxpathの違い</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-05-04T01:39:37JST">May 4, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">NokogiriとSelenium-WebDriverのxpathの違い</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p><code>Selenium-WebDriver</code>と<code>Nokogiri</code>で同じファイルを開いても違う<code>xpath</code>を書かないといけないとダメで少しハマったのでメモ。</p>
+
+<h2 id="違いの原因">違いの原因</h2>
+
+<p>同じHTMLを解析しても<code>Selenium-WebDriver</code>で<code>Chrome</code>や<code>Firefox</code>で開いた時は任意の要素である<code>tbody</code>が挿入されるために違いが発生します。</p>
+
+<h2 id="実際の例">実際の例</h2>
+
+<p>例えば</p>
+
+<pre class="lang:xhtml decode:true " >&lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;</pre>
+
+<p>とある時に</p>
+
+<h2 id="nokogiri-の場合">Nokogiri の場合</h2>
+
+<pre class="lang:ruby decode:true " >require 'nokogiri'
+doc = Nokogiri::HTML(File.read("test.html"))
+doc.xpath("//table/tr")</pre>
+
+<h2 id="selenium-webdriver-の場合">Selenium WebDriver の場合</h2>
+
+<pre class="lang:ruby decode:true " >require 'selenium-webdriver'
+driver = Selenium::WebDriver.for :chrome
+driver.get("file:///C:/Users/ironsand/test.html")
+driver.find_element(:xpath, "//table/tbody/tr")</pre>
+
+<h2 id="基本的な対策">基本的な対策</h2>
+
+<p>大体の場合は<code>//table//tr</code>とどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに</p>
+
+<p><code>//tr/td/font[contains(text(), 'Keyword')]/../../following-sibling::tr[3]/td</code></p>
+
+<p>な感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。</p>
+
+<h2 id="参考">参考</h2>
+
+<p>[ruby &#8211; How to get element that have same parent and n th different position by xpath &#8211; Stack Overflow][1]</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

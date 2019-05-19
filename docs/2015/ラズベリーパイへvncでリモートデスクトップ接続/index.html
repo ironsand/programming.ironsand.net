@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>ラズベリーパイへVNCでリモートデスクトップ接続する - 答えを知りたい</title>
+    
+<meta name="description" content="[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。 VNCでデスクトップ共有すると便利  Raspberry側でする設定 まずはssh pi@192.168.xxx.xxxで接続します。そして必要なパッケージをインストール。pi@raspberrypi ~ $ sudo apt-get -y install tightvncserver  次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。また閲覧専用のためのパスワードを設定するかどうか聞かれますのでnで無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。pi@raspberrypi ~ $ tightvncserver You will require a password to access your desktops. Password: Verify: Would you like to enter a view-only password (y/n)? n  サーバーが立ち上がったらVNC用のWindowを一つ用意します。$ vncserver :0 -geometry 1024x768 -depth 24  これでラズベリーパイ側の設定は完了です。PC側からの設定 PC側にVNCのクライアントをインストールします。Mac の場合は特に何もインストールする必要はありません。Linuxでのインストール aptでインストールします。sudo apt-get install xtightvncviewer  Windowsでのインストール [Download TightVNC][2] から &amp;#8220;Installer for Windows&amp;#8221; をダウンロードしてインストールします。">
+
+<meta property="og:title" content="ラズベリーパイへVNCでリモートデスクトップ接続する - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。 VNCでデスクトップ共有すると便利  Raspberry側でする設定 まずはssh pi@192.168.xxx.xxxで接続します。そして必要なパッケージをインストール。pi@raspberrypi ~ $ sudo apt-get -y install tightvncserver  次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。また閲覧専用のためのパスワードを設定するかどうか聞かれますのでnで無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。pi@raspberrypi ~ $ tightvncserver You will require a password to access your desktops. Password: Verify: Would you like to enter a view-only password (y/n)? n  サーバーが立ち上がったらVNC用のWindowを一つ用意します。$ vncserver :0 -geometry 1024x768 -depth 24  これでラズベリーパイ側の設定は完了です。PC側からの設定 PC側にVNCのクライアントをインストールします。Mac の場合は特に何もインストールする必要はありません。Linuxでのインストール aptでインストールします。sudo apt-get install xtightvncviewer  Windowsでのインストール [Download TightVNC][2] から &amp;#8220;Installer for Windows&amp;#8221; をダウンロードしてインストールします。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/">
+<meta name="twitter:title" content="ラズベリーパイへVNCでリモートデスクトップ接続する - 答えを知りたい">
+<meta name="twitter:description" content="[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。 VNCでデスクトップ共有すると便利  Raspberry側でする設定 まずはssh pi@192.168.xxx.xxxで接続します。そして必要なパッケージをインストール。pi@raspberrypi ~ $ sudo apt-get -y install tightvncserver  次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。また閲覧専用のためのパスワードを設定するかどうか聞かれますのでnで無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。pi@raspberrypi ~ $ tightvncserver You will require a password to access your desktops. Password: Verify: Would you like to enter a view-only password (y/n)? n  サーバーが立ち上がったらVNC用のWindowを一つ用意します。$ vncserver :0 -geometry 1024x768 -depth 24  これでラズベリーパイ側の設定は完了です。PC側からの設定 PC側にVNCのクライアントをインストールします。Mac の場合は特に何もインストールする必要はありません。Linuxでのインストール aptでインストールします。sudo apt-get install xtightvncviewer  Windowsでのインストール [Download TightVNC][2] から &amp;#8220;Installer for Windows&amp;#8221; をダウンロードしてインストールします。">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "ラズベリーパイへVNCでリモートデスクトップ接続する - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-01-17T06:07:35JST",
+    "dateModified": "2015-01-17T06:07:35JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。\n VNCでデスクトップ共有すると便利  Raspberry側でする設定 まずはssh pi@192.168.xxx.xxxで接続します。そして必要なパッケージをインストール。\npi@raspberrypi ~ $ sudo apt-get -y install tightvncserver  次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。\nまた閲覧専用のためのパスワードを設定するかどうか聞かれますのでnで無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。\npi@raspberrypi ~ $ tightvncserver You will require a password to access your desktops. Password: Verify: Would you like to enter a view-only password (y\/n)? n  サーバーが立ち上がったらVNC用のWindowを一つ用意します。\n$ vncserver :0 -geometry 1024x768 -depth 24  これでラズベリーパイ側の設定は完了です。\nPC側からの設定 PC側にVNCのクライアントをインストールします。Mac の場合は特に何もインストールする必要はありません。\nLinuxでのインストール aptでインストールします。\nsudo apt-get install xtightvncviewer  Windowsでのインストール [Download TightVNC][2] から \x26#8220;Installer for Windows\x26#8221; をダウンロードしてインストールします。"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">ラズベリーパイへVNCでリモートデスクトップ接続する</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-01-17T06:07:35JST">Jan 17, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">ラズベリーパイへVNCでリモートデスクトップ接続する</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。</p>
+
+<div id="attachment_563" style="width: 888px" class="wp-caption alignnone">
+  <a href="http://programming.ironsand.net/wp-content/uploads/2015/01/foo.png"><img src="http://programming.ironsand.net/wp-content/uploads/2015/01/foo.png" alt="VNCでデスクトップ共有すると便利" width="878" height="543" class="size-full wp-image-563" srcset="http://programming.ironsand.net/wp-content/uploads/2015/01/foo.png 878w, http://programming.ironsand.net/wp-content/uploads/2015/01/foo-300x186.png 300w" sizes="(max-width: 878px) 100vw, 878px" /></a>
+  
+  <p class="wp-caption-text">
+    VNCでデスクトップ共有すると便利
+  </p>
+</div>
+
+<h2 id="raspberry側でする設定">Raspberry側でする設定</h2>
+
+<p>まずは<code>ssh pi@192.168.xxx.xxx</code>で接続します。そして必要なパッケージをインストール。</p>
+
+<pre><code>pi@raspberrypi ~ $ sudo apt-get -y install tightvncserver
+</code></pre>
+
+<p>次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。</p>
+
+<p>また閲覧専用のためのパスワードを設定するかどうか聞かれますので<code>n</code>で無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。</p>
+
+<pre><code>pi@raspberrypi ~ $ tightvncserver
+
+You will require a password to access your desktops.
+
+Password:
+Verify:
+Would you like to enter a view-only password (y/n)? n
+</code></pre>
+
+<p>サーバーが立ち上がったらVNC用のWindowを一つ用意します。</p>
+
+<pre><code>$ vncserver :0 -geometry 1024x768 -depth 24
+</code></pre>
+
+<p>これでラズベリーパイ側の設定は完了です。</p>
+
+<h2 id="pc側からの設定">PC側からの設定</h2>
+
+<p>PC側にVNCのクライアントをインストールします。<strong>Mac の場合は特に何もインストールする必要はありません。</strong></p>
+
+<h3 id="linuxでのインストール">Linuxでのインストール</h3>
+
+<p><code>apt</code>でインストールします。</p>
+
+<pre><code>sudo apt-get install xtightvncviewer
+</code></pre>
+
+<h3 id="windowsでのインストール">Windowsでのインストール</h3>
+
+<p>[Download TightVNC][2] から &#8220;Installer for Windows&#8221; をダウンロードしてインストールします。</p>
+
+<p>インストール方法で`custom`を選択して</p>
+
+<p>☐ VNC Server</p>
+
+<p>☑ VNC Viewer</p>
+
+<p>のように <code>VNC Server</code>のチェックは外しておきましょう。</p>
+
+<h2 id="vnc-の起動">VNC の起動</h2>
+
+<p>以上の設定が全てうまくいっていたら</p>
+
+<pre><code>open vnc://pi@192.168.xxx.xxx:5901
+</code></pre>
+
+<p>でパスワードの入力を促すダイアログが出てきますので、先ほど設定したパスワードを入力するとラズベリーパイのデスクトップ画面が表示されます。やっとできた！</p>
+
+<div id="attachment_562" style="width: 961px" class="wp-caption alignnone">
+  <a href="http://programming.ironsand.net/wp-content/uploads/2015/01/hoge.png"><img src="http://programming.ironsand.net/wp-content/uploads/2015/01/hoge.png" alt="ひゃっほー！" width="951" height="698" class="size-full wp-image-562" srcset="http://programming.ironsand.net/wp-content/uploads/2015/01/hoge.png 951w, http://programming.ironsand.net/wp-content/uploads/2015/01/hoge-300x220.png 300w" sizes="(max-width: 951px) 100vw, 951px" /></a>
+  
+  <p class="wp-caption-text">
+    ひゃっほー！
+  </p>
+</div>
+
+<p>それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ</p>
+
+<h2 id="参考">参考</h2>
+
+<p>[Raspberry Pi Documentation][3]</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/raspberry-pie/">Raspberry Pie</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

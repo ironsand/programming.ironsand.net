@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Foundation on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/foundation/</link>
+    <description>Recent content in Foundation on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Wed, 01 Jan 2014 14:05:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/foundation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Zurb Foundation のトップバーの右上のメニューを消えないようにする</title>
+      <link>http://programming.ironsand.net/2014/zurb-foundation-top-bar-menu/</link>
+      <pubDate>Wed, 01 Jan 2014 14:05:29 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/zurb-foundation-top-bar-menu/</guid>
+      <description> Zurb Foundationのトップバーの右上のメニューですが、デフォルトでは幅が940pxを切るとMenuに折りたたまれてしまうという結構広い設定になっています。
+もうちょっと幅が狭くても出るようにしたかったので修正しました。
+対策 設定ファイルを以下のように書き換えます。環境はRailsです。
+// $topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout $topbar-breakpoint: emCalc(600px);  ちなみに[Menu]自体がでなくて少し困ったのですがtoggle-topbar menu-icon を設定してなかったのが原因だったようです。
+&amp;lt;ul class=&#34;title-area&#34;&amp;gt; &amp;lt;li class=&#34;name&#34;&amp;gt; &amp;lt;h1&amp;gt;&amp;lt;%= link_to &#34;Site Title&#34;, root_path %&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li class=&#34;toggle-topbar menu-icon&#34;&amp;gt;&amp;lt;a href=&#34;#&#34;&amp;gt;&amp;lt;span&amp;gt;Menu&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; </description>
+    </item>
+    
+  </channel>
+</rss>

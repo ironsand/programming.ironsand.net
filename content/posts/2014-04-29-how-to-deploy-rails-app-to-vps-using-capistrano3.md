@@ -2,11 +2,11 @@
 title: Capistrano3でさくらVPSにdeploy
 author: 鉄
 type: post
-date: -001-11-30T00:00:00+00:00
+date: 2014-04-29T00:00:00+00:00
 draft: true
 url: /?p=499
 categories:
-  - 未分類
+  - Capistrano
 
 ---
 確実に忘れる上にドキュメントが全然見つからない`Capistrano 3`をVPSにDeployする方法のメモ。

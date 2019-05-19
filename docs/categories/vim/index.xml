@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/vim/</link>
+    <description>Recent content in Vim on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sun, 26 May 2013 09:00:38 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vimの欲しい機能を調べてみた。</title>
+      <link>http://programming.ironsand.net/2013/vim-functions/</link>
+      <pubDate>Sun, 26 May 2013 09:00:38 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/vim-functions/</guid>
+      <description>今までVimでRailsのプロジェクトの中にあるファイルを開くのに毎回FinderのウィンドウからD&amp;amp;DしていてめんどくさかったのでVimの左側にファイラーが表示できたらいいな、と思って調べてみました。
+検索した所 Opsplore が見つかったのでインストールしようかと思ったらインストールの仕方がわからなかったのでもののついでに多分パッケージ管理する拡張があるだろうと考えて調べてみたらやっぱりありました。
+NeoBundleでパッケージ管理 どうやら昔はBundleというソフトが有名だったけど、機能不足などの問題でVundleがForkされて更に統一性などの問題点が改善されたNeoBundleが出されたようです。
+はじめ動かなくて困ってTwitterでつぶやいていたら @todashuta さんが直してくれました。ありがとうございます。
+Vimpusher NeoBundleなどのパッケージ管理を使っていて、その.vimrcをGitなどのオンライン上に置いている場合はソーシャルVimプラグインサービスの[Vimpusher][1]というサービスがあり、これに登録しておくとおすすめのプラグインを紹介してくれるそうです。
+便利そうなプラグイン なんでもRailsを使うのに便利なプラグインがあるそうなので早速それを入れてみる。
+[tpope/vim-rails · GitHub][2]
+においてあるのでNeoBundleでインストールするために
+~/.vimrc に
+NeoBundle &#39;tpope/vim-rails&#39;
+と追記し、
+``今までVimでRailsのプロジェクトの中にあるファイルを開くのに毎回FinderのウィンドウからD&amp;amp;DしていてめんどくさかったのでVimの左側にファイラーが表示できたらいいな、と思って調べてみました。
+検索した所 Opsplore が見つかったのでインストールしようかと思ったらインストールの仕方がわからなかったのでもののついでに多分パッケージ管理する拡張があるだろうと考えて調べてみたらやっぱりありました。
+NeoBundleでパッケージ管理 どうやら昔はBundleというソフトが有名だったけど、機能不足などの問題でVundleがForkされて更に統一性などの問題点が改善されたNeoBundleが出されたようです。
+はじめ動かなくて困ってTwitterでつぶやいていたら @todashuta さんが直してくれました。ありがとうございます。
+Vimpusher NeoBundleなどのパッケージ管理を使っていて、その.vimrcをGitなどのオンライン上に置いている場合はソーシャルVimプラグインサービスの[Vimpusher][1]というサービスがあり、これに登録しておくとおすすめのプラグインを紹介してくれるそうです。
+便利そうなプラグイン なんでもRailsを使うのに便利なプラグインがあるそうなので早速それを入れてみる。
+[tpope/vim-rails · GitHub][2]
+においてあるのでNeoBundleでインストールするために
+~/.vimrc に
+NeoBundle &#39;tpope/vim-rails&#39;
+と追記し、
+``
+で設定の再読み込みをすると &amp;#8220;Install bundles now?&amp;#8221; と聞かれるので&amp;#8221;yes&amp;#8221;を選択すればOKです。メッセージが流れないのでフリーズしてるように感じましたが正常にインストールされてました。
+たとえば post_controller.rb 上の def index の上にカーソルがあるときに gf と入力すれば index.html.erb が開かれます。
+詳しい動作はまた今度確認することします。
+他にも入れといたほうがよさそうなプラグイン こちらのサイトを参考に便利そうなプラグインを追加していきました。
+[天井冴太的つれづれblog [天井の染み]: このVim plugin達に感謝しなければ年を越せない!私が今年使い倒した2012年のベストを全部ご紹介!][3]
+&amp;#8221; RubyやPerl風の正規表現。</description>
+    </item>
+    
+  </channel>
+</rss>

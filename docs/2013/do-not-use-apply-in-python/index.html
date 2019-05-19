@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2013/do-not-use-apply-in-python/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Pythonのapplyを使う時の注意点、…というか使っちゃダメ。 - 答えを知りたい</title>
+    
+<meta name="description" content="Lispを書いてると、他の言語でもapplyを使いたくなる。そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。基本的なapplyの使い方 `def hoge(word): print wordapply(hoge,&amp;ldquo;A&amp;rdquo;) `とまあこんな感じ使うわけです。文字列を引数にできない。 ところがこの引数の&amp;#8221;A&amp;#8221;を&amp;#8221;ABC&amp;#8221;に変えるだけでエラーになる。&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 9, in &amp;lt;module&amp;gt; TypeError: hoge() takes exactly 1 argument (3 given)&amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような &amp;#8220;拡張された関数呼び出し構文&amp;#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。">
+
+<meta property="og:title" content="Pythonのapplyを使う時の注意点、…というか使っちゃダメ。 - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2013/do-not-use-apply-in-python/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="Lispを書いてると、他の言語でもapplyを使いたくなる。そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。基本的なapplyの使い方 `def hoge(word): print wordapply(hoge,&amp;ldquo;A&amp;rdquo;) `とまあこんな感じ使うわけです。文字列を引数にできない。 ところがこの引数の&amp;#8221;A&amp;#8221;を&amp;#8221;ABC&amp;#8221;に変えるだけでエラーになる。&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 9, in &amp;lt;module&amp;gt; TypeError: hoge() takes exactly 1 argument (3 given)&amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような &amp;#8220;拡張された関数呼び出し構文&amp;#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2013/do-not-use-apply-in-python/">
+<meta name="twitter:title" content="Pythonのapplyを使う時の注意点、…というか使っちゃダメ。 - 答えを知りたい">
+<meta name="twitter:description" content="Lispを書いてると、他の言語でもapplyを使いたくなる。そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。基本的なapplyの使い方 `def hoge(word): print wordapply(hoge,&amp;ldquo;A&amp;rdquo;) `とまあこんな感じ使うわけです。文字列を引数にできない。 ところがこの引数の&amp;#8221;A&amp;#8221;を&amp;#8221;ABC&amp;#8221;に変えるだけでエラーになる。&amp;lt;/p&amp;gt; &amp;lt;pre&amp;gt;Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 9, in &amp;lt;module&amp;gt; TypeError: hoge() takes exactly 1 argument (3 given)&amp;lt;/pre&amp;gt; &amp;lt;p&amp;gt;どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような &amp;#8220;拡張された関数呼び出し構文&amp;#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "Pythonのapplyを使う時の注意点、…というか使っちゃダメ。 - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2013-01-15T18:02:10JST",
+    "dateModified": "2013-01-15T18:02:10JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "Lispを書いてると、他の言語でもapplyを使いたくなる。\nそしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。\n基本的なapplyの使い方 `\ndef hoge(word): print word\napply(hoge,\x26ldquo;A\x26rdquo;) `\nとまあこんな感じ使うわけです。\n文字列を引数にできない。 ところがこの引数の\x26#8221;A\x26#8221;を\x26#8221;ABC\x26#8221;に変えるだけでエラーになる。\n\x26lt;\/p\x26gt; \x26lt;pre\x26gt;Traceback (most recent call last): File \x26quot;\x26lt;stdin\x26gt;\x26quot;, line 9, in \x26lt;module\x26gt; TypeError: hoge() takes exactly 1 argument (3 given)\x26lt;\/pre\x26gt; \x26lt;p\x26gt;\nどうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。\n解決策 さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。\n 引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。apply() は function(*args, **keywords) を 使うのと等価です。 上のような \x26#8220;拡張された関数呼び出し構文\x26#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">Pythonのapplyを使う時の注意点、…というか使っちゃダメ。</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2013-01-15T18:02:10JST">Jan 15, 2013</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">Pythonのapplyを使う時の注意点、…というか使っちゃダメ。</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>Lispを書いてると、他の言語でもapplyを使いたくなる。</p>
+
+<p>そしてPythonにもapplyがあったので早速喜んで使ってたら引数の数がおかしいというエラーメッセージに困らされた。</p>
+
+<h3 id="基本的なapplyの使い方">基本的なapplyの使い方</h3>
+
+<p>`</p>
+<pre>def hoge(word):
+    print word</p>
+
+<p>apply(hoge,&ldquo;A&rdquo;)</pre>
+<p>`</p>
+
+<p>とまあこんな感じ使うわけです。</p>
+
+<h3 id="文字列を引数にできない">文字列を引数にできない。</h3>
+
+<p>ところがこの<strong>引数の&#8221;A&#8221;を&#8221;ABC&#8221;に変えるだけでエラー</strong>になる。</p>
+
+<p><code>&lt;/p&gt;
+&lt;pre&gt;Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 9, in &lt;module&gt;
+TypeError: hoge() takes exactly 1 argument (3 given)&lt;/pre&gt;
+&lt;p&gt;</code></p>
+
+<p>どうやら文字列を渡すと文字数分だけの引数を渡したと解釈されてしまうらしい。</p>
+
+<h3 id="解決策">解決策</h3>
+
+<p>さて、解決方法ですがタイトルにもあるように廃止された関数なのでもう使っちゃダメらしい。</p>
+
+<blockquote>
+<p>引数 function は呼び出しができるオブジェクト (ユーザ定義 および組み込みの関数またはメソッド、またはクラスオブジェクト) でなければなりません。args はシーケンス型でなくてはなりません。 function は引数リスト args を使って呼び出されます; 引数の数はタプルの長さになります。オプションの引数 keywords を与える場合、 keywords は文字列のキーを持つ辞書で なければなりません。これは引数リストの最後に追加されるキーワード 引数です。 apply() の呼び出しは、単なる function(args) の呼び出しとは異なります。 というのは、apply() の場合、引数は常に一つだから です。<strong>apply() は function(*args, **keywords) を 使うのと等価です。</strong> 上のような &#8220;拡張された関数呼び出し構文&#8221; は apply() と全く等価なので、必ずしも apply() を使う必要はありません。</p>
+
+<p>リリース 2.3 で撤廃されました。 上で述べられたような拡張呼び出し構文を使って ください。</p>
+</blockquote>
+
+<p>自分にはよくわからないですが<p style=color:red;>applyでやりたいことは function(*args, **keywords) で全部できるから applyは使うな。</p></p>
+
+<p>ということのようです。</p>
+
+<p>&#8220;Python Apply&#8221;をキーワードにしてGoogle検索しても「使ってはいけない」という情報がぱっと出て来なかったのでこの記事を書きました。よくわからないエラーで困ってる誰かの参考になれば幸いです。</p>
+
+<h3 id="参考">参考</h3>
+
+<p>2.2 非必須組み込み関数 (Non-essential Built-in Functions)<br />
+<a href="http://docs.python.jp/2.5/lib/non-essential-built-in-funcs.html">http://docs.python.jp/2.5/lib/non-essential-built-in-funcs.html</a></p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/python/">python</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

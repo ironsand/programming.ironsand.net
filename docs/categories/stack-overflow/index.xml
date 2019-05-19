@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stack Overflow on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/stack-overflow/</link>
+    <description>Recent content in Stack Overflow on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Thu, 30 Jan 2014 14:01:28 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/stack-overflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>StackOverflowで過去の自分の質問内から検索する</title>
+      <link>http://programming.ironsand.net/2014/search-own-question-in-stackoverflow/</link>
+      <pubDate>Thu, 30 Jan 2014 14:01:28 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/search-own-question-in-stackoverflow/</guid>
+      <description>StackOverflowで昔もらった回答が思い出せない時に自分の質問内を検索したい時がありますよね。
+試しに User 知りたいこと みたいにユーザー名をそのまま入れてみたんですがうまく行きませんでした。
+解決策 Stack Overflow自体についてわからないことがある時は Meta Stack Overflow を使えばだいたいのことは解決します。
+Search 欄に user:me 知りたいこと で検索すると自動的に me が自分のユーザーIDに変更されて目的の情報を取り出すことができます。ひゃっほーい！
+参考 [How can I search my own questions? &amp;#8211; Meta Stack Overflow][1]</description>
+    </item>
+    
+  </channel>
+</rss>

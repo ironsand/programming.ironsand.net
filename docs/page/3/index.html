@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-08-13T08:13:13JST">Aug 13, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/">rake task の多重起動を禁止する排他処理を行う</a></h2>
+  </header>
+
+  
+  <div class="summary">rake task で長時間起動するため排他処理をしておかないと複数起動してしまう物があったので多重起動を禁止にしました。
+namespace :foo do task :update_all =&gt; :environment do |task| process_count = `ps -ef | grep #{task.name} | grep -v grep | wc -l`.to_i next if process_count &gt; 1 end end でOK。呼び出し部分をメソッド化とかしたかったけど、上手くいかなかったのでとりあえずこれで。タスクのブロック引数としてtaskをちゃんと書いておかないとtask.nameが使えないので注意しましょう。
+参考 [ShellScript &#8211; Rakeタスク実行時、プロセス起動数を確認して排他制御する &#8211; Qiita][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/" title="rake task の多重起動を禁止する排他処理を行う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-08-13T07:37:22JST">Aug 13, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/">rake task を途中で抜けるときはreturnじゃなくてnext</a></h2>
+  </header>
+
+  
+  <div class="summary">task :do_something do return if some_condition? do_job end  というように条件に合致しない時に returnを使って処理を抜けようとするとこんなエラーになります。
+LocalJumpError: unexpected return これは rake task がメソッドではなくブロックだから起きるので next を使ってやりましょう。それで抜けれます。
+task :do_something do next if some_condition? do_job end  ちなみにnextは気持ち悪いんのでせめてbreakを使いたいと思ったんですが、それだと
+LocalJumpError: break from proc-closure  になってしまいます。
+参考 [ruby &#8211; How do I return early from a rake task? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/" title="rake task を途中で抜けるときはreturnじゃなくてnext">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-04-01T09:56:08JST">Apr 1, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%92%E5%90%AB%E3%82%80%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%83%87%E3%82%A3/">特定のテキストを含むファイルを持っているディレクトリを削除する</a></h2>
+  </header>
+
+  
+  <div class="summary">ackで検索してdirnameでディレクトリ名を取得して、rm -rfでまとめて消してます。
+ack-grep -l foo | xargs dirname | xargs rm -rf </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%92%E5%90%AB%E3%82%80%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%83%87%E3%82%A3/" title="特定のテキストを含むファイルを持っているディレクトリを削除する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-03-18T00:08:08JST">Mar 18, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/">Arrayから重複する要素の配列を抜き出す</a></h2>
+  </header>
+
+  
+  <div class="summary">やり過ぎはダメだと言われても、やっぱり基底クラスの拡張は楽しい！
+class Array def duplicated select{ |v| count(v) &gt; 1}.uniq end end 使い方 a = [3, 5, 3, 4] =&gt; [3, 5, 3, 4] [15] pry(main)&gt; a.duplicated =&gt; [3] [16] pry(main)&gt; a = [3, 5, 3, 4, 5] =&gt; [3, 5, 3, 4, 5] [17] pry(main)&gt; a.duplicated =&gt; [3, 5] 参考 [Ruby: How to find and return a duplicate value in array? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/" title="Arrayから重複する要素の配列を抜き出す">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-22T12:14:42JST">Feb 22, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/">RubyとRasberry Pi でLEDをチカチカさせる</a></h2>
+  </header>
+
+  
+  <div class="summary">Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。
+
+基礎知識 LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。
+GPIO(General-purpose input/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。
+つまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。
+[][1]
+B+のモデルにはもっとピンがあるんですが、1から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが1だそうです。……なにそのわかりにくい基準。
+[][2]
+抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。
+ブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。
+http://jsdiy.web.fc2.com/avr_7segclockbb/
+LEDをチカチカさせる 最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。
+配線方法 ブレッドボードの配線がこんなんで、
+[][4]
+ラズパイの配線がこんなんで
+[][5]
+コードがこうです。解説サイトのRubyを修正しています。
+port = 24 File.write("/sys/class/gpio/export", port) sleep 0.2 # 書き込みエラー回避 File.write("/sys/class/gpio/gpio#{port}/direction", "out") (1..10).each do |i| File.write("/sys/class/gpio/gpio#{port}/value", i % 2) sleep 0.2 end File.write("/sys/class/gpio/unexport", port) Lチカさせる 以上が上手くいっていたら ruby ~/led_blink.rbでスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！
+できなかった人は一つ一つ手順を確認していきましょう〜。
+それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/" title="RubyとRasberry Pi でLEDをチカチカさせる">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-20T02:30:59JST">Feb 20, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/">Helperメソッド内で form_tag を使うときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">form_tagを使えばブロック内の全体を返してくれるかと思ったのですが、そうではないらしく最終行だけ返ってきてしまいます。
+具体例 つまり
+def generate_form(path) form_tag(path) do input_tag submit_tag end end だとフォームそのものと最終行のsubmit_tagだけが表示されてその他の入力フィールドが一切表示されません。
+対策 なので以下のように毎行Stringを保存しておきましょう。何でこんな仕様になってるんだろう…？
+def generate_form(path) form_tag(path) do str = input_tag str += submit_tag str end end 参考 [ruby on rails &#8211; How do I use form_tag from within a helper? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/" title="Helperメソッド内で form_tag を使うときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-16T12:30:39JST">Feb 16, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/raspberry-pi-%E3%81%AB-avahi-%E3%82%92%E5%85%A5%E3%82%8C%E3%81%A6ssh%E6%8E%A5%E7%B6%9A%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB/">Raspberry Pi に Avahi を入れてSSH接続を簡単に</a></h2>
+  </header>
+
+  
+  <div class="summary">[初めてのラズベリーパイ 【購入からSSH接続まで】][1] で SSH を使ってラズベリーパイに接続ができたのですが、DHCPでローカルのIPアドレスを振り分けてる時は振り当てられてるIPアドレスを調べるためだけにラズパイにキーボードとディスプレイをさして作業する必要がでてくるので非常にめんどくさいことになります。
+Avahi そこでAvahiというソフトを使えば hosts ファイルがなくてもローカルネットワーク内の他のPCからIPアドレスではなく名前で参照できるようになります。。Macの共有機能などで使われている Bonjour と同等のものなんだとか。
+インストール /etc/hostname に保存されてる名前で接続できるようになるので初期設定のraspberrypiという名前を別のものに変更しておきましょう。
+sudo vi /etc/hostname  Avihaのインストールはいつもどおりapt-getでインストールできます。
+sudo apt-get -y install avahi-daemon  スタートアップに登録 このままでは起動時に自動的にAvahiが立ち上がってくれませんので
+sudo update-rc.d avahi-daemon defaults でスタートアップにも登録しておきましょう。
+※ 追記 次回使おうとしたら動かなくなってしまってました。 /etc/hostsを編集しないといけなかったようです。
+127.0.0.1 localhost ::1 localhost ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters 127.0.1.1 raspberrypi  となっていますのでraspberrypiの部分を変更した名前に変えておきます。
+使い方 インストールが終わったらクライアントからssh pi@raspberry.localのような形で pi@自分で決めた名前.localで接続できるようになります。
+それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ
+参考 [RaspberryPi &#8211; Raspberry Pi を無線 LAN 経由で SSH 接続できるようにする &#8211; Qiita][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/raspberry-pi-%E3%81%AB-avahi-%E3%82%92%E5%85%A5%E3%82%8C%E3%81%A6ssh%E6%8E%A5%E7%B6%9A%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB/" title="Raspberry Pi に Avahi を入れてSSH接続を簡単に">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-13T10:20:29JST">Feb 13, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E6%97%A5%E4%BB%98%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%AD%E3%81%8B%E3%82%89%E7%9B%B4%E8%BF%91%E3%81%AE%E6%97%A5%E4%BB%98%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B/">日付の配列の中から直近の日付を選択する</a></h2>
+  </header>
+
+  
+  <div class="summary">日付の配列がある時に
+pry(main)&gt; dates = (1..10).map{|i| Date.new(2015,i) } =&gt; [Thu, 01 Jan 2015, Sun, 01 Feb 2015, Sun, 01 Mar 2015, Wed, 01 Apr 2015, Fri, 01 May 2015, Mon, 01 Jun 2015, Wed, 01 Jul 2015, Sat, 01 Aug 2015, Tue, 01 Sep 2015, Thu, 01 Oct 2015] 現在の日付よりも新しく、かつ一番近い日付を選択したい時の処理
+pry(main)&gt; Date.today =&gt; Fri, 13 Feb 2015 pry(main)&gt; dates.find{|date| date &gt; Date.today} =&gt; Sun, 01 Mar 2015  findメソッドはやっぱり便利！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E6%97%A5%E4%BB%98%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%AD%E3%81%8B%E3%82%89%E7%9B%B4%E8%BF%91%E3%81%AE%E6%97%A5%E4%BB%98%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B/" title="日付の配列の中から直近の日付を選択する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-02T08:18:21JST">Feb 2, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/">既にインデックスをつけているカラムにUnique制限をつける</a></h2>
+  </header>
+
+  
+  <div class="summary">Railsで既にindexをつけているカラムにunique制限をもうけるには、ユニーク制限だけを付加することができないので一旦インデックス自体を削除してから新規に unique な index を追加します。
+def change remove_index :editabilities, [:user_id, :list_id] add_index :editabilities, [:user_id, :list_id], unique: true end  参考 [ruby on rails &#8211; How to add unique constraint to already existing index by migration &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/" title="既にインデックスをつけているカラムにUnique制限をつける">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-02T07:23:20JST">Feb 2, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/">ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法</a></h2>
+  </header>
+
+  
+  <div class="summary"> Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。
+Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。
+ActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym 'GNU' end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。
+ LoadError: Unable to autoload constant Gnu, expected
+/Users/ironsand/dev/myproject/app/models/gnu.rb to define it
+ 対策 クラス名を明示的に指定するとOKです。
+has_many :gnus, class_name = "GNU" </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/" title="ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/page/2/">Previous</a></li>
+    
+
+    
+    <li><a href="/page/4/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

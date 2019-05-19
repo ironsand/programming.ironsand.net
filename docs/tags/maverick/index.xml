@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maverick on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/maverick/</link>
+    <description>Recent content in Maverick on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 03 Jan 2014 04:07:31 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/maverick/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Maverickで`rails new` が `atomic`のインストールでこける時の対処法</title>
+      <link>http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/</link>
+      <pubDate>Fri, 03 Jan 2014 04:07:31 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/</guid>
+      <description>rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。
+エラーメッセージはこんなの。
+run bundle install Fetching gem metadata from https://rubygems.org/.......... Fetching gem metadata from https://rubygems.org/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.</description>
+    </item>
+    
+  </channel>
+</rss>

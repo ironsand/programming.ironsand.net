@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/posts/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/posts/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Posts - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Posts</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-10T03:52:23JST">Apr 10, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/permission-about-var-www/">`/var/www/`以下のパーミッションまとめ</a></h2>
+  </header>
+
+  
+  <div class="summary"> /var/www配下のパーミッションをどうすべきかについて情報が錯綜してて困ったので自分なりに調べたことをまとめておきます。
+サーバープロセスが直接ファイルの変更を行うか、複数人管理かがどうかで結構変わるのでめんどくさくなってるみたいですね。
+まとめ  サーバープロセスがファイルの変更を行わず、sudo可ユーザーのみが変更
+/var/www 以下は全て root:root
+理由：apache, nginx などのプロセスが乗っ取られてもroot権限がないと改変できないため
+ サーバープロセスがファイルの変更を行わず、sudo不可のユーザーも変更
+/var/www/site を ftp-user:root に。
+複数ユーザーがFTPでアクセスして書き込み権を持つなら ftp-user:ftp-userで適当にユーザーをグループに追加
+ サーバープロセスがファイルの変更を行う(WordPressなど)、
+/var/www/site 以下の必要なフォルダ、ファイル_だけ_を ftp-user:www-user にして
+サーバープロセスのユーザーをwww-userに追加、apache所有には_絶対にしない_。
+  </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/permission-about-var-www/" title="`/var/www/`以下のパーミッションまとめ">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-04T16:11:27JST">Apr 4, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/rbenv-and-plugins-install/">rbenvのインストール方法と入れとくと便利なプラグイン</a></h2>
+  </header>
+
+  
+  <div class="summary"> gitは便利なんだけど、リポジトリ名が長くて暗記できなのがツラい所ですよね。
+忘れて毎回プラグインのリンクを探すのがめんどくさいのでいつも入れるものをメモっておきます。
+rbenv インストール必須なのまとめ # rbenv 本体 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.bash_profile echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bash_profile # Plugins mkdir ~/.rbenv/plugins # ほぼ必須。ruby本体入れるのに使う。これ無しで使う方法知らない。 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build # `rbenv rehash`が自動的に git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash # `rbenv update`コマンドが使えるように git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update # `rbenv sudo`でsudoでもrbenvが使えるように git clone git://github.com/dcarley/rbenv-sudo.git ~/.rbenv/plugins/rbenv-sudo # `rbenv install` するごとに特定のgemをいれる git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems  </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/rbenv-and-plugins-install/" title="rbenvのインストール方法と入れとくと便利なプラグイン">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-03T14:54:36JST">Apr 3, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/get-string-size-considering-double-width-and-normal-width-ruby/">rubyで全角半角を考慮して文字の幅を取得</a></h2>
+  </header>
+
+  
+  <div class="summary">文字幅をしるために全角=2,半角=1で文字サイズが取得したかったので
+やり方 "日本語とEnglish".each_char.map{|c| c.ascii_only? ? 1 : 2}.inject(:+) Rubyばんざーーい！
+参考 [2013/02/20/Rubyで全半角混在文字の文字幅を計算する方法 &#8211; ヽ（´・肉・｀）ノログ][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/get-string-size-considering-double-width-and-normal-width-ruby/" title="rubyで全角半角を考慮して文字の幅を取得">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-30T21:08:01JST">Mar 30, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-add-devise-user-by-rake-db-seed/">Deviseのユーザーを`rake db:seed`で追加する</a></h2>
+  </header>
+
+  
+  <div class="summary">db/seeds.rbにUser.createでencrypted_passwordを与えてDeviseのユーザーを作ろうとしたら失敗した。
+原因 passwordが存在しないためにvalidationに引っかかってしまってる。
+対策 passwordを平文で打てば解決するらしいけど、平文のパスワードは使いたくないのでバリデーションの方を無効化してしまいましょう。
+User.new(email: someone@example.com).save(validate: false)
+でOKです。encrypted_passwordの取得方法は色々あるでしょうが、自分の場合は一度Deviseで作ってからそれをrails console使ってUser.first.encrypted_passwordを取ってきました。
+参考 [Cannot create Devise account using rake db:seed for Rails 3.0 &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-add-devise-user-by-rake-db-seed/" title="Deviseのユーザーを`rake db:seed`で追加する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-28T12:13:33JST">Mar 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/install-cygwin-by-command-line/">cygwinのインストールをコマンドラインで一発で行う</a></h2>
+  </header>
+
+  
+  <div class="summary">一度cygwinをインストールした後ならaptcygとかcygaptとか「あれどっちだっけ？」となるapt風味のインターフェースがあるんですが、初回インストール時の方法があまりなかったので書いておきます。
+インストール方法 setup-x86_64.exe --no-admin -l %USERPROFILE%\cyg\package -P wget,ssh,rsync --download -s ftp://ftp.iij.ad.jp/pub/cygwin/ -q --root %USERPROFILE%\cyg
+これでc:\Uers\ironsand\cyg配下にwget,ssh,rsyncが入ります。32bit版でも引数の取り方は変わりません。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/install-cygwin-by-command-line/" title="cygwinのインストールをコマンドラインで一発で行う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-28T07:29:47JST">Mar 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/">Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">/usr/bin/env: ruby.exe: そのようなファイルやディレクトリはありません
+というエラーがwheneverで作ったcronのログとして出てきて困ってた。
+bin/railsの実行権限とか/usr/bin/env ruby --version でちゃんとrubyが動いてるかどうか確認したりとか色々。
+答え Windowsで作ったRailsプロジェクトだったので ruby&lt;strong&gt;.exe&lt;/strong&gt;になってた。なんてことだ…。
+解決策 bin/railsの一行目usr/bin/env ruby.exeの.exeを削除しておきましょう。ふぁっく。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/" title="Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-28T03:34:03JST">Mar 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/">xyzzyのmapcar 内で perform-string を使うときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">mapcar で perform-string を使って文字列置換しようと思ってかなりハマったのでメモって置きます。
+ダメな例 (mapcar '(lambda (s) (goto-char (point-min)) (perform-replace s "" nil t t nil)) '("foo[0-9]" "bar[0-9]")) これだと &#8220;foo1 bar2&#8221; は削除できるけど &#8220;bar2&#8221; と2個めの検索要素だけしかないときに削除できない
+良い例 (mapcar '(lambda (s) (goto-char (point-min)) (perform-replace s "" nil t t t)) '("foo[0-9]" "bar[0-9]")) perform-replaceの最後の引数NOERRORをtに設定しておけば該当する文字列がなくてもスムーズに次に進んでくれます。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/" title="xyzzyのmapcar 内で perform-string を使うときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-27T14:23:54JST">Mar 27, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/install-headless-chrome-or-firefox-in-ubuntu-on-vps/">[失敗] VPS上のUbuntu12.04にHeadlessなChromeかFirefoxをインストールするためにやったこと</a></h2>
+  </header>
+
+  
+  <div class="summary">phantomjs でzipファイルをダウンロードしたかったけど、ダウンロードオプションはまだ本体には取り込まれてないようなのでheadlessなChromeかFirefoxをVPSに入れて幸せな自動化処理生活を送ろうと思ったら全然うまく行きませんでした。
+俺の苦労を返せ！
+やったこと めんどくさいので説明は最低限で。
+FirefoxとChrome、それにSelenium Webdriverで使うためのChromeDriverをインストール
+apt-get install git unzip xvfb echo 'deb http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu precise main' &gt;&gt; /etc/apt/sources.list echo 'deb-src http://ppa.launchpad.net/mozillateam/firefox-next/ubuntu precise main' &gt;&gt; /etc/apt/sources.list apt-get install firefox wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google.list apt-get install google-chrome-stable wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip unzip chromedriver_linux64.zip mv chromdriver /usr/local/bin この時点で
+Xvfb :1 & export DISPLAY=:1 firefox すればFirefoxが立ち上がるはずだけどエラーが出てうまくいかない。
+色々と検索してみるけど結局エラーを除去する方法は見つからず。
+Rubyとか こちらはRubyを入れてselenium-webdriverを入れるまでのよくある感じのインストールメモ。DigitalOcean上のUbuntuにrootでログインしてそのままやってます。
+apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev git clone https://github.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/install-headless-chrome-or-firefox-in-ubuntu-on-vps/" title="[失敗] VPS上のUbuntu12.04にHeadlessなChromeかFirefoxをインストールするためにやったこと">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-27T13:57:39JST">Mar 27, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/create-a-array-of-symbol-like-string-w/">%w(foo bar) みたいな感じでsymbolを作る方法</a></h2>
+  </header>
+
+  
+  <div class="summary">rubyは文字列の配列を作るときに[&quot;foo&quot;, &quot;bar&quot;] と書くのがめんどくさいからという理由で %w(foo bar) みたいな感じで書けちゃいます。
+同じような感じでsymbolもかけないかと思って探してたらruby 2.0.0から%iが使えるようになったので
+%i(foo bar) で [:foo, :bar] が書けちゃいます。ステキ！
+参考 [ruby &#8211; Is there way to create a symbol&apos;s array like string with %w? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/create-a-array-of-symbol-like-string-w/" title="%w(foo bar) みたいな感じでsymbolを作る方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-27T11:57:07JST">Mar 27, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/">linuxで特定のファイルの最終行だけ削除する</a></h2>
+  </header>
+
+  
+  <div class="summary">Digital OceanではOSを気軽にDropletで作成して、気軽にポイポイ捨てれるのが売りですが、そのせいで sshで新しく繋ぎ直したホストに繋ごうとすると
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that a host key has just been changed. The fingerprint for the RSA key sent by the remote host is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx. Please contact your system administrator. Add correct host key in /home/ironsand/.ssh/known_hosts to get rid of this message.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/" title="linuxで特定のファイルの最終行だけ削除する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/posts/page/5/">Previous</a></li>
+    
+
+    
+    <li><a href="/posts/page/7/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

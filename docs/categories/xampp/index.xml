@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xampp on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/xampp/</link>
+    <description>Recent content in xampp on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Thu, 05 Jan 2012 11:16:06 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/xampp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>xampp で mod_rewrite を使う方法</title>
+      <link>http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/</link>
+      <pubDate>Thu, 05 Jan 2012 11:16:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/</guid>
+      <description>見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。
+mod_rewriteでできること ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくと
+http://localhost/index.php?user=foo&amp;amp;name=bar
+と書く所を
+http://localhost/foo/bar.html
+と書ける機能です。
+foo/bar.html にアクセスすると内部で
+index.php?user=foo&amp;amp;name=bar が呼び出されるわけです。
+Xamppの設定方法 xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。
+ まずApacheの設定ファイル http.conf を開きます。   自分の環境では[ X:\sugarsync\bin**xampp\apache\conf\httpd.conf** ] にありました。
+ モジュールがコメントアウトされてないか確認する  #LoadModule rewrite_module modules/mod_rewrite.so のようになってたら &amp;#8220;#&amp;#8221; を取って
+#LoadModule rewrite_module modules/mod_rewrite.so とします。
+ リライトの規則を書く。   http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。
+&amp;lt;IfModule rewrite_module&amp;gt; # bar.htmlを作りドキュメントルートに置いて # http://localhost/foo.html でアクセスできるか確認しましょう。 RewriteEngine On RewriteRule /foo.html /bar.html &amp;lt;/IfModule&amp;gt;  xampp を再起動 で完了   http://localhost/foo.</description>
+    </item>
+    
+    <item>
+      <title>xamppでpythonを使う</title>
+      <link>http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/</link>
+      <pubDate>Wed, 16 Nov 2011 16:00:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/getting-python-to-work-on-xampp/</guid>
+      <description>xamppには標準でpythonが入っているけど残念ながらpythonが入ってないので使いたかったら自分で入れる必要があるらしい。なので入れてみた。
+環境 Windows 7 32bit
+Xampp 1.7.7
+Python 2.6.1 (Portable)
+必要なもの &amp;#8220;Xampp python&amp;#8221;で検索するとmod_pythonの情報が出てきてインストール方法も色々と出てくるんだけれどもmod_pythonのwindows版はpythonのバージョンが2.5までにしか対応してないようで非常にめんどくさそう。
+色々探してたら簡単な方法を載せてるサイトが見つかったのでその方法を紹介します。
+インストールが必要な物は何もなし。ヽ(´▽｀)ノ
+設定方法 まず
+[xamppをインストールしたディレクトリ]\apache\conf\httpd.conf
+を開いて
+# # For Python # AddHandler cgi-script .py ScriptInterpreterSource Registry-Strict と追記します。
+場所は多分どこでもいいけど、既に
+&amp;#8220;AddHandler cgi-script .cgi .pl .asp&amp;#8221;って書いてる所があるのでその下にでも。
+んで、動かしたいpythonスクリプトの行頭に
+#!P:\Dropbox\bin\Python26\App\python.exe とpython.exeがある場所を書いておきます。
+以上で終わり。
+確認 #![python.exeの置いてる場所]\python.exe print &#34;Content-Type: text/plain&#34; print print &#34;hello world.&#34; と書いて[xamppのフォルダ]\htdocs\pythontest.py に保存して
+xampp_start.exe でサーバーを起動させて
+http://localhost/pythontext.py
+を開いて &amp;#8220;hello world.&amp;#8221;が表示されたらOK。
+サーバーが起動してる状態で設定したらxamppを一回終了させて再起動させないと動きません。
+やっとくと便利なこと http://localhost/index.html が
+http://localhost/ でも開けるように
+http://localhost/index.py が
+http://localhost/ でも開けるように設定しときましょう。
+# # DirectoryIndex: sets the file that Apache will serve if a directory # is requested.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/commands/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/commands/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Commands - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Commands</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-11-24T02:01:20JST">Nov 24, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/">sox を 無音部分のある音声を分断</a></h2>
+  </header>
+
+  
+  <div class="summary">音声つき単語帳の単語と例文とかを切り出してランダム出題する形にしたかったのでまずsoxを使って無音部分で音声を分割しました。
+$ sox in.wav out.wav silence 1 0.3 0.1% 1 0.3 0.1% : newfile : restart これでout001.wavなどのように連番でファイルが保存されます。初めの0.3が音声の前の部分の無音の長さで、後ろの0.3が音声の後に続く無音部分の長さです。
+参考 [sox fails to split files &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/" title="sox を 無音部分のある音声を分断">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-11-13T17:19:58JST">Nov 13, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/ffmpeg%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E5%86%8D%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%9B%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E6%AF%94%E3%81%AE%E3%81%BF/">ffmpegで動画を再エンコードせずにアスペクト比のみ変更する</a></h2>
+  </header>
+
+  
+  <div class="summary">昔録った動画のアスペクト比を間違えて設定してしまってたので一括で16:9にしたかったのでやり方を調べました。
+方法 $ ffmpeg -i movie.mp4 -c copy -aspect 16:9 movie_out.mp4  とこんな感じで出来ます。ちなみにある程度新しいffmpegじゃないとちゃんと動かないので新しいのを入れましょう。あとコンテナがアスペクト比の設定に対応してないともちろんダメです。
+ちなみに私はWindowsで動かしました。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/ffmpeg%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E5%86%8D%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%9B%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E6%AF%94%E3%81%AE%E3%81%BF/" title="ffmpegで動画を再エンコードせずにアスペクト比のみ変更する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-09-27T02:49:40JST">Sep 27, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/">FFmpeg使って複数の音声と字幕から一つの動画を作成する</a></h2>
+  </header>
+
+  
+  <div class="summary">ffmpegを使って複数の音声と字幕から一つの動画を作成する方法。
+ffmpeg.exe -i video.mp4 -i de.mp4 -i de_sw.mp4 -i fr.mp4 -i ru.mp4 -i de_co.mp4 -i de.srt -i en.srt -map 0:0 -metadata:s:v:0:0 language=ger -map 2:0 -metadata:s:a:1:0 language=ger -map 1:0 -metadata:s:a:0:0 language=ger -map 3:0 -metadata:s:a:2:0 language=fre -map 4:0 -metadata:s:a:3:0 language=rus -map 5:0 -metadata:s:a:4:0 language=ger -map 6:0 -metadata:s:s:0:0 language=ger -map 7:0 -metadata:s:s:1:0 language=eng -c copy -scodec mov_text out.mp4  コマンドの解説 まず入力ソースに使う動画は一つ一つに-iオプションを付けて呼び出します。
+そして-map の横についてる数字は何個目の引数として呼び込まれたか:その動画や音声のどのストリームかを表しています。そして-metadataを使って音声や字幕の言語を指定するのですがこの時に映像・音声・字幕でそれぞれ別のストリームとして言語を設定しないといけません。これがわからずにかなりの時間を費やしてしまいました…。
+ちなみに-acodec copy -vcodec copyという使い方をされてる人が多いですが-c copyで一括指定できます。
+知っとくと便利なこと -t 数値で出力する長さを選べるのでちゃんと合成で来てるか確認したいだけの時は-t 180などして簡単に動画の確認だけすると良いでしょう。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/" title="FFmpeg使って複数の音声と字幕から一つの動画を作成する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-25T11:43:19JST">Apr 25, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/">git の `error: src refspec master does not match any.`への対処</a></h2>
+  </header>
+
+  
+  <div class="summary">$ git push -u origin master error: src refspec master does not match any. という見たことないエラーが出てビビる。
+原因と対策 原因：コミットしてない
+対策：コミットする
+以上！
+参考 [src refspec master does not match any when pushing commits in git &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/" title="git の `error: src refspec master does not match any.`への対処">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-20T23:02:04JST">Apr 20, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/tips-git-in-cygwin/">cygwinのgitを使うときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">cygwinはWindows上で作成されたファイルを全て755の実行可能ファイルとして扱ってしまうので、そのままgitで扱うとすべてのファイルが実行可能権限を持ったなんとも危なっかしい構成になってしまいます。
+対策 $ git config core.filemode false でfilemodeの変更を無視するように設定しておきましょう。
+参考 [Windows Git users: Please check your core.fileMode setting &#8211; Google グループ][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/tips-git-in-cygwin/" title="cygwinのgitを使うときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-15T04:15:00JST">Apr 15, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/">find の `-exec` オプションを cygwin で使うときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">何故動かないか結構困ったのでメモ。
+動かないもの find . -name '*.mkv' -exec bash -c 'echo &quot;{}&quot;' \;  cygwin 環境、というかcmd.exeでcygwinの中のfindコマンドを呼び出してるとこれはエラーになっちゃいます。
+理由 何故ならfindの\;の\は;をエスケープする役割なので、当然ここにはエスケープキャラクターを入れて置かなければならないわけですが、Windowsのcmdにおいて\はパス区切りであって何もエスケープしてくれません。
+なのでcygwinのfindをcmd.exeやnyaosなどのWindows環境のシェルから使うときはcmd.exeのエスケープキャラクターの^を使ってこんなふうに書きましょう。
+find . -name '*.mkv' -exec bash -c 'echo &quot;{}&quot;' ^;  もしくはどちらの環境でも使える方法の
+find . -name '*.mkv' -exec bash -c 'echo &quot;{}&quot;' ';'  を使うのもいいかもしれません。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/" title="find の `-exec` オプションを cygwin で使うときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-14T19:55:58JST">Apr 14, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/">cygwinの必要なパッケージをコマンドラインで一括インストール</a></h2>
+  </header>
+
+  
+  <div class="summary">今まではcygwinをインストールしたディレクトリを全部SugarSyncで同期して使ってたんだけど、
+よくわからないままに色々入れてたら700MBぐらいあったので整理整頓することにしました。
+どうするか？ 既にインストールされてるcygwinのファイルを整理するのはめんどくさかったの新規インストールをすることにしたのはいいけど、何せパッケージ選択がめんどくさい。めんどくさいっていうか手動でやると必ず忘れてしまうので自動化したい。
+そこでコマンドラインインストールの登場です！
+インストール方法 setup-x86.exe --quiet-mode -P util-linux,curl,wget,openssh,rsync,zip,tree -s ftp://ftp.iij.ad.jp/pub/cygwin/ --root %USERPROFILE%\cyg --local-package-dir %USERPROFILE%\cyg  これでホームディレクトリ直下の C:\Users\ironsand\cygとかにインストールされる。
+やめたパッケージ gccとか入れてcygwinでコンパイルして色々してると毎回ドツボにハマるので、もうそういうのはVirtualBox上のUbuntuですることにする。
+rubyやpythonはWindowsのネイティブパッケージを使う。結局なんだかんだでそれが一番安定してる気がするので。
+gitもcygwin用のパス名周りのエラーが鬱陶しくなることがちょくちょくあったのでChocolatey使ってcinst gitでインストールする方法に変更。
+注意点 何故か 64bit バージョンは動きませんでした。理由はわかりませんが、こういう関係のソフトは32bit版のほうが今はまだ安定してる気がするし大量にメモリ使うこともないので気にしないことにします。
+sshだとsshコマンドはインストールされないのでopensshを指定しましょう。
+インストール後に/etc/passwdのホームディレクトリ設定を/home/usernameからcygdrive/c/Users/usernameとWindowsのホームフォルダに変更しておくとsshとかのコマンドの時に設定ファイルを自動的に読みに行ってくれるので便利。便利というかしないとちゃんと動かない。
+あと環境変数にset HOME=%USERPROFILE%もどこかに仕込んでたほうが良いかも。
+Util-Linux 何故かカレンダー表示のcalコマンドが見つからなかったので探してみたら、calのみのインストールはないらしい。
+とりあえずutil-linuxが良さそうなんでこれを使う事にした。
+tree Windows由来のコマンドなのにWindowsのtreeコマンドは階層指定もできない残念仕様なのでcygwinのを入れました。tree -L 2とかで階層指定できる。便利！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/" title="cygwinの必要なパッケージをコマンドラインで一括インストール">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-27T11:57:07JST">Mar 27, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/">linuxで特定のファイルの最終行だけ削除する</a></h2>
+  </header>
+
+  
+  <div class="summary">Digital OceanではOSを気軽にDropletで作成して、気軽にポイポイ捨てれるのが売りですが、そのせいで sshで新しく繋ぎ直したホストに繋ごうとすると
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that a host key has just been changed. The fingerprint for the RSA key sent by the remote host is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx. Please contact your system administrator. Add correct host key in /home/ironsand/.ssh/known_hosts to get rid of this message.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/" title="linuxで特定のファイルの最終行だけ削除する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-24T05:23:28JST">Mar 24, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/wget-and-curl/">wget と curl</a></h2>
+  </header>
+
+  
+  <div class="summary"> 「wgetかcurlで既にファイルが存在してたら上書きしないし、該当のディレクトリがなかったら自動的に生成するにはどうすればいいのかな？」という疑問をStack Overflowで検索！
+ディレクトリが存在しない時に自動的に作成する [linux &#8211; wget -O for non-existing save path? &#8211; Stack Overflow][1]
+回答意訳
+ curlならできるよ！ curlの方が強力なツールだからね！
+ 既にファイルが存在した時に上書きしない [curl &#8211; Don&apos;t download or overwrite file if exists &#8211; Stack Overflow][2]
+回答意訳
+ wgetならできるよ！ wgetの方が強力なツールだからね！
+ 　　　　　　　　　　今ここに新たな「きのこたけのこ紛争」が巻き起ころうとしている！！ </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/wget-and-curl/" title="wget と curl">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-22T00:27:55JST">Mar 22, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/">Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</a></h2>
+  </header>
+
+  
+  <div class="summary">ホームディレクトリに直接ファイルを置くんじゃなくて、
+必要なファイルをDropboxに置いといて同期して使おうと思ったので
+mklink ~/.nyaos p:\Dropbox\rc\.nyaos
+としたら
+この操作を実行するのに十分な特権がありません。
+と怒られた。
+なぜ権限が必要か？ 「さっき自分で作ったファイルを自分のホームフォルダに移動させるのになんで権限が必要なんです！？」と不思議に思って調べてみたら、シンボリックリンクの作成に必要なSeCreateSymbolicLinkPrivilegeが通常はユーザーが持っていないかららしい。
+何故そんな謎な仕様になってるかは全くわからない。
+日本語圏で検索しても「とりあえず管理者権限にしとけ」的な情報しか出てこなかったのでここに書いておきます。
+参考 [filesystems &#8211; Using windows mklink for linking 2 files &#8211; Stack Overflow][1]
+[windows 7 &#8211; Got not sufficient privileges message in CMD when logged on as administrator &#8211; Super User][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/" title="Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li class="disabled"><a href="#">Previous</a></li>
+    
+
+    
+    <li><a href="/categories/commands/page/2/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2015/sox-%E3%82%92-%E7%84%A1%E9%9F%B3%E9%83%A8%E5%88%86%E3%81%AE%E3%81%82%E3%82%8B%E9%9F%B3%E5%A3%B0%E3%82%92%E5%88%86%E6%96%AD/" class="list-group-item">sox を 無音部分のある音声を分断</a>
+      
+      <a href="http://programming.ironsand.net/2015/ffmpeg%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E5%86%8D%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89%E3%81%9B%E3%81%9A%E3%81%AB%E3%82%A2%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E6%AF%94%E3%81%AE%E3%81%BF/" class="list-group-item">ffmpegで動画を再エンコードせずにアスペクト比のみ変更する</a>
+      
+      <a href="http://programming.ironsand.net/2015/ffmpeg%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E5%AD%97%E5%B9%95%E3%81%8B%E3%82%89%E4%B8%80%E3%81%A4%E3%81%AE%E5%8B%95%E7%94%BB%E3%82%92%E4%BD%9C%E6%88%90/" class="list-group-item">FFmpeg使って複数の音声と字幕から一つの動画を作成する</a>
+      
+      <a href="http://programming.ironsand.net/2014/git-error-src-refspec-master-does-not-match-any/" class="list-group-item">git の `error: src refspec master does not match any.`への対処</a>
+      
+      <a href="http://programming.ironsand.net/2014/tips-git-in-cygwin/" class="list-group-item">cygwinのgitを使うときの注意点</a>
+      
+      <a href="http://programming.ironsand.net/2014/finds-exec-option-with-cygwin/" class="list-group-item">find の `-exec` オプションを cygwin で使うときの注意点</a>
+      
+      <a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/" class="list-group-item">cygwinの必要なパッケージをコマンドラインで一括インストール</a>
+      
+      <a href="http://programming.ironsand.net/2014/delete-list-line-of-a-file-in-linux-by-using-sed/" class="list-group-item">linuxで特定のファイルの最終行だけ削除する</a>
+      
+      <a href="http://programming.ironsand.net/2014/wget-and-curl/" class="list-group-item">wget と curl</a>
+      
+      <a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/" class="list-group-item">Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>xyzzy から Rhino(javascript)を直接実行する - 答えを知りたい</title>
+    
+<meta name="description" content="xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin&#43;zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。[][2]下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。;;jscript-mode(for Rhino) (setf \*js-prog\* &#34;java org.mozilla.javascript.tools.shell.Main&#34;) (setf \*js-classpath\* &#34;X:/sugarsync/bin/rhino1\_7R2/js.jar&#34;) (defun js-run-script-immediate () (interactive) (js-run &#34;&#34;)) (defun js-run (args) (let ((tempfile (make-temp-file-name &#34;\_\_temp\_&#34; &#34;js&#34; (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* &#34; -f \&#34;&#34; tempfile &#34;\&#34; &#34; args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive &#34;">
+
+<meta property="og:title" content="xyzzy から Rhino(javascript)を直接実行する - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin&#43;zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。[][2]下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。;;jscript-mode(for Rhino) (setf \*js-prog\* &#34;java org.mozilla.javascript.tools.shell.Main&#34;) (setf \*js-classpath\* &#34;X:/sugarsync/bin/rhino1\_7R2/js.jar&#34;) (defun js-run-script-immediate () (interactive) (js-run &#34;&#34;)) (defun js-run (args) (let ((tempfile (make-temp-file-name &#34;\_\_temp\_&#34; &#34;js&#34; (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* &#34; -f \&#34;&#34; tempfile &#34;\&#34; &#34; args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive &#34;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">
+<meta name="twitter:title" content="xyzzy から Rhino(javascript)を直接実行する - 答えを知りたい">
+<meta name="twitter:description" content="xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin&#43;zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。[][2]下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。;;jscript-mode(for Rhino) (setf \*js-prog\* &#34;java org.mozilla.javascript.tools.shell.Main&#34;) (setf \*js-classpath\* &#34;X:/sugarsync/bin/rhino1\_7R2/js.jar&#34;) (defun js-run-script-immediate () (interactive) (js-run &#34;&#34;)) (defun js-run (args) (let ((tempfile (make-temp-file-name &#34;\_\_temp\_&#34; &#34;js&#34; (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* &#34; -f \&#34;&#34; tempfile &#34;\&#34; &#34; args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive &#34;">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "xyzzy から Rhino(javascript)を直接実行する - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2010-03-14T18:56:16JST",
+    "dateModified": "2010-03-14T18:56:16JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin\x2bzsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。\n[][2]\n下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~\/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。\n;;jscript-mode(for Rhino) (setf \\*js-prog\\* \x22java org.mozilla.javascript.tools.shell.Main\x22) (setf \\*js-classpath\\* \x22X:\/sugarsync\/bin\/rhino1\\_7R2\/js.jar\x22) (defun js-run-script-immediate () (interactive) (js-run \x22\x22)) (defun js-run (args) (let ((tempfile (make-temp-file-name \x22\\_\\_temp\\_\x22 \x22js\x22 (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \\*js-prog\\* \x22 -f \\\x22\x22 tempfile \x22\\\x22 \x22 args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive \x22"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">xyzzy から Rhino(javascript)を直接実行する</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-14T18:56:16JST">Mar 14, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">xyzzy から Rhino(javascript)を直接実行する</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<h4 id="xyzzyから直接javascriptを使う">xyzzyから直接javascriptを使う</h4>
+
+<p>今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin+zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。</p>
+
+<p>[<img src="http://programming.ironsand.net/wp-content/uploads/2010/03/xyzzy-jscript-mode-300x195.jpg" alt="" title="xyzzy-jscript-mode" width="300" height="195" class="alignnone size-medium wp-image-28" srcset="http://programming.ironsand.net/wp-content/uploads/2010/03/xyzzy-jscript-mode-300x195.jpg 300w, http://programming.ironsand.net/wp-content/uploads/2010/03/xyzzy-jscript-mode-150x97.jpg 150w, http://programming.ironsand.net/wp-content/uploads/2010/03/xyzzy-jscript-mode.jpg 805w" sizes="(max-width: 300px) 100vw, 300px" />][2]</p>
+
+<p>下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。</p>
+
+<pre class=prettyprint>;;jscript-mode(for Rhino) (setf \*js-prog\* "java org.mozilla.javascript.tools.shell.Main") (setf \*js-classpath\* "X:/sugarsync/bin/rhino1\_7R2/js.jar") (defun js-run-script-immediate () (interactive) (js-run "")) (defun js-run (args) (let ((tempfile (make-temp-file-name "\_\_temp\_" "js" (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* " -f \"" tempfile "\" " args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive "sCmmand:") (let ((proc nil)(buffer (selected-buffer))) (with-output-to-temp-buffer ("\*cmd\*" 5) (unwind-protect (setq proc (make-process command :environ \`(("CLASSPATH" . ,\*js-classpath\*)) :output(selected-buffer) :exec-directory (default-directory buffer))))) (while (eq :run (process-status proc)) (sit-for 0.05)(do-events)) (if (= 0 (point-max)) (let ((buff (selected-buffer))) (other-window) (delete-buffer buff) (delete-other-windows)) (other-window)) (message (concat " '" command "' ended.")))) (add-hook 'ed::\*jscript-mode-hook\* #'(lambda () (define-key ed::\*jscript-mode-map\* '(#\C-c #\C-x) 'js-run-script-immediate)))</pre> 
+
+<p>*js-classpath* と define-key は好みに合わせて適宜変更の事。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/xyzzy/">xyzzy</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.nettags/javascript/">javascript</a></li>
+          
+          <li><a href="http://programming.ironsand.nettags/xyzzy/">xyzzy</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

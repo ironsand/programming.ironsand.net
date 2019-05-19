@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JAVA on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/java/</link>
+    <description>Recent content in JAVA on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sun, 14 Mar 2010 02:16:35 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windows(cygwin&#43;zsh)環境でRhinoを使う</title>
+      <link>http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Sun, 14 Mar 2010 02:16:35 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。
+ Rhino &amp;#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。
+ダウンロード+解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。
+これでインストールは完了したので
+java org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。
+zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&amp;ldquo;java org.mozilla.javascript.tools.shell.Main&amp;rdquo;
+インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &amp;ldquo;print(&amp;lsquo;hello&amp;rsquo;)&amp;rdquo; js -f hello.js
+これでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。</description>
+    </item>
+    
+  </channel>
+</rss>

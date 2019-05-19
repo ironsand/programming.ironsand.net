@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/windows/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/windows/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Windows - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Windows</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-28T13:11:58JST">Apr 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/">ConEmuのタスクバーのアイコンをクリックしたらすぐにactiveにする</a></h2>
+  </header>
+
+  
+  <div class="summary">デフォルトではConEmuで複数のタブを開いた状態でタスクバーのアイコンをクリックすると、どのタブを選択するかを選ばないとアクティブにすることができません。
+自分はとりあえずクリックしたらアクティブになって欲しいので設定を変えてしまいます。
+変え方 ConEmuのタイトルバーを右クリックしてSettingsを開いて
+左上のFind:のところでActive console onlyと検索します。
+するとMain-&gt;Task bar-&gt;Taskbar buttonsの項目のShow all consolesがデフォルトで選ばれてると思うので、それをActive console only (ConEmu window)に変えてSave settingsすればOKです。ステキ！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/" title="ConEmuのタスクバーのアイコンをクリックしたらすぐにactiveにする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T15:00:36JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/please-tell-me-better-console-in-windows/">Windowsの標準のコンソールが糞なのでより良い物をだれか教えてください</a></h2>
+  </header>
+
+  
+  <div class="summary">基礎知識 コンソールとシェルは別物です
+bashとかnyaosとかコンソールウィンドウの中で動くものがシェルです。この用語の違いをわかってないとそもそもコンソールというものを探すことができないので必須の知識になります。
+シェルは nyaos がオススメ Windows上で使うシェルはcygwinのbashとかGit付属のbashとかMSYSあたりのbashとか試してみましたが、結局はちゃんとWindows用に作られてるnyaos が一番便利だという結論にたどり着きました。
+コンソールを変えよう 標準のcmd.exeで起動するコンソールウィンドウは文字幅が固定でコピペもまともに出来ない何かの罰ゲームではないかという出来なので別のものを探します。
+候補はこんな感じ
+ ConEmu Console 2 ckw-mod ColorConsole PowerCmd  ConEmu 現在一番よさそうなコンソールです。タブが使えて、新しいタブを開くときに現在のディレクトリを残したまま開けるのもポイントが高い。
+Ctrl-aで行頭に移動とかそういうのも実装されてるし日本語も使えるし開発もさかんでStackoverflowに質問すると製作者が該当タグをウォッチしてるらしく直接回答をもらえる率が高いです。
+ただ、何故か自分の環境だと時折動きがカクカクしだしビープ音が連続で鳴り響く時があります。間違えて大量にイベントが飛んでるくさいんですが、これが発生するとイライラするので使うのを控え中。
+Console 2 動作も安定してるしタブも使える海外では定番のコンソールのようですが日本語が使えません。はい詰んだ。
+ColorConsole, PowerCmd この2つはそもそもシェルの変更ができませんでした。
+ckw-mod 日本人が作られてるらしいので日本語周りのバグはなさそうなのですが、いかんせんタブがない。古くからのタブ信者である自分には使いづらい。
+結論 誰かよいWindows上で使えるコンソールを教えてください。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/please-tell-me-better-console-in-windows/" title="Windowsの標準のコンソールが糞なのでより良い物をだれか教えてください">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-25T11:28:56JST">Apr 25, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/">Railsで使うpostgresqlのスーパーユーザーを作成する</a></h2>
+  </header>
+
+  
+  <div class="summary">RailsでPostgresqlを使うときに毎回そのためのユーザーの作成方法を忘れてしまうのでメモ。
+まずユーザーを作成 WindowsでChocolateyを使ってpostgresqlをインストールしてると初期パスワードはPostgres1234になってるので、
+$ psql.exe -U postgres ユーザ postgres のパスワード: ←ここでパスワードを入力 psql (9.2.1) "help" でヘルプを表示します. postgres=# create user deployer; CREATE ROLE postgres=# alter user deployer with superuser; ALTER ROLE これでパスワード無しのdeployerユーザーが必要な権限付きで作成される。
+※ Linux系のOSならsudo -u postgres psqlでpsqlコマンドを使いましょう。
+パスワード無しユーザーでもOKにする これだけだとfe_sendauth: no password suppliedというエラーが出てしまうので
+C:\PostgreSQL\data\pg_hba.confを開いて
+# IPv4 local connections: host all all 127.0.0.1/32 md5 # IPv6 local connections: host all all ::1/128 md5 を
+# IPv4 local connections: host all all 127.0.0.1/32 trust # IPv6 local connections: host all all ::1/128 trust に書き換える。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/" title="Railsで使うpostgresqlのスーパーユーザーを作成する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-20T09:13:20JST">Apr 20, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-use-twitter-bootstrap-rails-in-windows/">WindowsのRailsでtwitter-bootstrap-railsを使う方法</a></h2>
+  </header>
+
+  
+  <div class="summary">twitter-bootstrap-railsを普通にWindowsで使おうとするとlibv8がないからアカンで～的なエラーが出てきてインストールに失敗します。
+対策 特定のバージョンはインストールできるのでそれをインストールしましょう。
+gem install libv8 --version 3.11.8.0
+あとはGemfileにgem 'therubyracer', platforms: :rubyのコメントアウトを外してgem twitter-bottstrap-railsを追加すれば万事OK！
+追記、より良い解決策 そもそもbootstrap-sassを使えばよいのでは？</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-use-twitter-bootstrap-rails-in-windows/" title="WindowsのRailsでtwitter-bootstrap-railsを使う方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-14T19:55:58JST">Apr 14, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/">cygwinの必要なパッケージをコマンドラインで一括インストール</a></h2>
+  </header>
+
+  
+  <div class="summary">今まではcygwinをインストールしたディレクトリを全部SugarSyncで同期して使ってたんだけど、
+よくわからないままに色々入れてたら700MBぐらいあったので整理整頓することにしました。
+どうするか？ 既にインストールされてるcygwinのファイルを整理するのはめんどくさかったの新規インストールをすることにしたのはいいけど、何せパッケージ選択がめんどくさい。めんどくさいっていうか手動でやると必ず忘れてしまうので自動化したい。
+そこでコマンドラインインストールの登場です！
+インストール方法 setup-x86.exe --quiet-mode -P util-linux,curl,wget,openssh,rsync,zip,tree -s ftp://ftp.iij.ad.jp/pub/cygwin/ --root %USERPROFILE%\cyg --local-package-dir %USERPROFILE%\cyg  これでホームディレクトリ直下の C:\Users\ironsand\cygとかにインストールされる。
+やめたパッケージ gccとか入れてcygwinでコンパイルして色々してると毎回ドツボにハマるので、もうそういうのはVirtualBox上のUbuntuですることにする。
+rubyやpythonはWindowsのネイティブパッケージを使う。結局なんだかんだでそれが一番安定してる気がするので。
+gitもcygwin用のパス名周りのエラーが鬱陶しくなることがちょくちょくあったのでChocolatey使ってcinst gitでインストールする方法に変更。
+注意点 何故か 64bit バージョンは動きませんでした。理由はわかりませんが、こういう関係のソフトは32bit版のほうが今はまだ安定してる気がするし大量にメモリ使うこともないので気にしないことにします。
+sshだとsshコマンドはインストールされないのでopensshを指定しましょう。
+インストール後に/etc/passwdのホームディレクトリ設定を/home/usernameからcygdrive/c/Users/usernameとWindowsのホームフォルダに変更しておくとsshとかのコマンドの時に設定ファイルを自動的に読みに行ってくれるので便利。便利というかしないとちゃんと動かない。
+あと環境変数にset HOME=%USERPROFILE%もどこかに仕込んでたほうが良いかも。
+Util-Linux 何故かカレンダー表示のcalコマンドが見つからなかったので探してみたら、calのみのインストールはないらしい。
+とりあえずutil-linuxが良さそうなんでこれを使う事にした。
+tree Windows由来のコマンドなのにWindowsのtreeコマンドは階層指定もできない残念仕様なのでcygwinのを入れました。tree -L 2とかで階層指定できる。便利！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/" title="cygwinの必要なパッケージをコマンドラインで一括インストール">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-28T12:13:33JST">Mar 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/install-cygwin-by-command-line/">cygwinのインストールをコマンドラインで一発で行う</a></h2>
+  </header>
+
+  
+  <div class="summary">一度cygwinをインストールした後ならaptcygとかcygaptとか「あれどっちだっけ？」となるapt風味のインターフェースがあるんですが、初回インストール時の方法があまりなかったので書いておきます。
+インストール方法 setup-x86_64.exe --no-admin -l %USERPROFILE%\cyg\package -P wget,ssh,rsync --download -s ftp://ftp.iij.ad.jp/pub/cygwin/ -q --root %USERPROFILE%\cyg
+これでc:\Uers\ironsand\cyg配下にwget,ssh,rsyncが入ります。32bit版でも引数の取り方は変わりません。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/install-cygwin-by-command-line/" title="cygwinのインストールをコマンドラインで一発で行う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-28T07:29:47JST">Mar 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/">Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">/usr/bin/env: ruby.exe: そのようなファイルやディレクトリはありません
+というエラーがwheneverで作ったcronのログとして出てきて困ってた。
+bin/railsの実行権限とか/usr/bin/env ruby --version でちゃんとrubyが動いてるかどうか確認したりとか色々。
+答え Windowsで作ったRailsプロジェクトだったので ruby&lt;strong&gt;.exe&lt;/strong&gt;になってた。なんてことだ…。
+解決策 bin/railsの一行目usr/bin/env ruby.exeの.exeを削除しておきましょう。ふぁっく。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/" title="Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-03-22T00:27:55JST">Mar 22, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/">Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</a></h2>
+  </header>
+
+  
+  <div class="summary">ホームディレクトリに直接ファイルを置くんじゃなくて、
+必要なファイルをDropboxに置いといて同期して使おうと思ったので
+mklink ~/.nyaos p:\Dropbox\rc\.nyaos
+としたら
+この操作を実行するのに十分な特権がありません。
+と怒られた。
+なぜ権限が必要か？ 「さっき自分で作ったファイルを自分のホームフォルダに移動させるのになんで権限が必要なんです！？」と不思議に思って調べてみたら、シンボリックリンクの作成に必要なSeCreateSymbolicLinkPrivilegeが通常はユーザーが持っていないかららしい。
+何故そんな謎な仕様になってるかは全くわからない。
+日本語圏で検索しても「とりあえず管理者権限にしとけ」的な情報しか出てこなかったのでここに書いておきます。
+参考 [filesystems &#8211; Using windows mklink for linking 2 files &#8211; Stack Overflow][1]
+[windows 7 &#8211; Got not sufficient privileges message in CMD when logged on as administrator &#8211; Super User][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/" title="Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-05-15T08:34:51JST">May 15, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/run-a-cmd-as-admin/">コマンドプロンプトを管理者権限で実行する簡単な方法</a></h2>
+  </header>
+
+  
+  <div class="summary">Windows7でハードディスクをヤフオクに出すためにチェックディスクをしようと思ったら
+ chkdsk d:
+十分な特権がないので、アクセスは拒否されました。
+管理者特権モードで実行しているこのユーティリティを呼び出す必要があります。
+ と文句を言われてしまいました。
+管理者権限で実行するにはデスクトップにでもショートカットを作って、プロパティから「管理者として実行」あたりにチェックを入れれば解決ですが、それさえも面倒臭い。
+コンピュータの修理を頼まれて他人のパソコンで使いたい時もあるので、もっとも簡単な方法を紹介します。
+ここまで前置き スタートボタンの「プログラムとファイルの検索」に
+&#8220;cmd&#8221; と打てば cmd.exe がフィルタリングされますので、そこで
+Ctrl+Shift+Enterで実行します。
+これで管理者権限で実行できます。ショートカットさえ覚えておけば初期状態のWindows7で使えるので便利ですね。
+参考 Run a Command as Administrator from the Windows 7 / Vista Run box
+http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/run-a-cmd-as-admin/" title="コマンドプロンプトを管理者権限で実行する簡単な方法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/" class="list-group-item">ConEmuのタスクバーのアイコンをクリックしたらすぐにactiveにする</a>
+      
+      <a href="http://programming.ironsand.net/2014/please-tell-me-better-console-in-windows/" class="list-group-item">Windowsの標準のコンソールが糞なのでより良い物をだれか教えてください</a>
+      
+      <a href="http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/" class="list-group-item">Railsで使うpostgresqlのスーパーユーザーを作成する</a>
+      
+      <a href="http://programming.ironsand.net/2014/how-to-use-twitter-bootstrap-rails-in-windows/" class="list-group-item">WindowsのRailsでtwitter-bootstrap-railsを使う方法</a>
+      
+      <a href="http://programming.ironsand.net/2014/install-cygwin-package-by-using-command-line/" class="list-group-item">cygwinの必要なパッケージをコマンドラインで一括インストール</a>
+      
+      <a href="http://programming.ironsand.net/2014/install-cygwin-by-command-line/" class="list-group-item">cygwinのインストールをコマンドラインで一発で行う</a>
+      
+      <a href="http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/" class="list-group-item">Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点</a>
+      
+      <a href="http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/" class="list-group-item">Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</a>
+      
+      <a href="http://programming.ironsand.net/2012/run-a-cmd-as-admin/" class="list-group-item">コマンドプロンプトを管理者権限で実行する簡単な方法</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

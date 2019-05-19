@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows7 on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/windows7/</link>
+    <description>Recent content in Windows7 on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 28 Mar 2014 12:13:33 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/windows7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cygwinのインストールをコマンドラインで一発で行う</title>
+      <link>http://programming.ironsand.net/2014/install-cygwin-by-command-line/</link>
+      <pubDate>Fri, 28 Mar 2014 12:13:33 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/install-cygwin-by-command-line/</guid>
+      <description>一度cygwinをインストールした後ならaptcygとかcygaptとか「あれどっちだっけ？」となるapt風味のインターフェースがあるんですが、初回インストール時の方法があまりなかったので書いておきます。
+インストール方法 setup-x86_64.exe --no-admin -l %USERPROFILE%\cyg\package -P wget,ssh,rsync --download -s ftp://ftp.iij.ad.jp/pub/cygwin/ -q --root %USERPROFILE%\cyg
+これでc:\Uers\ironsand\cyg配下にwget,ssh,rsyncが入ります。32bit版でも引数の取り方は変わりません。</description>
+    </item>
+    
+    <item>
+      <title>Wheneverを使うRailsプロジェクトをWindowsで触るときの注意点</title>
+      <link>http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/</link>
+      <pubDate>Fri, 28 Mar 2014 07:29:47 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/rails-project-with-whenever-in-windows/</guid>
+      <description>/usr/bin/env: ruby.exe: そのようなファイルやディレクトリはありません
+というエラーがwheneverで作ったcronのログとして出てきて困ってた。
+bin/railsの実行権限とか/usr/bin/env ruby --version でちゃんとrubyが動いてるかどうか確認したりとか色々。
+答え Windowsで作ったRailsプロジェクトだったので ruby&amp;lt;strong&amp;gt;.exe&amp;lt;/strong&amp;gt;になってた。なんてことだ…。
+解決策 bin/railsの一行目usr/bin/env ruby.exeの.exeを削除しておきましょう。ふぁっく。</description>
+    </item>
+    
+    <item>
+      <title>Windowsでシンボリックリンクを作成するにはアドミン権限が必要です。</title>
+      <link>http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/</link>
+      <pubDate>Sat, 22 Mar 2014 00:27:55 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/you-need-to-have-privilege-to-create-symlink-in-windows/</guid>
+      <description>ホームディレクトリに直接ファイルを置くんじゃなくて、
+必要なファイルをDropboxに置いといて同期して使おうと思ったので
+mklink ~/.nyaos p:\Dropbox\rc\.nyaos
+としたら
+この操作を実行するのに十分な特権がありません。
+と怒られた。
+なぜ権限が必要か？ 「さっき自分で作ったファイルを自分のホームフォルダに移動させるのになんで権限が必要なんです！？」と不思議に思って調べてみたら、シンボリックリンクの作成に必要なSeCreateSymbolicLinkPrivilegeが通常はユーザーが持っていないかららしい。
+何故そんな謎な仕様になってるかは全くわからない。
+日本語圏で検索しても「とりあえず管理者権限にしとけ」的な情報しか出てこなかったのでここに書いておきます。
+参考 [filesystems &amp;#8211; Using windows mklink for linking 2 files &amp;#8211; Stack Overflow][1]
+[windows 7 &amp;#8211; Got not sufficient privileges message in CMD when logged on as administrator &amp;#8211; Super User][2]</description>
+    </item>
+    
+    <item>
+      <title>コマンドプロンプトを管理者権限で実行する簡単な方法</title>
+      <link>http://programming.ironsand.net/2012/run-a-cmd-as-admin/</link>
+      <pubDate>Tue, 15 May 2012 08:34:51 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2012/run-a-cmd-as-admin/</guid>
+      <description>Windows7でハードディスクをヤフオクに出すためにチェックディスクをしようと思ったら
+ chkdsk d:
+十分な特権がないので、アクセスは拒否されました。
+管理者特権モードで実行しているこのユーティリティを呼び出す必要があります。
+ と文句を言われてしまいました。
+管理者権限で実行するにはデスクトップにでもショートカットを作って、プロパティから「管理者として実行」あたりにチェックを入れれば解決ですが、それさえも面倒臭い。
+コンピュータの修理を頼まれて他人のパソコンで使いたい時もあるので、もっとも簡単な方法を紹介します。
+ここまで前置き スタートボタンの「プログラムとファイルの検索」に
+&amp;#8220;cmd&amp;#8221; と打てば cmd.exe がフィルタリングされますので、そこで
+Ctrl+Shift+Enterで実行します。
+これで管理者権限で実行できます。ショートカットさえ覚えておけば初期状態のWindows7で使えるので便利ですね。
+参考 Run a Command as Administrator from the Windows 7 / Vista Run box
+http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/</description>
+    </item>
+    
+  </channel>
+</rss>

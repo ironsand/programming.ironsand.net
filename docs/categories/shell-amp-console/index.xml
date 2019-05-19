@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shell &amp;amp; Console on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/shell-amp-console/</link>
+    <description>Recent content in Shell &amp;amp; Console on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Mon, 28 Apr 2014 13:11:58 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/shell-amp-console/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ConEmuのタスクバーのアイコンをクリックしたらすぐにactiveにする</title>
+      <link>http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/</link>
+      <pubDate>Mon, 28 Apr 2014 13:11:58 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/</guid>
+      <description>デフォルトではConEmuで複数のタブを開いた状態でタスクバーのアイコンをクリックすると、どのタブを選択するかを選ばないとアクティブにすることができません。
+自分はとりあえずクリックしたらアクティブになって欲しいので設定を変えてしまいます。
+変え方 ConEmuのタイトルバーを右クリックしてSettingsを開いて
+左上のFind:のところでActive console onlyと検索します。
+するとMain-&amp;gt;Task bar-&amp;gt;Taskbar buttonsの項目のShow all consolesがデフォルトで選ばれてると思うので、それをActive console only (ConEmu window)に変えてSave settingsすればOKです。ステキ！</description>
+    </item>
+    
+    <item>
+      <title>Windowsの標準のコンソールが糞なのでより良い物をだれか教えてください</title>
+      <link>http://programming.ironsand.net/2014/please-tell-me-better-console-in-windows/</link>
+      <pubDate>Sat, 26 Apr 2014 15:00:36 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/please-tell-me-better-console-in-windows/</guid>
+      <description>基礎知識 コンソールとシェルは別物です
+bashとかnyaosとかコンソールウィンドウの中で動くものがシェルです。この用語の違いをわかってないとそもそもコンソールというものを探すことができないので必須の知識になります。
+シェルは nyaos がオススメ Windows上で使うシェルはcygwinのbashとかGit付属のbashとかMSYSあたりのbashとか試してみましたが、結局はちゃんとWindows用に作られてるnyaos が一番便利だという結論にたどり着きました。
+コンソールを変えよう 標準のcmd.exeで起動するコンソールウィンドウは文字幅が固定でコピペもまともに出来ない何かの罰ゲームではないかという出来なので別のものを探します。
+候補はこんな感じ
+ ConEmu Console 2 ckw-mod ColorConsole PowerCmd  ConEmu 現在一番よさそうなコンソールです。タブが使えて、新しいタブを開くときに現在のディレクトリを残したまま開けるのもポイントが高い。
+Ctrl-aで行頭に移動とかそういうのも実装されてるし日本語も使えるし開発もさかんでStackoverflowに質問すると製作者が該当タグをウォッチしてるらしく直接回答をもらえる率が高いです。
+ただ、何故か自分の環境だと時折動きがカクカクしだしビープ音が連続で鳴り響く時があります。間違えて大量にイベントが飛んでるくさいんですが、これが発生するとイライラするので使うのを控え中。
+Console 2 動作も安定してるしタブも使える海外では定番のコンソールのようですが日本語が使えません。はい詰んだ。
+ColorConsole, PowerCmd この2つはそもそもシェルの変更ができませんでした。
+ckw-mod 日本人が作られてるらしいので日本語周りのバグはなさそうなのですが、いかんせんタブがない。古くからのタブ信者である自分には使いづらい。
+結論 誰かよいWindows上で使えるコンソールを教えてください。</description>
+    </item>
+    
+  </channel>
+</rss>

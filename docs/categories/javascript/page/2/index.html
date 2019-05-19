@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/javascript/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/javascript/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>javascript - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>javascript</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-01T02:00:09JST">Jan 1, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2012/how-to-use-map-in-jquery/">jQueryの便利なmapの使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">lispでmapに初めて触れた時は「何、このめんどくさい関数？」と感じ、正直な話あまり触れたくもなかったのですが慣れてくるとこいつはとても便利な賢いやつです。
+さてjavascriptでもmapが使えるか調べてみたらjQueryで提供されてました。
+mapを使えば配列全部に関数を適用させて、返り値を配列で受け取れます。for文なんて使わなくてもええんやっ！！
+使い方の例 定番の累乗を求めるサンプル。
+arr = [1,2,3]; arr = $.map(arr, function(n,i){return n*n;}); for(i=0;i&lt;arr.length;i++){ alert(arr[i]); } サンプルには良く使われるけど、実際にプログラミングしてて累乗が必要になったことがないですね。まあサンプルなんで実用性よりも分かりやすさが重要だから当然といえば当然の話しですね。
+とりあえずこんな感じの動作がmapはできます。
+要素をまとめて取得 たとえばこんなhtmlがあって
+&lt;div&gt;1&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; 配列で[1,2,3]が欲しいとする。
+そんな時もこの map を使えば一発解決さ！(深夜の外人がやってる通販のノリで)
+arr = $("div").map(function(){ return $(this).text(); }).get(); これでとれる。注意点は最後の get()。これがなくても配列っぽいのが返ってくるんだけども、これはjQuery-wrapped arrayというものらしく別物とのこと。
+for文で実行したり arr[0] で要素のアクセスしたりはできるけどもjoinすると上手く行かない。このjoinがうまくできないのにはまってだいぶ時間を食われました。
+arr.constructor でクラスを調べたら
+function Array() { [native code] } となるべき所が
+function (a, b) { return new e.fn.init(a, b, h); } になってました。この「get() すればよい」という情報を得るためにどれだけ遠回りしたことか…。
+とはいえこれで安心してmapをjavascriptでも使えるようになったのでガシガシ使っていこうと思います。
+参考 http://api.jquery.com/map/</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2012/how-to-use-map-in-jquery/" title="jQueryの便利なmapの使い方">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-14T02:16:35JST">Mar 14, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/">Windows(cygwin&#43;zsh)環境でRhinoを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。
+ Rhino &#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。
+ダウンロード+解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。
+これでインストールは完了したので
+java org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。
+zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&ldquo;java org.mozilla.javascript.tools.shell.Main&rdquo;
+インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &ldquo;print(&lsquo;hello&rsquo;)&rdquo; js -f hello.js
+これでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/" title="Windows(cygwin&#43;zsh)環境でRhinoを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-13T17:58:35JST">Mar 13, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/">MS、Webブラウザ選択画面のバグの解説</a></h2>
+  </header>
+
+  
+  <div class="summary">MSのブラウザ選択のバグに関する説明が、全くわかってない人が書いてるとしか思えない内容だったので javascript の sort について少し解説をしようと思う。
+ MS、Webブラウザ選択画面にアルゴリズム上のバグか － ＠IT  JavaScriptの配列の並べ替え（sort）は比較関数を渡すことで柔軟な並べ替えが行える。ここではMath.rand()で半々の確率で正負の値を返しているので、隣り合う要素の並べ替えはランダムに起こる。これで結果もランダムになるように思えるが、実際に意味のある並べ替えを行うためには、並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠で、例えば「a＞b」であれば「b＜a」、「a＜bかつb＜c」であれば「a＜c」でなければならない。これは、隣り合う要素同士をただランダムに入れ替えるだけでは達成できないのだという。  この「並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠」という意味の分からない部分はおそらく下記を訳した物と思われる。
+ Doing the Microsoft Shuffle: Algorithm Fail in Browser Ballot  Sorting requires a self-consistent definition of ordering. The following assertions must be true if sorting is to make any sense at all:  だから正しい訳は「並べかえには首尾一貫した&#8221;大小の定義&#8221;が必要である。」になる。
+実際にどのようなバグがあったかを説明するにはコードで示すのが一番わかりやすいので直接書いていこう。 問題の、 javascript の sort関数では引数に比較関数を取れる。例えばfunction comp(a, b){ return a &lt; b; //降順で並べる } function sortnum(){ return [0,3,5,6,-6].sort(comp); } //=&gt;6,5,3,0,-6 function comp(a, b){ return a &lt; b; //昇順で並べる } function sortnum(){ return [0,3,5,6,-6].</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/" title="MS、Webブラウザ選択画面のバグの解説">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/categories/javascript/">Previous</a></li>
+    
+
+    
+    <li class="disabled"><a href="#">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/" class="list-group-item">動的に追加したDOM要素にhoverイベントリスナーを追加する</a>
+      
+      <a href="http://programming.ironsand.net/2013/check-existance-of-element-with-jquery/" class="list-group-item">jQueryで要素の存在を確認する `isExist()` と `isNotExist()` を定義する</a>
+      
+      <a href="http://programming.ironsand.net/2013/jquery-isblank-function/" class="list-group-item">rails の `blank?` メソッドを jQuery に追加する方法</a>
+      
+      <a href="http://programming.ironsand.net/2013/load-image-for-ajax/" class="list-group-item">Ajaxで使えるロード画面のgif画像を生成できるサイト</a>
+      
+      <a href="http://programming.ironsand.net/2013/coffee-script-with-smart-compile/" class="list-group-item">coffee script を Emacs の smart compile を使ってjsの出力結果を出す</a>
+      
+      <a href="http://programming.ironsand.net/2013/ajax-file-upload-by-jquery-and-html5/" class="list-group-item">JqueryとHTML5でajaxなファイルのアップロード</a>
+      
+      <a href="http://programming.ironsand.net/2012/javascript-compare-strings-ignoring-case/" class="list-group-item">javascript で大文字、小文字を無視して文字列比較</a>
+      
+      <a href="http://programming.ironsand.net/2012/how-to-obtain-the-clicked-mouse-button-by-jquery/" class="list-group-item">jQueryでマウスの右クリック、左クリックを判断する</a>
+      
+      <a href="http://programming.ironsand.net/2012/difference-between-window-width-and-document-width/" class="list-group-item">$(window).width() と $(document).width() 違い</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

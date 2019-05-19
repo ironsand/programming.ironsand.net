@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SourceForge on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/sourceforge/</link>
+    <description>Recent content in SourceForge on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Mon, 02 May 2011 01:59:02 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/sourceforge/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SourceForgeに公開鍵をputtygen.exeで生成する</title>
+      <link>http://programming.ironsand.net/2011/generate-openssh-public-key-for-sourceforge-with-puttygen/</link>
+      <pubDate>Mon, 02 May 2011 01:59:02 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/generate-openssh-public-key-for-sourceforge-with-puttygen/</guid>
+      <description>SourceForgeはOpenSSHの公開鍵を登録しないと使えない機能が多いので
+puttygen.exe でキーを生成して登録する。
+ただputtyで使うキーがSSH形式でSourceForgeで使う形式のOpenSSHと違うためそのままでは登録できない。
+なので
+http://hiromasaya.web.fc2.com/Windows/putty.html
+を参考にして
+ssh-keygen -i -f id_rsa.pub  id_rsa_open_ssh.pub でできた id_rsa_open_ssh.pub をエディタで開いてSourceForgeの入力フィールドにコピペで登録できました。</description>
+    </item>
+    
+  </channel>
+</rss>

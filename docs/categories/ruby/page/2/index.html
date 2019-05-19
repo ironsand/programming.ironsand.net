@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/ruby/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/ruby/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>ruby - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>ruby</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-20T02:30:59JST">Feb 20, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/">Helperメソッド内で form_tag を使うときの注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">form_tagを使えばブロック内の全体を返してくれるかと思ったのですが、そうではないらしく最終行だけ返ってきてしまいます。
+具体例 つまり
+def generate_form(path) form_tag(path) do input_tag submit_tag end end だとフォームそのものと最終行のsubmit_tagだけが表示されてその他の入力フィールドが一切表示されません。
+対策 なので以下のように毎行Stringを保存しておきましょう。何でこんな仕様になってるんだろう…？
+def generate_form(path) form_tag(path) do str = input_tag str += submit_tag str end end 参考 [ruby on rails &#8211; How do I use form_tag from within a helper? &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/helper%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%86%85%E3%81%A7-form_tag-%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/" title="Helperメソッド内で form_tag を使うときの注意点">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-13T10:20:29JST">Feb 13, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E6%97%A5%E4%BB%98%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%AD%E3%81%8B%E3%82%89%E7%9B%B4%E8%BF%91%E3%81%AE%E6%97%A5%E4%BB%98%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B/">日付の配列の中から直近の日付を選択する</a></h2>
+  </header>
+
+  
+  <div class="summary">日付の配列がある時に
+pry(main)&gt; dates = (1..10).map{|i| Date.new(2015,i) } =&gt; [Thu, 01 Jan 2015, Sun, 01 Feb 2015, Sun, 01 Mar 2015, Wed, 01 Apr 2015, Fri, 01 May 2015, Mon, 01 Jun 2015, Wed, 01 Jul 2015, Sat, 01 Aug 2015, Tue, 01 Sep 2015, Thu, 01 Oct 2015] 現在の日付よりも新しく、かつ一番近い日付を選択したい時の処理
+pry(main)&gt; Date.today =&gt; Fri, 13 Feb 2015 pry(main)&gt; dates.find{|date| date &gt; Date.today} =&gt; Sun, 01 Mar 2015  findメソッドはやっぱり便利！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E6%97%A5%E4%BB%98%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%AD%E3%81%8B%E3%82%89%E7%9B%B4%E8%BF%91%E3%81%AE%E6%97%A5%E4%BB%98%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B/" title="日付の配列の中から直近の日付を選択する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-02T08:18:21JST">Feb 2, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/">既にインデックスをつけているカラムにUnique制限をつける</a></h2>
+  </header>
+
+  
+  <div class="summary">Railsで既にindexをつけているカラムにunique制限をもうけるには、ユニーク制限だけを付加することができないので一旦インデックス自体を削除してから新規に unique な index を追加します。
+def change remove_index :editabilities, [:user_id, :list_id] add_index :editabilities, [:user_id, :list_id], unique: true end  参考 [ruby on rails &#8211; How to add unique constraint to already existing index by migration &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E6%97%A2%E3%81%AB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%ABunique%E5%88%B6%E9%99%90%E3%82%92/" title="既にインデックスをつけているカラムにUnique制限をつける">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-02T07:23:20JST">Feb 2, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/">ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法</a></h2>
+  </header>
+
+  
+  <div class="summary"> Rubyの命名規則としてクラス名は通常はCamelCaseで記述しますが、HTTPなどの頭字語(Acronym)はそのまますべて大文字で記述します。
+Railsで頭字語のクラス名を使うときはモデル等を生成する前に設定で以下の記述を行っておくと自動的に認識してくれます。
+ActiveSupport::Inflector.inflections(:en) do |inflect| inflect.acronym 'GNU' end  ただhas_manyでこのクラスを持とうとすると以下のエラーになってしまいます。
+ LoadError: Unable to autoload constant Gnu, expected
+/Users/ironsand/dev/myproject/app/models/gnu.rb to define it
+ 対策 クラス名を明示的に指定するとOKです。
+has_many :gnus, class_name = "GNU" </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/activesupportinflector%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%9F%E9%A0%AD%E5%AD%97%E8%AA%9E%E3%81%8Chas_many%E3%82%92%E8%A7%A3%E9%87%88%E3%81%97%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84/" title="ActiveSupport::Inflectorで定義した頭字語が`has_many`を解釈してくれない時の解決法">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-05-04T01:39:37JST">May 4, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/">NokogiriとSelenium-WebDriverのxpathの違い</a></h2>
+  </header>
+
+  
+  <div class="summary">Selenium-WebDriverとNokogiriで同じファイルを開いても違うxpathを書かないといけないとダメで少しハマったのでメモ。
+違いの原因 同じHTMLを解析してもSelenium-WebDriverでChromeやFirefoxで開いた時は任意の要素であるtbodyが挿入されるために違いが発生します。
+実際の例 例えば
+&lt;table&gt; &lt;tr&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; とある時に
+Nokogiri の場合 require 'nokogiri' doc = Nokogiri::HTML(File.read("test.html")) doc.xpath("//table/tr") Selenium WebDriver の場合 require 'selenium-webdriver' driver = Selenium::WebDriver.for :chrome driver.get("file:///C:/Users/ironsand/test.html") driver.find_element(:xpath, "//table/tbody/tr") 基本的な対策 大体の場合は//table//trとどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに
+//tr/td/font[contains(text(), 'Keyword')]/../../following-sibling::tr[3]/td
+な感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。
+参考 [ruby &#8211; How to get element that have same parent and n th different position by xpath &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/" title="NokogiriとSelenium-WebDriverのxpathの違い">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-30T15:37:39JST">Apr 30, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/require-library-easily-in-irb/">irbで`require “foobar”`するのがめんどくさいので楽にする</a></h2>
+  </header>
+
+  
+  <div class="summary">例えば nokogiri でちゃんとデータの取得ができてるか確認するために
+irbを使うために
+$ irb してから
+require &quot;nokogiri&quot;と
+自分はいつもしてたんですが、めんどくさい。
+解決策 $ irb -r nokogiriな感じでライブラリが読み込めます。ステキ！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/require-library-easily-in-irb/" title="irbで`require “foobar”`するのがめんどくさいので楽にする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T18:17:15JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/without-line-break-with-fileio-readline-in-ruby/">rubyの`FileIO.readline`に改行を含ませないようにする</a></h2>
+  </header>
+
+  
+  <div class="summary"> こんなふうにファイルを読み込むと標準では改行が入ってしまいます。
+File.open(filename,"r") do |f| f.readlines end 解決策 改行はいらないので消しちゃいましょう。
+File.open(filename,"r") do |f| f.readlines.map &:chomp end </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/without-line-break-with-fileio-readline-in-ruby/" title="rubyの`FileIO.readline`に改行を含ませないようにする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T17:59:26JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/merge-arrays-in-ruby/">rubyで配列のMerge `(array1 &#43; array2).uniq` を更に簡単に</a></h2>
+  </header>
+
+  
+  <div class="summary">array1 | array2 で (array1 + array2).uniq と同じように配列を重複なしで結合してくれます。ステキ！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/merge-arrays-in-ruby/" title="rubyで配列のMerge `(array1 &#43; array2).uniq` を更に簡単に">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T16:59:23JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/">irb上でrubyスクリプトの実行速度を測る</a></h2>
+  </header>
+
+  
+  <div class="summary">例えば foo.rbというRubyスクリプトの実行時間をシェル上で知りたかったらtime foo.rbとすればいいわけですが、残念ながらirb上ではtimeコマンドをそのまま使うことができません。
+解決策 標準で用意されているBenchmarkライブラリを使えばOK.
+irb(main)&gt; require 'benchmark' irb(main)&gt; puts Benchmark.measure { "a"*1_000_000_000 } 0.350000 0.400000 0.750000 ( 0.835234) こんな感じで表示されます。
+0.750000がCPUを使った時間で0.835234が実際にかかった時間。
+気にしないといけないのはCPUを実際に使ってたじかんなので前者のほうになります。
+ちなみに自分の環境だと裏で動画のエンコードを走らせながらVirtualBox上のOSでやってたのでCPU使用時間の50倍ぐらい実際にかかってしまってました。
+参考 [Module: Benchmark (Ruby 2.1.1)][1]
+[When benchmarking, what causes a lag between CPU time and &ldquo;elapsed real time&rdquo;? &#8211; Stack Overflow][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/benchmark-ruby-script-in-irb/" title="irb上でrubyスクリプトの実行速度を測る">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-25T11:28:56JST">Apr 25, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/">Railsで使うpostgresqlのスーパーユーザーを作成する</a></h2>
+  </header>
+
+  
+  <div class="summary">RailsでPostgresqlを使うときに毎回そのためのユーザーの作成方法を忘れてしまうのでメモ。
+まずユーザーを作成 WindowsでChocolateyを使ってpostgresqlをインストールしてると初期パスワードはPostgres1234になってるので、
+$ psql.exe -U postgres ユーザ postgres のパスワード: ←ここでパスワードを入力 psql (9.2.1) "help" でヘルプを表示します. postgres=# create user deployer; CREATE ROLE postgres=# alter user deployer with superuser; ALTER ROLE これでパスワード無しのdeployerユーザーが必要な権限付きで作成される。
+※ Linux系のOSならsudo -u postgres psqlでpsqlコマンドを使いましょう。
+パスワード無しユーザーでもOKにする これだけだとfe_sendauth: no password suppliedというエラーが出てしまうので
+C:\PostgreSQL\data\pg_hba.confを開いて
+# IPv4 local connections: host all all 127.0.0.1/32 md5 # IPv6 local connections: host all all ::1/128 md5 を
+# IPv4 local connections: host all all 127.0.0.1/32 trust # IPv6 local connections: host all all ::1/128 trust に書き換える。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/create-postgres-superuser-for-rails/" title="Railsで使うpostgresqlのスーパーユーザーを作成する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/categories/ruby/">Previous</a></li>
+    
+
+    
+    <li><a href="/categories/ruby/page/3/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2016/ruby%E3%81%AE%E9%85%8D%E5%88%97%E3%81%8B%E3%82%89%E6%B7%BB%E5%AD%97%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%82%92%E3%83%94%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83/" class="list-group-item">Rubyの配列から添字を使って複数の値をピックアップする</a>
+      
+      <a href="http://programming.ironsand.net/2016/%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E5%80%A4%E3%81%8C%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AEid%E3%82%92%E5%8F%96/" class="list-group-item">複数のカラムの値が重複するオブジェクトのIDを取得する</a>
+      
+      <a href="http://programming.ironsand.net/2016/file-write-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-file-append-%E3%82%82%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/" class="list-group-item">File.write みたいに File.append も使いたい</a>
+      
+      <a href="http://programming.ironsand.net/2016/hash%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E3%83%AA%E3%83%8D%E3%83%BC%E3%83%A0%E3%81%99%E3%82%8B/" class="list-group-item">Hashのキーをリネームする</a>
+      
+      <a href="http://programming.ironsand.net/2015/rake-task-%E3%81%AE%E5%A4%9A%E9%87%8D%E8%B5%B7%E5%8B%95%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E6%8E%92%E4%BB%96%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86/" class="list-group-item">rake task の多重起動を禁止する排他処理を行う</a>
+      
+      <a href="http://programming.ironsand.net/2015/rake-task-%E3%82%92%E9%80%94%E4%B8%AD%E3%81%A7%E6%8A%9C%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AFreturn%E3%81%98%E3%82%83%E3%81%AA%E3%81%8F%E3%81%A6next/" class="list-group-item">rake task を途中で抜けるときはreturnじゃなくてnext</a>
+      
+      <a href="http://programming.ironsand.net/2015/array%E3%81%8B%E3%82%89%E9%87%8D%E8%A4%87%E3%81%99%E3%82%8B%E8%A6%81%E7%B4%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E6%8A%9C%E3%81%8D%E5%87%BA%E3%81%99/" class="list-group-item">Arrayから重複する要素の配列を抜き出す</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

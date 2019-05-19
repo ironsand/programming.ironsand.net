@@ -1,18 +1,15 @@
 baseurl = "http://programming.ironsand.net"
 languageCode = "ja-JP"
 title = "答えを知りたい"
-theme = "hugo-lithium-theme"
+theme = "hugo_theme_beg"
 googleAnalytics = ""
 disqusShortname = ""
-publishDir: docs
+publishDir = "docs"
 
 [permalinks]
     post = "/:year/:month/:day/:title/"
     page = "/:title/"
 
-[[menu.main]]
-    name = "About"
-    url = "/about/"
 [[menu.main]]
     name = "GitHub"
     url = "https://ironsand.github.com"

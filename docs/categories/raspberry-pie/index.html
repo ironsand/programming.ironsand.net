@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/categories/raspberry-pie/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/categories/raspberry-pie/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Raspberry Pie - 答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Raspberry Pie</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-22T12:14:42JST">Feb 22, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/">RubyとRasberry Pi でLEDをチカチカさせる</a></h2>
+  </header>
+
+  
+  <div class="summary">Rasberry Piに初期設定をして電源を挿すだけでノートパソコンから操作できるようにはしたももの、電子工作！！な事を全然やってないし、やり方もわからなかったのでAmazonでそれっぽいスターターキットを買ってみました。
+
+基礎知識 LEDから出てる日本の先端のうち長いのがアノード(電流が入ってくる方)、短いのがカソード(電流が出て行く方)。
+GPIO(General-purpose input/output)のそれぞれのピンの役割は以下のとおり。単純に3.3Vや5Vの電圧のところもあるし、Ground(GND)、それにGPIOがある。
+つまり全体のこともGTIOと呼ぶし、一部のその機能をもつピンもGPIOと呼ぶらしい。めんどくさい…。
+[][1]
+B+のモデルにはもっとピンがあるんですが、1から表示されてる部分までは同じらしいです。ちなみに後ろのハンダ付けが四角いのが1だそうです。……なにそのわかりにくい基準。
+[][2]
+抵抗には向きはないが強さは線の色で決まるので覚えるのが大変。
+ブレッドボードは基礎知識がないとつらいのでこちらを読んでおいてください。
+http://jsdiy.web.fc2.com/avr_7segclockbb/
+LEDをチカチカさせる 最初に載せたキットの解説サイトが[こちら][3]ですので、そこを参照します。
+配線方法 ブレッドボードの配線がこんなんで、
+[][4]
+ラズパイの配線がこんなんで
+[][5]
+コードがこうです。解説サイトのRubyを修正しています。
+port = 24 File.write("/sys/class/gpio/export", port) sleep 0.2 # 書き込みエラー回避 File.write("/sys/class/gpio/gpio#{port}/direction", "out") (1..10).each do |i| File.write("/sys/class/gpio/gpio#{port}/value", i % 2) sleep 0.2 end File.write("/sys/class/gpio/unexport", port) Lチカさせる 以上が上手くいっていたら ruby ~/led_blink.rbでスクリプトを実行したらLEDがチカチカと5回点滅するはずです。やったー！！
+できなかった人は一つ一つ手順を確認していきましょう〜。
+それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/" title="RubyとRasberry Pi でLEDをチカチカさせる">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-02-16T12:30:39JST">Feb 16, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/raspberry-pi-%E3%81%AB-avahi-%E3%82%92%E5%85%A5%E3%82%8C%E3%81%A6ssh%E6%8E%A5%E7%B6%9A%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB/">Raspberry Pi に Avahi を入れてSSH接続を簡単に</a></h2>
+  </header>
+
+  
+  <div class="summary">[初めてのラズベリーパイ 【購入からSSH接続まで】][1] で SSH を使ってラズベリーパイに接続ができたのですが、DHCPでローカルのIPアドレスを振り分けてる時は振り当てられてるIPアドレスを調べるためだけにラズパイにキーボードとディスプレイをさして作業する必要がでてくるので非常にめんどくさいことになります。
+Avahi そこでAvahiというソフトを使えば hosts ファイルがなくてもローカルネットワーク内の他のPCからIPアドレスではなく名前で参照できるようになります。。Macの共有機能などで使われている Bonjour と同等のものなんだとか。
+インストール /etc/hostname に保存されてる名前で接続できるようになるので初期設定のraspberrypiという名前を別のものに変更しておきましょう。
+sudo vi /etc/hostname  Avihaのインストールはいつもどおりapt-getでインストールできます。
+sudo apt-get -y install avahi-daemon  スタートアップに登録 このままでは起動時に自動的にAvahiが立ち上がってくれませんので
+sudo update-rc.d avahi-daemon defaults でスタートアップにも登録しておきましょう。
+※ 追記 次回使おうとしたら動かなくなってしまってました。 /etc/hostsを編集しないといけなかったようです。
+127.0.0.1 localhost ::1 localhost ip6-localhost ip6-loopback fe00::0 ip6-localnet ff00::0 ip6-mcastprefix ff02::1 ip6-allnodes ff02::2 ip6-allrouters 127.0.1.1 raspberrypi  となっていますのでraspberrypiの部分を変更した名前に変えておきます。
+使い方 インストールが終わったらクライアントからssh pi@raspberry.localのような形で pi@自分で決めた名前.localで接続できるようになります。
+それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ
+参考 [RaspberryPi &#8211; Raspberry Pi を無線 LAN 経由で SSH 接続できるようにする &#8211; Qiita][2]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/raspberry-pi-%E3%81%AB-avahi-%E3%82%92%E5%85%A5%E3%82%8C%E3%81%A6ssh%E6%8E%A5%E7%B6%9A%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB/" title="Raspberry Pi に Avahi を入れてSSH接続を簡単に">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-01-17T06:07:35JST">Jan 17, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/">ラズベリーパイへVNCでリモートデスクトップ接続する</a></h2>
+  </header>
+
+  
+  <div class="summary">[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。
+ VNCでデスクトップ共有すると便利  Raspberry側でする設定 まずはssh pi@192.168.xxx.xxxで接続します。そして必要なパッケージをインストール。
+pi@raspberrypi ~ $ sudo apt-get -y install tightvncserver  次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。
+また閲覧専用のためのパスワードを設定するかどうか聞かれますのでnで無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。
+pi@raspberrypi ~ $ tightvncserver You will require a password to access your desktops. Password: Verify: Would you like to enter a view-only password (y/n)? n  サーバーが立ち上がったらVNC用のWindowを一つ用意します。
+$ vncserver :0 -geometry 1024x768 -depth 24  これでラズベリーパイ側の設定は完了です。
+PC側からの設定 PC側にVNCのクライアントをインストールします。Mac の場合は特に何もインストールする必要はありません。
+Linuxでのインストール aptでインストールします。
+sudo apt-get install xtightvncviewer  Windowsでのインストール [Download TightVNC][2] から &#8220;Installer for Windows&#8221; をダウンロードしてインストールします。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/" title="ラズベリーパイへVNCでリモートデスクトップ接続する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-01-17T03:44:29JST">Jan 17, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/">初めてのラズベリーパイ 【購入からSSH接続まで】</a></h2>
+  </header>
+
+  
+  <div class="summary">[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]
+を思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。
+私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。
+ ICOCAと比べてみた。思ってたよりもずっと小さい。  目的 ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。
+必要なもの  [ラズベリーパイ B+][2] [USBキーボード][3] [MicroUSB 電源ケーブル][4](Android携帯とかについてるの) [USB電源アダプター][5] [Micro SDカード][6](一つ前の ラズベリーパイBを使う場合はSDカード) [USB無線LAN 子機][7] [HDMI接続できるディスプレイ][8]  どのラズベリーパイを買うべきか ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。
+ Raspberry Model A Raspberry Model B Raspberry Model A+ Raspberry Model B+  の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。A+はB+の廉価版になります。何をするか具体的に決まっている場合はA+を選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間にはB+の方が良さそうなのでそっちにしました。
+なおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。
+ディスプレイ ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。
+その他のパーツの注意点とか USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。
+その代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。
+あとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。
+OSインストール まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。
+必要なファイルの準備 ラズベリーパイは専用のLinuxディストリのRASPBIANというOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！
+さて、そのRASPBIANのインストールにはNOOBS(New Out Of the Box Software)というものを使います。
+[Donwloadsのページ][11]からNOOBSをダウンロードして展開します。NOOBS LITEもありますが、無印のほうを選択してください。
+そして[SD Card Formatter][12]をダウンロード&amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/" title="初めてのラズベリーパイ 【購入からSSH接続まで】">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2015/ruby%E3%81%A8rasberry-pi-%E3%81%A7led%E3%82%92%E3%83%81%E3%82%AB%E3%83%81%E3%82%AB%E3%81%95%E3%81%9B%E3%82%8B/" class="list-group-item">RubyとRasberry Pi でLEDをチカチカさせる</a>
+      
+      <a href="http://programming.ironsand.net/2015/raspberry-pi-%E3%81%AB-avahi-%E3%82%92%E5%85%A5%E3%82%8C%E3%81%A6ssh%E6%8E%A5%E7%B6%9A%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB/" class="list-group-item">Raspberry Pi に Avahi を入れてSSH接続を簡単に</a>
+      
+      <a href="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/" class="list-group-item">ラズベリーパイへVNCでリモートデスクトップ接続する</a>
+      
+      <a href="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/" class="list-group-item">初めてのラズベリーパイ 【購入からSSH接続まで】</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

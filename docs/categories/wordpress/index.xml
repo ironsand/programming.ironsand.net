@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wordpress on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/wordpress/</link>
+    <description>Recent content in Wordpress on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Thu, 10 Apr 2014 03:52:23 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>`/var/www/`以下のパーミッションまとめ</title>
+      <link>http://programming.ironsand.net/2014/permission-about-var-www/</link>
+      <pubDate>Thu, 10 Apr 2014 03:52:23 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/permission-about-var-www/</guid>
+      <description> /var/www配下のパーミッションをどうすべきかについて情報が錯綜してて困ったので自分なりに調べたことをまとめておきます。
+サーバープロセスが直接ファイルの変更を行うか、複数人管理かがどうかで結構変わるのでめんどくさくなってるみたいですね。
+まとめ  サーバープロセスがファイルの変更を行わず、sudo可ユーザーのみが変更
+/var/www 以下は全て root:root
+理由：apache, nginx などのプロセスが乗っ取られてもroot権限がないと改変できないため
+ サーバープロセスがファイルの変更を行わず、sudo不可のユーザーも変更
+/var/www/site を ftp-user:root に。
+複数ユーザーがFTPでアクセスして書き込み権を持つなら ftp-user:ftp-userで適当にユーザーをグループに追加
+ サーバープロセスがファイルの変更を行う(WordPressなど)、
+/var/www/site 以下の必要なフォルダ、ファイル_だけ_を ftp-user:www-user にして
+サーバープロセスのユーザーをwww-userに追加、apache所有には_絶対にしない_。
+  </description>
+    </item>
+    
+    <item>
+      <title>WordPressでadd_filterで適用された関数の一覧を表示する</title>
+      <link>http://programming.ironsand.net/2013/show-all-filters-in-wordpress/</link>
+      <pubDate>Tue, 10 Dec 2013 14:39:05 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/show-all-filters-in-wordpress/</guid>
+      <description>どんなフィルタが適用されてるか確認したかったので質問したら教えてもらえました。Stackexchangeの回答者様ありがとうございます。
+[crayon lang=&amp;#8221;php&amp;#8221;]
+&amp;lt;?php function get_filters_for( $hook = &amp;ldquo; ) { global $wp_filter; if( empty( $hook ) || !isset( $wp_filter[$hook] ) ) return;
+return $wp_filter[$hook];  } var_dump(get_filters_for( &amp;lsquo;the_content&amp;rsquo; )); [/crayon]
+参考 [How to check a filter are applied &amp;#8211; WordPress Answers][1]</description>
+    </item>
+    
+    <item>
+      <title>WordPressの教科書2の読書感想</title>
+      <link>http://programming.ironsand.net/2013/textbook-for-wordpress-2/</link>
+      <pubDate>Sun, 08 Dec 2013 01:14:54 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/textbook-for-wordpress-2/</guid>
+      <description>WordPressを覚えたくなったので[WordPressの教科書2][1]を読みながら勉強中。気になったところをメモっていきます。本の現物がないと意味不明です。
+P.065: フィルターフックを追加するのに関数名が `add_filter` なのが非常に気に食わない。そこは `add_filter_hook` とめんどくさくてもちゃんと書くところじゃないです！？
+P.071 `WP_SiteManager_bread_crumb::bread_crumb(&amp;#8216;navi_element=div&amp;amp;elm_id=bread_crumb&amp;#8217;);`
+って出てきたけど引数にこんなURL表記みたいな気持ち悪い方法使うの…？
+P.115 カスタムフィールドの名前欄を編集不可にはできないのかな？ (P.127から「専用の管理画面を作成する」が始まった！)
+P.253 Genericons便利そう。
+後は適当に流し読みしたので終了。</description>
+    </item>
+    
+  </channel>
+</rss>

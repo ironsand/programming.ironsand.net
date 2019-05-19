@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>動的に追加したDOM要素にhoverイベントリスナーを追加する - 答えを知りたい</title>
+    
+<meta name="description" content="かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。前提となる知識 まず基本として $(&#39;#foo&#39;).click -&amp;gt; console.log &amp;quot;押された！&amp;quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？後から追加された要素に click イベントを追加 前置きが長くなりましたが$(&#39;#foo&#39;).click -&amp;gt; console.log &#34;押された！&#34; を動的に追加された要素に適用させるには$(document).on &#39;click&#39;, &#39;#foo&#39;, -&amp;gt; console.log &#34;押された！&#34;  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。記述が間違っていたので修正しました。onイベントの引数として &amp;quot;hover&amp;quot;を使った場合、それは単なる &amp;quot;mouseenter mouseleave&amp;quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.">
+
+<meta property="og:title" content="動的に追加したDOM要素にhoverイベントリスナーを追加する - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。前提となる知識 まず基本として $(&#39;#foo&#39;).click -&amp;gt; console.log &amp;quot;押された！&amp;quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？後から追加された要素に click イベントを追加 前置きが長くなりましたが$(&#39;#foo&#39;).click -&amp;gt; console.log &#34;押された！&#34; を動的に追加された要素に適用させるには$(document).on &#39;click&#39;, &#39;#foo&#39;, -&amp;gt; console.log &#34;押された！&#34;  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。記述が間違っていたので修正しました。onイベントの引数として &amp;quot;hover&amp;quot;を使った場合、それは単なる &amp;quot;mouseenter mouseleave&amp;quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2014/add-event-listener-to-dynamically-appended-elements/">
+<meta name="twitter:title" content="動的に追加したDOM要素にhoverイベントリスナーを追加する - 答えを知りたい">
+<meta name="twitter:description" content="かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。前提となる知識 まず基本として $(&#39;#foo&#39;).click -&amp;gt; console.log &amp;quot;押された！&amp;quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。なのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？後から追加された要素に click イベントを追加 前置きが長くなりましたが$(&#39;#foo&#39;).click -&amp;gt; console.log &#34;押された！&#34; を動的に追加された要素に適用させるには$(document).on &#39;click&#39;, &#39;#foo&#39;, -&amp;gt; console.log &#34;押された！&#34;  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。記述が間違っていたので修正しました。onイベントの引数として &amp;quot;hover&amp;quot;を使った場合、それは単なる &amp;quot;mouseenter mouseleave&amp;quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1.">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "動的に追加したDOM要素にhoverイベントリスナーを追加する - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-01-31T15:25:08JST",
+    "dateModified": "2014-01-31T15:25:08JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "かなりハマったのでappend()などを使って動的に追加したHTMLの要素にhoverイベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。\n前提となる知識 まず基本として $(\x27#foo\x27).click -\x26gt; console.log \x26quot;押された！\x26quot; のように #foo に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために append() などで後から動的に追加された要素にはイベントの登録がされません。\nなのでそれを解決するために昔の delegate(), 今なら on() メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 on って単語短すぎやしません…？\n後から追加された要素に click イベントを追加 前置きが長くなりましたが\n$(\x27#foo\x27).click -\x26gt; console.log \x22押された！\x22 を動的に追加された要素に適用させるには\n$(document).on \x27click\x27, \x27#foo\x27, -\x26gt; console.log \x22押された！\x22  とします。document 内部の要素がクリックされるたびにイベントが発火され、クリック対象が #foo ならメソッドが実行されます。もちろん document ではなくページ読み込み時に存在する #foo の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。\n後から追加された要素に hover イベントを追加 同様に hover イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを on() を使って割り当てると hover は mouseenter と mouseleaveという複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を on メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。\n記述が間違っていたので修正しました。\nonイベントの引数として \x26quot;hover\x26quot;を使った場合、それは単なる \x26quot;mouseenter mouseleave\x26quot; の別名であって hover() 関数とは無関係であり、またこの記述方法は jQuery1."
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">動的に追加したDOM要素にhoverイベントリスナーを追加する</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-31T15:25:08JST">Jan 31, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">動的に追加したDOM要素にhoverイベントリスナーを追加する</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>かなりハマったので<code>append()</code>などを使って動的に追加したHTMLの要素に<code>hover</code>イベントを追加する方法を残しておきます。説明は全部 coffee script で書いてるので生のJSが良い人は自動変換サービスでもをつかってください。</p>
+
+<h3 id="前提となる知識">前提となる知識</h3>
+
+<p>まず基本として <code>$('#foo').click -&gt; console.log &quot;押された！&quot;</code> のように <code>#foo</code> に対して click イベントが追加されているわけですが、このイベントの追加はページの読み込み時に行われるために <code>append()</code> などで後から動的に追加された要素にはイベントの登録がされません。</p>
+
+<p>なのでそれを解決するために昔の <code>delegate()</code>, 今なら <code>on()</code> メソッドがあるわけです。簡単でわかり易い名前に統一されたので見た目はスッキリしたのですが、代わりにサンプルコードを探すのが大変になりました。 <code>on</code> って単語短すぎやしません…？</p>
+
+<h3 id="後から追加された要素に-click-イベントを追加">後から追加された要素に click イベントを追加</h3>
+
+<p>前置きが長くなりましたが</p>
+
+<pre class="lang:coffee decode:true " >$('#foo').click -&gt; console.log "押された！"</pre>
+
+<p>を動的に追加された要素に適用させるには</p>
+
+<pre class="lang:coffee decode:true " >$(document).on 'click', '#foo', -&gt; console.log "押された！"
+</pre>
+
+<p>とします。<code>document</code> 内部の要素がクリックされるたびにイベントが発火され、クリック対象が <code>#foo</code> ならメソッドが実行されます。もちろん <code>document</code> ではなくページ読み込み時に存在する <code>#foo</code> の親に当たる要素なら何でも構いません。無駄なイベントを発生させないためにできるだけ近い親が良いでしょう。</p>
+
+<h3 id="後から追加された要素に-hover-イベントを追加">後から追加された要素に hover イベントを追加</h3>
+
+<p><del datetime="2014-02-01T01:35:53+00:00">同様に <code>hover</code> イベントも click イベントのように簡単に書き換えれたらいいのですが、hover イベントを <code>on()</code> を使って割り当てると <code>hover</code> は <code>mouseenter</code> と <code>mouseleave</code>という複数のイベントを受け取っており、このように複数のイベントを受け取ってる関数を <code>on</code> メソッドで割り当てるためにはどのイベントを受け取ったのかを判別して処理する必要が出てきます。</del></p>
+
+<p>記述が間違っていたので修正しました。</p>
+
+<p><code>on</code>イベントの引数として <code>&quot;hover&quot;</code>を使った場合、それは単なる <code>&quot;mouseenter mouseleave&quot;</code> の別名であって <code>hover()</code> 関数とは無関係であり、またこの記述方法は jQuery1.8 で depracated で 1.9 では削除されたそうです。</p>
+
+<p>以下はマウスカーソルがあたった時に、クリックできる要素だとユーザーに伝えるためにマウスの形状を変更するコードですが</p>
+
+<pre class="lang:coffee decode:true " >$('#foo').hover \
+  (-&gt; $(@).css "cursor", "pointer"), \
+  (-&gt; $(@).css "cursor", "default")</pre>
+
+<p>のようなコードがあった時に</p>
+
+<pre class="lang:coffee decode:true " >$(document).on 'hover', '#foo', \
+  (-&gt; $(@).css "cursor", "pointer"), \
+  (-&gt; $(@).css "cursor", "default")</pre>
+
+<p>では<strong>動きません。</strong></p>
+
+<h3 id="解決策">解決策</h3>
+
+<p>実際に動くコードは以下のようになります。</p>
+
+<pre class="lang:coffee decode:true " >$(document).on
+    mouseenter: -&gt; $(@).css "cursor", "pointer",
+    mouseleave: -&gt; $(@).css "cursor", "default"
+  , '#foo'</pre>
+
+<h3 id="参考">参考</h3>
+
+<p>[javascript &#8211; JQuery .on() method with multiple event handlers to one selector &#8211; Stack Overflow][1]</p>
+
+<p>[.on() | jQuery API Documentation][2]</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/coffee/">coffee</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/javascript/">javascript</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/jquery/">jQuery</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

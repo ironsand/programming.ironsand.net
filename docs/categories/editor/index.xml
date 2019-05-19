@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Editor on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/editor/</link>
+    <description>Recent content in Editor on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 28 Mar 2014 03:34:03 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/editor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>xyzzyのmapcar 内で perform-string を使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/</link>
+      <pubDate>Fri, 28 Mar 2014 03:34:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/</guid>
+      <description>mapcar で perform-string を使って文字列置換しようと思ってかなりハマったのでメモって置きます。
+ダメな例 (mapcar &#39;(lambda (s) (goto-char (point-min)) (perform-replace s &#34;&#34; nil t t nil)) &#39;(&#34;foo[0-9]&#34; &#34;bar[0-9]&#34;)) これだと &amp;#8220;foo1 bar2&amp;#8221; は削除できるけど &amp;#8220;bar2&amp;#8221; と2個めの検索要素だけしかないときに削除できない
+良い例 (mapcar &#39;(lambda (s) (goto-char (point-min)) (perform-replace s &#34;&#34; nil t t t)) &#39;(&#34;foo[0-9]&#34; &#34;bar[0-9]&#34;)) perform-replaceの最後の引数NOERRORをtに設定しておけば該当する文字列がなくてもスムーズに次に進んでくれます。</description>
+    </item>
+    
+    <item>
+      <title>rbenvでインストールしたgemをEmacsから使う</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/</link>
+      <pubDate>Thu, 23 Jan 2014 08:04:42 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-gem-in-rbenv-with-emacs/</guid>
+      <description>rspec書いてる時にEmacsから簡単に呼び出せたら便利だと思ってsmart-compileの設定をこんな風に書き換えたんだけど、
+(setq smart-compile-alist (append &#39;((&#34;\_spec.rb$&#34; . &#34;rspec %f&#34;)) &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\\.coffee$&#34; . &#34;coffee -p %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist))  でちゃんとCompile command: rspec foo_spec.rbは呼び出せるものの実行すると
+-*- mode: compilation; default-directory: &#34;~/dev/zombie/spec/lib/&#34; -*- Compilation started at Thu Jan 23 16:50:59 rspec zombie_spec.rb /bin/bash: rspec: コマンドが見つかりません Compilation exited abnormally with code 127 at Thu Jan 23 16:51:00 な感じでエラーになってしまう。
+どうやら rbenv の環境がEmacs側で認識されてないので rbenv で入れた gem のコマンドも使えないのが原因らしい。
+解決策 [rbenv.</description>
+    </item>
+    
+    <item>
+      <title>coffee script を Emacs の smart compile を使ってjsの出力結果を出す</title>
+      <link>http://programming.ironsand.net/2013/coffee-script-with-smart-compile/</link>
+      <pubDate>Tue, 17 Dec 2013 15:37:33 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/coffee-script-with-smart-compile/</guid>
+      <description>Railsのプロジェクトで coffee script を使うけどもコンパイルは全て Asset pipelineがやってくれるので、たまに変換結果の js をちょっと見てみたい時に困った事になります。
+なのでEmacsの smart compile の機能を使ってすぐに 出力結果を得られるようにしてみました。
+解決策 coffee -pで標準出力に変換結果を出力してくれるので
+(global-set-key (kbd &#34;C-c C-x&#34;) &#39;smart-compile) (setq smart-compile-alist (append &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\\.coffee$&#34; . &#34;coffee -p %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist))  としておけばOKです。
+参考 [Convert coffee to javascript and show the result to standard output in Emacs &amp;#8211; Stack Overflow][1]</description>
+    </item>
+    
+    <item>
+      <title>Emacsの`find-file`で開くデフォルトのパスを変更する</title>
+      <link>http://programming.ironsand.net/2013/set-default-path-for-find-file-in-emacs/</link>
+      <pubDate>Tue, 17 Dec 2013 12:36:01 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/set-default-path-for-find-file-in-emacs/</guid>
+      <description> 何故かMacのOSを最新の Mavericks(10.9.1)に変えたらEmacsの C-x C-f で表示されるデフォルトのパスが ルートの / に変わってしまったのでその対策。
+対策法 下の対策はうまく動いてませんでした。homebrewの最新版だと対応されてるらしいので homebrew install --cocoa emacsで homebrewから入れたら解決します。
+Emacsの設定に default-directory を追加したらOK
+ (setq default-directory &amp;#8220;~/&amp;#8221;)  参考 
+ settings &amp;#8211; emacs &amp;ldquo;Find File:&amp;rdquo; default path &amp;#8211; Stack Overflow </description>
+    </item>
+    
+    <item>
+      <title>Emacsの`M-x shell` に色を付ける</title>
+      <link>http://programming.ironsand.net/2013/colorize-emacs-shell/</link>
+      <pubDate>Sun, 15 Dec 2013 13:53:57 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/colorize-emacs-shell/</guid>
+      <description>(add-hook &#39;shell-mode-hook &#39;ansi-color-for-comint-mode-on) でOK。ちなみに M-x eshell で高機能なシェルがつかえるらしくそちらでも色がついてた。</description>
+    </item>
+    
+    <item>
+      <title>Gemfileを開いてたらsmart-compileで`bundle install`を実行する</title>
+      <link>http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/</link>
+      <pubDate>Sun, 15 Dec 2013 07:33:43 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/run-bundle-install-to-gemfile-with-smart-compile-in-emacs/</guid>
+      <description>開いてるファイルをそのまま実行できるsmart-compileでGemfileを開いてたらbundle installを実行したかったのでやり方を調べてみました。
+設定方法 どうやらsmart compile は自動的にコマンドの実行ディレクトリをファイルがある場所に移動してくれるようなので単純に Gemfileというファイル名とbundle installのコマンドを他のファイルと同じように紐付ければOKのようです。
+(global-set-key (kbd &#34;C-c C-x&#34;) &#39;smart-compile) (setq smart-compile-alist (append &#39;((&#34;\\.rb$&#34; . &#34;ruby %f&#34;)) &#39;((&#34;\\.php$&#34; . &#34;php %f&#34;)) &#39;((&#34;\Gemfile$&#34; . &#34;bundle install&#34;)) smart-compile-alist)) もちろん ruby や php を使ってなかったら該当行は必要ありません。
+使い方 これで Gemfile を開いて C-c C-x するとこんな風に bundle install が実行されます。
+-*- mode: compilation; default-directory: &#34;~/dev/foo/&#34; -*- Compilation started at Sun Dec 15 16:29:42 bundle install Using rake (10.1.0) Using i18n (0.6.9) from git://github.com/svenfuchs/i18n.git (at master) Using minitest (4.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xyzzy on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/xyzzy/</link>
+    <description>Recent content in xyzzy on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 28 Mar 2014 03:34:03 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/xyzzy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>xyzzyのmapcar 内で perform-string を使うときの注意点</title>
+      <link>http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/</link>
+      <pubDate>Fri, 28 Mar 2014 03:34:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/how-to-use-perform-string-in-mapcar/</guid>
+      <description>mapcar で perform-string を使って文字列置換しようと思ってかなりハマったのでメモって置きます。
+ダメな例 (mapcar &#39;(lambda (s) (goto-char (point-min)) (perform-replace s &#34;&#34; nil t t nil)) &#39;(&#34;foo[0-9]&#34; &#34;bar[0-9]&#34;)) これだと &amp;#8220;foo1 bar2&amp;#8221; は削除できるけど &amp;#8220;bar2&amp;#8221; と2個めの検索要素だけしかないときに削除できない
+良い例 (mapcar &#39;(lambda (s) (goto-char (point-min)) (perform-replace s &#34;&#34; nil t t t)) &#39;(&#34;foo[0-9]&#34; &#34;bar[0-9]&#34;)) perform-replaceの最後の引数NOERRORをtに設定しておけば該当する文字列がなくてもスムーズに次に進んでくれます。</description>
+    </item>
+    
+    <item>
+      <title>xyzzy で声調が簡単に入力できる「ton-input-mode」を公開しました。</title>
+      <link>http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/</link>
+      <pubDate>Sat, 14 May 2011 03:54:14 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/ton-input-mode-for-xyzzy/</guid>
+      <description>機能 xyzzyで&amp;#8221;wŏ shì rìbĕn rén&amp;#8221; などが、そこそこ簡単に打てるようになります。
+インストール方法 NetInstallerで以下のパッケージを追加して、&amp;#8221;ton input&amp;#8221;をインストールして下さい。
+http://ironsand.net/xyzzy/packages.l
+再起動すると有効になってます。
+再起動せずに有効にできそうですが、よくわかりませんでした。
+NetInstallerが何かわからない人はこちらを読んでください。
+http://xyzzy.s53.xrea.com/wiki/index.php?QuickTour%2Fext%2FNetInstaller
+使い方 C-F9 (Controlキーを押しながらF9キーを押す)で Ton Input モードに入ります。
+&amp;#8220;wo&amp;#8221; を打った時点で数字の&amp;#8221;3&amp;#8243;を押すと &amp;#8220;wŏ&amp;#8221; になります。
+1,2,3,4 でそれぞれの声調に、&amp;#8221;0&amp;#8243;で声調無しに変化します。
+&amp;#8220;xian&amp;#8221; の最後でキーを押せば一番最後に入力された母音の &amp;#8220;a&amp;#8221; に声調がつきます。
+Ton Input モードを終了させるには、もう一度 C-F9 を入力します。
+注意点 Ton Input モード中は数字(0～4)を入力しようとしても入りません。
+謝辞 ありがとうございます。 ありがとうございます。
+マイナーモードの作り方 [silog]
+http://white.s151.xrea.com/wiki/index.php?memo%2Fxyzzy%2Fminor-mode
+netinstaller 対応メモ
+http://d.hatena.ne.jp/bowbow99/20090710/1247182818
+そして、lispでわからないことを教えてくれた2chのxyzzyの名無しさん達がいなければ途中で作るのを諦めてたと思います。 みなさんに感謝を。</description>
+    </item>
+    
+    <item>
+      <title>xyzzy の backward-word と previous-word, forward-word と next-word の違い</title>
+      <link>http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/</link>
+      <pubDate>Fri, 13 May 2011 16:06:25 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/backward-word-previous-word-forward-word-next-word/</guid>
+      <description>xyzzy の lisp の関数 backward-word, previous-word, forward-word, next-word の動作の違いがよくわからなかったので、試してみた。
+黒背景白文字が移動前のカーソルの位置で、灰色背景太字が移動後の場所。
+backward-word
+123　456　789
+123456　789
+123　456　789
+previous-word
+123　456　789
+123456　789
+123　456　789
+forward-word
+123456　789
+123456789
+123　456789
+next-word
+123　456　789
+123456　789
+123　456　789
+backward-word と previous-word は同じ動作で forward-word と next-word は動作が異なるらしい。 あってんのかな、これ。</description>
+    </item>
+    
+    <item>
+      <title>xyzzyをソースからビルドの方法をまとめてみた</title>
+      <link>http://programming.ironsand.net/2011/build-xyzzy-from-source/</link>
+      <pubDate>Thu, 28 Apr 2011 21:16:37 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/build-xyzzy-from-source/</guid>
+      <description>Xyzzy Wiki の [ソースからビルドしてみる3][1] を参考に xyzzy をソースからビルドしてみました。 ファイルを取ってきたり、めんどくさいことが多かったので以下のステップでできるように簡略化。
+[xyzzysrc-0.2.2.235-pack][2]
+これをダウンロードしてあとは01README.txtを見てください。
+ 1 Microsoft Visual C++ 2008 Express Edition インストール
+2 env.vbs を叩く (環境変数のセットとafxres.hのコピー)
+3 cd xyzzy/src
+4 nmake (デバッグ版は nmake CFG=d)
+5 ぽけーと待つ
+6 できあがり
+ 以上です。 何かおかしいところあったら連絡ださい。 俺は何もわかっていませんので。
+Unicode Consortium のファイルも同封してますが、ライセンスの確認はとってます。
+2011/05/28追記
+2chで指摘されて気づいたのですが、env.vbs で c:\Program Files\ 配下にファイルの移動を行ってるので UAC が入っているとエラーになります。 UACを一時的に切ってenv.vbs を実行してください。
+一度実行してしまえば次回以降ビルドするときにはUAC がオンでも問題ありません。</description>
+    </item>
+    
+    <item>
+      <title>xyzzyでファイル保存時にmodeの変更をする</title>
+      <link>http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/</link>
+      <pubDate>Sat, 23 Apr 2011 08:23:30 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/</guid>
+      <description>Xyzzy上で新規作成した javascript とか ruby のバッファに毎回モード設定をするのがめんどくさかったので書いた。 siteinit.l か ~/.xyzzy のどこかに貼りつけて使ってください。
+※同じ拡張子に複数のモードが紐付けられていると、古い方に設定されるようになっていたので修正;ファイル保存時に拡張子をチェックして適切なモードに変更する。 ;リネーム時にしたかったけど、hookが用意されてないので断念。 (defun set-buffer-mode () (block sbm (mapcar (lambda (l) (when (string-matchp (car l) (get-buffer-file-name)) (funcall (cdr l)) (return-from sbm)) ) *auto-mode-alist*))) (add-hook &amp;lsquo;*after-save-buffer-hook* &amp;lsquo;set-buffer-mode)</description>
+    </item>
+    
+    <item>
+      <title>xyzzyからPlantUMLを使う</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Sun, 28 Mar 2010 18:53:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>テキスト形式でUMLが書けるPlantUML PlantUMLはテキスト形式でUMLを記述して画像に出力できるオープンソースのソフトウェアです。 UMLが書けるフリーソフトはいくつかありますが、テキストベースで記述できるのは大変ありがたいですね。
+PlantUMLの具体例 サンプルをPlantUMLのサイト内から引用します。
+http://plantuml.sourceforge.net/classes.html
+[][1]　こんなUMLが以下の記述で作れちゃいます。@startuml img/classes04.png abstract class AbstractList abstract AbstractCollection interface List interface Collection List &amp;lt;|&amp;ndash; AbstractList Collection &amp;lt;|&amp;ndash; AbstractCollection Collection &amp;lt;|- List AbstractCollection &amp;lt;|- AbstractList AbstractList &amp;lt;|&amp;ndash; ArrayList ArrayList : Object[] elementData ArrayList : size() enum TimeUnit TimeUnit : DAYS TimeUnit : HOURS TimeUnit : MINUTES @enduml
+PlantUMLのインストール http://plantuml.sourceforge.net/download.html
+から plantuml.jar をダウンロードしてください。
+plantumlの実行にはJavaが必要になりますので、もしJavaがインストールされていなければ
+http://www.java.com/ja/download/
+からインストールを行ってください。
+&amp;ldquo;Sequence Diagram&amp;rdquo; 以外の画像の出力、つまり普通に使うのであれば Graphviz もインストールする必要があります。
+http://graphviz.org/Download_windows.php
+からダウンロードしてインストールしてください。
+以上でインストールは終了です。
+xyzzyからPlantUMLを使う方法 さて、次は以下のコードを siteinit.</description>
+    </item>
+    
+    <item>
+      <title>xyzzy から Rhino(javascript)を直接実行する</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</link>
+      <pubDate>Sun, 14 Mar 2010 18:56:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/</guid>
+      <description>xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin+zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。
+[][2]
+下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。
+;;jscript-mode(for Rhino) (setf \*js-prog\* &#34;java org.mozilla.javascript.tools.shell.Main&#34;) (setf \*js-classpath\* &#34;X:/sugarsync/bin/rhino1\_7R2/js.jar&#34;) (defun js-run-script-immediate () (interactive) (js-run &#34;&#34;)) (defun js-run (args) (let ((tempfile (make-temp-file-name &#34;\_\_temp\_&#34; &#34;js&#34; (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* &#34; -f \&#34;&#34; tempfile &#34;\&#34; &#34; args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive &#34;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>初めてのラズベリーパイ 【購入からSSH接続まで】 - 答えを知りたい</title>
+    
+<meta name="description" content="[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]を思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。 ICOCAと比べてみた。思ってたよりもずっと小さい。  目的 ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。必要なもの  [ラズベリーパイ B&#43;][2] [USBキーボード][3] [MicroUSB 電源ケーブル][4](Android携帯とかについてるの) [USB電源アダプター][5] [Micro SDカード][6](一つ前の ラズベリーパイBを使う場合はSDカード) [USB無線LAN 子機][7] [HDMI接続できるディスプレイ][8]  どのラズベリーパイを買うべきか ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。 Raspberry Model A Raspberry Model B Raspberry Model A&#43; Raspberry Model B&#43;  の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。A&#43;はB&#43;の廉価版になります。何をするか具体的に決まっている場合はA&#43;を選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間にはB&#43;の方が良さそうなのでそっちにしました。なおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。ディスプレイ ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。その他のパーツの注意点とか USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。その代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。あとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。OSインストール まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。必要なファイルの準備 ラズベリーパイは専用のLinuxディストリのRASPBIANというOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！さて、そのRASPBIANのインストールにはNOOBS(New Out Of the Box Software)というものを使います。[Donwloadsのページ][11]からNOOBSをダウンロードして展開します。NOOBS LITEもありますが、無印のほうを選択してください。そして[SD Card Formatter][12]をダウンロード&amp;amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。">
+
+<meta property="og:title" content="初めてのラズベリーパイ 【購入からSSH接続まで】 - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]を思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。 ICOCAと比べてみた。思ってたよりもずっと小さい。  目的 ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。必要なもの  [ラズベリーパイ B&#43;][2] [USBキーボード][3] [MicroUSB 電源ケーブル][4](Android携帯とかについてるの) [USB電源アダプター][5] [Micro SDカード][6](一つ前の ラズベリーパイBを使う場合はSDカード) [USB無線LAN 子機][7] [HDMI接続できるディスプレイ][8]  どのラズベリーパイを買うべきか ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。 Raspberry Model A Raspberry Model B Raspberry Model A&#43; Raspberry Model B&#43;  の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。A&#43;はB&#43;の廉価版になります。何をするか具体的に決まっている場合はA&#43;を選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間にはB&#43;の方が良さそうなのでそっちにしました。なおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。ディスプレイ ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。その他のパーツの注意点とか USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。その代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。あとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。OSインストール まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。必要なファイルの準備 ラズベリーパイは専用のLinuxディストリのRASPBIANというOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！さて、そのRASPBIANのインストールにはNOOBS(New Out Of the Box Software)というものを使います。[Donwloadsのページ][11]からNOOBSをダウンロードして展開します。NOOBS LITEもありますが、無印のほうを選択してください。そして[SD Card Formatter][12]をダウンロード&amp;amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/">
+<meta name="twitter:title" content="初めてのラズベリーパイ 【購入からSSH接続まで】 - 答えを知りたい">
+<meta name="twitter:description" content="[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]を思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。 ICOCAと比べてみた。思ってたよりもずっと小さい。  目的 ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。必要なもの  [ラズベリーパイ B&#43;][2] [USBキーボード][3] [MicroUSB 電源ケーブル][4](Android携帯とかについてるの) [USB電源アダプター][5] [Micro SDカード][6](一つ前の ラズベリーパイBを使う場合はSDカード) [USB無線LAN 子機][7] [HDMI接続できるディスプレイ][8]  どのラズベリーパイを買うべきか ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。 Raspberry Model A Raspberry Model B Raspberry Model A&#43; Raspberry Model B&#43;  の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。A&#43;はB&#43;の廉価版になります。何をするか具体的に決まっている場合はA&#43;を選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間にはB&#43;の方が良さそうなのでそっちにしました。なおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。ディスプレイ ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。その他のパーツの注意点とか USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。その代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。あとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。OSインストール まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。必要なファイルの準備 ラズベリーパイは専用のLinuxディストリのRASPBIANというOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！さて、そのRASPBIANのインストールにはNOOBS(New Out Of the Box Software)というものを使います。[Donwloadsのページ][11]からNOOBSをダウンロードして展開します。NOOBS LITEもありますが、無印のほうを選択してください。そして[SD Card Formatter][12]をダウンロード&amp;amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "初めてのラズベリーパイ 【購入からSSH接続まで】 - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-01-17T03:44:29JST",
+    "dateModified": "2015-01-17T03:44:29JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]\nを思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。\n私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。\n ICOCAと比べてみた。思ってたよりもずっと小さい。  目的 ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。\n必要なもの  [ラズベリーパイ B\x2b][2] [USBキーボード][3] [MicroUSB 電源ケーブル][4](Android携帯とかについてるの) [USB電源アダプター][5] [Micro SDカード][6](一つ前の ラズベリーパイBを使う場合はSDカード) [USB無線LAN 子機][7] [HDMI接続できるディスプレイ][8]  どのラズベリーパイを買うべきか ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。\n Raspberry Model A Raspberry Model B Raspberry Model A\x2b Raspberry Model B\x2b  の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。A\x2bはB\x2bの廉価版になります。何をするか具体的に決まっている場合はA\x2bを選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間にはB\x2bの方が良さそうなのでそっちにしました。\nなおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。\nディスプレイ ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。\nその他のパーツの注意点とか USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。\nその代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。\nあとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。\nOSインストール まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。\n必要なファイルの準備 ラズベリーパイは専用のLinuxディストリのRASPBIANというOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！\nさて、そのRASPBIANのインストールにはNOOBS(New Out Of the Box Software)というものを使います。\n[Donwloadsのページ][11]からNOOBSをダウンロードして展開します。NOOBS LITEもありますが、無印のほうを選択してください。\nそして[SD Card Formatter][12]をダウンロード\x26amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。"
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">初めてのラズベリーパイ 【購入からSSH接続まで】</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-01-17T03:44:29JST">Jan 17, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">初めてのラズベリーパイ 【購入からSSH接続まで】</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]</p>
+
+<p>を思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。</p>
+
+<p>私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。</p>
+
+<div id="attachment_544" style="width: 1210px" class="wp-caption alignnone">
+  <a href="http://programming.ironsand.net/wp-content/uploads/2015/01/raspberry_pie.jpg"><img src="http://programming.ironsand.net/wp-content/uploads/2015/01/raspberry_pie.jpg" alt="ICOCAと比べてみた。思ってたよりもずっと小さい。" width="1200" height="428" class="size-full wp-image-544" srcset="http://programming.ironsand.net/wp-content/uploads/2015/01/raspberry_pie.jpg 1200w, http://programming.ironsand.net/wp-content/uploads/2015/01/raspberry_pie-300x107.jpg 300w, http://programming.ironsand.net/wp-content/uploads/2015/01/raspberry_pie-1024x365.jpg 1024w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+  
+  <p class="wp-caption-text">
+    ICOCAと比べてみた。思ってたよりもずっと小さい。
+  </p>
+</div>
+
+<h2 id="目的">目的</h2>
+
+<p>ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。</p>
+
+<h2 id="必要なもの">必要なもの</h2>
+
+<ul>
+<li>[ラズベリーパイ B+][2]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B00LT4BOK6" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+<li>[USBキーボード][3]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B0045C1ASK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+<li>[MicroUSB 電源ケーブル][4]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B003M8GK0Q" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />(Android携帯とかについてるの)</li>
+<li>[USB電源アダプター][5]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B002GKBD5I" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+<li>[Micro SDカード][6]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B008UR8TS0" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />(一つ前の ラズベリーパイBを使う場合はSDカード)</li>
+<li>[USB無線LAN 子機][7]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B003NSAMW2" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+<li>[HDMI接続できるディスプレイ][8]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B00CXLKNIS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+</ul>
+
+<h3 id="どのラズベリーパイを買うべきか">どのラズベリーパイを買うべきか</h3>
+
+<p>ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。</p>
+
+<ul>
+<li>Raspberry Model A</li>
+<li>Raspberry Model B</li>
+<li>Raspberry Model A+</li>
+<li>Raspberry Model B+</li>
+</ul>
+
+<p>の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。<code>A+</code>は<code>B+</code>の廉価版になります。何をするか具体的に決まっている場合は<code>A+</code>を選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間には<code>B+</code>の方が良さそうなのでそっちにしました。</p>
+
+<p>なおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。</p>
+
+<h3 id="ディスプレイ">ディスプレイ</h3>
+
+<p>ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]<img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ironsand0b-22&#038;l=as2&#038;o=9&#038;a=B00L38XLIG" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。</p>
+
+<h3 id="その他のパーツの注意点とか">その他のパーツの注意点とか</h3>
+
+<p>USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。</p>
+
+<p>その代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。</p>
+
+<p>あとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。</p>
+
+<h2 id="osインストール">OSインストール</h2>
+
+<p>まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。</p>
+
+<h3 id="必要なファイルの準備">必要なファイルの準備</h3>
+
+<p>ラズベリーパイは専用のLinuxディストリの<code>RASPBIAN</code>というOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！</p>
+
+<p>さて、その<code>RASPBIAN</code>のインストールには<code>NOOBS(New Out Of the Box Software)</code>というものを使います。</p>
+
+<p>[Donwloadsのページ][11]から<code>NOOBS</code>をダウンロードして展開します。<code>NOOBS LITE</code>もありますが、無印のほうを選択してください。</p>
+
+<p>そして[SD Card Formatter][12]をダウンロード&amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。</p>
+
+<div id="attachment_543" style="width: 698px" class="wp-caption alignnone">
+  <a href="http://programming.ironsand.net/wp-content/uploads/2015/01/20150116.jpg"><img src="http://programming.ironsand.net/wp-content/uploads/2015/01/20150116.jpg" alt="Download SD Formatter for Windows を選択" width="688" height="310" class="size-full wp-image-543" srcset="http://programming.ironsand.net/wp-content/uploads/2015/01/20150116.jpg 688w, http://programming.ironsand.net/wp-content/uploads/2015/01/20150116-300x135.jpg 300w" sizes="(max-width: 688px) 100vw, 688px" /></a>
+  
+  <p class="wp-caption-text">
+    Download SD Formatter for Windows を選択
+  </p>
+</div>
+
+<div class="tips">
+  ちなみにこの&#8221;out of the box&#8221;を英語の辞書で調べると『独創的な・常識にとらわれない』と載っていますが、コンピュータ関連で出てくるときは『必要な準備が全て整っていてすぐに使える』という意味になります。けっこうよく使う言葉なので覚えておいて損はありません。
+</div>
+
+<h3 id="micro-sdカードの準備">Micro SDカードの準備</h3>
+
+<p>ダウンロードしてきたSD Formatterを使いSDカードのフォーマットを行います。ちゃんとSDカードが入ってるドライブが選択されていることをよく確認しておきましょう。</p>
+
+<div id="attachment_549" style="width: 446px" class="wp-caption alignnone">
+  <a href="http://programming.ironsand.net/wp-content/uploads/2015/01/201501161.jpg"><img src="http://programming.ironsand.net/wp-content/uploads/2015/01/201501161.jpg" alt="GドライブにSDカードがあるので &quot;G:&quot; を選択" width="436" height="329" class="size-full wp-image-549" srcset="http://programming.ironsand.net/wp-content/uploads/2015/01/201501161.jpg 436w, http://programming.ironsand.net/wp-content/uploads/2015/01/201501161-300x226.jpg 300w" sizes="(max-width: 436px) 100vw, 436px" /></a>
+  
+  <p class="wp-caption-text">
+    GドライブにSDカードがあるので &#8220;G:&#8221; を選択
+  </p>
+</div>
+
+<p>専用のソフトを使わず単純にフォーマットするだけでも大丈夫な気がしますが、おとなしく従っておきます。</p>
+
+<p>フォーマットが終わったら<code>NOOBS_v1_3_11.zip</code>(バージョンによって数字は変わります)の展開した中身をSDカードにコピーします。展開した時にできる<code>NOOBS_v1_3_11</code>自体はコピーせずディレクトリの中身だけなことに注意してください。</p>
+
+<p>コピーが終わったらMicroSDカードをパソコンから外してラズベリーパイにセットします。</p>
+
+<h3 id="raspbian-のインストール">Raspbian のインストール</h3>
+
+<p>あとはディスプレイとキーボードをつないでから電源を入れると自動的にインストール画面が立ち上がります。この時に無線LANアダプタも取り付けておくとインストール時に自動的に認識してくれます。</p>
+
+<p>ShiftキーでOSを選択して、<code>i</code>でインストールできます。『SDカードの中身が全部消えるけどかまへん？』と聞いてくるので<code>confirm</code>するとインストールが開始されます。</p>
+
+<p>インストール中、画面の下にキーボード選択が表示されているので<code>l</code>を押して<code>日本語</code>を選択しておきましょう。</p>
+
+<p>インストールが終わるまで30分ほどかかりますので、コーヒーでも飲んでるといいでしょう。私はコーヒーをMacbookに飲ませてしまったことがあるので今回は飲むのをやめておきました。</p>
+
+<p>インストールが終わってLinuxの初期画面が流れて、しばらくしたら<code>Setup Options</code>が表示されますので何も変更せずに<code>Finish</code>をキーボードの<code>→</code>で選択してEnterで決定します。</p>
+
+<p>そうするとCUIモードで<code>Rasbian</code>にログインできます。また<code>startx</code>と入力して<code>Enter</code>を押すとGUIの画面が立ち上がります。</p>
+
+<p>以上で<code>Rasbian</code>のインストールは終了です。</p>
+
+<p>初期設定ではユーザー名は<code>pi</code>、パスワードは<code>berry</code></p>
+
+<h2 id="無線lanでネットに繋ぐ">無線LANでネットに繋ぐ</h2>
+
+<p>やっとネットに繋げます。ネットに繋がってないLinuxなんてゴミですからね。こういうことを言うとマサカリが大量に飛んできそうですが私にとってはゴミなんです。</p>
+
+<p>無線LANアダプタは指していれば自動的に認識してくれるはずです。まだUSBに刺していなかったら<code>sudo shutdown -h now</code>で電源を落としてUSBに差し込んでもう一度立ち上げましょう。</p>
+
+<p>アダプタが正常に認識されてるかどうかは<code>sudo iwlist wlan0 scan</code>すると近くのWLANがすべて表示されるのでわかります。</p>
+
+<p>無線LANの設定ファイルを</p>
+
+<pre><code>sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+</code></pre>
+
+<p>で開いて</p>
+
+<pre><code>network={
+    ssid=&quot;Wifiの名前&quot;
+    psk=&quot;Wifiのパスワード&quot;
+}
+</code></pre>
+
+<p>を追記しましょう。<code>vi</code>の使い方がわからなければ<code>nano</code>を使ったほうが良いかもしれません。</p>
+
+<p>設定を保存して数秒待てば自動読込されるはずなのですが、されない時は<code>sudo ifdown wlan0</code>,<code>sudo ifup wlan0</code> で無線LANのインターフェースを再読み込みすればOKです。</p>
+
+<p>正常に接続できてるかどうかは<code>ifconfig wlan0</code>と打って<code>inet■ ■ ■ ■ 192.168.1.10</code>などのアドレスが割り振られてるかどうかで確認できます。<code>■ ■ ■ ■</code>は本当は<code>アドレス</code>と表示されてるはずなんでしょうが、私の環境では文字化けしちゃってました。</p>
+
+<h3 id="windows-や-mac-から-raspberry-に-ssh接続する">Windows や Mac から Raspberry に SSH接続する</h3>
+
+<p>ここまで来たら後は SSH で接続するだけです。先ほどの<code>ifconfig</code>で表示されたローカルアドレスを使って</p>
+
+<pre><code class="sh">$ ssh pi@192.168.1.10
+</code></pre>
+
+<p>と同じローカルネットワーク内のPCから接続すれば完了です。</p>
+
+<p>Windowsで私は<code>cygwin</code>の<code>ssh</code>を使っているのですが、一般的には<code>putty</code>の方が定番なのでそちらを使ってもOKです。</p>
+
+<p><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">http://www.chiark.greenend.org.uk/~sgtatham/putty/</a></p>
+
+<p>初回接続時は登録されてない接続先なので大丈夫かどうかを聞かれるので<code>yes</code>と答える必要がありますが、次回以降は必要ありません。</p>
+
+<p>ここまで進むと後の作業はすべてノートパソコン経由でできますのでラズパイにキーボードやディスプレイのケーブルを繋ぐ必要がなくなります。</p>
+
+<p>それでは今回の記事はここまでにします。次回は[VNCを使ってラズベリーパイのデスクトップ環境をノートパソコンから操作][13]できるようにする方法を解説します。</p>
+
+<p>それではみなさん楽しい Raspberry Pie 生活をお過ごしください。 ノシ</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/raspberry-pie/">Raspberry Pie</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

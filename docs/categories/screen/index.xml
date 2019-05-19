@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>screen on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/screen/</link>
+    <description>Recent content in screen on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Wed, 30 Apr 2014 21:23:03 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/screen/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>screenを使ってssh経由のコマンドを便利に</title>
+      <link>http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/</link>
+      <pubDate>Wed, 30 Apr 2014 21:23:03 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/</guid>
+      <description>sshでログインして処理の重たいコマンドを実行した後にセッションが途切れてしまうとそのコマンドをもう一度fbなどでフォアグラウンドに持ってこようと思っても残念ながらできません。違うシェルのインスタンスから立ち上げたらプロセスは別のインスタンスのシェルには持ってこれないかららしいです。
+Screenの使い方 まず初めからコマンドをscreenを使って立ち上げておきましょう。
+$ screen ruby it_takes_very_long.rb
+そして、一旦sshの接続を切って繋ぎ直します。
+$ screen -listをするとこんな感じで表示されるので
+There is a screen on: 31744.pts-0.Sakura (Detached) 1 Socket in /var/run/screen/S-ironsand.  $ screen -r 31744.pts-0.Sakuraでスクリーンに繋ぎ直せば画面への出力をもう一度見ることが出来ます。
+参考 [Linux Screen Tutorial &amp;#8211; YouTube][1]</description>
+    </item>
+    
+  </channel>
+</rss>

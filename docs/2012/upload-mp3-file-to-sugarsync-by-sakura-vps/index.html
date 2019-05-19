@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2 - 答えを知りたい</title>
+    
+<meta name="description" content="前回の記事の続きです。NHK語学のラジオ講座をさくらのVPSで自動ダウンロードhttp://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/今回はさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするについて解説します。さくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。 APIを使うためにSugarSyncのDeveloperに登録 upload_nhkradio.rb の設定 cronの設定  1. APIを使うためにSugarSyncのDeveloperに登録 まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。http://www.sugarsync.com/developer/signupもしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。Developer登録をすると Access Key ID と Private Access Key が手に入りますのでメモっていてください。あとで必要になります。次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。新しいアプリの作成には以下の5つの情報を入力する必要があります。Name:[アプリ名]&amp;#8221;NHK Radio Uploader&amp;#8221;とか適当にPublisher:[製作者] #名前をいれておきましょう。Description:[詳細] &amp;#8220;Upload NHK radio mp3&amp;#8221; とでも。Support URL:[作者サイト] 自分はTwitterのアカウントいれてます。Support Email:[連絡先] 普通に自分のメールアドレスを。以上でAppが作れたら App ID が入手できますのでコレもメモっておいてください。2. upload_nhkradio.rb の設定 必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。まず[upload_nhkradio.zip][2]をダウンロードして解凍し、sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rbの3つのファイルを取り出してください。そしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。#SugarSyncのユーザ名(メールアドレス),パスワード @username = &amp;quot;&amp;quot; @password = &amp;quot;&amp;quot; #App ID /sc/などから始まる英数字 @application = &amp;quot;&amp;quot; @access_key_id = &amp;quot;&amp;quot; @private_access_key = &amp;quot;&amp;quot; #refresh_tokenを設定しておけばusername, passwordはいりません。 #username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。 @refresh_token = &amp;quot;&amp;quot; #SugarSyncのどのフォルダにアップロードするか。 e.">
+
+<meta property="og:title" content="NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2 - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="前回の記事の続きです。NHK語学のラジオ講座をさくらのVPSで自動ダウンロードhttp://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/今回はさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするについて解説します。さくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。 APIを使うためにSugarSyncのDeveloperに登録 upload_nhkradio.rb の設定 cronの設定  1. APIを使うためにSugarSyncのDeveloperに登録 まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。http://www.sugarsync.com/developer/signupもしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。Developer登録をすると Access Key ID と Private Access Key が手に入りますのでメモっていてください。あとで必要になります。次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。新しいアプリの作成には以下の5つの情報を入力する必要があります。Name:[アプリ名]&amp;#8221;NHK Radio Uploader&amp;#8221;とか適当にPublisher:[製作者] #名前をいれておきましょう。Description:[詳細] &amp;#8220;Upload NHK radio mp3&amp;#8221; とでも。Support URL:[作者サイト] 自分はTwitterのアカウントいれてます。Support Email:[連絡先] 普通に自分のメールアドレスを。以上でAppが作れたら App ID が入手できますのでコレもメモっておいてください。2. upload_nhkradio.rb の設定 必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。まず[upload_nhkradio.zip][2]をダウンロードして解凍し、sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rbの3つのファイルを取り出してください。そしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。#SugarSyncのユーザ名(メールアドレス),パスワード @username = &amp;quot;&amp;quot; @password = &amp;quot;&amp;quot; #App ID /sc/などから始まる英数字 @application = &amp;quot;&amp;quot; @access_key_id = &amp;quot;&amp;quot; @private_access_key = &amp;quot;&amp;quot; #refresh_tokenを設定しておけばusername, passwordはいりません。 #username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。 @refresh_token = &amp;quot;&amp;quot; #SugarSyncのどのフォルダにアップロードするか。 e.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2012/upload-mp3-file-to-sugarsync-by-sakura-vps/">
+<meta name="twitter:title" content="NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2 - 答えを知りたい">
+<meta name="twitter:description" content="前回の記事の続きです。NHK語学のラジオ講座をさくらのVPSで自動ダウンロードhttp://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/今回はさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするについて解説します。さくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。 APIを使うためにSugarSyncのDeveloperに登録 upload_nhkradio.rb の設定 cronの設定  1. APIを使うためにSugarSyncのDeveloperに登録 まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。http://www.sugarsync.com/developer/signupもしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。Developer登録をすると Access Key ID と Private Access Key が手に入りますのでメモっていてください。あとで必要になります。次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。新しいアプリの作成には以下の5つの情報を入力する必要があります。Name:[アプリ名]&amp;#8221;NHK Radio Uploader&amp;#8221;とか適当にPublisher:[製作者] #名前をいれておきましょう。Description:[詳細] &amp;#8220;Upload NHK radio mp3&amp;#8221; とでも。Support URL:[作者サイト] 自分はTwitterのアカウントいれてます。Support Email:[連絡先] 普通に自分のメールアドレスを。以上でAppが作れたら App ID が入手できますのでコレもメモっておいてください。2. upload_nhkradio.rb の設定 必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。まず[upload_nhkradio.zip][2]をダウンロードして解凍し、sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rbの3つのファイルを取り出してください。そしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。#SugarSyncのユーザ名(メールアドレス),パスワード @username = &amp;quot;&amp;quot; @password = &amp;quot;&amp;quot; #App ID /sc/などから始まる英数字 @application = &amp;quot;&amp;quot; @access_key_id = &amp;quot;&amp;quot; @private_access_key = &amp;quot;&amp;quot; #refresh_tokenを設定しておけばusername, passwordはいりません。 #username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。 @refresh_token = &amp;quot;&amp;quot; #SugarSyncのどのフォルダにアップロードするか。 e.">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2 - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2012-06-06T05:08:52JST",
+    "dateModified": "2012-06-06T05:08:52JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "前回の記事の続きです。\nNHK語学のラジオ講座をさくらのVPSで自動ダウンロード\nhttp:\/\/programming.ironsand.net\/2012\/auto-download-nhk-language-mp3-by-vps\/\n今回はさくらVPSにダウンロードしたmp3をSugarsyncにアップロードするについて解説します。\nさくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。\n自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。\n APIを使うためにSugarSyncのDeveloperに登録\n upload_nhkradio.rb の設定\n cronの設定\n  1. APIを使うためにSugarSyncのDeveloperに登録 まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。\nhttp:\/\/www.sugarsync.com\/developer\/signup\nもしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。\nDeveloper登録をすると Access Key ID と Private Access Key が手に入りますのでメモっていてください。あとで必要になります。\n次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。\n新しいアプリの作成には以下の5つの情報を入力する必要があります。\nName:[アプリ名]\x26#8221;NHK Radio Uploader\x26#8221;とか適当に\nPublisher:[製作者] #名前をいれておきましょう。\nDescription:[詳細] \x26#8220;Upload NHK radio mp3\x26#8221; とでも。\nSupport URL:[作者サイト] 自分はTwitterのアカウントいれてます。\nSupport Email:[連絡先] 普通に自分のメールアドレスを。\n以上でAppが作れたら App ID が入手できますのでコレもメモっておいてください。\n2. upload_nhkradio.rb の設定 必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。\nまず[upload_nhkradio.zip][2]をダウンロードして解凍し、sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rbの3つのファイルを取り出してください。\nそしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。\n#SugarSyncのユーザ名(メールアドレス),パスワード @username = \x26quot;\x26quot; @password = \x26quot;\x26quot; #App ID \/sc\/などから始まる英数字 @application = \x26quot;\x26quot; @access_key_id = \x26quot;\x26quot; @private_access_key = \x26quot;\x26quot; #refresh_tokenを設定しておけばusername, passwordはいりません。 #username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。 @refresh_token = \x26quot;\x26quot; #SugarSyncのどのフォルダにアップロードするか。 e."
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-06-06T05:08:52JST">Jun 6, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">NHK語学のラジオ講座をさくらのVPSで自動ダウンロード その2</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>前回の記事の続きです。</p>
+
+<p>NHK語学のラジオ講座をさくらのVPSで自動ダウンロード</p>
+
+<p><a href="http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/">http://programming.ironsand.net/2012/auto-download-nhk-language-mp3-by-vps/</a></p>
+
+<p>今回は<strong>さくらVPSにダウンロードしたmp3をSugarsyncにアップロードする</strong>について解説します。</p>
+
+<p>さくらのVPS上にSugarSyncやDropboxを常駐させるのはできるのかどうかわかりませんでしたし、できてもメモリを食いそうなので今回はSugarSyncが提供するAPIを使用します。</p>
+
+<p>自動的にSugarSyncにファイルをアップロードさせるための手順は以下の流れになります。</p>
+
+<ol>
+<li><p>APIを使うためにSugarSyncのDeveloperに登録</p></li>
+
+<li><p>upload_nhkradio.rb の設定</p></li>
+
+<li><p>cronの設定</p></li>
+</ol>
+
+<h3 id="1-apiを使うためにsugarsyncのdeveloperに登録">1. APIを使うためにSugarSyncのDeveloperに登録</h3>
+
+<p>まずSugarSyncのAPIを使うためにDeveloperとして登録を行います。</p>
+
+<p><a href="http://www.sugarsync.com/developer/signup">http://www.sugarsync.com/developer/signup</a></p>
+
+<p>もしSugarsyncのアカウント自体を持ってない方がいたら、まず[こちら][1]からSugarSync自体のアカウントを作ってください。</p>
+
+<p>Developer登録をすると <span style="color:red;">Access Key ID</span> と <span style="color:red;">Private Access Key</span> が手に入りますのでメモっていてください。あとで必要になります。</p>
+
+<p>次に[Create App]から新しいアプリの登録を行いアプリケーションキーを取得してください。</p>
+
+<p>新しいアプリの作成には以下の5つの情報を入力する必要があります。</p>
+
+<p>Name:[アプリ名]&#8221;NHK Radio Uploader&#8221;とか適当に</p>
+
+<p>Publisher:[製作者] #名前をいれておきましょう。</p>
+
+<p>Description:[詳細] &#8220;Upload NHK radio mp3&#8221; とでも。</p>
+
+<p>Support URL:[作者サイト] 自分はTwitterのアカウントいれてます。</p>
+
+<p>Support Email:[連絡先] 普通に自分のメールアドレスを。</p>
+
+<p>以上でAppが作れたら <span style="color:red;">App ID</span> が入手できますのでコレもメモっておいてください。</p>
+
+<h3 id="2-upload-nhkradio-rb-の設定">2. upload_nhkradio.rb の設定</h3>
+
+<p>必要な情報が揃いましたので upload_nhkradio.rb の設定を行います。</p>
+
+<p>まず[upload_nhkradio.zip][2]をダウンロードして解凍し、<strong>sugarsync.rb, upload_nhkradio.rb, upload_nhkradio_ini.rb</strong>の3つのファイルを取り出してください。</p>
+
+<p>そしてupload_nhkradio_ini.rbを開いて先ほど入手した情報とアップロードするフォルダ名を設定します。</p>
+
+<pre><code>#SugarSyncのユーザ名(メールアドレス),パスワード
+@username = &quot;&quot;
+@password = &quot;&quot;
+
+#App ID /sc/などから始まる英数字
+@application = &quot;&quot;
+
+@access_key_id = &quot;&quot;
+@private_access_key = &quot;&quot;
+
+#refresh_tokenを設定しておけばusername, passwordはいりません。
+#username,passwordで接続すると無駄に一つ多く接続するのでrefresh_tokenを設定して使いましょう。
+@refresh_token = &quot;&quot;
+
+#SugarSyncのどのフォルダにアップロードするか。 e.g. &quot;sugarsync/nhklang&quot;
+#事前にフォルダは作っておきましょう。
+@folder_name = &quot;&quot;
+</code></pre>
+
+<p>設定がおわったら3つのファイルを前回の記事で作成したCaptureStream.rbが置いてあるnhklangディレクトリにWinSCPなどでアップロードします。</p>
+
+<p>これでアップロードする準備は整いました。</p>
+
+<p><code>$ruby upload_nhkrandio.rb</code></p>
+
+<p>とするだけでアップロードが開始されるはずです。(時間が掛かるので注意)</p>
+
+<h3 id="3-cronの設定">3. cronの設定</h3>
+
+<p>ここまで来れば後は前回設定したcronに少し設定を加えるだけです。</p>
+
+<pre><code>crontab -e
+</code></pre>
+
+<p>してcronの設定を開き</p>
+
+<p>でcronの設定ファイルを開いて</p>
+
+<pre><code>PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:~/bin
+0 11 * * mon ruby ~/nhklang/CaptureStream.rb &gt;&gt; ~/nhklang/Capture.log
+&lt;span style=&quot;color:red;&quot;&gt;30 11 * * mon cd ~/nhklang; ruby upload_nhkradio.rb &gt;&gt; Capture.log&lt;/span&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;/p&gt;
+
+
+の1行を加えて全ての設定は終了です。
+
+
+これで来週から月曜日の12時頃にはパソコンのローカルフォルダに自動的に語学講座のmp3がダウンロードされてるはずです。
+
+
+&lt;table  border=&quot;0&quot; cellpadding=&quot;5&quot;&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;a href=&quot;http://www.amazon.co.jp/exec/obidos/ASIN/B001AW0B0Q/ironsand0b-22/&quot; target=&quot;_top&quot;&gt;リトル・チャロ ~ニューヨーク編~ Vol.1 ロスト・イン・ニューヨーク [DVD]&lt;/a&gt;
+    &lt;/td&gt;
+
+  &lt;/tr&gt;
+
+
+  &lt;tr&gt;
+    &lt;td valign=&quot;top&quot;&gt;
+      &lt;a href=&quot;http://www.amazon.co.jp/exec/obidos/ASIN/B001AW0B0Q/ironsand0b-22/&quot; target=&quot;_top&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/519FZimsh7L._SL160_.jpg&quot; border=&quot;0&quot; alt=&quot;リトル・チャロ ~ニューヨーク編~ Vol.1 ロスト・イン・ニューヨーク [DVD]&quot; /&gt;&lt;/a&gt;
+    &lt;/td&gt;
+
+
+    &lt;td valign=&quot;top&quot;&gt;
+      &lt;font size=&quot;-1&quot;&gt;&lt;br /&gt;NHKエンタープライズ  2008-09-26&lt;br /&gt;売り上げランキング : 14644&lt;/p&gt;
+
+
+      &lt;p&gt;
+        &lt;a href=&quot;http://www.amazon.co.jp/exec/obidos/ASIN/B001AW0B0Q/ironsand0b-22/&quot; target=&quot;_top&quot;&gt;Amazonで詳しく見る&lt;/a&gt;&lt;/font&gt;&lt;font size=&quot;-2&quot;&gt; by &lt;a href=&quot;http://www.goodpic.com/mt/aws/index.html&quot; &gt;G-Tools&lt;/a&gt;&lt;/font&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+</code></pre>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/%E3%81%95%E3%81%8F%E3%82%89%E3%81%AEvps/">さくらのVPS</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

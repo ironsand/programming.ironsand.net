@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Maverickで`rails new` が `atomic`のインストールでこける時の対処法 - 答えを知りたい</title>
+    
+<meta name="description" content="rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。エラーメッセージはこんなの。run bundle install Fetching gem metadata from https://rubygems.org/.......... Fetching gem metadata from https://rubygems.org/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.">
+
+<meta property="og:title" content="Maverickで`rails new` が `atomic`のインストールでこける時の対処法 - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。エラーメッセージはこんなの。run bundle install Fetching gem metadata from https://rubygems.org/.......... Fetching gem metadata from https://rubygems.org/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2014/fail-to-bundle-install-in-maverick/">
+<meta name="twitter:title" content="Maverickで`rails new` が `atomic`のインストールでこける時の対処法 - 答えを知りたい">
+<meta name="twitter:description" content="rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。エラーメッセージはこんなの。run bundle install Fetching gem metadata from https://rubygems.org/.......... Fetching gem metadata from https://rubygems.org/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and/or headers. Check the mkmf.">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "Maverickで`rails new` が `atomic`のインストールでこける時の対処法 - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-01-03T04:07:31JST",
+    "dateModified": "2014-01-03T04:07:31JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "rails new したらbundle install が atomic の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。\nエラーメッセージはこんなの。\nrun bundle install Fetching gem metadata from https:\/\/rubygems.org\/.......... Fetching gem metadata from https:\/\/rubygems.org\/.. Resolving dependencies......... Installing rake (10.1.1) Installing i18n (0.6.9) Installing minitest (4.7.5) Installing multi_json (1.8.2) Installing atomic (1.1.14) Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension. \/Users\/ironsand\/.rbenv\/versions\/2.0.0-p247\/bin\/ruby extconf.rb *** extconf.rb failed *** Could not create Makefile due to some reason, probably lack of necessary libraries and\/or headers. Check the mkmf."
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">Maverickで`rails new` が `atomic`のインストールでこける時の対処法</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-01-03T04:07:31JST">Jan 3, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">Maverickで`rails new` が `atomic`のインストールでこける時の対処法</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p><code>rails new</code> したらbundle install が <code>atomic</code> の所でコケた。何か前も同じエラーに引っかかって結構検索した記憶があったんだけど今回も対処法を探すのに結構な時間がかかってしまった。</p>
+
+<p>エラーメッセージはこんなの。</p>
+
+<pre class="lang:sh decode:true " >run  bundle install
+Fetching gem metadata from https://rubygems.org/..........
+Fetching gem metadata from https://rubygems.org/..
+Resolving dependencies.........
+Installing rake (10.1.1) 
+Installing i18n (0.6.9) 
+Installing minitest (4.7.5) 
+Installing multi_json (1.8.2) 
+Installing atomic (1.1.14) 
+Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+
+    /Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby extconf.rb 
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+    --with-opt-dir
+    --without-opt-dir
+    --with-opt-include
+    --without-opt-include=${opt-dir}/include
+    --with-opt-lib
+    --without-opt-lib=${opt-dir}/lib
+    --with-make-prog
+    --without-make-prog
+    --srcdir=.
+    --curdir
+    --ruby=/Users/ironsand/.rbenv/versions/2.0.0-p247/bin/ruby
+    --with-atomic_reference-dir
+    --without-atomic_reference-dir
+    --with-atomic_reference-include
+    --without-atomic_reference-include=${atomic_reference-dir}/include
+    --with-atomic_reference-lib
+    --without-atomic_reference-lib=${atomic_reference-dir}/
+/Users/ironsand/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/mkmf.rb:430:in `try_do': The compiler failed to generate an executable file. (RuntimeError)
+You have to install development tools first.
+    from /Users/ironsand/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/mkmf.rb:515:in `try_link0'
+    from /Users/ironsand/.rbenv/versions/2.0.0-p247/lib/ruby/2.0.0/mkmf.rb:813:in `try_run'
+    from extconf.rb:26:in `&lt;main&gt;'
+
+
+Gem files will remain installed in /Users/ironsand/dev/raffler/vendor/bundle/gems/atomic-1.1.14 for inspection.
+Results logged to /Users/ironsand/dev/raffler/vendor/bundle/gems/atomic-1.1.14/ext/gem_make.out
+An error occurred while installing atomic (1.1.14), and Bundler cannot continue.
+Make sure that `gem install atomic -v '1.1.14'` succeeds before bundling.
+ironsand@Air-2 dev$ gem update
+</pre>
+
+<h3 id="解決策">解決策</h3>
+
+<p>エラーメッセージからだと全くわからないんだけれども、どうやらこれは Xcodeのバージョンをアップとか新規インストールした時に一度立ち上げて利用規約にOKと答えておかないとコンパイラーが使えずにでるらしい。</p>
+
+<p>なので、Xcodeを一度立ち上げて規約にOKしたら解決。と前回はここで解決したんですがどうやら今回はこれだけじゃだめらしい。</p>
+
+<h3 id="今度こそ解決策">今度こそ解決策</h3>
+
+<p>Commandline toolsを再インストールするために <code>xcode-select --install</code>したら解決しました！</p>
+
+<p>Maverickに上げたのが原因らしいです。</p>
+
+<p>自分の場合はターミナルの再起動するまでCommandline toolsのアップデートが認識できませんでしたが必須なのかどうかはわかりません。</p>
+
+<h3 id="参考">参考</h3>
+
+<p>[Ruby &#8211; Mac OS X 10.9 Mavericks で Rails の <code>bundle install</code> に失敗する件の対処法 &#8211; Qiita [キータ]][1]</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/rails/">Rails</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.nettags/maverick/">Maverick</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

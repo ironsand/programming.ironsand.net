@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-05-02T01:59:02JST">May 2, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/generate-openssh-public-key-for-sourceforge-with-puttygen/">SourceForgeに公開鍵をputtygen.exeで生成する</a></h2>
+  </header>
+
+  
+  <div class="summary">SourceForgeはOpenSSHの公開鍵を登録しないと使えない機能が多いので
+puttygen.exe でキーを生成して登録する。
+ただputtyで使うキーがSSH形式でSourceForgeで使う形式のOpenSSHと違うためそのままでは登録できない。
+なので
+http://hiromasaya.web.fc2.com/Windows/putty.html
+を参考にして
+ssh-keygen -i -f id_rsa.pub  id_rsa_open_ssh.pub でできた id_rsa_open_ssh.pub をエディタで開いてSourceForgeの入力フィールドにコピペで登録できました。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/generate-openssh-public-key-for-sourceforge-with-puttygen/" title="SourceForgeに公開鍵をputtygen.exeで生成する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-04-28T21:16:37JST">Apr 28, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/build-xyzzy-from-source/">xyzzyをソースからビルドの方法をまとめてみた</a></h2>
+  </header>
+
+  
+  <div class="summary">Xyzzy Wiki の [ソースからビルドしてみる3][1] を参考に xyzzy をソースからビルドしてみました。 ファイルを取ってきたり、めんどくさいことが多かったので以下のステップでできるように簡略化。
+[xyzzysrc-0.2.2.235-pack][2]
+これをダウンロードしてあとは01README.txtを見てください。
+ 1 Microsoft Visual C++ 2008 Express Edition インストール
+2 env.vbs を叩く (環境変数のセットとafxres.hのコピー)
+3 cd xyzzy/src
+4 nmake (デバッグ版は nmake CFG=d)
+5 ぽけーと待つ
+6 できあがり
+ 以上です。 何かおかしいところあったら連絡ださい。 俺は何もわかっていませんので。
+Unicode Consortium のファイルも同封してますが、ライセンスの確認はとってます。
+2011/05/28追記
+2chで指摘されて気づいたのですが、env.vbs で c:\Program Files\ 配下にファイルの移動を行ってるので UAC が入っているとエラーになります。 UACを一時的に切ってenv.vbs を実行してください。
+一度実行してしまえば次回以降ビルドするときにはUAC がオンでも問題ありません。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/build-xyzzy-from-source/" title="xyzzyをソースからビルドの方法をまとめてみた">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-04-23T08:23:30JST">Apr 23, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/">xyzzyでファイル保存時にmodeの変更をする</a></h2>
+  </header>
+
+  
+  <div class="summary">Xyzzy上で新規作成した javascript とか ruby のバッファに毎回モード設定をするのがめんどくさかったので書いた。 siteinit.l か ~/.xyzzy のどこかに貼りつけて使ってください。
+※同じ拡張子に複数のモードが紐付けられていると、古い方に設定されるようになっていたので修正;ファイル保存時に拡張子をチェックして適切なモードに変更する。 ;リネーム時にしたかったけど、hookが用意されてないので断念。 (defun set-buffer-mode () (block sbm (mapcar (lambda (l) (when (string-matchp (car l) (get-buffer-file-name)) (funcall (cdr l)) (return-from sbm)) ) *auto-mode-alist*))) (add-hook &lsquo;*after-save-buffer-hook* &lsquo;set-buffer-mode)</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/save-file-with-set-mode-by-xyzzy/" title="xyzzyでファイル保存時にmodeの変更をする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2011-02-26T06:38:20JST">Feb 26, 2011</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2011/tkinter-importerror/">PythonのGUI,Tkinterのエラー対処</a></h2>
+  </header>
+
+  
+  <div class="summary">PythonのGUI,Tkinterを使おうとこのページの一番上のサンプルを動かそうとすると動かず第一歩をくじかれる。
+http://www.pythonware.com/library/tkinter/introduction/hello-tkinter.htm
+エラーメッセージはこんなの。
+ImportError: No module named Tkinter
+環境はWindows7でPython3.0.1 Portable。
+エラーメッセージで検索しても「yumを使ってモジュールインストールしろ。」とかLinux向けの情報しか出てこない。 適当にあさってやっと見つけた解決策はこれ。
+from Tkinter import *
+を
+from tkinter import *
+に変える。 どうも Python3からmodule名の大文字小文字が変更されたのが原因だったようだ。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2011/tkinter-importerror/" title="PythonのGUI,Tkinterのエラー対処">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-28T18:53:16JST">Mar 28, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/">xyzzyからPlantUMLを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">テキスト形式でUMLが書けるPlantUML PlantUMLはテキスト形式でUMLを記述して画像に出力できるオープンソースのソフトウェアです。 UMLが書けるフリーソフトはいくつかありますが、テキストベースで記述できるのは大変ありがたいですね。
+PlantUMLの具体例 サンプルをPlantUMLのサイト内から引用します。
+http://plantuml.sourceforge.net/classes.html
+[][1]　こんなUMLが以下の記述で作れちゃいます。@startuml img/classes04.png abstract class AbstractList abstract AbstractCollection interface List interface Collection List &lt;|&ndash; AbstractList Collection &lt;|&ndash; AbstractCollection Collection &lt;|- List AbstractCollection &lt;|- AbstractList AbstractList &lt;|&ndash; ArrayList ArrayList : Object[] elementData ArrayList : size() enum TimeUnit TimeUnit : DAYS TimeUnit : HOURS TimeUnit : MINUTES @enduml
+PlantUMLのインストール http://plantuml.sourceforge.net/download.html
+から plantuml.jar をダウンロードしてください。
+plantumlの実行にはJavaが必要になりますので、もしJavaがインストールされていなければ
+http://www.java.com/ja/download/
+からインストールを行ってください。
+&ldquo;Sequence Diagram&rdquo; 以外の画像の出力、つまり普通に使うのであれば Graphviz もインストールする必要があります。
+http://graphviz.org/Download_windows.php
+からダウンロードしてインストールしてください。
+以上でインストールは終了です。
+xyzzyからPlantUMLを使う方法 さて、次は以下のコードを siteinit.</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/" title="xyzzyからPlantUMLを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-23T02:18:57JST">Mar 23, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/posts/2010-03-23-common-lisp%E3%81%A6%E3%82%99scheme%E3%81%AEbegin%E3%82%92%E4%BD%BF%E3%81%86/">Common LispでSchemeのbeginを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">Common lisp で Scheme の begin を使いたい時は progn を使います。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/posts/2010-03-23-common-lisp%E3%81%A6%E3%82%99scheme%E3%81%AEbegin%E3%82%92%E4%BD%BF%E3%81%86/" title="Common LispでSchemeのbeginを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-14T18:56:16JST">Mar 14, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/">xyzzy から Rhino(javascript)を直接実行する</a></h2>
+  </header>
+
+  
+  <div class="summary">xyzzyから直接javascriptを使う 今回の記事はRhinoのインストールが行われてる事と xyzzy で jscript-mode がインストールされている事が前提条件になります。 RhinoのWindowsでのインストール方法については前回の記事『[Windows(cygwin+zsh)環境でRhinoを使う][1]』を参考にしてください。 今回の記事の設定を行うと xyzzy から直接Rhinoを呼び出して下の画像のように簡単なスクリプトを気軽に書けるようになります。
+[][2]
+下記のlispはruby-modeから引っ張ってきて少し修正を加えたもので、これを ~/.xyzzy や siteinitl. に貼りつければjscript-mode で C-c C-x すれば現在編集中のバッファの javascript が実行されます。
+;;jscript-mode(for Rhino) (setf \*js-prog\* "java org.mozilla.javascript.tools.shell.Main") (setf \*js-classpath\* "X:/sugarsync/bin/rhino1\_7R2/js.jar") (defun js-run-script-immediate () (interactive) (js-run "")) (defun js-run (args) (let ((tempfile (make-temp-file-name "\_\_temp\_" "js" (default-directory)))) (write-file tempfile t nil (buffer-fileio-encoding) (buffer-eol-code)) (command-execution (concat \*js-prog\* " -f \"" tempfile "\" " args)) (delete-file tempfile :if-does-not-exist :skip))) (defun command-execution (command) (interactive "</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89rhino-javascript%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B/" title="xyzzy から Rhino(javascript)を直接実行する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-14T02:16:35JST">Mar 14, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/">Windows(cygwin&#43;zsh)環境でRhinoを使う</a></h2>
+  </header>
+
+  
+  <div class="summary">Rhinoとは何か？ javascript を記述するときに毎回htmlファイルを作る作業が手間なので何か方法がないか探してみた。 どうやら、JAVAで書かれたjavascript実装のRhinoでやりたい事ができるらしい。
+ Rhino &#8211; MDC  Rhino はすべてが Java で記述された JavaScript のオープンソースな実装です。それは一般的には、Java アプリケーション環境へ組み込まれて、エンドユーザーによるスクリプトの記述が可能になります。  Rhinoのインストール方法 J2SE 6には標準で入っているらしいがEverythingで探しても見つからないので今回は http://www.mozilla-japan.org/rhino/download.html からダウンロードして使うことにする。
+ダウンロード+解凍して適当なディレクトリに移動する(私の環境ではSugarSyncで共有してるディレクトリ配下のX:\sugarsync\bin\rhino1_7R2)。 スペースや日本語の文字列を含まない場所に置くのが無難だろう。 次に CLASSPATH を設定する。CLASSPATH=x:\sygarsync\bin\rhino1_7R2\js.jar export CLASSPATH # /cygdrive/x/～ の形式では java が認識しない。
+これでインストールは完了したので
+java org.mozilla.javascript.tools.shell.Main と入力すればインタープリタが起動する。
+zshrcでエイリアスの設定 しかし毎回これを打つのはあまり現実的ではないため ~/zshrc で alias を設定しておくと良い。alias js=&ldquo;java org.mozilla.javascript.tools.shell.Main&rdquo;
+インタープリタを呼び出さずに直接実行することや、jsファイルを直接指定して実行することもできる。js -e &ldquo;print(&lsquo;hello&rsquo;)&rdquo; js -f hello.js
+これでjavascriptの動作をちょっと確認したいときに簡単に動かせるようになったし、JAVAで実装されているため、JAVAのクラスをjavascript内部で呼び出したりもできるようだ。 色々と遊んでいこうと思う。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/windows-cygwin-zsh%E7%92%B0%E5%A2%83%E3%81%A7rhino%E3%82%92%E4%BD%BF%E3%81%86/" title="Windows(cygwin&#43;zsh)環境でRhinoを使う">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2010-03-13T17:58:35JST">Mar 13, 2010</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/">MS、Webブラウザ選択画面のバグの解説</a></h2>
+  </header>
+
+  
+  <div class="summary">MSのブラウザ選択のバグに関する説明が、全くわかってない人が書いてるとしか思えない内容だったので javascript の sort について少し解説をしようと思う。
+ MS、Webブラウザ選択画面にアルゴリズム上のバグか － ＠IT  JavaScriptの配列の並べ替え（sort）は比較関数を渡すことで柔軟な並べ替えが行える。ここではMath.rand()で半々の確率で正負の値を返しているので、隣り合う要素の並べ替えはランダムに起こる。これで結果もランダムになるように思えるが、実際に意味のある並べ替えを行うためには、並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠で、例えば「a＞b」であれば「b＜a」、「a＜bかつb＜c」であれば「a＜c」でなければならない。これは、隣り合う要素同士をただランダムに入れ替えるだけでは達成できないのだという。  この「並べ替えた後の配列が一定の基準に従っている並べられていることが不可欠」という意味の分からない部分はおそらく下記を訳した物と思われる。
+ Doing the Microsoft Shuffle: Algorithm Fail in Browser Ballot  Sorting requires a self-consistent definition of ordering. The following assertions must be true if sorting is to make any sense at all:  だから正しい訳は「並べかえには首尾一貫した&#8221;大小の定義&#8221;が必要である。」になる。
+実際にどのようなバグがあったかを説明するにはコードで示すのが一番わかりやすいので直接書いていこう。 問題の、 javascript の sort関数では引数に比較関数を取れる。例えばfunction comp(a, b){ return a &lt; b; //降順で並べる } function sortnum(){ return [0,3,5,6,-6].sort(comp); } //=&gt;6,5,3,0,-6 function comp(a, b){ return a &lt; b; //昇順で並べる } function sortnum(){ return [0,3,5,6,-6].</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2010/msweb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E9%81%B8%E6%8A%9E%E7%94%BB%E9%9D%A2%E3%81%AE%E3%83%90%E3%82%B0%E3%81%AE%E8%A7%A3%E8%AA%AC/" title="MS、Webブラウザ選択画面のバグの解説">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/page/13/">Previous</a></li>
+    
+
+    
+    <li class="disabled"><a href="#">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

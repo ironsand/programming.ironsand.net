@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wc on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/wc/</link>
+    <description>Recent content in wc on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sat, 26 Apr 2014 18:10:34 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/wc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>`wc -l`の結果が実際の行数よりも一行少ない理由</title>
+      <link>http://programming.ironsand.net/2014/why-wc-l-shows-a-line-less/</link>
+      <pubDate>Sat, 26 Apr 2014 18:10:34 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2014/why-wc-l-shows-a-line-less/</guid>
+      <description>wc -lは改行を数えるので最終行に改行がなかったら実際の行数よりも1行少なく数えられるそうだ。へえ。</description>
+    </item>
+    
+  </channel>
+</rss>

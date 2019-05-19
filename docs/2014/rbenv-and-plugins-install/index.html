@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2014/rbenv-and-plugins-install/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>rbenvのインストール方法と入れとくと便利なプラグイン - 答えを知りたい</title>
+    
+<meta name="description" content=" gitは便利なんだけど、リポジトリ名が長くて暗記できなのがツラい所ですよね。忘れて毎回プラグインのリンクを探すのがめんどくさいのでいつも入れるものをメモっておきます。rbenv インストール必須なのまとめ # rbenv 本体 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv echo &#39;export PATH=&#34;$HOME/.rbenv/bin:$PATH&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile echo &#39;eval &#34;$(rbenv init -)&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile # Plugins mkdir ~/.rbenv/plugins # ほぼ必須。ruby本体入れるのに使う。これ無しで使う方法知らない。 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build # `rbenv rehash`が自動的に git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash # `rbenv update`コマンドが使えるように git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update # `rbenv sudo`でsudoでもrbenvが使えるように git clone git://github.com/dcarley/rbenv-sudo.git ~/.rbenv/plugins/rbenv-sudo # `rbenv install` するごとに特定のgemをいれる git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems  ">
+
+<meta property="og:title" content="rbenvのインストール方法と入れとくと便利なプラグイン - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2014/rbenv-and-plugins-install/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content=" gitは便利なんだけど、リポジトリ名が長くて暗記できなのがツラい所ですよね。忘れて毎回プラグインのリンクを探すのがめんどくさいのでいつも入れるものをメモっておきます。rbenv インストール必須なのまとめ # rbenv 本体 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv echo &#39;export PATH=&#34;$HOME/.rbenv/bin:$PATH&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile echo &#39;eval &#34;$(rbenv init -)&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile # Plugins mkdir ~/.rbenv/plugins # ほぼ必須。ruby本体入れるのに使う。これ無しで使う方法知らない。 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build # `rbenv rehash`が自動的に git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash # `rbenv update`コマンドが使えるように git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update # `rbenv sudo`でsudoでもrbenvが使えるように git clone git://github.com/dcarley/rbenv-sudo.git ~/.rbenv/plugins/rbenv-sudo # `rbenv install` するごとに特定のgemをいれる git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems  ">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2014/rbenv-and-plugins-install/">
+<meta name="twitter:title" content="rbenvのインストール方法と入れとくと便利なプラグイン - 答えを知りたい">
+<meta name="twitter:description" content=" gitは便利なんだけど、リポジトリ名が長くて暗記できなのがツラい所ですよね。忘れて毎回プラグインのリンクを探すのがめんどくさいのでいつも入れるものをメモっておきます。rbenv インストール必須なのまとめ # rbenv 本体 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv echo &#39;export PATH=&#34;$HOME/.rbenv/bin:$PATH&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile echo &#39;eval &#34;$(rbenv init -)&#34;&#39; &amp;gt;&amp;gt; ~/.bash_profile # Plugins mkdir ~/.rbenv/plugins # ほぼ必須。ruby本体入れるのに使う。これ無しで使う方法知らない。 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build # `rbenv rehash`が自動的に git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash # `rbenv update`コマンドが使えるように git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update # `rbenv sudo`でsudoでもrbenvが使えるように git clone git://github.com/dcarley/rbenv-sudo.git ~/.rbenv/plugins/rbenv-sudo # `rbenv install` するごとに特定のgemをいれる git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems  ">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "rbenvのインストール方法と入れとくと便利なプラグイン - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2014-04-04T16:11:27JST",
+    "dateModified": "2014-04-04T16:11:27JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": " gitは便利なんだけど、リポジトリ名が長くて暗記できなのがツラい所ですよね。\n忘れて毎回プラグインのリンクを探すのがめんどくさいのでいつも入れるものをメモっておきます。\nrbenv インストール必須なのまとめ # rbenv 本体 git clone https:\/\/github.com\/sstephenson\/rbenv.git ~\/.rbenv echo \x27export PATH=\x22$HOME\/.rbenv\/bin:$PATH\x22\x27 \x26gt;\x26gt; ~\/.bash_profile echo \x27eval \x22$(rbenv init -)\x22\x27 \x26gt;\x26gt; ~\/.bash_profile # Plugins mkdir ~\/.rbenv\/plugins # ほぼ必須。ruby本体入れるのに使う。これ無しで使う方法知らない。 git clone https:\/\/github.com\/sstephenson\/ruby-build.git ~\/.rbenv\/plugins\/ruby-build # `rbenv rehash`が自動的に git clone https:\/\/github.com\/sstephenson\/rbenv-gem-rehash.git ~\/.rbenv\/plugins\/rbenv-gem-rehash # `rbenv update`コマンドが使えるように git clone https:\/\/github.com\/rkh\/rbenv-update.git ~\/.rbenv\/plugins\/rbenv-update # `rbenv sudo`でsudoでもrbenvが使えるように git clone git:\/\/github.com\/dcarley\/rbenv-sudo.git ~\/.rbenv\/plugins\/rbenv-sudo # `rbenv install` するごとに特定のgemをいれる git clone https:\/\/github.com\/sstephenson\/rbenv-default-gems.git ~\/.rbenv\/plugins\/rbenv-default-gems  "
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">rbenvのインストール方法と入れとくと便利なプラグイン</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-04T16:11:27JST">Apr 4, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">rbenvのインストール方法と入れとくと便利なプラグイン</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>gitは便利なんだけど、リポジトリ名が長くて暗記できなのがツラい所ですよね。</p>
+
+<p>忘れて毎回プラグインのリンクを探すのがめんどくさいのでいつも入れるものをメモっておきます。</p>
+
+<h3 id="rbenv-インストール必須なのまとめ">rbenv インストール必須なのまとめ</h3>
+
+<pre class="lang:sh decode:true " ># rbenv 本体
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' &gt;&gt; ~/.bash_profile
+echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bash_profile
+
+# Plugins
+mkdir ~/.rbenv/plugins
+# ほぼ必須。ruby本体入れるのに使う。これ無しで使う方法知らない。
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+# `rbenv rehash`が自動的に
+git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+# `rbenv update`コマンドが使えるように
+git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
+# `rbenv sudo`でsudoでもrbenvが使えるように
+git clone git://github.com/dcarley/rbenv-sudo.git ~/.rbenv/plugins/rbenv-sudo
+# `rbenv install` するごとに特定のgemをいれる
+git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems
+</pre>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/ruby/">ruby</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

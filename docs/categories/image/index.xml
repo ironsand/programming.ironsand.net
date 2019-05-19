@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Image on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/categories/image/</link>
+    <description>Recent content in Image on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Tue, 17 Dec 2013 17:18:06 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/categories/image/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ajaxで使えるロード画面のgif画像を生成できるサイト</title>
+      <link>http://programming.ironsand.net/2013/load-image-for-ajax/</link>
+      <pubDate>Tue, 17 Dec 2013 17:18:06 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2013/load-image-for-ajax/</guid>
+      <description>以前使ったAjax用の load.gif の背景が透過されてなかったので、背景が透過されたの探してたらそういう画像を生成してくれるサイトを見つけました。便利！
+[Ajaxload &amp;#8211; Ajax loading gif generator][1]</description>
+    </item>
+    
+  </channel>
+</rss>

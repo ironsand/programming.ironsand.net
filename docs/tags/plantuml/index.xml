@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PlantUML on 答えを知りたい</title>
+    <link>http://programming.ironsand.net/tags/plantuml/</link>
+    <description>Recent content in PlantUML on 答えを知りたい</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sun, 28 Mar 2010 18:53:16 +0000</lastBuildDate>
+    
+	<atom:link href="http://programming.ironsand.net/tags/plantuml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>xyzzyからPlantUMLを使う</title>
+      <link>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</link>
+      <pubDate>Sun, 28 Mar 2010 18:53:16 +0000</pubDate>
+      
+      <guid>http://programming.ironsand.net/2010/xyzzy%E3%81%8B%E3%82%89plantuml%E3%82%92%E4%BD%BF%E3%81%86/</guid>
+      <description>テキスト形式でUMLが書けるPlantUML PlantUMLはテキスト形式でUMLを記述して画像に出力できるオープンソースのソフトウェアです。 UMLが書けるフリーソフトはいくつかありますが、テキストベースで記述できるのは大変ありがたいですね。
+PlantUMLの具体例 サンプルをPlantUMLのサイト内から引用します。
+http://plantuml.sourceforge.net/classes.html
+[][1]　こんなUMLが以下の記述で作れちゃいます。@startuml img/classes04.png abstract class AbstractList abstract AbstractCollection interface List interface Collection List &amp;lt;|&amp;ndash; AbstractList Collection &amp;lt;|&amp;ndash; AbstractCollection Collection &amp;lt;|- List AbstractCollection &amp;lt;|- AbstractList AbstractList &amp;lt;|&amp;ndash; ArrayList ArrayList : Object[] elementData ArrayList : size() enum TimeUnit TimeUnit : DAYS TimeUnit : HOURS TimeUnit : MINUTES @enduml
+PlantUMLのインストール http://plantuml.sourceforge.net/download.html
+から plantuml.jar をダウンロードしてください。
+plantumlの実行にはJavaが必要になりますので、もしJavaがインストールされていなければ
+http://www.java.com/ja/download/
+からインストールを行ってください。
+&amp;ldquo;Sequence Diagram&amp;rdquo; 以外の画像の出力、つまり普通に使うのであれば Graphviz もインストールする必要があります。
+http://graphviz.org/Download_windows.php
+からダウンロードしてインストールしてください。
+以上でインストールは終了です。
+xyzzyからPlantUMLを使う方法 さて、次は以下のコードを siteinit.</description>
+    </item>
+    
+  </channel>
+</rss>

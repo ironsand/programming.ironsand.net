@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+
+
+<link rel="canonical" href="http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>xampp で mod_rewrite を使う方法 - 答えを知りたい</title>
+    
+<meta name="description" content="見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。mod_rewriteでできること ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくとhttp://localhost/index.php?user=foo&amp;amp;name=barと書く所をhttp://localhost/foo/bar.htmlと書ける機能です。foo/bar.html にアクセスすると内部でindex.php?user=foo&amp;amp;name=bar が呼び出されるわけです。Xamppの設定方法 xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。 まずApacheの設定ファイル http.conf を開きます。   自分の環境では[ X:\sugarsync\bin**xampp\apache\conf\httpd.conf** ] にありました。 モジュールがコメントアウトされてないか確認する  #LoadModule rewrite_module modules/mod_rewrite.so のようになってたら &amp;#8220;#&amp;#8221; を取って#LoadModule rewrite_module modules/mod_rewrite.so とします。 リライトの規則を書く。   http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。&amp;lt;IfModule rewrite_module&amp;gt; # bar.htmlを作りドキュメントルートに置いて # http://localhost/foo.html でアクセスできるか確認しましょう。 RewriteEngine On RewriteRule /foo.html /bar.html &amp;lt;/IfModule&amp;gt;  xampp を再起動 で完了   http://localhost/foo.">
+
+<meta property="og:title" content="xampp で mod_rewrite を使う方法 - 答えを知りたい">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/">
+<meta property="og:image" content="http://programming.ironsand.netimages/default.png">
+<meta property="og:site_name" content="答えを知りたい">
+<meta property="og:description" content="見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。mod_rewriteでできること ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくとhttp://localhost/index.php?user=foo&amp;amp;name=barと書く所をhttp://localhost/foo/bar.htmlと書ける機能です。foo/bar.html にアクセスすると内部でindex.php?user=foo&amp;amp;name=bar が呼び出されるわけです。Xamppの設定方法 xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。 まずApacheの設定ファイル http.conf を開きます。   自分の環境では[ X:\sugarsync\bin**xampp\apache\conf\httpd.conf** ] にありました。 モジュールがコメントアウトされてないか確認する  #LoadModule rewrite_module modules/mod_rewrite.so のようになってたら &amp;#8220;#&amp;#8221; を取って#LoadModule rewrite_module modules/mod_rewrite.so とします。 リライトの規則を書く。   http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。&amp;lt;IfModule rewrite_module&amp;gt; # bar.htmlを作りドキュメントルートに置いて # http://localhost/foo.html でアクセスできるか確認しましょう。 RewriteEngine On RewriteRule /foo.html /bar.html &amp;lt;/IfModule&amp;gt;  xampp を再起動 で完了   http://localhost/foo.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="答えを知りたい">
+<meta name="twitter:url" content="http://programming.ironsand.net/2012/how-to-use-mod_rewrite-in-xampp/">
+<meta name="twitter:title" content="xampp で mod_rewrite を使う方法 - 答えを知りたい">
+<meta name="twitter:description" content="見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。mod_rewriteでできること ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくとhttp://localhost/index.php?user=foo&amp;amp;name=barと書く所をhttp://localhost/foo/bar.htmlと書ける機能です。foo/bar.html にアクセスすると内部でindex.php?user=foo&amp;amp;name=bar が呼び出されるわけです。Xamppの設定方法 xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。 まずApacheの設定ファイル http.conf を開きます。   自分の環境では[ X:\sugarsync\bin**xampp\apache\conf\httpd.conf** ] にありました。 モジュールがコメントアウトされてないか確認する  #LoadModule rewrite_module modules/mod_rewrite.so のようになってたら &amp;#8220;#&amp;#8221; を取って#LoadModule rewrite_module modules/mod_rewrite.so とします。 リライトの規則を書く。   http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。&amp;lt;IfModule rewrite_module&amp;gt; # bar.htmlを作りドキュメントルートに置いて # http://localhost/foo.html でアクセスできるか確認しましょう。 RewriteEngine On RewriteRule /foo.html /bar.html &amp;lt;/IfModule&amp;gt;  xampp を再起動 で完了   http://localhost/foo.">
+<meta name="twitter:image" content="http://programming.ironsand.netimages/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/programming.ironsand.net"
+    },
+    "headline": "xampp で mod_rewrite を使う方法 - 答えを知りたい",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/programming.ironsand.netimages\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2012-01-05T11:16:06JST",
+    "dateModified": "2012-01-05T11:16:06JST",
+    "author": {
+      "@type": "Person",
+      "name": "答えを知りたい"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "答えを知りたい",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/programming.ironsand.netimages/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。\nmod_rewriteでできること ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくと\nhttp:\/\/localhost\/index.php?user=foo\x26amp;name=bar\nと書く所を\nhttp:\/\/localhost\/foo\/bar.html\nと書ける機能です。\nfoo\/bar.html にアクセスすると内部で\nindex.php?user=foo\x26amp;name=bar が呼び出されるわけです。\nXamppの設定方法 xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。\n まずApacheの設定ファイル http.conf を開きます。   自分の環境では[ X:\\sugarsync\\bin**xampp\\apache\\conf\\httpd.conf** ] にありました。\n モジュールがコメントアウトされてないか確認する  #LoadModule rewrite_module modules\/mod_rewrite.so のようになってたら \x26#8220;#\x26#8221; を取って\n#LoadModule rewrite_module modules\/mod_rewrite.so とします。\n リライトの規則を書く。   http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。\n\x26lt;IfModule rewrite_module\x26gt; # bar.htmlを作りドキュメントルートに置いて # http:\/\/localhost\/foo.html でアクセスできるか確認しましょう。 RewriteEngine On RewriteRule \/foo.html \/bar.html \x26lt;\/IfModule\x26gt;  xampp を再起動 で完了   http:\/\/localhost\/foo."
+  }
+</script>
+
+
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="http://programming.ironsand.net"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://programming.ironsand.netposts/" itemprop="url"><span itemprop="title">posts</span></a></li>
+        
+        <li class="active">xampp で mod_rewrite を使う方法</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2012-01-05T11:16:06JST">Jan 5, 2012</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+
+    <h1 class="title">xampp で mod_rewrite を使う方法</h1>
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>見た目が素敵なURLに変えるための mod_rewrite を xampp で使う方法を解説します。</p>
+
+<h3 id="mod-rewriteでできること">mod_rewriteでできること</h3>
+
+<p>ここに検索でたどり着いた人は Apacheのモジュール mod_rewrite で何ができるかはしってると思いますが念のために例を上げておくと</p>
+
+<p><code>http://localhost/index.php?user=foo&amp;name=bar</code></p>
+
+<p>と書く所を</p>
+
+<p><code>http://localhost/foo/bar.html</code></p>
+
+<p>と書ける機能です。</p>
+
+<p><strong>foo/bar.html</strong> にアクセスすると内部で</p>
+
+<p><strong>index.php?user=foo&amp;name=bar</strong> が呼び出されるわけです。</p>
+
+<h3 id="xamppの設定方法">Xamppの設定方法</h3>
+
+<p>xampp は既にインストールして使ってる前提で話を進めますのでインストールがまだの方はインストールしてからまた来てください。</p>
+
+<ol>
+<li>まずApacheの設定ファイル http.conf を開きます。
+<br /></li>
+</ol>
+
+<p>自分の環境では[ X:\sugarsync\bin**xampp\apache\conf\httpd.conf** ] にありました。</p>
+
+<ol>
+<li>モジュールがコメントアウトされてないか確認する</li>
+</ol>
+
+<pre>#LoadModule rewrite_module modules/mod_rewrite.so</pre>
+
+<p>のようになってたら <strong>&#8220;#&#8221; を取って</strong></p>
+
+<pre>#LoadModule rewrite_module modules/mod_rewrite.so</pre>
+
+<p>とします。</p>
+
+<ol>
+<li>リライトの規則を書く。
+<br /></li>
+</ol>
+
+<p>http.conf にどう表示を転送(書き換え？)するか RewriteRule を記述します。</p>
+
+<pre>&lt;IfModule rewrite_module&gt;
+# bar.htmlを作りドキュメントルートに置いて
+# http://localhost/foo.html でアクセスできるか確認しましょう。
+RewriteEngine On
+RewriteRule /foo.html /bar.html
+&lt;/IfModule&gt;</pre>
+
+<ol>
+<li>xampp を再起動 で完了
+<br /></li>
+</ol>
+
+<p><a href="http://localhost/foo.html">http://localhost/foo.html</a> にアクセスして bar.html の内容が表示されればOK！</p>
+
+<h3 id="それでも動かない場合">それでも動かない場合</h3>
+
+<p>…とここまではGoogleで [Xampp mod_rewrite] で検索すると解説されてるサイトいっぱい出てきたんですが上記の設定だけではうちの環境では動きませんでした。</p>
+
+<p>色々調べてると</p>
+
+<pre>&lt;Directory /&gt;
+    Options All
+&lt;/Directory&gt;</pre>
+
+<p>するといいよー。</p>
+
+<p>的な記述をみつけたので</p>
+
+<pre>&lt;Directory /&gt;
+    Options FollowSymLinks
+    AllowOverride None
+    Order deny,allow
+    Deny from all
+&lt;/Directory&gt;</pre>
+
+<p>を</p>
+
+<pre>&lt;Directory /&gt;
+    Options <b>All</b>
+    AllowOverride None
+    Order deny,allow
+    Deny from all
+&lt;/Directory&gt;</pre>
+
+<p>に書き換えてみたけどダメ。</p>
+
+<p>何が悪いのかわからないので、そのまま httpd.conf を眺めたら</p>
+
+<pre>&lt;Directory "X:/sugarsync/bin/xampp/htdocs"&gt;
+    (略)
+    Options Indexes FollowSymLinks Includes ExecCGI
+    (略)
+&lt;/Directory&gt;</pre>
+
+<p>な所を見つけたので、これを</p>
+
+<pre>&lt;Directory "X:/sugarsync/bin/xampp/htdocs"&gt;
+    (略)
+    <b>#</b>Options Indexes FollowSymLinks Includes ExecCGI
+    <b>Options All</b>
+    (略)
+&lt;/Directory&gt;</pre>
+
+<p>に変えて xampp を再起動させたら……動いたーー！！！</p>
+
+<h3 id="動的ページを静的なページ風に出力">動的ページを静的なページ風に出力</h3>
+
+<p>最初に上げた例のような動作をするためのRewriteRuleの設定は</p>
+
+<pre>RewriteRule /([0-9A-Za-z]+)/([0-9A-Za-z)]+).html$ /index.php?user=$1&name=$2</pre>
+
+<p>ただ、こうすると index.php の中で相対パスの画像などを呼び出していると</p>
+
+<p><a href="http://localhost/img/01.jpg">http://localhost/img/01.jpg</a> を呼びたいのに <a href="http://localhost/foo/img/01.jpg">http://localhost/foo/img/01.jpg</a> を参照してしまう問題が発生してしまいますので画像などの参照は全て絶対パスを記述するか、もしくは</p>
+
+<pre>RewriteRule /([0-9A-Za-z]+)-([0-9A-Za-z)]+).html$ /index.php?user=$1&name=$2</pre>
+
+<p>こうして</p>
+
+<p><a href="http://localhost/foo/bar.html">http://localhost/foo/bar.html</a> の代わりに</p>
+
+<p><a href="http://localhost/foo-bar.html">http://localhost/foo-bar.html</a> で我慢するという方法があります。</p>
+
+<p>ただこの方法の場合は引数に&#8221;-&#8220;を入れると意図しない動作になりますのでその点に注意しないといけませんが。</p>
+
+<p>mod_rewrite は他にも色々と細かい設定ができますので更に知りたい方は参考のページを見るか検索で何か良さげなページを探してください。</p>
+
+<h3 id="参考">参考</h3>
+
+<p>mod_rewrite</p>
+
+<p><a href="http://tech.bayashi.net/svr/doc/apache/mod_rewrite.html">http://tech.bayashi.net/svr/doc/apache/mod_rewrite.html</a></p>
+
+<p>mod_rewrite サンプル集/楽</p>
+
+<p><a href="http://tech.bayashi.jp/archives/entry/techweb/2007/001981.html">http://tech.bayashi.jp/archives/entry/techweb/2007/001981.html</a></p>
+
+<p>Apache : mod_rewriteリファレンス &#8211; dawgsdk.org</p>
+
+<p><a href="http://blog.dawgsdk.org/weblog/archives/411011">http://blog.dawgsdk.org/weblog/archives/411011</a></p>
+
+<p>Enable mod_rewrite in windows , WAMP, XAMPP</p>
+
+<p><a href="http://phpcollection.com/mod-rewrite-windows-wamp-xampp/">http://phpcollection.com/mod-rewrite-windows-wamp-xampp/</a></p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">CATEGORIES</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="http://programming.ironsand.netcategories/apache/">Apache</a></li>
+          
+          <li><a href="http://programming.ironsand.netcategories/xampp/">xampp</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.55.5" />
+
+/index.xml
+
+<link rel="canonical" href="http://programming.ironsand.net/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>答えを知りたい</title>
+    
+    <link href="http://programming.ironsand.netcss/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://programming.ironsand.net">答えを知りたい</a>
+          </div>
+
+          
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://ironsand.github.com">GitHub</a></li>
+              
+              
+              
+              <li><a href="https://twitter.com/ironsand">Twitter</a></li>
+              
+              
+            </ul>
+            
+          </div>
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-01-17T06:07:35JST">Jan 17, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/">ラズベリーパイへVNCでリモートデスクトップ接続する</a></h2>
+  </header>
+
+  
+  <div class="summary">[初めてのラズベリーパイ 【購入からSSH接続まで】 | 答えを知りたい][1] にてSSH接続ができるようになりましたので今回はVNCを使ってリモートデスクトップ接続をする方法を解説します。
+ VNCでデスクトップ共有すると便利  Raspberry側でする設定 まずはssh pi@192.168.xxx.xxxで接続します。そして必要なパッケージをインストール。
+pi@raspberrypi ~ $ sudo apt-get -y install tightvncserver  次にサービスを起動します。VNCに接続するときのパスワードを要求されますので何にするか決めます。
+また閲覧専用のためのパスワードを設定するかどうか聞かれますのでnで無しにしておきます。別に閲覧専用のパスワードを用意しても構いませんがそんな使い方をラズベリーパイですることはないでしょう。
+pi@raspberrypi ~ $ tightvncserver You will require a password to access your desktops. Password: Verify: Would you like to enter a view-only password (y/n)? n  サーバーが立ち上がったらVNC用のWindowを一つ用意します。
+$ vncserver :0 -geometry 1024x768 -depth 24  これでラズベリーパイ側の設定は完了です。
+PC側からの設定 PC側にVNCのクライアントをインストールします。Mac の場合は特に何もインストールする必要はありません。
+Linuxでのインストール aptでインストールします。
+sudo apt-get install xtightvncviewer  Windowsでのインストール [Download TightVNC][2] から &#8220;Installer for Windows&#8221; をダウンロードしてインストールします。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4%E3%81%B8vnc%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E6%8E%A5%E7%B6%9A/" title="ラズベリーパイへVNCでリモートデスクトップ接続する">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2015-01-17T03:44:29JST">Jan 17, 2015</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/">初めてのラズベリーパイ 【購入からSSH接続まで】</a></h2>
+  </header>
+
+  
+  <div class="summary">[ラズベリーパイがよくわからないからとりあえず触ってみる会 | Doorkeeper][1]
+を思いつきで呼びかけてみたら意外と人が集まったので、イベント前日の今日に急いで最低限の初期設定をしているテツです。こんにちは。
+私と同じように『ラズベリーパイって面白そうだけど何か全然わかんない。』という人に少しでも役に立てばを思い記事を書いています。
+ ICOCAと比べてみた。思ってたよりもずっと小さい。  目的 ラズベリーパイへのSSHログインとVNCでのデスクトップ操作をノートパソコンからできるようにする。
+必要なもの  [ラズベリーパイ B+][2] [USBキーボード][3] [MicroUSB 電源ケーブル][4](Android携帯とかについてるの) [USB電源アダプター][5] [Micro SDカード][6](一つ前の ラズベリーパイBを使う場合はSDカード) [USB無線LAN 子機][7] [HDMI接続できるディスプレイ][8]  どのラズベリーパイを買うべきか ラズベリーパイを買うときに種類が複数あるので迷うかもしれません。
+ Raspberry Model A Raspberry Model B Raspberry Model A+ Raspberry Model B+  の4つが主にあるようですが、プラスがついてないのは古いバージョンなので今から始める人は無視して良いでしょう。A+はB+の廉価版になります。何をするか具体的に決まっている場合はA+を選択するのもいいですが、私のように何をするか全然決まってないけど取り敢えず初めてみようという人間にはB+の方が良さそうなのでそっちにしました。
+なおAmazonからでも購入できますが、公式の通販サイト[RS Online][9]からなら数百円ほど安く買えます。
+ディスプレイ ラズベリーパイで使えるタッチパネルの[7インチの専用ディスプレイ][10]などもあるのですが、HDMI接続さえできれば何でも良いので、普通のPC用ディスプレイやテレビにHDMI接続があれば大丈夫です。
+その他のパーツの注意点とか USB無線LANの子機は必須パーツとして挙げられてないことが多いのですが、毎回ラズベリーパイを触るときにキーボードとディスプレイを繋ぐのはめんどくさすぎるので無線LAN経由で操作をするために必須になります。
+その代わりにUSBキーボードは初期設定以外には必要無くなりますので、ラズベリーパイ以外で使わないなら友達などから貸してもらえれば買う必要はありません。
+あとマウスもリモートデスクトップを使うなら必要ありません。無くても初期設定はできますので。
+OSインストール まずはOSのインストールを行い、次に無線経由ですべての操作ができるようにします。
+必要なファイルの準備 ラズベリーパイは専用のLinuxディストリのRASPBIANというOSをSDカードにインストールして使います。他のディストリも使えるようなのですが、慣れてない時はまず基本に忠実に行くのが一番です。変な設定を初めから試みて苦しい思いをするのは個人の自由なのでそういうのが好きな人はぜひそちらを選んでください。見てる側としてはソッチのほうが楽しいので！
+さて、そのRASPBIANのインストールにはNOOBS(New Out Of the Box Software)というものを使います。
+[Donwloadsのページ][11]からNOOBSをダウンロードして展開します。NOOBS LITEもありますが、無印のほうを選択してください。
+そして[SD Card Formatter][12]をダウンロード&amp;インストールします。ページの下の方に Windows か Mac かを選ぶところがありますので選択して、それから規約に同意(Accept)するとダウンロードが始まります。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2015/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E3%83%A9%E3%82%BA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%91%E3%82%A4-%E8%B3%BC%E5%85%A5%E3%81%8B%E3%82%89ssh%E6%8E%A5%E7%B6%9A%E3%81%BE%E3%81%A7/" title="初めてのラズベリーパイ 【購入からSSH接続まで】">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-05-04T01:39:37JST">May 4, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/">NokogiriとSelenium-WebDriverのxpathの違い</a></h2>
+  </header>
+
+  
+  <div class="summary">Selenium-WebDriverとNokogiriで同じファイルを開いても違うxpathを書かないといけないとダメで少しハマったのでメモ。
+違いの原因 同じHTMLを解析してもSelenium-WebDriverでChromeやFirefoxで開いた時は任意の要素であるtbodyが挿入されるために違いが発生します。
+実際の例 例えば
+&lt;table&gt; &lt;tr&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; とある時に
+Nokogiri の場合 require 'nokogiri' doc = Nokogiri::HTML(File.read("test.html")) doc.xpath("//table/tr") Selenium WebDriver の場合 require 'selenium-webdriver' driver = Selenium::WebDriver.for :chrome driver.get("file:///C:/Users/ironsand/test.html") driver.find_element(:xpath, "//table/tbody/tr") 基本的な対策 大体の場合は//table//trとどちらにも対応できるように書いたらいいわけですが、汚いHTMLを解析するときに
+//tr/td/font[contains(text(), 'Keyword')]/../../following-sibling::tr[3]/td
+な感じで正確なタグの数が必要になることがあるのでそういう時に気をつけましょう。
+参考 [ruby &#8211; How to get element that have same parent and n th different position by xpath &#8211; Stack Overflow][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/difference-between-nokogiri-and-selenium-webdriver-about-xpath/" title="NokogiriとSelenium-WebDriverのxpathの違い">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-30T21:23:03JST">Apr 30, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/">screenを使ってssh経由のコマンドを便利に</a></h2>
+  </header>
+
+  
+  <div class="summary">sshでログインして処理の重たいコマンドを実行した後にセッションが途切れてしまうとそのコマンドをもう一度fbなどでフォアグラウンドに持ってこようと思っても残念ながらできません。違うシェルのインスタンスから立ち上げたらプロセスは別のインスタンスのシェルには持ってこれないかららしいです。
+Screenの使い方 まず初めからコマンドをscreenを使って立ち上げておきましょう。
+$ screen ruby it_takes_very_long.rb
+そして、一旦sshの接続を切って繋ぎ直します。
+$ screen -listをするとこんな感じで表示されるので
+There is a screen on: 31744.pts-0.Sakura (Detached) 1 Socket in /var/run/screen/S-ironsand.  $ screen -r 31744.pts-0.Sakuraでスクリーンに繋ぎ直せば画面への出力をもう一度見ることが出来ます。
+参考 [Linux Screen Tutorial &#8211; YouTube][1]</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/screen-make-ssh-commands-handy/" title="screenを使ってssh経由のコマンドを便利に">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-30T19:13:31JST">Apr 30, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/berkshelf_lockfileparsererror/">Berkshelf::LockfileParserError への対処</a></h2>
+  </header>
+
+  
+  <div class="summary">knife solo cook foo とするとBerkshelf::LockfileParserErrorってエラーが出てビビる。
+対策 rm Berkshelf.lock で ロックファイルをを消したら治った。.gitignoreに加えてたほうが良いのかな？ Gemfile.lockと同じく加えるかどうかに賛否両論ありそう。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/berkshelf_lockfileparsererror/" title="Berkshelf::LockfileParserError への対処">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-30T15:37:39JST">Apr 30, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/require-library-easily-in-irb/">irbで`require “foobar”`するのがめんどくさいので楽にする</a></h2>
+  </header>
+
+  
+  <div class="summary">例えば nokogiri でちゃんとデータの取得ができてるか確認するために
+irbを使うために
+$ irb してから
+require &quot;nokogiri&quot;と
+自分はいつもしてたんですが、めんどくさい。
+解決策 $ irb -r nokogiriな感じでライブラリが読み込めます。ステキ！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/require-library-easily-in-irb/" title="irbで`require “foobar”`するのがめんどくさいので楽にする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-28T13:11:58JST">Apr 28, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/">ConEmuのタスクバーのアイコンをクリックしたらすぐにactiveにする</a></h2>
+  </header>
+
+  
+  <div class="summary">デフォルトではConEmuで複数のタブを開いた状態でタスクバーのアイコンをクリックすると、どのタブを選択するかを選ばないとアクティブにすることができません。
+自分はとりあえずクリックしたらアクティブになって欲しいので設定を変えてしまいます。
+変え方 ConEmuのタイトルバーを右クリックしてSettingsを開いて
+左上のFind:のところでActive console onlyと検索します。
+するとMain-&gt;Task bar-&gt;Taskbar buttonsの項目のShow all consolesがデフォルトで選ばれてると思うので、それをActive console only (ConEmu window)に変えてSave settingsすればOKです。ステキ！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/how-to-activate-conemu-window-by-a-click/" title="ConEmuのタスクバーのアイコンをクリックしたらすぐにactiveにする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T18:17:15JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/without-line-break-with-fileio-readline-in-ruby/">rubyの`FileIO.readline`に改行を含ませないようにする</a></h2>
+  </header>
+
+  
+  <div class="summary"> こんなふうにファイルを読み込むと標準では改行が入ってしまいます。
+File.open(filename,"r") do |f| f.readlines end 解決策 改行はいらないので消しちゃいましょう。
+File.open(filename,"r") do |f| f.readlines.map &:chomp end </div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/without-line-break-with-fileio-readline-in-ruby/" title="rubyの`FileIO.readline`に改行を含ませないようにする">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T18:10:34JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/why-wc-l-shows-a-line-less/">`wc -l`の結果が実際の行数よりも一行少ない理由</a></h2>
+  </header>
+
+  
+  <div class="summary">wc -lは改行を数えるので最終行に改行がなかったら実際の行数よりも1行少なく数えられるそうだ。へえ。</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/why-wc-l-shows-a-line-less/" title="`wc -l`の結果が実際の行数よりも一行少ない理由">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2014-04-26T17:59:26JST">Apr 26, 2014</time></li>
+      <li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="http://programming.ironsand.netposts/">posts</a></li>
+      
+    </ul>
+    <h2 class="title"><a href="http://programming.ironsand.net/2014/merge-arrays-in-ruby/">rubyで配列のMerge `(array1 &#43; array2).uniq` を更に簡単に</a></h2>
+  </header>
+
+  
+  <div class="summary">array1 | array2 で (array1 + array2).uniq と同じように配列を重複なしで結合してくれます。ステキ！</div>
+
+  <footer>
+    <a href="http://programming.ironsand.net/2014/merge-arrays-in-ruby/" title="rubyで配列のMerge `(array1 &#43; array2).uniq` を更に簡単に">Read More…</a>
+  </footer>
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/page/3/">Previous</a></li>
+    
+
+    
+    <li><a href="/page/5/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    <aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.net/2019/wordpress%E3%81%8B%E3%82%89hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E8%A8%98%E9%8C%B2/" class="list-group-item">WordpressからHugoに移行した記録</a>
+      
+      <a href="http://programming.ironsand.net/2018/%E3%81%AA%E3%82%8D%E3%81%86%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%A7%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95/" class="list-group-item">なろうリーダーでフォント入れ替える方法</a>
+      
+      <a href="http://programming.ironsand.net/2018/automount-virtualbox-shared-folder-without-fstab/" class="list-group-item">VirtualBoxの共有フォルダを起動時に自動マウント(fstabは使わない)</a>
+      
+      <a href="http://programming.ironsand.net/2018/how-to-get-favicon-easily/" class="list-group-item">Faviconを取得する簡単な方法</a>
+      
+      <a href="http://programming.ironsand.net/2017/invalid-value-for-bigdecimal-in-ruby-2-4/" class="list-group-item">invalid value for BigDecimal が Ruby 2.4から出るようになった</a>
+      
+      <a href="http://programming.ironsand.net/2017/auto_link%E3%81%AEtarget_blank%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84/" class="list-group-item">simple_formatを適用させるとauto_linkの target: ‘_blank’が効かない</a>
+      
+      <a href="http://programming.ironsand.net/2017/nodejs%E3%81%AErepl%E3%81%A7ctrlr-%E3%81%A7%E9%81%8E%E5%8E%BB%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%82%92%E6%A4%9C%E7%B4%A2/" class="list-group-item">NodeJSのREPLでctrl&#43;r で過去の履歴を検索</a>
+      
+      <a href="http://programming.ironsand.net/2017/zsh%E3%81%A7history%E3%81%AB%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93%E3%82%82%E6%AE%8B%E3%81%99%E6%96%B9%E6%B3%95/" class="list-group-item">zshでhistoryに実行時間も残す方法</a>
+      
+      <a href="http://programming.ironsand.net/posts/2017-08-05-hugo%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%ABwordpress%E3%81%AEsocial-buttons%E3%81%AEhtml%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B/" class="list-group-item">HUGOに移行するためにWordpressのSocial ButtonsのHTMLを削除する</a>
+      
+      <a href="http://programming.ironsand.net/2017/how-to-get-last-modified-from-remote-url-by-using-net-http/" class="list-group-item">Net::HTTPを使ってリモートにあるサーバーの最終更新日を取得</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.netcategories/ruby" class="list-group-item">ruby</a>
+      
+      <a href="http://programming.ironsand.netcategories/rails" class="list-group-item">rails</a>
+      
+      <a href="http://programming.ironsand.netcategories/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.netcategories/commands" class="list-group-item">commands</a>
+      
+      <a href="http://programming.ironsand.netcategories/windows" class="list-group-item">windows</a>
+      
+      <a href="http://programming.ironsand.netcategories/jquery" class="list-group-item">jquery</a>
+      
+      <a href="http://programming.ironsand.netcategories/python" class="list-group-item">python</a>
+      
+      <a href="http://programming.ironsand.netcategories/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.netcategories/editor" class="list-group-item">editor</a>
+      
+      <a href="http://programming.ironsand.netcategories/emacs" class="list-group-item">emacs</a>
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="http://programming.ironsand.nettags/javascript" class="list-group-item">javascript</a>
+      
+      <a href="http://programming.ironsand.nettags/xyzzy" class="list-group-item">xyzzy</a>
+      
+      <a href="http://programming.ironsand.nettags/aac" class="list-group-item">aac</a>
+      
+      <a href="http://programming.ironsand.nettags/ffmpeg" class="list-group-item">ffmpeg</a>
+      
+      <a href="http://programming.ironsand.nettags/foundation" class="list-group-item">foundation</a>
+      
+      <a href="http://programming.ironsand.nettags/html" class="list-group-item">html</a>
+      
+      <a href="http://programming.ironsand.nettags/java" class="list-group-item">java</a>
+      
+      <a href="http://programming.ironsand.nettags/m4a" class="list-group-item">m4a</a>
+      
+      <a href="http://programming.ironsand.nettags/maverick" class="list-group-item">maverick</a>
+      
+      <a href="http://programming.ironsand.nettags/neroaac" class="list-group-item">neroaac</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; 答えを知りたい</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
