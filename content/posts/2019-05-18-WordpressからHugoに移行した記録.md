@@ -8,7 +8,7 @@ categories:
   - Hugo
 ---
 
-### インストール方法
+## インストール方法
 
 Macなら特に何も面倒くさいことをせずに
 
@@ -26,7 +26,7 @@ brew install hugo
 Hugo Static Site Generator v0.55.5/extended darwin/amd64 BuildDate: unknown
 ```
 
-### 始め方
+## 初期設定と動作確認
 
 まずこのサイトの置き場所のためにディレクトリを`~/www/programming.ironsand.net`を作って、そこに`cd`で移動。
 
@@ -119,7 +119,7 @@ Welcome!
  % hugo server -w
 ```
 
-### Wordpress のデータをHugo形式で出力
+## Wordpress のデータをHugoに移行
 
 Wordpress はさくらのレンタルサーバに置いてるので、`ssh` でサーバーに繋いで
 
@@ -154,8 +154,15 @@ Parse error: syntax error, unexpected '[' in /home/ironsand/www/programming.iron
 サーバーは忍者ホームページを使うので `programming.ironsand.net`というプロジェクトを作成しました。
 次に`config.toml`に`publishDir = "docs"`を追記してHUGOのHTMLの出力先をGithubの標準に合わせます。
 
+Github上のプロジェクトの`Settings`->`Github Pages`で`Source`の項目を`None(Disable Github Pages)`から`master branch　/docs folder`に変更します。
 
-
+これで数分待てばサーバーにアップロードできたのですが、この時点ではURLが`https://ironsand.github.io/programming.ironsand.net/`になってしまってるのでドメインの設定をします。
 
 ### 参考
 https://gohugo.io/hosting-and-deployment/hosting-on-github/
+
+## 独自ドメインの設定
+
+さっき開いた`Github Pages`の設定項目に`Custom domain`があるのでそこに`programming.ironsand.net`と自分の使いたいドメインを入力して`Save`します。この時点では当然以下のようなエラーが出ますが無視します。
+
+> Domain does not resolve to the GitHub Pages server. For more information, see https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/.

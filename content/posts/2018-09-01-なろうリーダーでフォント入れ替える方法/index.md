@@ -10,7 +10,7 @@ categories:
 ---
 ### こんな感じになります
 
-![なろうリーダーサンプル](/imgs/narou-font.png)
+<img alt="なろうリーダーサンプル" src="narou-font.png" width=240/>
 
 ### 設定方法など
 
